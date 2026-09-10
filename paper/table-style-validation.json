@@ -1,6 +1,6 @@
 {
   "status": "passed",
-  "pdf_sha256": "cedd34bae82af21e537cba7aa2555ced3a30e2fc9d7c8b22528d9c457caafbe0",
+  "pdf_sha256": "72da4f54537b6955672710d38e75df91b5d2910b05069be9a71f2585da94bb56",
   "table_count": 31,
   "rendered_table_segments": 42,
   "checked_horizontal_rules": 126,
@@ -64,7 +64,7 @@
     "paper/generated/selected-days-q4-2.tex": "31d9e04532eb5017b5dccd1e01a66eb1d99e5bd7d187a92699906cda0cfce2e6",
     "paper/generated/selected-days-q4-3.tex": "69b55454566685b39ac3ae75d94e8c3bc66c1e1a246ad5c2185835e8d07f2d57",
     "paper/sections/symbols.tex": "9cb60ddff878556163fc4b342a06c9ee6ab270a4bf7dbdd9533e41af36a38d59",
-    "paper/main.tex": "b1766a06cf324dd73f50434e507d666318ba564d532558c8ec62aa6b668cb31f"
+    "paper/main.tex": "0c4480ff10cd16158420fd77871588207393e93adf58b1ab3827f07ffe29f1ee"
   },
   "tables": [
     {

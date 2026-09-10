@@ -2,8 +2,9 @@
 % Upstream template pinned in template-source.json; compile via scripts/build_paper.py.
 \documentclass[withoutpreface,bwprint]{cumcmthesis}
 \usepackage{cumcm2026}
-% Keep the template's ulem package from underlining body-text emphasis.
+% Render semantic emphasis in bold instead of the template's underlining.
 \normalem
+\renewcommand{\emph}[1]{\textbf{#1}}
 \usepackage[numbers,sort&compress]{natbib}
 \usepackage{xurl,placeins}
 % Explicit available Windows font faces; retain the template's typography.

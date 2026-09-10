@@ -2,7 +2,7 @@
   "status": "passed",
   "checked_on": "2026-09-11",
   "pdf": "output/pdf/microgrid-paper.pdf",
-  "pdf_sha256": "cedd34bae82af21e537cba7aa2555ced3a30e2fc9d7c8b22528d9c457caafbe0",
+  "pdf_sha256": "72da4f54537b6955672710d38e75df91b5d2910b05069be9a71f2585da94bb56",
   "pages": 44,
   "figures": 2,
   "table_count": 31,
@@ -17,11 +17,12 @@
     "ordinary_cite_commands_remaining": 0,
     "superscript_visual_check": "passed in full-page review"
   },
-  "body_underline_removal": {
+  "body_emphasis": {
     "normalem_enabled": true,
-    "removed_emph_wrappers": 2,
+    "emph_rendering": "textbf",
+    "emphasized_passages": 2,
     "remaining_body_underline_commands": 0,
-    "visual_check": "passed"
+    "visual_check": "passed on pages 2 and 4"
   },
   "specified_date_scenarios": 16,
   "numeric_aggregation_checks": 656,
@@ -121,8 +122,14 @@
       44
     ],
     "render_scale_to_pixels": 1200,
+    "emphasis_update_pages_reviewed": [
+      2,
+      4
+    ],
+    "unchanged_page_renders": 42,
     "notes": [
-      "All pages rendered and inspected after removing body underlines and unfolding the five storage tables.",
+      "All 44 pages were inspected in the storage-layout review; pages 2 and 4 were re-rendered and inspected after changing emph to bold.",
+      "The other 42 page renders are byte-identical to the preceding reviewed delivery.",
       "Storage tables have one set of four column headings, six interval rows and two endpoint-stock rows per date.",
       "The conclusion and AI declaration fit on one page without isolated paragraph remnants; four-row daily bills remain together.",
       "All 12 citation groups are clear bracketed superscripts without clipping or collisions.",
@@ -153,11 +160,11 @@
     "paper/generated/selected-days-q3.tex": "b0c33e9cfc0d4b0e52acdc23b126b5d8ed4ba9652fcb42274a6f708898debd02",
     "paper/generated/selected-days-q4-2.tex": "31d9e04532eb5017b5dccd1e01a66eb1d99e5bd7d187a92699906cda0cfce2e6",
     "paper/generated/selected-days-q4-3.tex": "69b55454566685b39ac3ae75d94e8c3bc66c1e1a246ad5c2185835e8d07f2d57",
-    "paper/main.tex": "b1766a06cf324dd73f50434e507d666318ba564d532558c8ec62aa6b668cb31f",
+    "paper/main.tex": "0c4480ff10cd16158420fd77871588207393e93adf58b1ab3827f07ffe29f1ee",
     "paper/references.bib": "e6874ad38abb7e08e78a74ccaaadd08a93003de4171412deb87c15bf75269584",
     "paper/sections/abstract.tex": "8f2154ba9ebafcd61f983aaf01a02315dccfe4beeda902a29c0c315eafd9e45d",
     "paper/sections/ai-statement.tex": "a2afe616bb0b3edc321dd5e4d5a472e8c97d3f33a173af3ebca859c43b9a3f7f",
-    "paper/sections/analysis.tex": "422e212f6f4e150cf7d23de3eb69aa1b5a939bea69501ab0b477cf2ed2c49388",
+    "paper/sections/analysis.tex": "5bc04d40f585b180b36c136def0bf9ebe68eed8ab0ec24dcc3297a303e5b865e",
     "paper/sections/appendix.tex": "525c5a69977bec544b558d67d29e46e980c654403ae0021b982f1fea68386fb6",
     "paper/sections/assumptions.tex": "3a3d8b13abe89bece3b52c71d3b5a06bcef5a87d683185f7142e6e2a7244e3fa",
     "paper/sections/body.tex": "261341602a3573201735a74f119bceffcd05f0c07eb7f5df54bc215568663166",
@@ -165,7 +172,7 @@
     "paper/sections/evaluation.tex": "502060a4eff7d5405ee1086b832c111b9d9c5f32787c0297aef58bf66d337d78",
     "paper/sections/model.tex": "b225720bb4ca1a9386ec1941bac74b06e5897819beb5941abf47fedb9bb01685",
     "paper/sections/physical-model.tex": "30b162c93bd41274925bf7252198ba43ccca0522960c8479260226849aad0c1f",
-    "paper/sections/problem.tex": "2bf45a052ac9d03a1f6ae79f38822299673237d8aa352982bd4b41a1a97a74e3",
+    "paper/sections/problem.tex": "8dfeeec1d03a31b6799c0aca8d05c2601cfb845791f427c19814085833936810",
     "paper/sections/q1.tex": "78193df1db6aa389b08c6607cc9017fb05ddf1a1cd0d235c980fdbaaf7af3491",
     "paper/sections/q2.tex": "56f0508f018597943e2e8a1ef36b0c693a9e9f9a8f799ba486dedb80d2d10872",
     "paper/sections/q3.tex": "31015b4e1d39b952776eb9689db9cc83f0fc4ae0006884fdacfcd9f43a3848bd",
@@ -185,7 +192,7 @@
   ],
   "table_style_validation": {
     "path": "paper/table-style-validation.json",
-    "sha256": "d9063315db7aec01ac76a81d12b9626c3d5ee6d397368f86b6066ed2059466b2",
+    "sha256": "31b287cdbf04bc17a917992522927bbd07b326e09e7633a83a6403ad8abc0383",
     "table_count": 31,
     "rendered_table_segments": 42,
     "checked_horizontal_rules": 126,
