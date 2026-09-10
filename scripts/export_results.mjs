@@ -206,7 +206,7 @@ import openpyxl
 root, input_path = pathlib.Path(sys.argv[1]), pathlib.Path(sys.argv[2])
 results = json.loads(input_path.read_text(encoding='utf-8'))
 verification = {
-    'verification_version': '1.0.0', 'passed': False, 'error_count': 0,
+    'verification_version': '1.1.0', 'passed': False, 'error_count': 0,
     'generated_at': datetime.datetime.now(datetime.timezone.utc).isoformat(),
     'validator': 'scripts/export_results.mjs --verify',
     'validator_sha256': hashlib.sha256((root/'scripts/export_results.mjs').read_bytes()).hexdigest(),
@@ -270,6 +270,7 @@ for filename,key in files:
     days = result['days']
     fields = [('计划购电量','plan','planCost')]
     if key in ('q3','q4_3'): fields.append(('调整购电量','adjusted','adjustedCost'))
+    entry['purchase_annual_totals'] = []
     for title,field,cost in fields:
         sh = wb[title]
         assert sh.max_row == 335 and sh.max_column == 147
@@ -284,6 +285,23 @@ for filename,key in files:
         for i in (0,167,333):
             r = i+2
             assert formulas[title].cell(r,146).value == f'=SUM(B{r}:EO{r})'
+        annual_energy = sum(sh.cell(i+2,146).value for i in range(len(days)))
+        annual_cost = sum(sh.cell(i+2,147).value for i in range(len(days)))
+        same(annual_energy, sum(sum(day[field]) for day in days))
+        same(annual_cost, sum(day[cost] for day in days))
+        entry['purchase_annual_totals'].append({'sheet': title, 'energy_kwh': annual_energy,
+            'cost_yuan': annual_cost, 'last_date': days[-1]['date'],
+            'last_day_energy_kwh': sh['EP335'].value, 'last_day_cost_yuan': sh['EQ335'].value})
+    # The adjusted sheet already includes the original plan charge. Its EQ
+    # sum plus emergency fees is the all-in cost; never add both sheets' EQ.
+    delivery_cost = entry['purchase_annual_totals'][-1]['cost_yuan']
+    if all('emergencyCost' in day and 'totalCost' in day for day in days):
+        emergency_cost = sum(day['emergencyCost'] for day in days)
+        same(delivery_cost+emergency_cost, sum(day['totalCost'] for day in days))
+        entry['cost_reconciliation'] = {'delivery_cost_yuan': delivery_cost,
+            'emergency_cost_yuan_from_source_json': emergency_cost,
+            'all_in_cost_yuan': delivery_cost+emergency_cost,
+            'adds_plan_sheet_again': False}
     storage = wb['充放电量']
     assert storage.max_row == 2005 and storage.max_column == 6
     for i,day in enumerate(days):
@@ -336,7 +354,7 @@ print('Saved outputs/workbook-verification.json; all five workbooks passed.')
   } catch (error) {
     // Never leave an older passed report in place after a failed verification.
     await fs.writeFile(path.join(OUTPUT, 'workbook-verification.json'), JSON.stringify({
-      verification_version: '1.0.0', passed: false, error_count: 1,
+      verification_version: '1.1.0', passed: false, error_count: 1,
       generated_at: new Date().toISOString(), validator: 'scripts/export_results.mjs --verify',
       errors: [String(error.stderr ?? error.message)],
     }, null, 2));
@@ -351,18 +369,28 @@ async function main() {
   const require = createRequire(path.join(PREVIEWS, 'loader.cjs'));
   const { FileBlob, SpreadsheetFile } = await import(pathToFileURL(require.resolve('@oai/artifact-tool')).href);
   const inspectOnly = process.argv.includes('--inspect');
+  const filesArg = process.argv.find((value) => value.startsWith('--files='));
+  const requestedFiles = filesArg ? filesArg.slice(8).split(',').map((value) => value.trim()) : null;
+  if (requestedFiles && (requestedFiles.some((filename) => !FILES.some(([known]) => known === filename))
+    || new Set(requestedFiles).size !== requestedFiles.length)) {
+    throw new Error('--files must contain distinct supported filenames separated by commas');
+  }
+  const selectedFiles = requestedFiles ? FILES.filter(([filename]) => requestedFiles.includes(filename)) : FILES;
   const inputArg = process.argv.find((value) => value.startsWith('--input='));
   const inputPath = inputArg ? path.resolve(inputArg.slice(8)) : path.join(OUTPUT, 'results.json');
   const results = inspectOnly ? null : JSON.parse(await fs.readFile(inputPath, 'utf8'));
   if (results) validateResults(results);
   if (process.argv.includes('--verify')) { await verifySavedFiles(inputPath); return; }
   if (process.argv.includes('--preview-saved')) {
-    for (const [filename, key] of FILES.filter(([, key]) => key !== 'q1')) {
+    for (const [filename, key] of selectedFiles.filter(([, key]) => key !== 'q1')) {
       const workbook = await SpreadsheetFile.importXlsx(await FileBlob.load(path.join(OUTPUT, filename)));
       await savePreview(workbook, filename, '计划购电量', 'EM1:EQ7', 'saved-totals');
+      await savePreview(workbook, filename, '计划购电量', 'EM329:EQ335', 'saved-year-end');
       if (key === 'q3' || key === 'q4_3') {
+        await savePreview(workbook, filename, '调整购电量', 'A1:H7', 'final');
         await savePreview(workbook, filename, '调整购电量', 'AK1:AR7', 'saved-0600');
-        await savePreview(workbook, filename, '调整购电量', 'EM1:EQ7', 'saved-totals');
+        await savePreview(workbook, filename, '调整购电量', 'EM1:EQ8', 'saved-totals');
+        await savePreview(workbook, filename, '调整购电量', 'EM329:EQ335', 'saved-year-end');
       }
       await savePreview(workbook, filename, '充放电量', 'A1994:F2005', 'saved-tail');
       const last = emergencyRows(results[key].days).length + 1;
@@ -371,7 +399,7 @@ async function main() {
     return;
   }
   const audit = [];
-  for (const [filename, key] of FILES) {
+  for (const [filename, key] of selectedFiles) {
     const workbook = await SpreadsheetFile.importXlsx(await FileBlob.load(path.join(ROOT, 'data', 'raw', '附件5', filename)));
     if (inspectOnly) { await inspectTemplate(workbook, filename); continue; }
     const result = results[key];
@@ -398,7 +426,8 @@ async function main() {
     for (let i = 0; i < (key === 'q1' ? 2 : key === 'q3' || key === 'q4_3' ? 4 : 3); i++) {
       const sheet = workbook.worksheets.getItemAt(i);
       const range = sheet.name === '充放电量' ? key === 'q1' ? 'A1:E7' : 'A1:F13'
-        : sheet.name === '紧急购电量' ? 'A1:C14' : key === 'q1' ? 'A1:B10' : 'A1:G7';
+        : sheet.name === '紧急购电量' ? 'A1:C14' : key === 'q1' ? 'A1:B10'
+          : sheet.name === '调整购电量' ? 'A1:H7' : 'A1:G7';
       await savePreview(workbook, filename, sheet.name, range, 'final');
     }
     await fs.mkdir(OUTPUT, { recursive: true });

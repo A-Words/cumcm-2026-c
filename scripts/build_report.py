@@ -74,6 +74,126 @@ def table3(data,result):
     return '\n'.join(lines)
 
 
+def forecast_comparison(summary):
+    revision = summary['revision_experiments']
+    lines = ['| 问题与预测器 | 附件 3 权重 λ | 风险分位 α | 1 月验证费用 / 元 | 正式期费用 / 元 | 紧急电 / kWh | 2 月初 SOC / kWh | 年末 SOC / kWh |',
+             '| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |']
+    for key in ('q3','q4_3'):
+        candidates = revision['selection'][key]['candidates']
+        for label,baseline in [('原纯附件 3 基准','pure_attachment3'),
+                               ('历史光伏，原热启动','historical'),
+                               ('历史光伏，共同热启动','historical_common_warmup')]:
+            scene = revision['scenes'][revision['baselines'][key][baseline]]
+            chosen = min((x for x in candidates if x['pv_weight']==scene['pv_weight']),
+                         key=lambda x:x['validation_cost'])
+            row = scene['summary']
+            lines.append(f"| {NAMES[key]}：{label} | {scene['pv_weight']:g} | {scene['quantile']:g} | {f(chosen['validation_cost'])} | {f(row['total_cost'])} | {f(row['emergency_kwh'])} | {f(row['start_soc'],4)} | {f(row['end_soc'],4)} |")
+        selected = revision['selection'][key]['selected']
+        row = summary['primary'][key]
+        lines.append(f"| {NAMES[key]}：修订后主方案 | {selected['pv_weight']:g} | {selected['quantile']:g} | {f(selected['validation_cost'])} | **{f(row['total_cost'])}** | {f(row['emergency_kwh'])} | {f(row['start_soc'],4)} | {f(row['end_soc'],4)} |")
+    lines += ['', '各个权重下最优的 1 月候选如下，完整 30 组结果保存在 [修订实验归档](../outputs/revision-experiments.json)。', '',
+              '| 附件 3 权重 λ | 问题 3：选中 α | 1 月费用 / 元 | 问题 4-3：选中 α | 1 月费用 / 元 |',
+              '| ---: | ---: | ---: | ---: | ---: |']
+    for weight in (0,.25,.5,.75,1):
+        cells = [f'{weight:g}']
+        for key in ('q3','q4_3'):
+            best = min((x for x in revision['selection'][key]['candidates'] if x['pv_weight']==weight),
+                       key=lambda x:x['validation_cost'])
+            cells += [f"{best['quantile']:g}",f(best['validation_cost'])]
+        lines.append('| '+' | '.join(cells)+' |')
+    lines += ['', '候选验证时，各候选以自身固定权重和分位重放 1 月；实际热启动与候选回放分开。修订后主方案在 1 月固定使用纯附件 3 权重 1、分位 0.8，至 2 月 1 日才启用所选权重和分位。为完整复现评审，历史光伏“原热启动”在 1 月仍用自身预测器、固定分位 0.8；新增“共同热启动”则在 1 月与主方案一样使用纯附件 3、分位 0.8 及三次调整，至 2 月才切换历史预测器。正式预测器经济比较重点采用共同热启动行，使评价期初库存一致；原热启动行用于复现旧反例，不能将其与主结果差额全部解释为固定初始库存下的信息贡献。', '',
+              '紧急购电按五倍电价计入全部策略总费。题目没有额外限制其总量，因此成本更低的历史基准不能仅因紧急电较多而被否定。新增信息是否带来经济价值，须看第 5.4 节统一热启动、控制器与其他信息的严格对照。']
+    comparisons = []
+    for key in ('q3','q4_3'):
+        historical = revision['scenes'][revision['baselines'][key]['historical_common_warmup']]['summary']
+        delta = historical['total_cost']-summary['primary'][key]['total_cost']
+        comparisons.append(f"{NAMES[key]} 为 {f(delta)} 元")
+    lines += ['', '共同热启动下，历史基准总费用减去修订主方案总费用，'+ '，'.join(comparisons)+'。这比较的是各自在相同 1 月规则下选参的预测与控制组合，不能直接解释成固定参数下附件 3 信息的唯一贡献。']
+    return '\n'.join(lines)
+
+
+def information_comparison(summary):
+    revision = summary['revision_experiments']
+    scenes = revision['scenes']
+    information = revision['information_ablation']
+    lines = ['先区分五个概念：允许重规划/提前调整购电、规划器读取真实当前 SOC、按已观测负载修正水平、当前光伏观测锚点、后续新发布的小时光伏值。下面第一步联合恢复重规划机会与当时的实际 SOC，之后逐一控制负载修正、光伏锚点和新小时预报；这不能独立识别重规划机会与 SOC 观测各自的费用贡献。所有情景在每次启用的重规划中都读取自身真实 SOC，实际逐段执行也始终使用真实当前净负荷和库存。不同策略的库存轨迹不必相同，不通过人为冻结库存制造对照。', '',
+             '**先检验原纯附件 3 策略。** 下面按照归档次序逐项恢复信息。统一使用原策略分位、1 月固定分位 0.8 和反馈；各情景从 1 月 1 日的 6000 kWh 起，按本情景的信息与动作连续热启动，因此评价期初库存可能随情景变化。每个替代预测器均重新构造仅使用过去日期的残差池。', '',
+             '| 累计恢复的操作/信息 | 总费用 / 元 | 相对上一行减少费用 / 元 | 紧急电 / kWh |',
+             '| --- | ---: | ---: | ---: |']
+    previous = None
+    for scene_id in information['legacy']['ladder']:
+        scene = scenes[scene_id]
+        row = scene['summary']
+        label = {'q3_legacy_no_updates':'仅 00 点计划，无日内重规划',
+                 'q3_ladder_replan':'恢复重规划与实际 SOC，仍用日前负载与小时光伏值',
+                 'q3_ladder_load':'再增加已观测负载水平修正',
+                 'q3_legacy_info_000':'再增加当前光伏观测锚点，仍仅用 00 点小时预报',
+                 'q3_legacy':'再增加 06、12、18 点新小时光伏预报'}.get(scene_id,scene.get('label',scene_id))
+        delta = '—' if previous is None else f(previous-row['total_cost'])
+        lines.append(f"| {label} | {f(row['total_cost'])} | {delta} | {f(row['emergency_kwh'])} |")
+        previous = row['total_cost']
+    lines += ['', '上述累计费用差依赖加入次序，会包含后续库存与原计划变化，不是唯一贡献分配，也不可与另一种干预顺序混用。以下另用完整子集对照，只改变允许读取的新小时预报；06、12、18 点重规划、真实 SOC、负载修正和当前光伏锚点均保留。旧预报按同一未来目标整点对齐，不能连观测锚点一起冻结。', '']
+    for group,label in [('legacy','原纯附件 3 策略'),('selected','修订后主策略')]:
+        warmup_description = ('1 月按各自允许的信息热启动、固定分位 0.8，与原评审对照一致。'
+                              if group=='legacy' else
+                              '所有子集 1 月统一使用纯附件 3、全部三次更新和分位 0.8，2 月才启用所选权重/分位及本组预报开关。')
+        lines += [f'**{label}：新小时预报子集。** 除 00 点预报外，只读取下表指定的新小时预报；未读取时沿用最近一次允许读取的整点预报。{warmup_description}', '',
+                  '| 允许读取的新小时预报 | 正式期费用 / 元 | 紧急电 / kWh | 2 月初 SOC / kWh | 年末 SOC / kWh |',
+                  '| --- | ---: | ---: | ---: | ---: |']
+        by_subset = {}
+        for scene_id in information[group]['hourly_subsets']:
+            scene = scenes[scene_id]
+            subset = tuple(i*6 for i in range(1,4) if scene['forecast_sources'][i]==i)
+            by_subset[subset] = scene
+            row = scene['summary']
+            source_label = '、'.join(f'{hour:02d}' for hour in subset) or '无，仅 00 点小时预报'
+            lines.append(f"| {source_label} | {f(row['total_cost'])} | {f(row['emergency_kwh'])} | {f(row['start_soc'],4)} | {f(row['end_soc'],4)} |")
+        full = by_subset[(6,12,18)]['summary']['total_cost']
+        stale = by_subset[()]['summary']['total_cost']
+        lines += ['', f"在所有其他操作和观测均存在的条件下，全部新小时预报相对只用 00 点小时预报的费用改善为 **{f(stale-full)} 元**。保持另外两次新预报可用，分别撤去单次新预报得到：", '',
+                  '| 单独撤去的新小时预报 | 撤去后费用 − 全部新预报费用 / 元 |',
+                  '| --- | ---: |']
+        for hour in (6,12,18):
+            subset = tuple(h for h in (6,12,18) if h!=hour)
+            delta = by_subset[subset]['summary']['total_cost']-full
+            lines.append(f'| {hour:02d} 点 | {f(delta,4)} |')
+        weight = by_subset[(6,12,18)]['pv_weight']
+        if weight == 0:
+            lines += ['', '该组权重 λ=0，控制器没有使用附件 3 分量，改变其小时预报自然不会改变计划；这只说明所选策略不依赖该信息，不能证明附件 3 对所有可能控制器都无用。']
+        lines += ['']
+    lines += ['表中费用差为正表示撤去该次新预报后更贵，为负表示在本控制器和年度中撤去反而更便宜。单次撤去的条件不同，三项差额不可相加作为全体信息价值。原纯附件 3 对照中 18 点约 0.13 元的差异不足以支持“应引入 18 点新光伏预报”的原断言；修订后策略的条件差额以上表为准。是否保留 18 点重规划则是第 5.3 节的另一问题。这些是确定性回测差异，没有提供统计显著性或未来年度保证。']
+    return '\n'.join(lines)
+
+
+def contract_comparison(summary):
+    revision = summary['revision_experiments']
+    lines = [r'设 $q_t^{(0)}=g_t$，$q_t^{(r)}$ 为第 $r$ 次更新后仍未交付时段的购电量。替代逐笔合约每次相对前一已成交版本收费：', '',
+             r'$$C_{\rm txn}=\sum_t p_tg_t+\sum_{r,t\text{ 未交付}}p_t[1.5(q_t^{(r)}-q_t^{(r-1)})_++0.5(q_t^{(r-1)}-q_t^{(r)})_+]+5\sum_t p_te_t.$$', '',
+             r'该式下调不退款且另付罚金。既然可以不接收已付多余电，下调被保持上一版本并放弃余电支配。因此重新规划限制 $q_t^{(r)}\ge q_t^{(r-1)}$，而主合约仅限制 $q_t^{(r)}\ge g_t$；两者的可撤回范围不同。冻结主调度只换账单是压力测试，重新优化则把前一已成交版本带入 LP 并重新选取 1 月参数。', '',
+             '| 问题与策略/结算 | 总费用 / 元 | 相对相应无调整策略减少 / 元 |',
+             '| --- | ---: | ---: |']
+    for key in ('q3','q4_3'):
+        contract = revision['contracts'][key]
+        no_update = summary['primary']['q2' if key=='q3' else 'q4_2']['total_cost']
+        legacy = revision['scenes'][revision['baselines'][key]['pure_attachment3']]['summary']
+        reoptimized = revision['scenes'][contract['reoptimized']]['summary']
+        for label,cost in [('原纯附件 3，主合约',legacy['total_cost']),
+                           ('原纯附件 3，冻结调度逐笔重计',contract['frozen_legacy']['total_cost']),
+                           ('修订后主方案，主合约',summary['primary'][key]['total_cost']),
+                           ('修订后主方案，冻结调度逐笔重计',contract['frozen_selected']['total_cost']),
+                           ('逐笔合约下重新优化',reoptimized['total_cost'])]:
+            lines.append(f'| {NAMES[key]}：{label} | {f(cost)} | {f(no_update-cost)} |')
+    lines += ['', '| 逐笔合约重新优化 | 附件 3 权重 λ | 风险分位 α | 1 月验证费用 / 元 | 正式期紧急电 / kWh | 2 月初 SOC / kWh | 年末 SOC / kWh |',
+              '| --- | ---: | ---: | ---: | ---: | ---: | ---: |']
+    for key in ('q3','q4_3'):
+        contract = revision['contracts'][key]
+        selected = contract['selection']['selected']
+        row = revision['scenes'][contract['reoptimized']]['summary']
+        lines.append(f"| {NAMES[key]} | {selected['pv_weight']:g} | {selected['quantile']:g} | {f(selected['validation_cost'])} | {f(row['emergency_kwh'])} | {f(row['start_soc'],4)} | {f(row['end_soc'],4)} |")
+    lines += ['', '逐笔情景仍在同一 30 组权重/分位候选中以 1 月费用选择，真实热启动固定纯附件 3 权重 1、分位 0.8，但从 1 月起就使用逐笔合约。主合约选中权重 0.5，逐笔合约选中 0.25；因此两条重新优化后的费用差同时包含合约、所选预测器与调度路径的变化，不能解释成只改收费公式的纯合约边际。只有冻结调度重计费保持路径不变。不同合约也可造成评价期初库存不同，表中同时披露首末 SOC；结果是该合约下有限策略族的重新优化，不能称为随机全局最优。主表与五份 Excel 保持主合约，逐笔、冻结重计和退款结果只列为替代解释。主合约优势不能直接推广到另一种交易制度。']
+    return '\n'.join(lines)
+
+
 def figures(data,dispatch,summary):
     target=OUT/'figures'
     target.mkdir(exist_ok=True)
@@ -119,7 +239,7 @@ def figures(data,dispatch,summary):
     bars=ax.barh([x[0] for x in cases],vals,color=['#87a4b6']*7+['#227c77'])
     ax.bar_label(bars,labels=[f'{v:,.2f}' for v in vals],padding=5)
     ax.set_xlim(0,max(vals)*1.13);ax.invert_yaxis();ax.set_xlabel('2—12 月总费用 / 万元')
-    ax.set_title('问题 3：启用不同预报时刻的策略消融',loc='left',fontweight='bold')
+    ax.set_title('问题 3：不同日内重规划时刻的策略比较（非预报贡献）',loc='left',fontweight='bold')
     fig.savefig(target/'forecast-ablation.png');fig.savefig(target/'forecast-ablation.svg');plt.close(fig)
     # Matplotlib emits trailing spaces inside SVG paths; normalize only whitespace.
     for svg in target.glob('*.svg'):
@@ -131,7 +251,9 @@ def main():
     data=dict(np.load(ROOT/'data/processed/data.npz'))
     d=dict(np.load(OUT/'dispatch.npz'))
     s=json.loads((OUT/'summary.json').read_text(encoding='utf-8'))
+    s['revision_experiments']=json.loads((OUT/'revision-experiments.json').read_text(encoding='utf-8'))
     v=json.loads((OUT/'validation.json').read_text(encoding='utf-8'))
+    rv=json.loads((OUT/'revision-validation.json').read_text(encoding='utf-8'))
     figures(data,d,s)
     p=s['primary']
     saving=p['q2']['total_cost']-p['q3']['total_cost']
@@ -144,13 +266,13 @@ def main():
 
 问题 2—4 采用“历史预测—风险分位规划—实时安全反馈”的可行策略。所有计划只使用决策时刻已到达的信息；1 月用于训练、参数验证及从 6000 kWh 开始的热启动，正式结果覆盖 2025 年 2 月 1 日至 12 月 31 日，共 334 天、48,096 个区间。固定电价下，问题 3 总费用比问题 2 减少 **{f(saving)} 元（{saving/p['q2']['total_cost']:.2%}）**；波动电价下减少 **{f(saving4)} 元（{saving4/p['q4_2']['total_cost']:.2%}）**。紧急电计入费用并消除缺供，储电量逐日连续。
 
-后续问题包含预测误差和控制近似，本文不声称其结果为严格随机全局最优。正式策略的参数由 1 月确定，测试期敏感性中出现更便宜的参数也不回流修改主结果。
+后续问题包含预测误差和控制近似，本文不声称其结果为严格随机全局最优。修订版增加历史光伏与附件 3 的融合候选，参数仍只按 1 月费用选择；但候选模型族是在评审已有全年结果后扩展，因此本次属于同一数据集上的再分析，不能称为新的独立测试或前瞻验证。费用优势还以未交付增购可撤回、按最终净调整结算的主合约为前提；逐笔收费合约另行优化并报告。
 
 **关键词：** 微网；储能调度；线性规划；因果回测；风险分位；实时电价。
 
 ## 1. 题目理解与数据审查
 
-题面为 [C 题 PDF](../problem/C题.pdf)，原始输入为 [附件目录](../data/raw/)。完整审计见 [数据审计](data-audit.md)，计算前的判断与修正过程见 [决策记录](decisions.md)，独立方法审查见 [模型审查](model-review.md)。
+题面为 [C 题 PDF](../problem/C题.pdf)，原始输入为 [附件目录](../data/raw/)。完整审计见 [数据审计](data-audit.md)，计算前的判断与修正过程见 [决策记录](decisions.md)，初次方法审查见 [模型审查](model-review.md)，后续反向评审及修订回应见 [评审回应](review-response.md)。
 
 附件 1 有 144 条电价、负载、光伏预测；附件 2 有全年 365×144 条实际负载和光伏；附件 3 有 365×4×24 个小时预报；附件 4 有 365×144 条实际电价。所需数值无缺失、负数和非有限值，日期连续。原始文件 SHA-256 已保存并在验收时重核。
 
@@ -250,11 +372,18 @@ $$c_t=\min\{{-a_t,5000/6,(10800-S_t)/0.9\}},\quad w_t=-a_t-c_t,\quad d_t=e_t=0.$
 
 $$C_2=\sum_t p_tg_t+5\sum_t p_te_t.$$
 
-这是可执行的安全反馈启发式，未优化跨价格时段分配紧急电的电池库存，不应称作严格最优 MPC。滚动优化、仅执行当前动作的标准能源 MPC 方法可参见 [1,2]；本文采用更轻量的确定性风险计划和显式反馈。
+这是可执行的安全反馈启发式，未优化跨价格时段分配紧急电的电池库存，不应称作严格最优 MPC。例如两段各缺 100 kWh、常规购电为零、初始库存仅够向母线放出 100 kWh，前段电价 0.3713、后段 1.3952 元/kWh 时，贪心先放电会在后段支付 697.60 元紧急费；若前段紧急买电并保留库存，费用为 185.65 元，末 SOC 相同。这证明反馈一般没有经济最优性，但并不证明该节省可在全年未知未来时因果实现。修订保留此控制器，使预测和合约对照使用相同执行规则。滚动优化、仅执行当前动作的标准能源 MPC 方法可参见 [1,2]。
 
 ## 5. 问题 3：预报更新、调整结算及信息价值
 
-00 点以附件 3 最新光伏预报替换历史光伏预测。06、12、18 点读取新发布预报，并用已经完成的最近 18 个十分钟段修正负载预测水平：历史预测乘以“已观测均值/此前预测均值”，比例截断在 0.75–1.25。预报整点插值不使用未来光伏实测。每个发布时间有各自过去 28 天的预测残差池，参数仍按 1 月选定，问题 3 为 $\alpha={s['parameters']['q3']}$。
+主策略以历史光伏与附件 3 的最新可用预测作凸组合：
+
+$$\widehat V^{{(\lambda)}}=(1-\lambda)\widehat V^{{\rm hist}}+\lambda\widehat V^{{\rm att3}},\qquad
+\lambda\in\{{0,0.25,0.5,0.75,1\}}.$$
+
+$\lambda=0$ 为仅用历史光伏的可实施基准，$\lambda=1$ 为原纯附件 3 策略。每个权重与第 4.2 节六个分位组合，分别以 1 月 15—31 日的费用选取；每个预测器和发布时间独立构造历史残差池，不套用其他预测器的残差。模型族扩展是在审查发现全年反例之后，故本次只能称为同年再分析。
+
+06、12、18 点使用当时已到达信息重规划，并用已经完成的最近 18 个十分钟段修正负载预测水平：历史预测乘以“已观测均值/此前预测均值”，比例截断在 0.75–1.25。附件 3 分量使用最新发布的未来整点值，插值起点使用当前已完成区间的光伏观测；这两项信息在对照中单独控制。所有插值和修正均不使用未来实测。最终参数与各基准见第 5.2 节。
 
 ### 5.1 主结算口径
 
@@ -262,15 +391,19 @@ $$C_2=\sum_t p_tg_t+5\sum_t p_te_t.$$
 
 $$C_3=\sum_t[p_tg_t+1.5p_tu_t+0.5p_tv_t+5p_te_t].$$
 
-每次更新只优化未交付的剩余区间，保留原始 00 点 $g_t$ 作为唯一基准。按**最终交付量**相对原计划结算一次，不把三次修订的整张表分别累计计费；这也假设尚未交付的先前增购可以再次修订而不另收路径费用。
+每次更新只优化未交付的剩余区间，保留原始 00 点 $g_t$ 作为唯一基准。按**最终交付量**相对原计划结算一次，不把三次修订的整张表分别累计计费；这也假设尚未交付的先前增购可以再次修订而不另收路径费用。这里增购属于交付前可撤回的计划申报；若增购下单后即成交且不可退，需采用第 8.1 节逐笔合约，不能直接沿用主结果的收益。
 
 允许放弃过购电时，下调至 $q_t<g_t$ 受支配：改成 $q_t=g_t$ 并将增加量全部不接收，物理状态不变，还节省 $0.5p_t(g_t-q_t)$。因此主规划直接限制 $q_t\ge g_t$。更新 LP 的有效变量成本为 $1.5\sum_t\widehat p_tq_t$，原计划常数项不影响最优决策。实际执行仍用第 4.3 节规则。
 
-### 5.2 是否需要其他时刻预报
+### 5.2 预测器基准与参数选择
 
-仅对比问题 2 和问题 3 无法隔离日内预报的贡献，因为两者 00 点的信息本来就不同。下面保持同一预测器、参数、规划器、反馈规则及 1 月 1 日初始状态，仅改变启用的预报更新时刻。不同 SOC 轨迹会影响次日原计划，所以这是**完整策略消融**，不是冻结逐日 $g_t$ 的静态比较。
+{forecast_comparison(s)}
 
-| 启用时刻 | 2—12 月总费用 / 元 | 紧急购电 / kWh |
+### 5.3 重规划时刻的完整策略比较
+
+仅对比问题 2 和问题 3 无法隔离日内预报的贡献，因为两者 00 点的信息本来就不同。下面固定修订后主预测器、参数、规划器、反馈规则及 1 月 1 日初始状态，仅改变允许日内重规划的时刻。关闭一个时刻会同时失去调整机会、读取当前状态和修正预测的机会，故这是**完整策略比较**，不是新小时预报的价值分解。不同 SOC 轨迹也会影响次日原计划。
+
+| 允许重规划的时刻 | 2—12 月总费用 / 元 | 紧急购电 / kWh |
 | --- | ---: | ---: |
 '''
     for label,key in [('00','q3_midnight_only'),('00、06','q3_update06'),('00、12','q3_update12'),
@@ -281,15 +414,19 @@ $$C_3=\sum_t[p_tg_t+1.5p_tu_t+0.5p_tv_t+5p_te_t].$$
     text+=f"| 00、06、12、18 | {f(p['q3']['total_cost'])} | {f(p['q3']['emergency_kwh'])} |\n"
     ablation_gain=s['sensitivity']['q3_midnight_only']['total_cost']-p['q3']['total_cost']
     text+=rf'''
-全部时刻比仅 00 点预报节省 {f(ablation_gain)} 元（{ablation_gain/s['sensitivity']['q3_midnight_only']['total_cost']:.2%}），在全部八种更新组合中费用最低。18 点调度更新同时利用当前 SOC 和已观测负荷偏差，即使当晚光伏很小，也可通过提前增购替代 5 倍紧急购电。**本数据及本策略下，值得引入 06、12、18 点更新。** 这不是“每次新预报必然更准确”的一般结论。
+允许全部重规划比仅 00 点规划的费用差为 {f(ablation_gain)} 元（{ablation_gain/s['sensitivity']['q3_midnight_only']['total_cost']:.2%}）。该差额包含提前增购、状态更新和预测修正等共同影响，不能全部归于新增小时光伏预报。即使 18 点新光伏预报没有可辨认的费用贡献，18 点仍可能通过当前库存与负荷信息调整晚间购电；两种说法须区分。
 
-![日内预报消融](../outputs/figures/forecast-ablation.png)
+![日内重规划时刻比较](../outputs/figures/forecast-ablation.png)
+
+### 5.4 信息贡献的严格控制
+
+{information_comparison(s)}
 
 ## 6. 问题 4：波动价格的因果决策
 
 沿用问题 2、3，仅将优化器中的价格替换为历史预测价格。00 点价格预测同样取最近四个相隔 7 天的电价曲线，衰减 0.55；不足 7 天用最近 7 天衰减 0.8，1 月 1 日使用题目已提供的固定价曲线。问题 4-3 日内更新使用已完成最近 18 段的实价/预测价均值之比，截断在 0.5–1.5，修正剩余价曲线。
 
-购电计划、追加和紧急电的最终费用一律按附件 4 对应区间真实价格结算。问题 4-2 选定分位 {s['parameters']['q4_2']}，问题 4-3 为 {s['parameters']['q4_3']}。价格未来真值只在专门标明的先知参考中进入优化，主 Excel 不含先知结果。
+购电计划、追加和紧急电的最终费用一律按附件 4 对应区间真实价格结算。问题 4-2 选定分位 {s['parameters']['q4_2']}；问题 4-3 选定分位 {s['parameters']['q4_3']}、附件 3 权重 {s['pv_weights']['q4_3']}，选择规则及基准见第 5.2 节。价格未来真值只在专门标明的先知参考中进入优化，主 Excel 不含先知结果。
 
 ## 7. 全期结果与指定日期的题面表格
 
@@ -328,6 +465,12 @@ $$C_3=\sum_t[p_tg_t+1.5p_tu_t+0.5p_tv_t+5p_te_t].$$
 
 ### 8.1 题意解释的敏感性
 
+**未交付增购能否撤回：逐笔交易合约。**
+
+{contract_comparison(s)}
+
+**其他解释。**
+
 - **功率离散化：** 问题 1 改用分段线性梯形积分后，费用为 {f(s['q1_trapezoid_cost'])} 元，相对主口径变化 {(s['q1_trapezoid_cost']/s['q1']['cost']-1):+.2%}；购电量为 {f(s['q1_trapezoid_grid_kwh'])} kWh。主提交仍按右端代表平均功率。该敏感性没有冒充四问全部重算。
 - **效率语义：** 若把“90%”解释成往返效率，单向效率改为 $\sqrt{{0.9}}$，问题 1 费用为 {f(s['q1_roundtrip90_cost'])} 元；主口径仍为两个单向效率各 0.9。后续主结果未混用此替代解释。
 - **取消退款：** 若下调先退原价，再收 50% 违约费，则调整增量变为 $1.5p_tu_t-0.5p_tv_t$。已重新优化允许下调的策略，问题 3 总费为 {f(s['sensitivity']['q3_refund']['total_cost'])} 元，问题 4-3 为 {f(s['sensitivity']['q4_3_refund']['total_cost'])} 元。它们属于替代合约结果，未覆盖主 Excel；参数沿用主情景，不声称退款情景下又做了全参数最优化。
@@ -343,7 +486,7 @@ $$C_3=\sum_t[p_tg_t+1.5p_tu_t+0.5p_tv_t+5p_te_t].$$
                       ('q3_terminal3000','问题3 计划末储备≥3000'),('q3_terminal9000','问题3 计划末储备≥9000')]:
         x=s['sensitivity'][key];text+=f"| {label} | {f(x['total_cost'])} | {f(x['emergency_kwh'])} | {f(x['spill_kwh'])} |\n"
     text+='''
-分位提高一般会减少紧急电，但过购与未利用电增多。问题 3 的测试期 α=0.50 比 1 月选出的 0.65 更便宜，说明短验证窗口存在季节泛化不足；本文保留预先锁定的主参数，不能用测试期最低费用倒选后宣称无泄漏。储备敏感性改变的是计划控制规则，实际仍无日末重置；这些参考轨迹也从 1 月 1 日连续运行。
+分位提高一般会减少紧急电，但过购与未利用电增多。表中逐一改变分位或末库存要求，其他配置沿用修订后主策略；这些全年敏感性不参与参数选择。1 月短窗口与正式期季节不同，选中参数并不保证正式期费用最低。储备敏感性改变的是计划控制规则，实际仍无日末重置；这些参考轨迹也从 1 月 1 日连续运行。
 
 ### 8.3 日前点预测误差
 
@@ -353,27 +496,29 @@ $$C_3=\sum_t[p_tg_t+1.5p_tu_t+0.5p_tv_t+5p_te_t].$$
     for key,name in NAMES.items():
         x=s['forecast_accuracy'][key]
         text+=f"| {name} | {f(x['load_mae_kw'])} | {f(x['pv_mae_kw'])} | {f(x['net_mae_kw'])} | {f(x['price_mae'],5)} |\n"
-    text+='''
-这些是正式区间的 00 点原始点预测误差，不是加风险分位后的误差。附件 3 的日前光伏预报 MAE 在本数据中高于历史预测，但日内更新与实时库存共同改善了费用；不能仅靠预测 MAE 宣称某策略更省钱。光伏夜间有大量零值，因此不报告失真的普通 MAPE。
+    text+=rf'''
+这些是正式区间的 00 点原始点预测误差，不是加风险分位后的误差。问题 3、4-3 使用各自选中的融合权重。费用还由储能库存、调整合约、分位与实时控制共同决定，不能仅靠预测 MAE 宣称某策略更省钱；新增小时预报的经济贡献应看第 5 节保持其他输入一致的对照。光伏夜间有大量零值，因此不报告失真的普通 MAPE。
 
 ### 8.4 局限与可继续研究的方向
 
 1. 后续方案是逐点分位规划与贪心反馈，没有完整建模联合时序不确定性，也没有全局最优或概率约束证明。
 2. 计划只优化当天剩余区间，附件 3 超出当天的预报已正确读取，但没有利用它们构造跨日价值函数。日末参考储备是近似处理。
 3. 反馈没有按未来高低价格分配电池库存。可进一步用多情景 MPC，只执行当前动作并共享当前控制以遵守非预知性；需额外的场景建模和独立滚动验证，本文未声称已经实现。
-4. 单年数据和 1 月短窗口不足以证明多年稳健；未计老化、网络输电约束、逆变器非线性与响应延迟。题面没给这些参数，不能人为编造后输出更“真实”的数字。
+4. 单年数据和 1 月短窗口不足以证明多年稳健。融合模型族是在评审后扩展的；即使权重只以 1 月费用选择，也不能抹去模型开发已经看到全年表现的事实，仍需新年度或独立滚动留出验证。
+5. 未计老化、网络输电约束、逆变器非线性与响应延迟。题面没给这些参数，不能人为编造后输出更“真实”的数字。主、逐笔及退款合约只是明确列出的解释情景，不能替题面确认真实交易制度。
 
 ## 9. 可复现与独立核验
 
 完整计算流程见 [项目说明](../README.md)。所有金额由未四舍五入的 10 分钟数据计算，论文只显示两位小数；Excel 保留底层精度。两位小数的逐行显示数重新相加与总计可能有末位差异。
 
 - 数据核验：完整日期、列时刻、预报发布次序、非负/有限值、整点插值还原与梯形积分守恒、原始附件哈希不变。
-- 独立物理与费用核验：179 项通过，覆盖四种策略全年每一段的供电平衡、90% 损耗、1200–10800 kWh 边界、5000 kW 功率、互斥、跨日连续、原始计划不变、修订时间范围及各项费用。
+- 独立物理与费用核验：{v['check_count']} 项通过，覆盖四种策略全年每一段的供电平衡、90% 损耗、1200–10800 kWh 边界、5000 kW 功率、互斥、跨日连续、原始计划不变、修订时间范围及各项费用。物理可行和费用自洽不能证明库存分配最优、预报具有经济价值或合约解释唯一正确。
+- 修订实验核验：[专项验证](../outputs/revision-validation.json) 共 {rv['check_count']} 项通过，检查新增基准、严格小时预报对照和逐笔合约归档；[合约检查脚本](../scripts/test_contracts.py) 检查冻结路径收费与重新优化的区别。完整参数候选和情景配置保存在 [修订实验 JSON](../outputs/revision-experiments.json)。
 - 因果篡改试验：96 个点预测用例修改决策后真值或尚未发布预报，当前预测不变；48 个风险预测用例修改当日及未来残差，当前风险预测不变。另有两个修改已到达信息的正向对照，确认检验确实能感知可用输入。
 - 问题 1 最优性：纯 LP 与独立互斥 MILP 一致，MIP gap 为 0。后续四种策略只验证可行性和结算，不借用问题 1 证明它们全局最优。
 - Excel 核验：五个输出均重新读取，与模型 JSON 全量对照；计划、调整、六个四小时充放电聚合、日初日末 SOC、连续紧急区间及全天总量/费用一致。模板预览已检查，标签错位修复见 [模板说明](template-spec.md)。
 
-验收证据为 [物理/因果验证 JSON](../outputs/validation.json)、[问题1 MILP 验证 JSON](../outputs/q1-milp-verification.json)、[模板/Excel 验证 JSON](../outputs/workbook-verification.json)。[全年逐段归档](../outputs/dispatch.npz) 保存包括 1 月热启动在内的计划、最终交付、充放电、SOC、紧急电、未利用量、三次修订快照及费用，可追溯论文中的每个数字。
+验收证据为 [物理/因果验证 JSON](../outputs/validation.json)、[修订专项验证 JSON](../outputs/revision-validation.json)、[问题1 MILP 验证 JSON](../outputs/q1-milp-verification.json)、[模板/Excel 验证 JSON](../outputs/workbook-verification.json)。[全年逐段归档](../outputs/dispatch.npz) 保存包括 1 月热启动在内的计划、最终交付、充放电、SOC、紧急电、未利用量、三次修订快照及费用；新增对照的配置和汇总在 [修订实验 JSON](../outputs/revision-experiments.json)，逐段路径在 [修订调度归档](../outputs/revision-dispatch.npz)，由同一计算脚本复现。
 
 ## 参考文献
 
@@ -386,7 +531,21 @@ $$C_3=\sum_t[p_tg_t+1.5p_tu_t+0.5p_tv_t+5p_te_t].$$
 '''
     # Raw f-strings above escape LaTeX consistently; Markdown needs single slashes.
     (ROOT/'docs/solution.md').write_text(text.replace('\\\\','\\'),encoding='utf-8',newline='\n')
-    print('Generated docs/solution.md and 3 figures (PNG/SVG).')
+    readme = (ROOT/'README.md').read_text(encoding='utf-8').splitlines()
+    rows = {
+        '| 1:': f"| 1：确定性日循环 | [result1.xlsx](outputs/result1.xlsx) | {f(s['q1']['cost'])} 元/天 |",
+        '| 2:': f"| 2：固定电价，无日内调整 | [result2.xlsx](outputs/result2.xlsx) | {f(p['q2']['total_cost'])} 元 |",
+        '| 3:': f"| 3：固定电价，有日内调整 | [result3.xlsx](outputs/result3.xlsx) | {f(p['q3']['total_cost'])} 元 |",
+        '| 4-2:': f"| 4-2：波动电价，无日内调整 | [result4-2.xlsx](outputs/result4-2.xlsx) | {f(p['q4_2']['total_cost'])} 元 |",
+        '| 4-3:': f"| 4-3：波动电价，有日内调整 | [result4-3.xlsx](outputs/result4-3.xlsx) | {f(p['q4_3']['total_cost'])} 元 |",
+    }
+    for i,line in enumerate(readme):
+        for prefix,row in rows.items():
+            if line.replace('：',':').startswith(prefix):
+                readme[i] = row
+                break
+    (ROOT/'README.md').write_text('\n'.join(readme)+'\n',encoding='utf-8',newline='\n')
+    print('Generated docs/solution.md, refreshed README result table and 3 figures (PNG/SVG).')
 
 
 if __name__=='__main__':
