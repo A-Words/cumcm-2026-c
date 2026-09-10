@@ -2,7 +2,7 @@
   "verification": "Independent Q1 MILP with explicit charge/discharge exclusivity",
   "source_hashes_sha256": {
     "data": "322d240bf033b2051cb0858bb1f5027a4439a1c06ec45812a6a0c47f1c5bcb1f",
-    "dispatch": "ac4653211593810e1967b64f138293acff295b45d4ed9dd24003dbc3ecd27bb8",
+    "dispatch": "3556ad8cfd01f801aec0bcd557085e1df7511f2c2e9a3b281b4d25aedcc372ec",
     "verifier": "7e8f2c146effabb76771e80b81f99854653ce9befcde58bbcae22a9e142166b4"
   },
   "inputs": {
@@ -25,7 +25,7 @@
   "status": 0,
   "message": "Optimization terminated successfully. (HiGHS Status 7: Optimal)",
   "solver_success": true,
-  "solve_seconds": 0.08060220000334084,
+  "solve_seconds": 0.06005510000977665,
   "solver_relative_gap_tolerance": 1e-09,
   "feasibility_tolerance": 1e-06,
   "reference_cost_tolerance_yuan": 1e-05,

@@ -1,140 +1,171 @@
 {
   "parameters": {
     "q2": 0.8,
-    "q3": 0.65,
     "q4_2": 0.8,
+    "q3": 0.65,
     "q4_3": 0.65
   },
   "calibration": {
     "q2": [
       {
+        "pv_weight": 0.0,
         "quantile": 0.5,
         "validation_cost": 919838.5128180321,
         "validation_emergency_kwh": 17027.475457178116
       },
       {
+        "pv_weight": 0.0,
         "quantile": 0.65,
         "validation_cost": 878631.9977298704,
         "validation_emergency_kwh": 6895.127376360528
       },
       {
+        "pv_weight": 0.0,
         "quantile": 0.7,
         "validation_cost": 869185.7932862147,
         "validation_emergency_kwh": 4245.263237104256
       },
       {
+        "pv_weight": 0.0,
         "quantile": 0.8,
         "validation_cost": 862214.658294332,
         "validation_emergency_kwh": 610.8767409288539
       },
       {
+        "pv_weight": 0.0,
         "quantile": 0.9,
         "validation_cost": 884712.779929728,
         "validation_emergency_kwh": 142.5661452842039
       },
       {
+        "pv_weight": 0.0,
         "quantile": 0.95,
         "validation_cost": 903456.3740490554,
         "validation_emergency_kwh": 65.68915489929157
       }
     ],
-    "q3": [
-      {
-        "quantile": 0.5,
-        "validation_cost": 861202.921076833,
-        "validation_emergency_kwh": 3550.0472224736814
-      },
-      {
-        "quantile": 0.65,
-        "validation_cost": 860734.6077853588,
-        "validation_emergency_kwh": 913.8592056570404
-      },
-      {
-        "quantile": 0.7,
-        "validation_cost": 864337.7779058439,
-        "validation_emergency_kwh": 659.1577092256408
-      },
-      {
-        "quantile": 0.8,
-        "validation_cost": 877786.8008675205,
-        "validation_emergency_kwh": 307.72919995931954
-      },
-      {
-        "quantile": 0.9,
-        "validation_cost": 900841.6293877542,
-        "validation_emergency_kwh": 31.658060090443996
-      },
-      {
-        "quantile": 0.95,
-        "validation_cost": 922268.5855383342,
-        "validation_emergency_kwh": 5.782518348485382
-      }
-    ],
     "q4_2": [
       {
+        "pv_weight": 0.0,
         "quantile": 0.5,
         "validation_cost": 1029631.2292369646,
         "validation_emergency_kwh": 16394.462965308678
       },
       {
+        "pv_weight": 0.0,
         "quantile": 0.65,
         "validation_cost": 985076.8147040036,
         "validation_emergency_kwh": 6912.091917090404
       },
       {
+        "pv_weight": 0.0,
         "quantile": 0.7,
         "validation_cost": 974056.0770203621,
         "validation_emergency_kwh": 4314.05356899489
       },
       {
+        "pv_weight": 0.0,
         "quantile": 0.8,
         "validation_cost": 966879.6663652395,
         "validation_emergency_kwh": 645.8020018382391
       },
       {
+        "pv_weight": 0.0,
         "quantile": 0.9,
         "validation_cost": 991846.4680717776,
         "validation_emergency_kwh": 142.5661452842039
       },
       {
+        "pv_weight": 0.0,
         "quantile": 0.95,
         "validation_cost": 1013304.2037301274,
         "validation_emergency_kwh": 65.68915489929157
       }
     ],
+    "q3": [
+      {
+        "pv_weight": 0.5,
+        "quantile": 0.5,
+        "validation_cost": 857316.7361371061,
+        "validation_emergency_kwh": 4633.007978517877
+      },
+      {
+        "pv_weight": 0.5,
+        "quantile": 0.65,
+        "validation_cost": 852457.1926013313,
+        "validation_emergency_kwh": 1213.3656167436063
+      },
+      {
+        "pv_weight": 0.5,
+        "quantile": 0.7,
+        "validation_cost": 855223.1267033264,
+        "validation_emergency_kwh": 716.0498468384609
+      },
+      {
+        "pv_weight": 0.5,
+        "quantile": 0.8,
+        "validation_cost": 867267.5478227588,
+        "validation_emergency_kwh": 295.02357997055344
+      },
+      {
+        "pv_weight": 0.5,
+        "quantile": 0.9,
+        "validation_cost": 888106.2038984324,
+        "validation_emergency_kwh": 48.51288454405312
+      },
+      {
+        "pv_weight": 0.5,
+        "quantile": 0.95,
+        "validation_cost": 905539.9842602118,
+        "validation_emergency_kwh": 14.053141229602375
+      }
+    ],
     "q4_3": [
       {
+        "pv_weight": 0.5,
         "quantile": 0.5,
-        "validation_cost": 968337.865829555,
-        "validation_emergency_kwh": 3270.245710565453
+        "validation_cost": 964022.951607331,
+        "validation_emergency_kwh": 4245.060723143097
       },
       {
+        "pv_weight": 0.5,
         "quantile": 0.65,
-        "validation_cost": 968141.2616218274,
-        "validation_emergency_kwh": 885.4668087010532
+        "validation_cost": 957308.7370627827,
+        "validation_emergency_kwh": 1175.410844171152
       },
       {
+        "pv_weight": 0.5,
         "quantile": 0.7,
-        "validation_cost": 971906.8541169768,
-        "validation_emergency_kwh": 659.1577092256404
+        "validation_cost": 959947.9181561114,
+        "validation_emergency_kwh": 716.0498468384613
       },
       {
+        "pv_weight": 0.5,
         "quantile": 0.8,
-        "validation_cost": 986001.8420230519,
-        "validation_emergency_kwh": 307.7291999593194
+        "validation_cost": 972861.4336670886,
+        "validation_emergency_kwh": 295.02357997055367
       },
       {
+        "pv_weight": 0.5,
         "quantile": 0.9,
-        "validation_cost": 1012386.2631319191,
-        "validation_emergency_kwh": 31.658060090443996
+        "validation_cost": 996125.4495223712,
+        "validation_emergency_kwh": 48.51288454405312
       },
       {
+        "pv_weight": 0.5,
         "quantile": 0.95,
-        "validation_cost": 1036973.5356767678,
-        "validation_emergency_kwh": 5.782518348485382
+        "validation_cost": 1015980.2885155692,
+        "validation_emergency_kwh": 14.053141229602375
       }
     ]
   },
+  "pv_weights": {
+    "q2": 0.0,
+    "q4_2": 0.0,
+    "q3": 0.5,
+    "q4_3": 0.5
+  },
+  "revision_experiments": "revision-experiments.json",
   "q1": {
     "objective": 35126.98612989527,
     "primal_residual": 9.094947017729282e-13,
@@ -162,21 +193,6 @@
       "end_soc": 6258.372639884521,
       "emergency_days": 115
     },
-    "q3": {
-      "plan_kwh": 20985858.324910752,
-      "adjusted_kwh": 21498277.6288186,
-      "emergency_kwh": 21565.680619410246,
-      "spill_kwh": 2327101.9920198666,
-      "charge_kwh": 6602861.865526997,
-      "discharge_kwh": 5349310.043075519,
-      "plan_cost": 12813095.47306194,
-      "adjustment_cost": 580009.709253219,
-      "emergency_cost": 118102.93676312933,
-      "total_cost": 13511208.11907828,
-      "start_soc": 7089.870597929214,
-      "end_soc": 5987.723932762145,
-      "emergency_days": 130
-    },
     "q4_2": {
       "plan_kwh": 21708087.28665164,
       "adjusted_kwh": 21708087.28665164,
@@ -192,97 +208,142 @@
       "end_soc": 6263.018150954446,
       "emergency_days": 108
     },
+    "q3": {
+      "plan_kwh": 20755552.369058453,
+      "adjusted_kwh": 21197074.02180902,
+      "emergency_kwh": 25862.56547692192,
+      "spill_kwh": 2021445.8143464657,
+      "charge_kwh": 6648911.631428745,
+      "discharge_kwh": 5386610.353455933,
+      "plan_cost": 12649467.173905889,
+      "adjustment_cost": 527937.9292985789,
+      "emergency_cost": 138430.88918520825,
+      "total_cost": 13315835.992389662,
+      "start_soc": 7089.870597929214,
+      "end_soc": 5987.723932762145,
+      "emergency_days": 139
+    },
     "q4_3": {
-      "plan_kwh": 20984111.881564744,
-      "adjusted_kwh": 21497496.890739486,
-      "emergency_kwh": 20483.776901874386,
-      "spill_kwh": 2317605.2370237513,
-      "charge_kwh": 6643113.787189635,
-      "discharge_kwh": 5381927.8515386935,
-      "plan_cost": 13540385.700421032,
-      "adjustment_cost": 608591.6404037384,
-      "emergency_cost": 109386.57847836347,
-      "total_cost": 14258363.919303128,
+      "plan_kwh": 20752288.466726653,
+      "adjusted_kwh": 21192613.908192813,
+      "emergency_kwh": 24227.406049171557,
+      "spill_kwh": 2009834.6892616714,
+      "charge_kwh": 6678014.810151251,
+      "discharge_kwh": 5410197.680137602,
+      "plan_cost": 13366608.687653508,
+      "adjustment_cost": 550605.9356915008,
+      "emergency_cost": 127670.62166358052,
+      "total_cost": 14044885.245008573,
       "start_soc": 7114.535790030982,
       "end_soc": 5997.109217710668,
-      "emergency_days": 125
+      "emergency_days": 134
     }
   },
   "sensitivity": {
     "q3_midnight_only": {
-      "plan_kwh": 21051729.662641738,
-      "adjusted_kwh": 21051729.662641738,
-      "emergency_kwh": 257592.48768384743,
-      "spill_kwh": 2120452.1936708563,
-      "charge_kwh": 6580794.427074056,
-      "discharge_kwh": 5331113.965385992,
-      "plan_cost": 12841224.157547355,
+      "plan_kwh": 20814470.225111634,
+      "adjusted_kwh": 20814470.225111634,
+      "emergency_kwh": 230061.2702633474,
+      "spill_kwh": 1842958.139001376,
+      "charge_kwh": 6647654.42559444,
+      "discharge_kwh": 5385270.564187504,
+      "plan_cost": 12674698.484696547,
       "adjustment_cost": 0.0,
-      "emergency_cost": 1581236.3197551523,
-      "total_cost": 14422460.477302523,
+      "emergency_cost": 1386701.453187183,
+      "total_cost": 14061399.937883727,
       "start_soc": 6732.701106102526,
       "end_soc": 5987.723932762145,
-      "emergency_days": 216
+      "emergency_days": 214
     },
     "q3_update06": {
-      "plan_kwh": 20963971.699517064,
-      "adjusted_kwh": 21615081.903229102,
-      "emergency_kwh": 48028.67310113341,
-      "spill_kwh": 2472439.5680656275,
-      "charge_kwh": 6590295.761023329,
-      "discharge_kwh": 5338814.247725384,
-      "plan_cost": 12803624.610896243,
-      "adjustment_cost": 709709.1548789886,
-      "emergency_cost": 290029.0770624397,
-      "total_cost": 13803362.842837676,
+      "plan_kwh": 20733275.429167595,
+      "adjusted_kwh": 21253882.93204754,
+      "emergency_kwh": 64212.21646859884,
+      "spill_kwh": 2119320.5479936153,
+      "charge_kwh": 6632946.246591298,
+      "discharge_kwh": 5373361.141035439,
+      "plan_cost": 12639874.251710543,
+      "adjustment_cost": 588148.5302162687,
+      "emergency_cost": 391547.044881922,
+      "total_cost": 13619569.826808736,
       "start_soc": 6737.369817748113,
       "end_soc": 5987.723932762145,
-      "emergency_days": 145
+      "emergency_days": 151
     },
     "q3_update12": {
-      "plan_kwh": 20992060.382230714,
-      "adjusted_kwh": 21306954.026459932,
-      "emergency_kwh": 116002.82660111459,
-      "spill_kwh": 2221460.0286779255,
-      "charge_kwh": 6647251.625644549,
-      "discharge_kwh": 5384944.296228092,
-      "plan_cost": 12815681.427091878,
-      "adjustment_cost": 356124.79010993196,
-      "emergency_cost": 631099.3427502286,
-      "total_cost": 13802905.559952054,
+      "plan_kwh": 20762798.952118315,
+      "adjusted_kwh": 21013051.25565052,
+      "emergency_kwh": 131935.54197756958,
+      "spill_kwh": 1935423.2992565467,
+      "charge_kwh": 6689707.804530967,
+      "discharge_kwh": 5419333.80112609,
+      "plan_cost": 12652556.769933283,
+      "adjustment_cost": 287969.2031491832,
+      "emergency_cost": 731144.2741636647,
+      "total_cost": 13671670.24724613,
       "start_soc": 6732.701106102526,
       "end_soc": 5987.723932762145,
-      "emergency_days": 185
+      "emergency_days": 188
     },
     "q3_update18": {
-      "plan_kwh": 20993586.937608335,
-      "adjusted_kwh": 21224677.82210434,
-      "emergency_kwh": 85199.95143791672,
-      "spill_kwh": 2125304.7469447246,
-      "charge_kwh": 6559870.861207973,
-      "discharge_kwh": 5314487.329577109,
-      "plan_cost": 12816394.60888377,
-      "adjustment_cost": 411126.172768599,
-      "emergency_cost": 434200.8526777682,
-      "total_cost": 13661721.634330139,
+      "plan_kwh": 20758603.37401492,
+      "adjusted_kwh": 20958568.50464614,
+      "emergency_kwh": 86990.52207648708,
+      "spill_kwh": 1847806.4762729,
+      "charge_kwh": 6629236.776219526,
+      "discharge_kwh": 5370673.720736468,
+      "plan_cost": 12650775.973886667,
+      "adjustment_cost": 348279.4973906938,
+      "emergency_cost": 437731.432940166,
+      "total_cost": 13436786.904217523,
       "start_soc": 7089.870597929214,
       "end_soc": 5987.723932762145,
-      "emergency_days": 170
+      "emergency_days": 168
     },
     "q3_update06_12": {
-      "plan_kwh": 20992183.89556979,
-      "adjusted_kwh": 21471311.2617176,
-      "emergency_kwh": 51799.994296193014,
-      "spill_kwh": 2329893.7499457826,
-      "charge_kwh": 6603676.266091315,
-      "discharge_kwh": 5349648.254989972,
-      "plan_cost": 12815734.191990329,
-      "adjustment_cost": 524325.1702939009,
-      "emergency_cost": 312221.3400102184,
-      "total_cost": 13652280.702294463,
+      "plan_kwh": 20762637.86231702,
+      "adjusted_kwh": 21156060.330529235,
+      "emergency_kwh": 69816.53699638827,
+      "spill_kwh": 2024001.8997114645,
+      "charge_kwh": 6649241.854228945,
+      "discharge_kwh": 5386556.381381452,
+      "plan_cost": 12652487.984388748,
+      "adjustment_cost": 443074.5837233429,
+      "emergency_cost": 425742.2203294509,
+      "total_cost": 13521304.788441531,
       "start_soc": 6732.701106102526,
       "end_soc": 5987.723932762145,
-      "emergency_days": 155
+      "emergency_days": 160
+    },
+    "q3_update06_18": {
+      "plan_kwh": 20753954.062293544,
+      "adjusted_kwh": 21283417.120329432,
+      "emergency_kwh": 25657.370004232806,
+      "spill_kwh": 2109296.8569784313,
+      "charge_kwh": 6639895.107301145,
+      "discharge_kwh": 5379306.968912578,
+      "plan_cost": 12648775.697914012,
+      "adjustment_cost": 618527.8905596557,
+      "emergency_cost": 136997.26315713229,
+      "total_cost": 13404300.851630798,
+      "start_soc": 7089.8705979292145,
+      "end_soc": 5987.723932762145,
+      "emergency_days": 139
+    },
+    "q3_update12_18": {
+      "plan_kwh": 20755557.793024335,
+      "adjusted_kwh": 21054504.594947882,
+      "emergency_kwh": 87455.4145519353,
+      "spill_kwh": 1932791.6957090965,
+      "charge_kwh": 6689319.741172146,
+      "discharge_kwh": 5419340.922348088,
+      "plan_cost": 12649469.491024112,
+      "adjustment_cost": 374097.001065853,
+      "emergency_cost": 440127.0732111354,
+      "total_cost": 13463693.5653011,
+      "start_soc": 7089.870597929214,
+      "end_soc": 5987.723932762145,
+      "emergency_days": 167
     },
     "q2_tau0.5": {
       "plan_kwh": 20110540.8067049,
@@ -330,109 +391,109 @@
       "emergency_days": 69
     },
     "q3_tau0.5": {
-      "plan_kwh": 20174692.099384416,
-      "adjusted_kwh": 20899119.371524468,
-      "emergency_kwh": 57551.20496003416,
-      "spill_kwh": 1739525.845409939,
-      "charge_kwh": 6731762.073268618,
-      "discharge_kwh": 5453806.837160722,
-      "plan_cost": 12256065.050293284,
-      "adjustment_cost": 824262.4987622938,
-      "emergency_cost": 318350.0366043017,
-      "total_cost": 13398677.585659863,
+      "plan_kwh": 20093852.392608806,
+      "adjusted_kwh": 20713110.078486577,
+      "emergency_kwh": 66633.50306320857,
+      "spill_kwh": 1558358.3491591513,
+      "charge_kwh": 6754080.501247954,
+      "discharge_kwh": 5471884.763823984,
+      "plan_cost": 12188891.199713845,
+      "adjustment_cost": 750818.1041199726,
+      "emergency_cost": 360339.1869874055,
+      "total_cost": 13300048.490821218,
       "start_soc": 7089.870597929214,
       "end_soc": 5890.361916661277,
-      "emergency_days": 244
+      "emergency_days": 245
     },
     "q3_tau0.7": {
-      "plan_kwh": 21276387.701645337,
-      "adjusted_kwh": 21735613.63470698,
-      "emergency_kwh": 15329.77712872437,
-      "spill_kwh": 2569140.5666499864,
-      "charge_kwh": 6544948.270266725,
-      "discharge_kwh": 5302334.920047672,
-      "plan_cost": 13014204.817558963,
-      "adjustment_cost": 520528.847490912,
-      "emergency_cost": 84205.42729519425,
-      "total_cost": 13618939.09234506,
+      "plan_kwh": 20991778.530504636,
+      "adjusted_kwh": 21393136.47243012,
+      "emergency_kwh": 18804.41116076822,
+      "spill_kwh": 2220383.596183731,
+      "charge_kwh": 6596287.433502452,
+      "discharge_kwh": 5343919.64106196,
+      "plan_cost": 12814944.83627089,
+      "adjustment_cost": 478135.5541340637,
+      "emergency_cost": 100672.92528723428,
+      "total_cost": 13393753.31569218,
       "start_soc": 7089.870597929214,
-      "end_soc": 6060.069340568764,
-      "emergency_days": 102
+      "end_soc": 6060.070681292046,
+      "emergency_days": 109
     },
     "q3_tau0.9": {
-      "plan_kwh": 22876731.355384357,
-      "adjusted_kwh": 23156738.120044827,
-      "emergency_kwh": 2195.832272776613,
-      "spill_kwh": 4048218.4761823807,
-      "charge_kwh": 6168684.169377537,
-      "discharge_kwh": 4997158.1882089805,
-      "plan_cost": 14153201.456019806,
-      "adjustment_cost": 321929.6217232613,
-      "emergency_cost": 13780.534268364296,
-      "total_cost": 14488911.612011444,
+      "plan_kwh": 22313778.272684895,
+      "adjusted_kwh": 22587812.956748575,
+      "emergency_kwh": 2544.9017842217118,
+      "spill_kwh": 3460699.695275151,
+      "charge_kwh": 6268382.522019552,
+      "discharge_kwh": 5077913.853728572,
+      "plan_cost": 13762101.688441746,
+      "adjustment_cost": 323765.9046214758,
+      "emergency_cost": 15579.109701311912,
+      "total_cost": 14101446.702764532,
       "start_soc": 7089.870597929214,
-      "end_soc": 6507.636138845573,
-      "emergency_days": 40
+      "end_soc": 6507.636272669493,
+      "emergency_days": 44
     },
     "q3_refund": {
-      "plan_kwh": 21072953.699736454,
-      "adjusted_kwh": 20727699.377426498,
-      "emergency_kwh": 30493.846504322737,
-      "spill_kwh": 1544808.6232023356,
-      "charge_kwh": 6711666.943716424,
-      "discharge_kwh": 5437471.837954601,
-      "plan_cost": 12850498.249739943,
-      "adjustment_cost": 350762.114390093,
-      "emergency_cost": 166807.92174177227,
-      "total_cost": 13368068.28587181,
+      "plan_kwh": 20840870.415384755,
+      "adjusted_kwh": 20729909.354290023,
+      "emergency_kwh": 35218.228284922196,
+      "spill_kwh": 1551416.0488832784,
+      "charge_kwh": 6713387.643522625,
+      "discharge_kwh": 5438865.604797624,
+      "plan_cost": 12686131.954708805,
+      "adjustment_cost": 395062.51327795826,
+      "emergency_cost": 188807.26768269853,
+      "total_cost": 13270001.735669456,
       "start_soc": 7089.870597929215,
       "end_soc": 5954.744437598404,
-      "emergency_days": 188
+      "emergency_days": 189
     },
     "q4_3_refund": {
-      "plan_kwh": 21070472.555416323,
-      "adjusted_kwh": 20721786.062421225,
-      "emergency_kwh": 29446.041991871833,
-      "spill_kwh": 1530439.9719385197,
-      "charge_kwh": 6750712.622121401,
-      "discharge_kwh": 5469109.984613492,
-      "plan_cost": 13578380.555302665,
-      "adjustment_cost": 362718.9503231533,
-      "emergency_cost": 164080.48896909473,
-      "total_cost": 14105179.994594919,
+      "plan_kwh": 20837791.20942212,
+      "adjusted_kwh": 20724838.562819697,
+      "emergency_kwh": 34120.56888667827,
+      "spill_kwh": 1539380.2967392611,
+      "charge_kwh": 6744326.845766349,
+      "discharge_kwh": 5463937.505765901,
+      "plan_cost": 13404432.411159707,
+      "adjustment_cost": 407528.1768149278,
+      "emergency_cost": 186766.34859885115,
+      "total_cost": 13998726.936573472,
       "start_soc": 7114.535790030986,
       "end_soc": 5967.02390652292,
-      "emergency_days": 179
+      "emergency_days": 186
     },
     "q3_terminal3000": {
-      "plan_kwh": 20923831.18975813,
-      "adjusted_kwh": 21437296.2027763,
-      "emergency_kwh": 22358.913196827067,
-      "spill_kwh": 2296616.357145425,
-      "charge_kwh": 6446646.81935397,
-      "discharge_kwh": 5222797.555492932,
-      "plan_cost": 12793571.45244693,
-      "adjustment_cost": 581007.5763240154,
-      "emergency_cost": 120373.59129844277,
-      "total_cost": 13494952.620069394,
+      "plan_kwh": 20692370.409348194,
+      "adjusted_kwh": 21134763.94781887,
+      "emergency_kwh": 26464.98095715427,
+      "spill_kwh": 1990386.701132707,
+      "charge_kwh": 6487717.707857211,
+      "discharge_kwh": 5256064.975180557,
+      "plan_cost": 12629656.669376282,
+      "adjustment_cost": 528720.3033627282,
+      "emergency_cost": 139803.09198031138,
+      "total_cost": 13298180.06471932,
       "start_soc": 4231.741174045434,
       "end_soc": 3105.483600472185,
-      "emergency_days": 132
+      "emergency_days": 140
     },
     "q3_terminal9000": {
-      "plan_kwh": 21072121.2131181,
-      "adjusted_kwh": 21582545.331625625,
-      "emergency_kwh": 21414.053015468333,
-      "spill_kwh": 2365803.6875560265,
-      "charge_kwh": 6841523.646813432,
-      "discharge_kwh": 5542557.444695028,
-      "plan_cost": 12847583.076661622,
-      "adjustment_cost": 577968.0032131216,
-      "emergency_cost": 117262.79175597763,
-      "total_cost": 13542813.871630717,
+      "plan_kwh": 20841026.96909654,
+      "adjusted_kwh": 21281071.191295013,
+      "emergency_kwh": 25553.84867774341,
+      "spill_kwh": 2060316.6967162173,
+      "charge_kwh": 6884432.310873798,
+      "discharge_kwh": 5577313.462583925,
+      "plan_cost": 12683315.603020675,
+      "adjustment_cost": 526463.3667633081,
+      "emergency_cost": 136843.49639496577,
+      "total_cost": 13346622.466178972,
       "start_soc": 9942.132502477687,
       "end_soc": 8916.253862314219,
-      "emergency_days": 130
+      "emergency_days": 137
     },
     "q4_2_known_price": {
       "plan_kwh": 21772699.310989633,
@@ -450,49 +511,19 @@
       "emergency_days": 117
     },
     "q4_3_known_price": {
-      "plan_kwh": 21045286.085093968,
-      "adjusted_kwh": 21562823.800456986,
-      "emergency_kwh": 22990.093384555894,
-      "spill_kwh": 2330132.4967130534,
-      "charge_kwh": 6934111.30144722,
-      "discharge_kwh": 5617619.399285396,
-      "plan_cost": 13412515.109931404,
-      "adjustment_cost": 608835.9071332027,
-      "emergency_cost": 119612.78677724271,
-      "total_cost": 14140963.803841863,
+      "plan_kwh": 20815324.730281767,
+      "adjusted_kwh": 21268597.668036897,
+      "emergency_kwh": 26530.077355423742,
+      "spill_kwh": 2030214.786171746,
+      "charge_kwh": 6982698.470352911,
+      "discharge_kwh": 5656975.006099004,
+      "plan_cost": 13238816.984505165,
+      "adjustment_cost": 559327.1397931371,
+      "emergency_cost": 134610.7214698897,
+      "total_cost": 13932754.845768198,
       "start_soc": 7106.5894110029,
       "end_soc": 6007.428174173736,
-      "emergency_days": 131
-    },
-    "q3_update06_18": {
-      "plan_kwh": 20984739.534550913,
-      "adjusted_kwh": 21632008.914401166,
-      "emergency_kwh": 21462.93685730953,
-      "spill_kwh": 2462084.8585984083,
-      "charge_kwh": 6595733.840484489,
-      "discharge_kwh": 5343536.342791087,
-      "plan_cost": 12812615.437601974,
-      "adjustment_cost": 715050.2350907896,
-      "emergency_cost": 117286.38003197215,
-      "total_cost": 13644952.052724736,
-      "start_soc": 7089.8705979292145,
-      "end_soc": 5987.723932762145,
-      "emergency_days": 131
-    },
-    "q3_update12_18": {
-      "plan_kwh": 20985789.481255263,
-      "adjusted_kwh": 21334327.115582056,
-      "emergency_kwh": 85371.55184140375,
-      "spill_kwh": 2218656.875469211,
-      "charge_kwh": 6646548.573611759,
-      "discharge_kwh": 5384696.276624175,
-      "plan_cost": 12813066.016252795,
-      "adjustment_cost": 412531.9514240574,
-      "emergency_cost": 434211.5724634285,
-      "total_cost": 13659809.540140284,
-      "start_soc": 7089.870597929214,
-      "end_soc": 5987.723932762145,
-      "emergency_days": 168
+      "emergency_days": 145
     }
   },
   "forecast_accuracy": {
@@ -502,22 +533,22 @@
       "pv_mae_kw": 149.59451920955846,
       "price_mae": 0.0
     },
-    "q3": {
-      "net_mae_kw": 306.4057010220441,
-      "load_mae_kw": 169.47259432358194,
-      "pv_mae_kw": 197.49097249805948,
-      "price_mae": 0.0
-    },
     "q4_2": {
       "net_mae_kw": 266.4661450966364,
       "load_mae_kw": 169.47259432358194,
       "pv_mae_kw": 149.59451920955846,
       "price_mae": 0.04456441661364906
     },
-    "q4_3": {
-      "net_mae_kw": 306.4057010220441,
+    "q3": {
+      "net_mae_kw": 251.20111989244947,
       "load_mae_kw": 169.47259432358194,
-      "pv_mae_kw": 197.49097249805948,
+      "pv_mae_kw": 134.1054234157551,
+      "price_mae": 0.0
+    },
+    "q4_3": {
+      "net_mae_kw": 251.20111989244947,
+      "load_mae_kw": 169.47259432358194,
+      "pv_mae_kw": 134.1054234157551,
       "price_mae": 0.04456441661364906
     }
   },
@@ -530,6 +561,5 @@
     "dynamic_cost": 17026782.85809905,
     "grid_kwh": 20997349.411166664
   },
-  "elapsed_seconds": 139.1482736999169,
-  "additional_ablation_seconds": 13.616720500052907
+  "elapsed_seconds": 300.22839160007425
 }

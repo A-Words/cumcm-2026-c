@@ -1,13 +1,13 @@
 {
-  "verification_version": "1.0.0",
+  "verification_version": "1.1.0",
   "passed": true,
   "error_count": 0,
-  "generated_at": "2026-09-10T11:18:55.577594+00:00",
+  "generated_at": "2026-09-10T12:42:15.283630+00:00",
   "validator": "scripts/export_results.mjs --verify",
-  "validator_sha256": "04c48c11e31b0b43701049fd302cefe1775eb1a19fa2938e579bdc7e179e5895",
+  "validator_sha256": "c38ddd464eeceb5b3c80e23041557f0a1076274099d6c062f6f68a337c2e04ae",
   "source": {
     "path": "outputs/results.json",
-    "sha256": "23734c80f1d96b81ad4e7e84c2e7f9ebe5ae1645ce31d191174b2428fecdf207",
+    "sha256": "4b09d15f7f749bea2fcc6804502afa0d4beb9b385a64d756542303bc6d07b9ba",
     "schema_version": 1,
     "slot_convention": "right-end-0000-to-2400"
   },
@@ -136,6 +136,22 @@
         "storage_boundary_values_checked": 668,
         "emergency_daily_totals_checked": 334
       },
+      "purchase_annual_totals": [
+        {
+          "sheet": "计划购电量",
+          "energy_kwh": 21712548.31032955,
+          "cost_yuan": 13291625.717816055,
+          "last_date": "2025-12-31",
+          "last_day_energy_kwh": 98962.07648397442,
+          "last_day_cost_yuan": 63578.88568336888
+        }
+      ],
+      "cost_reconciliation": {
+        "delivery_cost_yuan": 13291625.717816055,
+        "emergency_cost_yuan_from_source_json": 616550.2312423693,
+        "all_in_cost_yuan": 13908175.949058425,
+        "adds_plan_sheet_again": false
+      },
       "date_range": {
         "first": "2025-02-01",
         "last": "2025-12-31"
@@ -146,8 +162,204 @@
     },
     {
       "file": "outputs/result3.xlsx",
-      "sha256": "000581f76c867fa0eac810437dc1c6eec2f83440d878ef35304449ea6a0bb3e2",
-      "bytes": 1077986,
+      "sha256": "475de86caadc40ba246c9429603824470051570d7283d9808c5dbc012ef3a7ea",
+      "bytes": 1073070,
+      "passed": true,
+      "error_count": 0,
+      "sheet_names": [
+        "计划购电量",
+        "调整购电量",
+        "充放电量",
+        "紧急购电量"
+      ],
+      "sheets": [
+        {
+          "name": "计划购电量",
+          "rows": 335,
+          "columns": 147,
+          "populated_cells": 49245,
+          "numeric_cells": 48764,
+          "formula_cells": 334,
+          "error_cells": 0,
+          "merged_ranges": 0
+        },
+        {
+          "name": "调整购电量",
+          "rows": 335,
+          "columns": 147,
+          "populated_cells": 49245,
+          "numeric_cells": 48764,
+          "formula_cells": 334,
+          "error_cells": 0,
+          "merged_ranges": 0
+        },
+        {
+          "name": "充放电量",
+          "rows": 2005,
+          "columns": 6,
+          "populated_cells": 7688,
+          "numeric_cells": 4676,
+          "formula_cells": 0,
+          "error_cells": 0,
+          "merged_ranges": 0
+        },
+        {
+          "name": "紧急购电量",
+          "rows": 433,
+          "columns": 3,
+          "populated_cells": 1201,
+          "numeric_cells": 432,
+          "formula_cells": 0,
+          "error_cells": 0,
+          "merged_ranges": 0
+        }
+      ],
+      "time_headers": [
+        {
+          "sheet": "计划购电量",
+          "range": "B1:EO1",
+          "count": 144,
+          "first": "0:00-0:10",
+          "last": "23:50-24:00"
+        },
+        {
+          "sheet": "调整购电量",
+          "range": "B1:EO1",
+          "count": 144,
+          "first": "0:00-0:10",
+          "last": "23:50-24:00"
+        }
+      ],
+      "field_counts": {
+        "purchase_values_checked": 96192,
+        "daily_total_values_checked": 668,
+        "daily_cost_values_checked": 668,
+        "daily_total_formulas_spotchecked": 6,
+        "storage_energy_values_checked": 4008,
+        "storage_boundary_values_checked": 668,
+        "emergency_daily_totals_checked": 334
+      },
+      "purchase_annual_totals": [
+        {
+          "sheet": "计划购电量",
+          "energy_kwh": 20755552.369058456,
+          "cost_yuan": 12649467.173905881,
+          "last_date": "2025-12-31",
+          "last_day_energy_kwh": 97321.26360859306,
+          "last_day_cost_yuan": 62202.93197945677
+        },
+        {
+          "sheet": "调整购电量",
+          "energy_kwh": 21197074.02180902,
+          "cost_yuan": 13177405.103204459,
+          "last_date": "2025-12-31",
+          "last_day_energy_kwh": 97321.26360859306,
+          "last_day_cost_yuan": 62202.93197945677
+        }
+      ],
+      "cost_reconciliation": {
+        "delivery_cost_yuan": 13177405.103204459,
+        "emergency_cost_yuan_from_source_json": 138430.8891852083,
+        "all_in_cost_yuan": 13315835.992389668,
+        "adds_plan_sheet_again": false
+      },
+      "date_range": {
+        "first": "2025-02-01",
+        "last": "2025-12-31"
+      },
+      "date_rows": 334,
+      "storage_rows": 2004,
+      "emergency_rows": 432
+    },
+    {
+      "file": "outputs/result4-2.xlsx",
+      "sha256": "8d3ab0c78201abbfe2047efe4cb1e46052bfec8a02fc9451cd6c52dade129ea8",
+      "bytes": 596076,
+      "passed": true,
+      "error_count": 0,
+      "sheet_names": [
+        "计划购电量",
+        "充放电量",
+        "紧急购电量"
+      ],
+      "sheets": [
+        {
+          "name": "计划购电量",
+          "rows": 335,
+          "columns": 147,
+          "populated_cells": 49245,
+          "numeric_cells": 48764,
+          "formula_cells": 334,
+          "error_cells": 0,
+          "merged_ranges": 0
+        },
+        {
+          "name": "充放电量",
+          "rows": 2005,
+          "columns": 6,
+          "populated_cells": 7688,
+          "numeric_cells": 4676,
+          "formula_cells": 0,
+          "error_cells": 0,
+          "merged_ranges": 0
+        },
+        {
+          "name": "紧急购电量",
+          "rows": 442,
+          "columns": 3,
+          "populated_cells": 1219,
+          "numeric_cells": 441,
+          "formula_cells": 0,
+          "error_cells": 0,
+          "merged_ranges": 0
+        }
+      ],
+      "time_headers": [
+        {
+          "sheet": "计划购电量",
+          "range": "B1:EO1",
+          "count": 144,
+          "first": "0:00-0:10",
+          "last": "23:50-24:00"
+        }
+      ],
+      "field_counts": {
+        "purchase_values_checked": 48096,
+        "daily_total_values_checked": 334,
+        "daily_cost_values_checked": 334,
+        "daily_total_formulas_spotchecked": 3,
+        "storage_energy_values_checked": 4008,
+        "storage_boundary_values_checked": 668,
+        "emergency_daily_totals_checked": 334
+      },
+      "purchase_annual_totals": [
+        {
+          "sheet": "计划购电量",
+          "energy_kwh": 21708087.286651645,
+          "cost_yuan": 14032328.84200165,
+          "last_date": "2025-12-31",
+          "last_day_energy_kwh": 98786.2974673635,
+          "last_day_cost_yuan": 74360.26758105286
+        }
+      ],
+      "cost_reconciliation": {
+        "delivery_cost_yuan": 14032328.84200165,
+        "emergency_cost_yuan_from_source_json": 643516.0285003824,
+        "all_in_cost_yuan": 14675844.870502032,
+        "adds_plan_sheet_again": false
+      },
+      "date_range": {
+        "first": "2025-02-01",
+        "last": "2025-12-31"
+      },
+      "date_rows": 334,
+      "storage_rows": 2004,
+      "emergency_rows": 441
+    },
+    {
+      "file": "outputs/result4-3.xlsx",
+      "sha256": "0a8aed140d6815370bca305b8a57638442f35332d35f62016b25bc5175075391",
+      "bytes": 1075666,
       "passed": true,
       "error_count": 0,
       "sheet_names": [
@@ -223,6 +435,30 @@
         "storage_boundary_values_checked": 668,
         "emergency_daily_totals_checked": 334
       },
+      "purchase_annual_totals": [
+        {
+          "sheet": "计划购电量",
+          "energy_kwh": 20752288.466726653,
+          "cost_yuan": 13366608.687653493,
+          "last_date": "2025-12-31",
+          "last_day_energy_kwh": 97145.1500699827,
+          "last_day_cost_yuan": 72752.86711304537
+        },
+        {
+          "sheet": "调整购电量",
+          "energy_kwh": 21192613.908192813,
+          "cost_yuan": 13917214.623344995,
+          "last_date": "2025-12-31",
+          "last_day_energy_kwh": 97145.1500699827,
+          "last_day_cost_yuan": 72752.86711304537
+        }
+      ],
+      "cost_reconciliation": {
+        "delivery_cost_yuan": 13917214.623344995,
+        "emergency_cost_yuan_from_source_json": 127670.62166358043,
+        "all_in_cost_yuan": 14044885.245008575,
+        "adds_plan_sheet_again": false
+      },
       "date_range": {
         "first": "2025-02-01",
         "last": "2025-12-31"
@@ -230,162 +466,6 @@
       "date_rows": 334,
       "storage_rows": 2004,
       "emergency_rows": 426
-    },
-    {
-      "file": "outputs/result4-2.xlsx",
-      "sha256": "8d3ab0c78201abbfe2047efe4cb1e46052bfec8a02fc9451cd6c52dade129ea8",
-      "bytes": 596076,
-      "passed": true,
-      "error_count": 0,
-      "sheet_names": [
-        "计划购电量",
-        "充放电量",
-        "紧急购电量"
-      ],
-      "sheets": [
-        {
-          "name": "计划购电量",
-          "rows": 335,
-          "columns": 147,
-          "populated_cells": 49245,
-          "numeric_cells": 48764,
-          "formula_cells": 334,
-          "error_cells": 0,
-          "merged_ranges": 0
-        },
-        {
-          "name": "充放电量",
-          "rows": 2005,
-          "columns": 6,
-          "populated_cells": 7688,
-          "numeric_cells": 4676,
-          "formula_cells": 0,
-          "error_cells": 0,
-          "merged_ranges": 0
-        },
-        {
-          "name": "紧急购电量",
-          "rows": 442,
-          "columns": 3,
-          "populated_cells": 1219,
-          "numeric_cells": 441,
-          "formula_cells": 0,
-          "error_cells": 0,
-          "merged_ranges": 0
-        }
-      ],
-      "time_headers": [
-        {
-          "sheet": "计划购电量",
-          "range": "B1:EO1",
-          "count": 144,
-          "first": "0:00-0:10",
-          "last": "23:50-24:00"
-        }
-      ],
-      "field_counts": {
-        "purchase_values_checked": 48096,
-        "daily_total_values_checked": 334,
-        "daily_cost_values_checked": 334,
-        "daily_total_formulas_spotchecked": 3,
-        "storage_energy_values_checked": 4008,
-        "storage_boundary_values_checked": 668,
-        "emergency_daily_totals_checked": 334
-      },
-      "date_range": {
-        "first": "2025-02-01",
-        "last": "2025-12-31"
-      },
-      "date_rows": 334,
-      "storage_rows": 2004,
-      "emergency_rows": 441
-    },
-    {
-      "file": "outputs/result4-3.xlsx",
-      "sha256": "6e8154b52925e7827b5ca64e72e23ee06441509bf8f577beef1933b441ce8f12",
-      "bytes": 1080172,
-      "passed": true,
-      "error_count": 0,
-      "sheet_names": [
-        "计划购电量",
-        "调整购电量",
-        "充放电量",
-        "紧急购电量"
-      ],
-      "sheets": [
-        {
-          "name": "计划购电量",
-          "rows": 335,
-          "columns": 147,
-          "populated_cells": 49245,
-          "numeric_cells": 48764,
-          "formula_cells": 334,
-          "error_cells": 0,
-          "merged_ranges": 0
-        },
-        {
-          "name": "调整购电量",
-          "rows": 335,
-          "columns": 147,
-          "populated_cells": 49245,
-          "numeric_cells": 48764,
-          "formula_cells": 334,
-          "error_cells": 0,
-          "merged_ranges": 0
-        },
-        {
-          "name": "充放电量",
-          "rows": 2005,
-          "columns": 6,
-          "populated_cells": 7688,
-          "numeric_cells": 4676,
-          "formula_cells": 0,
-          "error_cells": 0,
-          "merged_ranges": 0
-        },
-        {
-          "name": "紧急购电量",
-          "rows": 423,
-          "columns": 3,
-          "populated_cells": 1181,
-          "numeric_cells": 422,
-          "formula_cells": 0,
-          "error_cells": 0,
-          "merged_ranges": 0
-        }
-      ],
-      "time_headers": [
-        {
-          "sheet": "计划购电量",
-          "range": "B1:EO1",
-          "count": 144,
-          "first": "0:00-0:10",
-          "last": "23:50-24:00"
-        },
-        {
-          "sheet": "调整购电量",
-          "range": "B1:EO1",
-          "count": 144,
-          "first": "0:00-0:10",
-          "last": "23:50-24:00"
-        }
-      ],
-      "field_counts": {
-        "purchase_values_checked": 96192,
-        "daily_total_values_checked": 668,
-        "daily_cost_values_checked": 668,
-        "daily_total_formulas_spotchecked": 6,
-        "storage_energy_values_checked": 4008,
-        "storage_boundary_values_checked": 668,
-        "emergency_daily_totals_checked": 334
-      },
-      "date_range": {
-        "first": "2025-02-01",
-        "last": "2025-12-31"
-      },
-      "date_rows": 334,
-      "storage_rows": 2004,
-      "emergency_rows": 422
     }
   ],
   "file_count": 5,

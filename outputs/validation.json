@@ -1,12 +1,12 @@
 {
   "status": "passed",
-  "checked_at_utc": "2026-09-10T11:16:21.206077+00:00",
+  "checked_at_utc": "2026-09-10T12:37:30.187354+00:00",
   "scope": "full_dispatch",
   "artifact_sha256": {
     "data\\processed\\data.npz": "322d240bf033b2051cb0858bb1f5027a4439a1c06ec45812a6a0c47f1c5bcb1f",
     "scripts\\validate_results.py": "1ab8f9a5bf8353bda55fcd7e2e9e29519cbe3d8fbd0ba18a94575af75b004584",
-    "scripts\\model.py": "0f4eb9d14f7e81372b90e54d1ee61c3441cd2e74753b50193771d17dadf01027",
-    "outputs\\dispatch.npz": "ac4653211593810e1967b64f138293acff295b45d4ed9dd24003dbc3ecd27bb8"
+    "scripts\\model.py": "329a81345f52c1e73756fb4ef189e787dd4e5b970e7bdb57e9dd2cabc4695cdc",
+    "outputs\\dispatch.npz": "3556ad8cfd01f801aec0bcd557085e1df7511f2c2e9a3b281b4d25aedcc372ec"
   },
   "settlement_convention": "original_plan_plus_50pct_down_penalty_150pct_up_500pct_emergency",
   "check_count": 179,
@@ -41,12 +41,12 @@
       "submission_start": "2025-02-01",
       "february_initial_soc_kwh": 7089.870597929214,
       "annual_terminal_soc_kwh": 5987.723932762145,
-      "submitted_emergency_kwh": 21565.680619410246,
+      "submitted_emergency_kwh": 25862.56547692192,
       "submitted_costs_yuan": [
-        12813095.47306194,
-        580009.709253219,
-        118102.93676312934,
-        13511208.11907828
+        12649467.173905887,
+        527937.9292985789,
+        138430.88918520825,
+        13315835.992389662
       ],
       "active_revision_days_by_hour": {
         "6": 365,
@@ -77,12 +77,12 @@
       "submission_start": "2025-02-01",
       "february_initial_soc_kwh": 7114.535790030982,
       "annual_terminal_soc_kwh": 5997.109217710668,
-      "submitted_emergency_kwh": 20483.776901874386,
+      "submitted_emergency_kwh": 24227.406049171557,
       "submitted_costs_yuan": [
-        13540385.700421032,
-        608591.6404037384,
-        109386.57847836347,
-        14258363.919303132
+        13366608.68765351,
+        550605.9356915008,
+        127670.62166358052,
+        14044885.245008577
       ],
       "active_revision_days_by_hour": {
         "6": 365,
@@ -721,7 +721,7 @@
     {
       "name": "q3.settlement_adjustment",
       "passed": true,
-      "maximum_absolute_error": 3.637978807091713e-12,
+      "maximum_absolute_error": 0.0,
       "tolerance": 0.001
     },
     {
@@ -1239,7 +1239,7 @@
     {
       "name": "q4_3.settlement_adjustment",
       "passed": true,
-      "maximum_absolute_error": 3.637978807091713e-12,
+      "maximum_absolute_error": 0.0,
       "tolerance": 0.001
     },
     {
