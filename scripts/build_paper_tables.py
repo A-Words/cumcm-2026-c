@@ -109,17 +109,14 @@ def purchase_rows(plan, total_cost, final=None):
 
 
 def storage_rows(charge, discharge, start_soc, end_soc):
-    """Problem table 2: two interval/charge/discharge triples and SOC ends."""
+    """One interval per row; endpoint stocks have their own quantity column."""
     charge = np.asarray(charge).reshape(6, 24).sum(1)
     discharge = np.asarray(discharge).reshape(6, 24).sum(1)
-    rows = []
-    for a, b in ((0, 1), (2, 3), (4, 5)):
-        row = []
-        for i in (a, b):
-            row.extend((f"{4*i:02d}:00--{4*i+4:02d}:00", number(charge[i]), number(discharge[i])))
-        rows.append(row)
-    rows.append([r"\multicolumn{2}{c}{00:00储电量}", number(start_soc),
-                 r"\multicolumn{2}{c}{24:00储电量}", number(end_soc)])
+    na = r"\textemdash"
+    rows = [[f"{4*i:02d}:00--{4*i+4:02d}:00", number(charge[i]), number(discharge[i]), na]
+            for i in range(6)]
+    rows.append(["00:00", na, na, number(start_soc)])
+    rows.append(["24:00", na, na, number(end_soc)])
     return rows
 
 
@@ -233,8 +230,8 @@ def main():
     check("q1.total_grid", sum(q1["plan"]), summary["q1_grid_kwh"])
     text = table("问题1指定时段与全天购电（电量单位：kWh）", "tab:q1-purchase", ["时间段", "购电量"],
         purchase_rows(q1["plan"], summary["q1"]["cost"]))
-    files["q1-tables.tex"] = text + "\n" + table("问题1六个时段的储能充放电量及首末储电量（kWh）", "tab:q1-storage", ["时间段", "充电量", "放电量"] * 2,
-        storage_rows(q1["charge"], q1["discharge"], q1["socStart"], q1["socEnd"]), spec="lrrlrr")
+    files["q1-tables.tex"] = text + "\n" + table("问题1六个时段的储能充放电量及首末储电量（kWh）", "tab:q1-storage", ["时间段或时刻", "充电量", "放电量", "储电量"],
+        storage_rows(q1["charge"], q1["discharge"], q1["socStart"], q1["socEnd"]))
 
     rows = []
     for weight in (0, .25, .5, .75, 1):
@@ -359,7 +356,7 @@ def main():
                 final if key in ("q3", "q4_3") else None)))
             c = np.asarray(day["charge"]).reshape(6, 24).sum(1)
             d = np.asarray(day["discharge"]).reshape(6, 24).sum(1)
-            storage.append(rf"\multicolumn{{6}}{{l}}{{\textbf{{{date}}}}} \\*")
+            storage.append(rf"\multicolumn{{4}}{{l}}{{\textbf{{{date}}}}} \\*")
             storage.extend(keep_rows_together(storage_rows(
                 day["charge"], day["discharge"], day["socStart"], day["socEnd"])))
             adjustment = day.get("adjustedCost", day["planCost"]) - day["planCost"]
@@ -374,11 +371,10 @@ def main():
         appendix.append(table(f"{name}指定日期的六个购电时段（2025年，kWh）", f"tab:{tag}-days-purchase",
             ["时间段", "原计划购电量", "最终常规购电量"] if key in ("q3", "q4_3") else ["时间段", "购电量"],
             purchase, long=True))
-        appendix.append(table(f"{name}指定日期的六段充放电量（kWh）", f"tab:{tag}-days-storage",
-            ["时间段", "充电量", "放电量"] * 2, storage,
-            long=True, spec="lrrlrr"))
+        appendix.append(table(f"{name}指定日期的六段充放电量及首末储电量（kWh）", f"tab:{tag}-days-storage",
+            ["时间段或时刻", "充电量", "放电量", "储电量"], storage, long=True))
         appendix.append(table(f"{name}指定日期的全天账单（元）", f"tab:{tag}-days-costs",
-            ["日期", "原计划费", "调整费", "紧急费", "总费用"], costs, long=True))
+            ["日期", "原计划费", "调整费", "紧急费", "总费用"], keep_rows_together(costs), long=True))
         emergency = []
         for date, ev in zip(DATES, all_events):
             if emergency:

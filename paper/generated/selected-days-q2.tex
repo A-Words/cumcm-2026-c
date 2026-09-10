@@ -63,42 +63,58 @@
 \begingroup
 \normalsize
 \renewcommand{\arraystretch}{1.38}
-\begin{longtable}{lrrlrr}
-\caption{问题2指定日期的六段充放电量（kWh）}\label{tab:q2-days-storage}\\
+\begin{longtable}{lrrr}
+\caption{问题2指定日期的六段充放电量及首末储电量（kWh）}\label{tab:q2-days-storage}\\
 \toprule
-\multicolumn{1}{c}{时间段} & \multicolumn{1}{c}{充电量} & \multicolumn{1}{c}{放电量} & \multicolumn{1}{c}{时间段} & \multicolumn{1}{c}{充电量} & \multicolumn{1}{c}{放电量} \\
+\multicolumn{1}{c}{时间段或时刻} & \multicolumn{1}{c}{充电量} & \multicolumn{1}{c}{放电量} & \multicolumn{1}{c}{储电量} \\
 \midrule
 \endfirsthead
-\multicolumn{6}{c}{续表 \ref{tab:q2-days-storage}}\\
+\multicolumn{4}{c}{续表 \ref{tab:q2-days-storage}}\\
 \toprule
-\multicolumn{1}{c}{时间段} & \multicolumn{1}{c}{充电量} & \multicolumn{1}{c}{放电量} & \multicolumn{1}{c}{时间段} & \multicolumn{1}{c}{充电量} & \multicolumn{1}{c}{放电量} \\
+\multicolumn{1}{c}{时间段或时刻} & \multicolumn{1}{c}{充电量} & \multicolumn{1}{c}{放电量} & \multicolumn{1}{c}{储电量} \\
 \midrule
 \endhead
 \bottomrule
 \endfoot
-\multicolumn{6}{l}{\textbf{2025-03-20}} \\*
-00:00--04:00 & 3,932.12 & 143.66 & 04:00--08:00 & 1,068.89 & 5,197.90 \\*
-08:00--12:00 & 6,214.23 & 2,777.38 & 12:00--16:00 & 3,718.36 & 415.81 \\*
-16:00--20:00 & 261.15 & 5,734.03 & 20:00--24:00 & 5,662.99 & 2,950.27 \\*
-\multicolumn{2}{c}{00:00储电量} & 6,663.82 & \multicolumn{2}{c}{24:00储电量} & 6,303.52 \\
+\multicolumn{4}{l}{\textbf{2025-03-20}} \\*
+00:00--04:00 & 3,932.12 & 143.66 & \textemdash \\*
+04:00--08:00 & 1,068.89 & 5,197.90 & \textemdash \\*
+08:00--12:00 & 6,214.23 & 2,777.38 & \textemdash \\*
+12:00--16:00 & 3,718.36 & 415.81 & \textemdash \\*
+16:00--20:00 & 261.15 & 5,734.03 & \textemdash \\*
+20:00--24:00 & 5,662.99 & 2,950.27 & \textemdash \\*
+00:00 & \textemdash & \textemdash & 6,663.82 \\*
+24:00 & \textemdash & \textemdash & 6,303.52 \\
 \addlinespace
-\multicolumn{6}{l}{\textbf{2025-06-21}} \\*
-00:00--04:00 & 1,016.02 & 1,120.01 & 04:00--08:00 & 437.87 & 4,390.39 \\*
-08:00--12:00 & 8,456.58 & 0.00 & 12:00--16:00 & 0.00 & 0.00 \\*
-16:00--20:00 & 312.75 & 5,157.72 & 20:00--24:00 & 6,563.91 & 2,485.90 \\*
-\multicolumn{2}{c}{00:00储电量} & 8,003.24 & \multicolumn{2}{c}{24:00储电量} & 8,496.09 \\
+\multicolumn{4}{l}{\textbf{2025-06-21}} \\*
+00:00--04:00 & 1,016.02 & 1,120.01 & \textemdash \\*
+04:00--08:00 & 437.87 & 4,390.39 & \textemdash \\*
+08:00--12:00 & 8,456.58 & 0.00 & \textemdash \\*
+12:00--16:00 & 0.00 & 0.00 & \textemdash \\*
+16:00--20:00 & 312.75 & 5,157.72 & \textemdash \\*
+20:00--24:00 & 6,563.91 & 2,485.90 & \textemdash \\*
+00:00 & \textemdash & \textemdash & 8,003.24 \\*
+24:00 & \textemdash & \textemdash & 8,496.09 \\
 \addlinespace
-\multicolumn{6}{l}{\textbf{2025-09-23}} \\*
-00:00--04:00 & 4,635.38 & 107.23 & 04:00--08:00 & 1,019.68 & 6,091.91 \\*
-08:00--12:00 & 5,459.91 & 1,896.62 & 12:00--16:00 & 4,468.06 & 602.55 \\*
-16:00--20:00 & 79.59 & 5,891.78 & 20:00--24:00 & 5,549.16 & 2,391.13 \\*
-\multicolumn{2}{c}{00:00储电量} & 5,971.67 & \multicolumn{2}{c}{24:00储电量} & 6,194.24 \\
+\multicolumn{4}{l}{\textbf{2025-09-23}} \\*
+00:00--04:00 & 4,635.38 & 107.23 & \textemdash \\*
+04:00--08:00 & 1,019.68 & 6,091.91 & \textemdash \\*
+08:00--12:00 & 5,459.91 & 1,896.62 & \textemdash \\*
+12:00--16:00 & 4,468.06 & 602.55 & \textemdash \\*
+16:00--20:00 & 79.59 & 5,891.78 & \textemdash \\*
+20:00--24:00 & 5,549.16 & 2,391.13 & \textemdash \\*
+00:00 & \textemdash & \textemdash & 5,971.67 \\*
+24:00 & \textemdash & \textemdash & 6,194.24 \\
 \addlinespace
-\multicolumn{6}{l}{\textbf{2025-12-21}} \\*
-00:00--04:00 & 4,514.59 & 57.06 & 04:00--08:00 & 910.22 & 1,414.62 \\*
-08:00--12:00 & 5,914.67 & 6,794.16 & 12:00--16:00 & 6,186.24 & 2,220.11 \\*
-16:00--20:00 & 0.00 & 5,577.31 & 20:00--24:00 & 5,753.40 & 2,842.53 \\*
-\multicolumn{2}{c}{00:00储电量} & 6,677.89 & \multicolumn{2}{c}{24:00储电量} & 6,622.69 \\
+\multicolumn{4}{l}{\textbf{2025-12-21}} \\*
+00:00--04:00 & 4,514.59 & 57.06 & \textemdash \\*
+04:00--08:00 & 910.22 & 1,414.62 & \textemdash \\*
+08:00--12:00 & 5,914.67 & 6,794.16 & \textemdash \\*
+12:00--16:00 & 6,186.24 & 2,220.11 & \textemdash \\*
+16:00--20:00 & 0.00 & 5,577.31 & \textemdash \\*
+20:00--24:00 & 5,753.40 & 2,842.53 & \textemdash \\*
+00:00 & \textemdash & \textemdash & 6,677.89 \\*
+24:00 & \textemdash & \textemdash & 6,622.69 \\
 \end{longtable}
 \endgroup
 \par
@@ -120,9 +136,9 @@
 \endhead
 \bottomrule
 \endfoot
-03-20 & 41,537.79 & 0.00 & 0.00 & 41,537.79 \\
-06-21 & 22,414.49 & 0.00 & 0.00 & 22,414.49 \\
-09-23 & 42,079.63 & 0.00 & 5,734.95 & 47,814.59 \\
+03-20 & 41,537.79 & 0.00 & 0.00 & 41,537.79 \\*
+06-21 & 22,414.49 & 0.00 & 0.00 & 22,414.49 \\*
+09-23 & 42,079.63 & 0.00 & 5,734.95 & 47,814.59 \\*
 12-21 & 64,446.61 & 0.00 & 0.00 & 64,446.61 \\
 \end{longtable}
 \endgroup

@@ -1,9 +1,9 @@
 {
   "status": "passed",
-  "pdf_sha256": "a5066e2a9b27cd8f22c03b12ea93628b79c7bbf6f13b9fb468af10e36a58451e",
+  "pdf_sha256": "cedd34bae82af21e537cba7aa2555ced3a30e2fc9d7c8b22528d9c457caafbe0",
   "table_count": 31,
-  "rendered_table_segments": 38,
-  "checked_horizontal_rules": 114,
+  "rendered_table_segments": 42,
+  "checked_horizontal_rules": 126,
   "style": {
     "body_tex_pt": 12.05,
     "caption": "normal-size bold, above table",
@@ -26,14 +26,20 @@
     "arraystretch": 1.38,
     "vertical_or_double_rules": 0,
     "small_font_commands": 0,
-    "small_notes_under_tables": 0
+    "small_notes_under_tables": 0,
+    "storage_tables": 5,
+    "storage_column_layout": "Single four-column header; six interval rows and two endpoint-stock rows per date.",
+    "side_by_side_storage_headers": 0
   },
   "data_preservation": {
     "baseline_commit": "312a9fa6d477810ba082531c04970543c611be38",
     "active_tables": 31,
     "all_generated_and_manual_tables": 33,
-    "active_compared_fields": 1142,
-    "all_compared_fields": 1169,
+    "active_compared_fields": 990,
+    "all_compared_fields": 1017,
+    "storage_tables": 5,
+    "storage_compared_numeric_values": 238,
+    "baseline_sources_match_commit": true,
     "differences": []
   },
   "source_sha256": {
@@ -50,15 +56,15 @@
     "paper/generated/mpc-comparison.tex": "0e1c8980003592a21772e5ebdb360b4df1782156cb4db1e804fb50cd74b1c57a",
     "paper/generated/mpc-inventory.tex": "e396c4a2d2108e687ec5e3251d35e137b2b8f114272f0b0a78e352e2197e0f7d",
     "paper/generated/numbers.tex": "8ce718910a7d5bd21f4fd01f876ddab0fc58896cc3df16cc7a4dd98bd44a3cc1",
-    "paper/generated/q1-tables.tex": "b59b5ab04acbb536363057133a144d7c5f630f696cd8d7bbbd2ef2979655466a",
+    "paper/generated/q1-tables.tex": "d09a50d149cd02b12d41e87883460e2dec20863ac204d45cf0994848b0192562",
     "paper/generated/rolling-months.tex": "fc894cb1667f98655acdea4ab312d1be1beaddaa49f9f9fc449c0d126bc40c06",
     "paper/generated/rolling-summary.tex": "330c268068fb39dd72bbdc349ed4d369c4924c78294978272423ca9cc2a4289c",
-    "paper/generated/selected-days-q2.tex": "1c067fe0527edc9b5baa72534848b102e773d4eb9c5afd40c9efefbc83f15335",
-    "paper/generated/selected-days-q3.tex": "4f2b4f8d5d18aa6dff269df2216cbb44ee9931658fb2404cda20b96d8f1fdce2",
-    "paper/generated/selected-days-q4-2.tex": "6bf7d4d89ddea6dffb7bc211aa9b59d9a4e5fb01dcaf0342e8fe884d13f29db2",
-    "paper/generated/selected-days-q4-3.tex": "8157e1297c8282e685dd955f6804a75aa7e78b4d73078e5adce0aec8ce09cb5b",
+    "paper/generated/selected-days-q2.tex": "df23615f205816b671c8f59b74d04c4955fd03a318b055d87f0dd5e6aafe82c1",
+    "paper/generated/selected-days-q3.tex": "b0c33e9cfc0d4b0e52acdc23b126b5d8ed4ba9652fcb42274a6f708898debd02",
+    "paper/generated/selected-days-q4-2.tex": "31d9e04532eb5017b5dccd1e01a66eb1d99e5bd7d187a92699906cda0cfce2e6",
+    "paper/generated/selected-days-q4-3.tex": "69b55454566685b39ac3ae75d94e8c3bc66c1e1a246ad5c2185835e8d07f2d57",
     "paper/sections/symbols.tex": "9cb60ddff878556163fc4b342a06c9ee6ab270a4bf7dbdd9533e41af36a38d59",
-    "paper/main.tex": "64fbcd57879ae88c6b235291d347dacc04f2db59d041847f0ef93c167327d38d"
+    "paper/main.tex": "b1766a06cf324dd73f50434e507d666318ba564d532558c8ec62aa6b668cb31f"
   },
   "tables": [
     {
@@ -86,7 +92,7 @@
       "number": 4,
       "label": "tab:jan-selection",
       "pages": [
-        9
+        10
       ]
     },
     {
@@ -100,7 +106,7 @@
       "number": 6,
       "label": "tab:core-energy",
       "pages": [
-        11
+        12
       ]
     },
     {
@@ -173,116 +179,120 @@
       "label": "tab:q2-days-storage",
       "pages": [
         24,
-        25
+        25,
+        26
       ]
     },
     {
       "number": 17,
       "label": "tab:q2-days-costs",
       "pages": [
-        25
+        26
       ]
     },
     {
       "number": 18,
       "label": "tab:q2-days-emergency",
       "pages": [
-        25,
-        26
+        26,
+        27
       ]
     },
     {
       "number": 19,
       "label": "tab:q3-days-purchase",
       "pages": [
-        27,
-        28
+        28,
+        29
       ]
     },
     {
       "number": 20,
       "label": "tab:q3-days-storage",
       "pages": [
-        29
+        30,
+        31
       ]
     },
     {
       "number": 21,
       "label": "tab:q3-days-costs",
       "pages": [
-        30
+        32
       ]
     },
     {
       "number": 22,
       "label": "tab:q3-days-emergency",
       "pages": [
-        30
+        32
       ]
     },
     {
       "number": 23,
       "label": "tab:q4-2-days-purchase",
       "pages": [
-        31,
-        32
+        33,
+        34
       ]
     },
     {
       "number": 24,
       "label": "tab:q4-2-days-storage",
       "pages": [
-        33
+        35,
+        36
       ]
     },
     {
       "number": 25,
       "label": "tab:q4-2-days-costs",
       "pages": [
-        34
+        37
       ]
     },
     {
       "number": 26,
       "label": "tab:q4-2-days-emergency",
       "pages": [
-        34
+        37
       ]
     },
     {
       "number": 27,
       "label": "tab:q4-3-days-purchase",
       "pages": [
-        35,
-        36
+        38,
+        39
       ]
     },
     {
       "number": 28,
       "label": "tab:q4-3-days-storage",
       "pages": [
-        37
+        40,
+        41
       ]
     },
     {
       "number": 29,
       "label": "tab:q4-3-days-costs",
       "pages": [
-        38
+        42
       ]
     },
     {
       "number": 30,
       "label": "tab:q4-3-days-emergency",
       "pages": [
-        38
+        42
       ]
     },
     {
       "number": 31,
       "label": "tab:rolling-months",
       "pages": [
-        39
+        43
       ]
     }
   ]

@@ -4,7 +4,7 @@
 
 已完成 [LaTeX 论文 PDF](output/pdf/microgrid-paper.pdf)，可编辑入口为 [paper/main.tex](paper/main.tex)。论文采用用户指定的 [CUMCMThesis 模板](https://github.com/latexstudio/CUMCMThesis)，按模板组织章节，并按广东赛区的本次提交要求去掉承诺书、编号页和目录。12 篇参考文献均在正文中引用，表格直接从已验证结果生成，覆盖四问与两轮补充实验。[模板适配说明](docs/template-adaptation.md)、[撰写记录与编译说明](docs/paper-writing-notes.md)、[文献核实笔记](docs/literature-notes.md) 记录结构、写作取舍及来源。运行 `python scripts/build_paper.py` 可重新核对表格并编译论文。
 
-31 张表已按模板“标准三线表格”统一，表内使用正文同等字号，必要说明融入正文，不另设表下小字。具体依据、宽表重排及数据保留检查见 [三线表核查记录](docs/table-style-audit.md) 和 [逐表验收](paper/table-style-validation.json)。
+31 张表已按模板“标准三线表格”统一，表内使用正文同等字号，储能表使用单组列逐时段排列，必要说明融入正文，不另设表下小字。正文不使用下划线，文献引用采用模板上标。具体依据、宽表重排及数据保留检查见 [三线表核查记录](docs/table-style-audit.md) 和 [逐表验收](paper/table-style-validation.json)。
 
 第一轮修订针对预报价值归因、缺少简单基准和增购撤回合约风险，处理依据见 [评审回应](docs/review-response.md)。问题 3、4-3 增加历史光伏/附件 3 融合候选；新小时预报贡献以保留重规划、当前库存、负载修正和当前光伏锚点的严格对照衡量。逐笔交易合约分别报告冻结主调度重计费与重新优化，不能混为一项结果。
 
