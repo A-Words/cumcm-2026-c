@@ -1,0 +1,221 @@
+{
+  "source_sha256": {
+    "附件1.xlsx": "66b87134f5ecccd68184d3539bb1293ef039f9e0fdd955a589b9bfa7f227c377",
+    "附件2.xlsx": "2e95fd446bfafa0d8c59577b5c2e2ea8b3f1def20dde54a3062556f4da9b4c72",
+    "附件3.xlsx": "8a61b06c52bd0d639a1cc37c61a7d9f5b75edcbca718f64c1bd3498ec9f9d843",
+    "附件4.xlsx": "20e9c93aeab5e8e21ae4dd15587f9e190f7408692504c1319598461cd654fe71"
+  },
+  "date_start": "2025-01-01",
+  "date_end": "2025-12-31",
+  "days": 365,
+  "submission_start": "2025-02-01",
+  "submission_days": 334,
+  "interval_minutes": 10,
+  "main_power_convention": "right_endpoint_representative_interval_mean",
+  "forecast_origin": "PV observation at issue time; Jan 1 00:00 = 0 kW",
+  "statistics": {
+    "load": {
+      "shape": [
+        365,
+        144
+      ],
+      "minimum": 1995.7176,
+      "maximum": 7978.8849,
+      "mean": 4626.033670125571,
+      "missing_or_nonfinite": 0,
+      "negative_count": 0
+    },
+    "pv": {
+      "shape": [
+        365,
+        144
+      ],
+      "minimum": 0.0,
+      "maximum": 10216.2,
+      "mean": 2311.7857090962707,
+      "missing_or_nonfinite": 0,
+      "negative_count": 0
+    },
+    "fixed_price": {
+      "shape": [
+        144
+      ],
+      "minimum": 0.3713,
+      "maximum": 1.3952,
+      "mean": 0.7661972222222223,
+      "missing_or_nonfinite": 0,
+      "negative_count": 0
+    },
+    "dynamic_price": {
+      "shape": [
+        365,
+        144
+      ],
+      "minimum": 0.0076,
+      "maximum": 1.7936,
+      "mean": 0.7661976046423136,
+      "missing_or_nonfinite": 0,
+      "negative_count": 0
+    },
+    "q1_load": {
+      "shape": [
+        144
+      ],
+      "minimum": 3309.3934,
+      "maximum": 5958.9696,
+      "mean": 4626.0336708333325,
+      "missing_or_nonfinite": 0,
+      "negative_count": 0
+    },
+    "q1_pv": {
+      "shape": [
+        144
+      ],
+      "minimum": 0.0,
+      "maximum": 7612.316,
+      "mean": 2311.7848194444446,
+      "missing_or_nonfinite": 0,
+      "negative_count": 0
+    },
+    "forecast": {
+      "shape": [
+        365,
+        4,
+        144
+      ],
+      "minimum": 0.0,
+      "maximum": 9995.8875,
+      "mean": 2281.594677824867,
+      "missing_or_nonfinite": 0,
+      "negative_count": 0
+    },
+    "load_trapezoid": {
+      "shape": [
+        365,
+        144
+      ],
+      "minimum": 2078.6488,
+      "maximum": 7834.202450000001,
+      "mean": 4626.02959620624,
+      "missing_or_nonfinite": 0,
+      "negative_count": 0
+    },
+    "pv_trapezoid": {
+      "shape": [
+        365,
+        144
+      ],
+      "minimum": 0.0,
+      "maximum": 10160.5221,
+      "mean": 2311.7857090962707,
+      "missing_or_nonfinite": 0,
+      "negative_count": 0
+    },
+    "q1_load_trapezoid": {
+      "shape": [
+        144
+      ],
+      "minimum": 3336.06765,
+      "maximum": 5956.61485,
+      "mean": 4626.0336708333325,
+      "missing_or_nonfinite": 0,
+      "negative_count": 0
+    },
+    "q1_pv_trapezoid": {
+      "shape": [
+        144
+      ],
+      "minimum": 0.0,
+      "maximum": 7607.4842,
+      "mean": 2311.784819444444,
+      "missing_or_nonfinite": 0,
+      "negative_count": 0
+    },
+    "forecast_trapezoid": {
+      "shape": [
+        365,
+        4,
+        144
+      ],
+      "minimum": 0.0,
+      "maximum": 9966.396875,
+      "mean": 2281.9533870833334,
+      "missing_or_nonfinite": 0,
+      "negative_count": 0
+    },
+    "forecast_hourly": {
+      "shape": [
+        365,
+        4,
+        24
+      ],
+      "minimum": 0.0,
+      "maximum": 9995.8875,
+      "mean": 2279.8011315325343,
+      "missing_or_nonfinite": 0,
+      "negative_count": 0
+    },
+    "forecast_anchor": {
+      "shape": [
+        365,
+        4
+      ],
+      "minimum": 0.0,
+      "maximum": 9995.8875,
+      "mean": 2094.066446917808,
+      "missing_or_nonfinite": 0,
+      "negative_count": 0
+    },
+    "forecast_release_hours": {
+      "shape": [
+        4
+      ],
+      "minimum": 0.0,
+      "maximum": 18.0,
+      "mean": 9.0,
+      "missing_or_nonfinite": 0,
+      "negative_count": 0
+    },
+    "interval_end_minutes": {
+      "shape": [
+        144
+      ],
+      "minimum": 10.0,
+      "maximum": 1440.0,
+      "mean": 725.0,
+      "missing_or_nonfinite": 0,
+      "negative_count": 0
+    },
+    "dt_hours": {
+      "shape": [],
+      "minimum": 0.16666666666666666,
+      "maximum": 0.16666666666666666,
+      "mean": 0.16666666666666666,
+      "missing_or_nonfinite": 0,
+      "negative_count": 0
+    }
+  },
+  "annual_energy_kwh": {
+    "load": 40524054.9503,
+    "pv": 20251242.81168333,
+    "load_trapezoid": 40524019.26276667,
+    "pv_trapezoid": 20251242.81168333
+  },
+  "q1_energy_kwh": {
+    "load": 111024.80809999998,
+    "pv": 55482.83566666667
+  },
+  "a1_versus_annual_same_time_average_max_abs_kw": {
+    "load": 5.041095710112131e-05,
+    "pv": 0.04310438356164384
+  },
+  "duplicate_daily_rows": {
+    "load": 0,
+    "pv": 0,
+    "dynamic_price": 0
+  },
+  "versions": {
+    "numpy": "2.3.5",
+    "openpyxl": "3.1.5"
+  }
+}
