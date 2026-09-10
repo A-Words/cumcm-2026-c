@@ -1,10 +1,10 @@
 \subsection{统一物理模型与线性化}
 \subsubsection{能量平衡及储能边界}
 每段能量平衡及储电量演化满足
-\begin{align}
- q_t+e_t+V_t+b_t &= L_t+c_t+w_t,\label{eq:balance}\\
- S_{t+1} &= S_t+\eta_c c_t-b_t/\eta_d,\quad \eta_c=\eta_d=0.9.\label{eq:soc}
-\end{align}
+\begin{gather}
+ q_t+e_t+V_t+b_t = L_t+c_t+w_t,\label{eq:balance}\\
+ S_{t+1} = S_t+\eta_c c_t-b_t/\eta_d,\quad \eta_c=\eta_d=0.9.\label{eq:soc}
+\end{gather}
 物理边界为
 \begin{gather}
  S_{\min}=1200\le S_t\le10800=S_{\max}\quad(t=0,\ldots,144),\notag\\

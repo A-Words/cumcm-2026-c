@@ -2,7 +2,7 @@
   "status": "passed",
   "checked_on": "2026-09-11",
   "pdf": "output/pdf/microgrid-paper.pdf",
-  "pdf_sha256": "3bd8ba7bb3c8d9cdd612042526f9df56680357f7d2ebdcc387ee0ee0217229c9",
+  "pdf_sha256": "710e0ad988485c65bece12fcdcf319f8b2d03f0befa9de4217e0ab528ce97816",
   "pages": 44,
   "figures": 2,
   "table_count": 31,
@@ -73,6 +73,16 @@
   },
   "preserved_math_environments": 18,
   "preserved_existing_labels": 14,
+  "equation_layout_update": {
+    "equations": [
+      1,
+      2
+    ],
+    "from": "align",
+    "to": "gather",
+    "content_labels_and_numbers_preserved": true,
+    "visual_check": "each equation independently centered on page 5"
+  },
   "visual_review": {
     "status": "passed",
     "pages_reviewed": [
@@ -122,20 +132,13 @@
       44
     ],
     "render_scale_to_pixels": 1200,
-    "header_update_pages_reviewed": [
-      12,
-      13,
-      14,
-      15,
-      16,
-      17,
-      18,
-      43
+    "equation_update_pages_reviewed": [
+      5
     ],
-    "unchanged_page_renders": 36,
+    "unchanged_page_renders": 43,
     "notes": [
-      "All 44 pages retain reviewed coverage; all 8 pages affected by unwrapping table headers were re-rendered and inspected.",
-      "The other 36 page renders are byte-identical to the preceding reviewed delivery.",
+      "All 44 pages retain reviewed coverage; page 5 affected by the gather change was re-rendered and inspected.",
+      "The other 43 page renders are byte-identical to the preceding reviewed delivery.",
       "Six tables have fully single-line headers; only the two stock columns remain wrapped in tables 13 and 14, based on measured widths.",
       "Storage tables have one set of four column headings, six interval rows and two endpoint-stock rows per date.",
       "The conclusion and AI declaration fit on one page without isolated paragraph remnants; four-row daily bills remain together.",
@@ -178,7 +181,7 @@
     "paper/sections/conclusion.tex": "8ea843a577b01dd82dd8176fc5dc4e51238090b1a3911649ac14fc1b75dbd4e4",
     "paper/sections/evaluation.tex": "502060a4eff7d5405ee1086b832c111b9d9c5f32787c0297aef58bf66d337d78",
     "paper/sections/model.tex": "b225720bb4ca1a9386ec1941bac74b06e5897819beb5941abf47fedb9bb01685",
-    "paper/sections/physical-model.tex": "30b162c93bd41274925bf7252198ba43ccca0522960c8479260226849aad0c1f",
+    "paper/sections/physical-model.tex": "960557dba5b06736b69ce1fe34314de2f2a71bc5f87c22876bd17da319f4bdc7",
     "paper/sections/problem.tex": "8dfeeec1d03a31b6799c0aca8d05c2601cfb845791f427c19814085833936810",
     "paper/sections/q1.tex": "78193df1db6aa389b08c6607cc9017fb05ddf1a1cd0d235c980fdbaaf7af3491",
     "paper/sections/q2.tex": "56f0508f018597943e2e8a1ef36b0c693a9e9f9a8f799ba486dedb80d2d10872",
@@ -199,7 +202,7 @@
   ],
   "table_style_validation": {
     "path": "paper/table-style-validation.json",
-    "sha256": "0e8920bdeb35a57cfdbffe4a32dc6b9c9a218bfaf08f43699f335903132d1867",
+    "sha256": "0e7c61ac7afc01aa3e78b4d2680356f174178bd8b2ec8edac327b291bfc74a63",
     "table_count": 31,
     "rendered_table_segments": 42,
     "checked_horizontal_rules": 126,
