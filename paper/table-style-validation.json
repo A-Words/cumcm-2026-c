@@ -1,6 +1,6 @@
 {
   "status": "passed",
-  "pdf_sha256": "72da4f54537b6955672710d38e75df91b5d2910b05069be9a71f2585da94bb56",
+  "pdf_sha256": "3bd8ba7bb3c8d9cdd612042526f9df56680357f7d2ebdcc387ee0ee0217229c9",
   "table_count": 31,
   "rendered_table_segments": 42,
   "checked_horizontal_rules": 126,
@@ -43,22 +43,22 @@
     "differences": []
   },
   "source_sha256": {
-    "paper/generated/contract-parameters.tex": "f1ed876d9457664c8a236abf3bd87486f93d48969df64566443b453b291c9e04",
-    "paper/generated/contracts.tex": "96662ce6ec9caae1e59e05ef45b2815ff6c752908a4704de0fdb49c4793c4500",
+    "paper/generated/contract-parameters.tex": "996dc0796c052d09675b1c409da15a6176cdbd2fb428032082f1006581c048f8",
+    "paper/generated/contracts.tex": "97c31315093de662156d382309284ab2b084fad031ecb7fad59ad3ff9328ece0",
     "paper/generated/core-costs.tex": "c80345d0eaf44536d5176454377e4bb6727c06dd7e92796185bedc5842fbc9be",
-    "paper/generated/core-energy.tex": "5df073cb2f330c90b3f7cd4c06676404506f36f416b6f23b900dcfb2eeeb08b7",
+    "paper/generated/core-energy.tex": "87473ee9da80be0cecd49f3af3b0eae8719bab4f9900a7eaacff7ef37c2be308",
     "paper/generated/core-storage.tex": "4a82783bf2f5d4e0d90aaf5189e79049a6fbe628916a92da9ab598be5d5207a2",
-    "paper/generated/forecast-baselines.tex": "1a121704cf04a313e08e04afad394121f2fab79f3715c07e366d496027112a9a",
+    "paper/generated/forecast-baselines.tex": "e327a0d7c2e8729aaefe65243aaa43ed9f31be59d86a9dd9c95f43e1fe5346d6",
     "paper/generated/hourly-marginals.tex": "a7e6f62197903f5cc90e727b24b757a5aa09538cdba20f5121359727801935ff",
-    "paper/generated/hourly-subsets.tex": "92bf9700a16f437b4be50d3a7319703355cd17e3077f4879991841ae6700a4a5",
+    "paper/generated/hourly-subsets.tex": "d5d237d56a7bc4bccef1ab15347954435381e11e9c4083714b4cb9b20686a9ef",
     "paper/generated/jan-history-selection.tex": "37b87d07ecb69c6ab6b19a3c1ab53423a2c8ca2d8311ce344e157f82ed1832d5",
     "paper/generated/jan-selection.tex": "c36b5b9ffa898987ada0cf523e7e7140ac9f62ec6775ecaf9645a64cb9f1b05f",
     "paper/generated/mpc-comparison.tex": "0e1c8980003592a21772e5ebdb360b4df1782156cb4db1e804fb50cd74b1c57a",
-    "paper/generated/mpc-inventory.tex": "e396c4a2d2108e687ec5e3251d35e137b2b8f114272f0b0a78e352e2197e0f7d",
+    "paper/generated/mpc-inventory.tex": "4167ea4f93edd54419ebf1848161cc7b27b6050c313ec64af1762d68473d078a",
     "paper/generated/numbers.tex": "8ce718910a7d5bd21f4fd01f876ddab0fc58896cc3df16cc7a4dd98bd44a3cc1",
     "paper/generated/q1-tables.tex": "d09a50d149cd02b12d41e87883460e2dec20863ac204d45cf0994848b0192562",
-    "paper/generated/rolling-months.tex": "fc894cb1667f98655acdea4ab312d1be1beaddaa49f9f9fc449c0d126bc40c06",
-    "paper/generated/rolling-summary.tex": "330c268068fb39dd72bbdc349ed4d369c4924c78294978272423ca9cc2a4289c",
+    "paper/generated/rolling-months.tex": "ac5e651915b1079c76f48003332380d3d13bd707c5fc05c758830b3c9d0293a8",
+    "paper/generated/rolling-summary.tex": "b2ba4ed351b1a9b83e2c36609273d390ed7dd0bb5c4e02fbb2d120c19230a93c",
     "paper/generated/selected-days-q2.tex": "df23615f205816b671c8f59b74d04c4955fd03a318b055d87f0dd5e6aafe82c1",
     "paper/generated/selected-days-q3.tex": "b0c33e9cfc0d4b0e52acdc23b126b5d8ed4ba9652fcb42274a6f708898debd02",
     "paper/generated/selected-days-q4-2.tex": "31d9e04532eb5017b5dccd1e01a66eb1d99e5bd7d187a92699906cda0cfce2e6",
@@ -295,5 +295,76 @@
         43
       ]
     }
-  ]
+  ],
+  "header_layout": {
+    "textwidth_tex_pt": 455.24411,
+    "font_size_tex_pt": 12.05,
+    "tabcolsep_tex_pt": 6,
+    "fully_single_line_tables": [
+      6,
+      8,
+      9,
+      10,
+      11,
+      31
+    ],
+    "tables": [
+      {
+        "table": 6,
+        "label": "tab:core-energy",
+        "all_single_line_width_tex_pt": 437.51292,
+        "selected_width_tex_pt": 437.51292,
+        "remaining_wrapped_columns": 0
+      },
+      {
+        "table": 8,
+        "label": "tab:forecast-baselines",
+        "all_single_line_width_tex_pt": 357.71107,
+        "selected_width_tex_pt": 357.71107,
+        "remaining_wrapped_columns": 0
+      },
+      {
+        "table": 9,
+        "label": "tab:hourly-subsets",
+        "all_single_line_width_tex_pt": 424.49794,
+        "selected_width_tex_pt": 424.49794,
+        "remaining_wrapped_columns": 0
+      },
+      {
+        "table": 10,
+        "label": "tab:contracts",
+        "all_single_line_width_tex_pt": 377.36288,
+        "selected_width_tex_pt": 377.36288,
+        "remaining_wrapped_columns": 0
+      },
+      {
+        "table": 11,
+        "label": "tab:contract-parameters",
+        "all_single_line_width_tex_pt": 335.0879,
+        "selected_width_tex_pt": 335.0879,
+        "remaining_wrapped_columns": 0
+      },
+      {
+        "table": 13,
+        "label": "tab:mpc-inventory",
+        "all_single_line_width_tex_pt": 517.65016,
+        "selected_width_tex_pt": 436.2538,
+        "remaining_wrapped_columns": 2
+      },
+      {
+        "table": 14,
+        "label": "tab:rolling-summary",
+        "all_single_line_width_tex_pt": 527.71732,
+        "selected_width_tex_pt": 446.32095,
+        "remaining_wrapped_columns": 2
+      },
+      {
+        "table": 31,
+        "label": "tab:rolling-months",
+        "all_single_line_width_tex_pt": 438.08841,
+        "selected_width_tex_pt": 438.08841,
+        "remaining_wrapped_columns": 0
+      }
+    ]
+  }
 }

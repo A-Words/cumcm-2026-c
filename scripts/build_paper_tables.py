@@ -218,7 +218,7 @@ def main():
         ["方案", "原计划费用", "调整费用", "紧急费用", "总费用"],
         [[NAMES[k], *[number(primary[k][c]) for c in ("plan_cost", "adjustment_cost", "emergency_cost", "total_cost")]] for k in KEYS])
     files["core-energy.tex"] = table("四种主方案的正式期电量与库存（kWh）", "tab:core-energy",
-        ["方案", r"\shortstack{最终常规\\购电量}", "紧急购电", "未利用电量", r"\shortstack{期初\\储电量}", r"\shortstack{期末\\储电量}"],
+        ["方案", "最终常规购电量", "紧急购电", "未利用电量", "期初储电量", "期末储电量"],
         [[NAMES[k], *[number(primary[k][c]) for c in ("adjusted_kwh", "emergency_kwh", "spill_kwh", "start_soc", "end_soc")]] for k in KEYS])
     files["core-storage.tex"] = table("四种主方案的原计划购电与储能吞吐量（2—12月，kWh）", "tab:core-storage",
         ["方案", "原计划购电量", "充电输入", "放电输出"],
@@ -257,7 +257,7 @@ def main():
             s = scene["summary"]
             rows.append([NAMES[key], label, param(scene["pv_weight"]), param(scene["quantile"]), number(s["total_cost"]), number(s["emergency_kwh"])])
     files["forecast-baselines.tex"] = table("共同热启动下的预测策略比较（2—12月）", "tab:forecast-baselines",
-        ["方案", "光伏预测", r"$\lambda$", r"$\alpha$", "费用（元）", r"\shortstack{紧急电\\（kWh）}"], rows)
+        ["方案", "光伏预测", r"$\lambda$", r"$\alpha$", "费用（元）", "紧急电（kWh）"], rows)
 
     rows = []
     subset_groups = {}
@@ -272,7 +272,7 @@ def main():
         label = "、".join(f"{hour:02d}" for hour in subset) or "无"
         rows.append([label, number(legacy["total_cost"]), number(selected["total_cost"]), number(selected["emergency_kwh"])])
     files["hourly-subsets.tex"] = table("问题3新小时光伏预报的完整子集对照", "tab:hourly-subsets",
-        ["新增预报时刻", r"\shortstack{纯附件3费用\\（元）}", r"\shortstack{融合策略费用\\（元）}", r"\shortstack{融合紧急电\\（kWh）}"], rows)
+        ["新增预报时刻", "纯附件3费用（元）", "融合策略费用（元）", "融合紧急电（kWh）"], rows)
     rows = []
     for hour in (6, 12, 18):
         subset = tuple(i for i in (6, 12, 18) if i != hour)
@@ -289,7 +289,7 @@ def main():
                             ("逐笔合约重新优化", revision["scenes"][contract["reoptimized"]]["summary"]["total_cost"])):
             rows.append([NAMES[key], label, number(cost), number(base - cost)])
     files["contracts.tex"] = table("合约解释与相应策略费用（2—12月，元）", "tab:contracts",
-        ["方案", "结算与策略", "总费用", r"\shortstack{较无调整\\方案节省}"], rows)
+        ["方案", "结算与策略", "总费用", "较无调整方案节省"], rows)
     rows = []
     for key in ("q3", "q4_3"):
         contract = revision["contracts"][key]
@@ -297,7 +297,7 @@ def main():
         s = revision["scenes"][contract["reoptimized"]]["summary"]
         rows.append([NAMES[key], param(selected["pv_weight"]), param(selected["quantile"]), number(s["emergency_kwh"]), number(s["start_soc"]), number(s["end_soc"])])
     files["contract-parameters.tex"] = table("逐笔合约重优化的参数与库存（电量单位：kWh）", "tab:contract-parameters",
-        ["方案", r"$\lambda$", r"$\alpha$", "紧急购电", r"\shortstack{2月初\\储电量}", r"\shortstack{年末\\储电量}"], rows)
+        ["方案", r"$\lambda$", r"$\alpha$", "紧急购电", "2月初储电量", "年末储电量"], rows)
 
     rows = []
     for key in KEYS:
@@ -312,7 +312,7 @@ def main():
         m = round2["scenes"][round2["feedback"][key]["mpc"]]["summary"]
         rows.append([NAMES[key], number(m["total_cost"] - g["total_cost"]), number(m["emergency_kwh"]), number(m["spill_kwh"]), number(m["start_soc"]), number(m["end_soc"])])
     files["mpc-inventory.tex"] = table("滚动反馈的费用增量与物理统计", "tab:mpc-inventory",
-        ["方案", r"\shortstack{增费\\（元）}", r"\shortstack{紧急电\\（kWh）}", r"\shortstack{未利用电\\（kWh）}", r"\shortstack{期初SOC\\（kWh）}", r"\shortstack{期末SOC\\（kWh）}"], rows)
+        ["方案", "增费（元）", "紧急电（kWh）", "未利用电（kWh）", r"\shortstack{期初SOC\\（kWh）}", r"\shortstack{期末SOC\\（kWh）}"], rows)
 
     rows = []
     for key in ("q3", "q4_3"):
@@ -320,7 +320,7 @@ def main():
             s = round2["scenes"][round2["rolling"][key]["scenes"][rule]]["summary"]
             rows.append([NAMES[key], label, number(s["total_cost"]), number(s["emergency_kwh"]), number(s["start_soc"]), number(s["end_soc"])])
     files["rolling-summary.tex"] = table("按月选参与固定参数比较（2025年4—12月）", "tab:rolling-summary",
-        ["方案", "参数规则", r"\shortstack{总费用\\（元）}", r"\shortstack{紧急电\\（kWh）}", r"\shortstack{期初SOC\\（kWh）}", r"\shortstack{期末SOC\\（kWh）}"], rows)
+        ["方案", "参数规则", "总费用（元）", "紧急电（kWh）", r"\shortstack{期初SOC\\（kWh）}", r"\shortstack{期末SOC\\（kWh）}"], rows)
     rows = []
     for key in ("q3", "q4_3"):
         for fold in round2["rolling"][key]["folds"]:
@@ -329,7 +329,7 @@ def main():
                          number(monthly["fixed"]["total_cost"] - monthly["adaptive"]["total_cost"]),
                          number(monthly["historical"]["total_cost"] - monthly["adaptive"]["total_cost"])])
     files["rolling-months.tex"] = table("月初参数选择及当月费用差（2025年4—12月）", "tab:rolling-months",
-        ["方案", "评价月份", r"$\lambda$", r"$\alpha$", r"历史$\alpha$", r"\shortstack{固定$-$融合\\（元）}", r"\shortstack{历史$-$融合\\（元）}"], rows, long=True)
+        ["方案", "评价月份", r"$\lambda$", r"$\alpha$", r"历史$\alpha$", r"固定$-$融合（元）", r"历史$-$融合（元）"], rows, long=True)
 
     for key in KEYS:
         chosen = [next(day for day in results[key]["days"] if day["date"] == date) for date in DATES]
