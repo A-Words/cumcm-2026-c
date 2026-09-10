@@ -2,7 +2,7 @@
   "schema_version": 1,
   "status": "passed",
   "generator": "scripts/build_paper_tables.py",
-  "generator_sha256": "4b829cd7a0ed39799696687ac01bb206da43f57dc1a1e3d220dfade7f98e9687",
+  "generator_sha256": "7572c57c8951d902bfd9de3f6ce1110594d20e30dc88797c4d4aba9125604b8c",
   "source_sha256": {
     "outputs/summary.json": "15e925db6ebee72733ed644954485c06b79660f0d07ea0e137b7323b8f5711b9",
     "outputs/results.json": "4b09d15f7f749bea2fcc6804502afa0d4beb9b385a64d756542303bc6d07b9ba",
@@ -35,10 +35,10 @@
     "mpc-inventory.tex": "3d43f81afe0b68d5298b4a36edf19d5ec09beb3c2cf01fc9de057f2afc1456b1",
     "rolling-summary.tex": "a19848005cb1d28797edfe8d0d35b8534783f3e57e24b40ba5b3a89df3e97d53",
     "rolling-months.tex": "8ab720b9012b341f3d440661c38841681f524a3f7bc4c90da2d6f41abfa69bce",
-    "selected-days-q2.tex": "4c096d230cf6db3d8c2965f8af5de2014799181b57efec162c7d14b593003b49",
-    "selected-days-q3.tex": "7c6a4df2c508ef7f0a3b6451b17be8398e11a223098beb2394a41c316798b728",
-    "selected-days-q4-2.tex": "f28b4efa0d2b918cd983ee84a8795f01f273b36f3c3b9c2827d6fbc0763ab686",
-    "selected-days-q4-3.tex": "b551014b57ddb150766af3ad9f004044c1f218662c96ea59b6a89be7a9e022d8",
+    "selected-days-q2.tex": "d274c7478b8a500ee52f748bb3473d19105cda02dc65bed541a31636f1f4162c",
+    "selected-days-q3.tex": "a95d605f7ad088eb3c0198627060d8ace5b4d8e78606f03608d401d5fc192ab8",
+    "selected-days-q4-2.tex": "cc2443b91c12f791aa3146ba094b88d17b8e4577ce5fb927ba2380023439be91",
+    "selected-days-q4-3.tex": "16d38229c5b37ec43c5ead72fd3e770dcc551c7bb18c1055a4da7cd7c8621cec",
     "table-data.json": "83f9a5293594550a3132d0e1aaf68a394329647343bcedbe9fcc3c8617527886"
   },
   "specified_date_count": 16,

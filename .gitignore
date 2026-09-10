@@ -3,3 +3,16 @@ __pycache__/
 node_modules/
 tmp/
 .venv/
+# Local editor/LaTeX preview products; canonical PDF is in output/pdf/.
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.fls
+paper/*.fdb_latexmk
+paper/*.log
+paper/*.out
+paper/*.toc
+paper/*.lof
+paper/*.lot
+paper/*.synctex.gz
+paper/*.pdf

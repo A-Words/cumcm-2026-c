@@ -1,0 +1,20 @@
+\section{符号说明}
+\begin{table}[htbp]
+\centering\small
+\caption{主要符号与单位}\label{tab:symbols}
+\begin{tabularx}{\textwidth}{lXl}
+\toprule 符号 & 含义 & 单位\\\midrule
+$d,t$ & 日期索引与日内十分钟区间索引，$t=0,\ldots,143$ & --\\
+$L_t,V_t$ & 当段实际负荷电量和光伏电量 & kWh\\
+$g_t,q_t$ & 零时原始购电计划与最终常规交付量 & kWh\\
+$c_t,d_t^{\mathrm{bat}}$ & 母线侧充电输入量与放电输出量 & kWh\\
+$S_t$ & 区间开始时的实际储电量 & kWh\\
+$e_t,w_t$ & 紧急购电与未利用电量 & kWh\\
+$p_t,\widehat p_t$ & 实际结算价与决策时预测价 & 元/kWh\\
+$\widehat N_t,\widetilde N_t$ & 点预测净负荷与风险调整净负荷 & kWh\\
+$\lambda,\alpha$ & 附件三预测权重与风险分位参数 & --\\
+\bottomrule
+\end{tabularx}
+\end{table}
+为简化以下公式，放电量记为$b_t=d_t^{\mathrm{bat}}$，从而避免与日期索引混淆。
+\FloatBarrier

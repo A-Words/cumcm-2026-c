@@ -405,7 +405,7 @@ def main():
             + "全天常规购电费为计划费加调整费，不含另列的紧急费。", long=True, size="footnotesize", spec="lrlrlr"))
         appendix.append(table(f"{name}指定日期的六段充放电量（kWh）", f"tab:{tag}-days-storage",
             ["时间段", "充电量", "放电量"] * 2, storage,
-            "均为交流母线侧电量；每24个区间求和。每个日期块末行分别列00:00和24:00储电量。", long=True, size="footnotesize", spec="lrrlrr"))
+            long=True, size="footnotesize", spec="lrrlrr"))
         appendix.append(table(f"{name}指定日期的全天账单（元）", f"tab:{tag}-days-costs",
             ["日期", "原计划费", "调整费", "紧急费", "总费用"], costs, long=True, size="footnotesize"))
         emergency = []

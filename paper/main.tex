@@ -1,76 +1,47 @@
 % !TeX program = xelatex
-% Compile from the repository with scripts/build_paper.py.
-\documentclass[UTF8,a4paper,12pt,fontset=none]{ctexart}
-
-\usepackage[left=25mm,right=25mm,top=25mm,bottom=25mm,headheight=15pt]{geometry}
-\usepackage{fontspec}
-\IfFontExistsTF{Times New Roman}{\setmainfont{Times New Roman}}{\setmainfont{TeX Gyre Termes}}
+% Upstream template pinned in template-source.json; compile via scripts/build_paper.py.
+\documentclass[withoutpreface,bwprint]{cumcmthesis}
+\usepackage{cumcm2026}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{xurl,placeins}
+% Explicit available Windows font faces; retain the template's typography.
 \IfFontExistsTF{SimSun}{
   \setCJKmainfont{SimSun}[BoldFont=SimHei,ItalicFont=KaiTi]
-  \setCJKsansfont{Microsoft YaHei}
-  \setCJKmonofont{FangSong}
-}{
-  \setCJKmainfont{FandolSong-Regular}[BoldFont=FandolSong-Bold,ItalicFont=FandolKai-Regular]
-  \setCJKsansfont{FandolHei-Regular}[BoldFont=FandolHei-Bold]
-  \setCJKmonofont{FandolFang-Regular}
-}
-\usepackage{amsmath,amssymb,bm}
-\usepackage{graphicx,booktabs,tabularx,longtable,array,multirow}
-\usepackage{enumitem,caption,float,placeins}
-\usepackage[numbers,sort&compress]{natbib}
-\usepackage{xurl}
-\usepackage[hidelinks,unicode,pdfencoding=auto]{hyperref}
-\usepackage{fancyhdr}
-\hypersetup{pdftitle={基于因果风险预测与储能反馈的微网购电调控},
-  pdfsubject={2026年C题数学建模论文},pdfauthor={},pdfkeywords={微网,储能,风险分位,因果回测,滚动优化}}
-\pagestyle{fancy}
-\fancyhf{}
-\fancyhead[C]{\small 基于因果风险预测与储能反馈的微网购电调控}
-\fancyfoot[C]{\thepage}
-\renewcommand{\headrulewidth}{0.3pt}
-\setlength{\parindent}{2em}
-\setlength{\parskip}{0.2em}
-\linespread{1.22}
+  \setCJKfamilyfont{zhsong}{SimSun}[BoldFont=SimHei,ItalicFont=KaiTi]
+  \setCJKfamilyfont{zhhei}{SimHei}[BoldFont=SimHei]
+}{}
+% Template subsection numbers contain visual thin spaces, omitted in bookmarks.
+\pdfstringdefDisableCommands{\def\thinspace{}}
+
+\hypersetup{hidelinks,pdfauthor={},
+  pdfkeywords={微网,储能,风险分位,因果回测,滚动优化}}
 \setlength{\emergencystretch}{2em}
 \setlength{\tabcolsep}{4pt}
-\renewcommand{\arraystretch}{1.15}
-\setlist{nosep,leftmargin=2em,topsep=0.4em}
-\captionsetup{font=small,labelfont=bf,skip=6pt}
-\ctexset{section={format=\Large\bfseries,beforeskip=1.2em,afterskip=0.7em},
-  subsection={format=\large\bfseries,beforeskip=0.9em,afterskip=0.5em},
-  subsubsection={format=\normalsize\bfseries,beforeskip=0.7em,afterskip=0.4em}}
-\numberwithin{equation}{section}
 \newcommand{\pos}[1]{\left(#1\right)_{+}}
 \newcommand{\dif}{\mathop{}\!\mathrm{d}}
 \newcommand{\kwh}{\mathrm{kWh}}
 \newcommand{\kw}{\mathrm{kW}}
-\newcolumntype{Y}{>{\centering\arraybackslash}X}
 \input{generated/numbers}
+\title{基于因果风险预测与储能反馈的微网购电调控}
 
 \begin{document}
-\thispagestyle{plain}
-\begin{center}
-  {\LARGE\bfseries 基于因果风险预测与储能反馈的\\[0.4em]微网购电调控}\par
-  \vspace{1.0em}
-  {\large\bfseries 摘\quad 要}
-\end{center}
+\maketitle
+\begin{abstract}
 \input{sections/abstract}
-\par\medskip
-\noindent\textbf{关键词：}微网；储能调度；风险分位；因果预测；电力交易；滚动评估
-\clearpage
+\keywords{微网\quad 储能调度\quad 风险分位\quad 因果预测\quad 滚动评估}
+\end{abstract}
 
-\input{sections/problem}
-\input{sections/model}
-\input{sections/forecast}
-\input{sections/updates}
-\input{sections/results}
-\input{sections/discussion}
+\input{sections/body}
 \FloatBarrier
-\clearpage
 
+\section*{AI工具使用声明}
+\input{sections/ai-statement}
+\clearpage
 \bibliographystyle{gbt7714-numeric}
 \bibliography{references}
 \clearpage
-\appendix
+\begin{appendices}
+\renewcommand{\thesubsection}{\thesection\thinspace.\thinspace\arabic{subsection}}
 \input{sections/appendix}
+\end{appendices}
 \end{document}

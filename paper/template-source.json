@@ -1,0 +1,20 @@
+{
+  "repository": "https://github.com/latexstudio/CUMCMThesis",
+  "commit": "38d1f216bec3c9ffffb7dd09bf6b6c54f486b130",
+  "retrieved_on": "2026-09-11",
+  "class_version": "2026/08/26 v2.9",
+  "style_version": "2026/08/23 v1.0",
+  "files_sha256": {
+    "cumcmthesis.cls": "3d329326a55860990434fbc90516de16fdadc2282413f82b33b7b57079f3f91e",
+    "cumcm2026.sty": "5e69cc102eacd75543887ba23424d9a2a4744b223ca0ae2013d752b1ee41c951"
+  },
+  "upstream_files_modified": false,
+  "class_options": [
+    "withoutpreface",
+    "bwprint"
+  ],
+  "table_of_contents_enabled": false,
+  "regional_constraints_source": "User instruction: Guangdong; omit pledge, numbering page and contents.",
+  "structure_source": "example.tex document skeleton, adapted to four problem tasks",
+  "license_note": "No separate LICENSE file was found at the pinned commit. Original file content and attribution are retained; no additional license is asserted."
+}

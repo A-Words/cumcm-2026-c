@@ -1,11 +1,13 @@
 {
   "status": "passed",
-  "checked_on": "2026-09-10",
+  "checked_on": "2026-09-11",
   "pdf": "output/pdf/microgrid-paper.pdf",
-  "pdf_sha256": "302ad0a8db55e171377c72f9c9dae0cff8a03116ab0862ed0e5c5ee04fc23ba0",
-  "pages": 27,
+  "pdf_sha256": "987f3ed61264f5a82f0789ae4b4eeb69debcb3438aec953cba95c1be8fa3f07e",
+  "pages": 29,
   "figures": 2,
-  "bibliography_entries": 7,
+  "table_count": 31,
+  "bibliography_entries": 12,
+  "bibliography_citation_sets": "12 source, 12 cited and 12 resolved keys match",
   "specified_date_scenarios": 16,
   "numeric_aggregation_checks": 656,
   "source_and_generated_hashes": "matched",
@@ -17,7 +19,7 @@
     "14044885.25"
   ],
   "replacement_characters": 0,
-  "embedded_fonts": 16,
+  "embedded_fonts": 18,
   "build": {
     "engine": "MiKTeX-XeTeX 4.18 (MiKTeX 26.5)",
     "source": "paper/main.tex",
@@ -26,6 +28,36 @@
     "layout_or_reference_warnings": []
   },
   "protected_inputs_and_model_results_unchanged": true,
+  "git_whitespace_check": "Passed for authored changes; 7 pre-existing whitespace notices in the byte-identical upstream class were retained.",
+  "template": {
+    "repository": "https://github.com/latexstudio/CUMCMThesis",
+    "commit": "38d1f216bec3c9ffffb7dd09bf6b6c54f486b130",
+    "upstream_file_hashes": "matched",
+    "options": [
+      "withoutpreface",
+      "bwprint"
+    ],
+    "excluded_page_text_absent": [
+      "承诺书",
+      "编号页",
+      "编号专用页",
+      "目录"
+    ],
+    "title_abstract_keywords_on_first_page": true,
+    "body_chapter_order": [
+      "一、问题重述",
+      "二、模型的假设",
+      "三、符号说明",
+      "四、问题分析",
+      "五、模型的建立与求解",
+      "六、结果分析与模型检验",
+      "七、模型评价与推广",
+      "八、总结"
+    ],
+    "appendix_subsections": "A.1 to A.4"
+  },
+  "preserved_math_environments": 18,
+  "preserved_existing_labels": 14,
   "visual_review": {
     "status": "passed",
     "pages_reviewed": [
@@ -55,21 +87,20 @@
       24,
       25,
       26,
-      27
+      27,
+      28,
+      29
     ],
     "render_scale_to_pixels": 1200,
-    "checks": [
-      "Readable Chinese, equations, charts, bibliography and URLs",
-      "No clipping, overlap, isolated note pages or split date blocks",
-      "All four scenario appendices and rolling table complete"
-    ],
-    "resolved": [
-      "Floating tables interrupting words on a page",
-      "Date blocks split across pages",
-      "Emergency table note isolated on a new page"
+    "notes": [
+      "Pages 1-19 match the inspected earlier template rendering byte for byte.",
+      "Final pages 11-29 were also re-inspected after the appendix layout fix.",
+      "No clipping, missing glyphs, overlapping text or empty continuation-table headers."
     ]
   },
   "paper_source_sha256": {
+    "paper/cumcm2026.sty": "5e69cc102eacd75543887ba23424d9a2a4744b223ca0ae2013d752b1ee41c951",
+    "paper/cumcmthesis.cls": "3d329326a55860990434fbc90516de16fdadc2282413f82b33b7b57079f3f91e",
     "paper/generated/contract-parameters.tex": "6fffc06313e233c273b599a673c2ec42447121f1fde6eff994d59e0c060a86f8",
     "paper/generated/contracts.tex": "7e77f874c65778c39c237ecf287c3e289f939fffdbbd18e0ff91fa35b01c49f5",
     "paper/generated/core-costs.tex": "88d45a6b342a6a93f6e8d0246ac9aa4c3600ec01be2b94d1157c44661977b469",
@@ -86,29 +117,38 @@
     "paper/generated/q1-tables.tex": "afe9809842d4d417a9e2a59fce471b3a6604145560fd332e4fce5e8fa0b8be33",
     "paper/generated/rolling-months.tex": "8ab720b9012b341f3d440661c38841681f524a3f7bc4c90da2d6f41abfa69bce",
     "paper/generated/rolling-summary.tex": "a19848005cb1d28797edfe8d0d35b8534783f3e57e24b40ba5b3a89df3e97d53",
-    "paper/generated/selected-days-q2.tex": "4c096d230cf6db3d8c2965f8af5de2014799181b57efec162c7d14b593003b49",
-    "paper/generated/selected-days-q3.tex": "7c6a4df2c508ef7f0a3b6451b17be8398e11a223098beb2394a41c316798b728",
-    "paper/generated/selected-days-q4-2.tex": "f28b4efa0d2b918cd983ee84a8795f01f273b36f3c3b9c2827d6fbc0763ab686",
-    "paper/generated/selected-days-q4-3.tex": "b551014b57ddb150766af3ad9f004044c1f218662c96ea59b6a89be7a9e022d8",
-    "paper/main.tex": "054e0fd40b940d5d6fd8212e1a3d0da087ed5690b49d98664b89f91459d37bb8",
-    "paper/references.bib": "3abe9df002530e2fb65c7eb324ca4fe5f687537b6d17be3bbca2caaf03774960",
+    "paper/generated/selected-days-q2.tex": "d274c7478b8a500ee52f748bb3473d19105cda02dc65bed541a31636f1f4162c",
+    "paper/generated/selected-days-q3.tex": "a95d605f7ad088eb3c0198627060d8ace5b4d8e78606f03608d401d5fc192ab8",
+    "paper/generated/selected-days-q4-2.tex": "cc2443b91c12f791aa3146ba094b88d17b8e4577ce5fb927ba2380023439be91",
+    "paper/generated/selected-days-q4-3.tex": "16d38229c5b37ec43c5ead72fd3e770dcc551c7bb18c1055a4da7cd7c8621cec",
+    "paper/main.tex": "3c86b211c574b4139f4d0df6031e61fdcbb53c64510d6d562d7ab6d6425e91e8",
+    "paper/references.bib": "e6874ad38abb7e08e78a74ccaaadd08a93003de4171412deb87c15bf75269584",
     "paper/sections/abstract.tex": "8f2154ba9ebafcd61f983aaf01a02315dccfe4beeda902a29c0c315eafd9e45d",
-    "paper/sections/appendix.tex": "c4b00651985b9061f5ef5411720e072f4d2a3904d844b8a71bdc555538b8a7fd",
-    "paper/sections/discussion.tex": "b6b7a0a5564015bcafab18ca62c4000662337a36c11835b72392e8bf2c5be4fb",
-    "paper/sections/forecast.tex": "b6ddaa8d2a760d07234a35bdf3a3b24f941b3de8b61d407358c943bd8df30a18",
-    "paper/sections/model.tex": "fde3439e2ec13a577096324f1178a0e0fa8ca8db26e636f4fb7987ebf85cb12b",
-    "paper/sections/problem.tex": "b484bf32af6e2f0f06153000cf69d443085645bdc1539ab113bca523b4d34f39",
-    "paper/sections/results.tex": "54194667b57a5b8e2ec7621b709d7be7586dbe05296f8e8e9ba78a6429f8e1de",
-    "paper/sections/updates.tex": "9e6ef5aa957df8961b82cede1f0db323caa234e78265d3e001472c00a30a7a9e"
+    "paper/sections/ai-statement.tex": "a20df769399cfa76b526135b808800cba9f54fa43a3c28f4929eb16cce1631a7",
+    "paper/sections/analysis.tex": "205c00236650ae193679a218803fba9a06631d82d4fd0c67d2c2f90e83aec0b5",
+    "paper/sections/appendix.tex": "2f81c5a98ffcdc7b61ae28ff619a7d5e84545a1f98f560384506501ed5fb0715",
+    "paper/sections/assumptions.tex": "3a3d8b13abe89bece3b52c71d3b5a06bcef5a87d683185f7142e6e2a7244e3fa",
+    "paper/sections/body.tex": "261341602a3573201735a74f119bceffcd05f0c07eb7f5df54bc215568663166",
+    "paper/sections/conclusion.tex": "9d7cd9578caa726f7579ed4a97f029135dcfdec4108b0f58cc28884cdb98819e",
+    "paper/sections/evaluation.tex": "121060934b709efec88e86698429fed4e020598854c430e98fe89168acbe7ab1",
+    "paper/sections/model.tex": "b225720bb4ca1a9386ec1941bac74b06e5897819beb5941abf47fedb9bb01685",
+    "paper/sections/physical-model.tex": "30b162c93bd41274925bf7252198ba43ccca0522960c8479260226849aad0c1f",
+    "paper/sections/problem.tex": "8dfeeec1d03a31b6799c0aca8d05c2601cfb845791f427c19814085833936810",
+    "paper/sections/q1.tex": "dfe1a8010a589d8b9e45307e00ddc15f8f977071c3497d58cf80fe5e0ff7ae32",
+    "paper/sections/q2.tex": "902653834df45e7d5e428a6be770923c89f4034979eb08ee99bf39ffce7510fb",
+    "paper/sections/q3.tex": "c067ad0a91d97e6b83cf593f108ed0a8084458d677b6b55407fdd6bfcb6c6685",
+    "paper/sections/q4.tex": "a2dd311ccf8cb7886bb9d60b483af75d9f1ed526300d371d908561fa4ab81c7f",
+    "paper/sections/results.tex": "1faf70a1ec3a5d0db271121cd7efe1ca3031a34bc4fb1cf6bb694b5eb5736a96",
+    "paper/sections/symbols.tex": "9059ab3fdba637a734e2e36e9a088e05500377b0b3c7706b5424b07beb17d95d",
+    "paper/template-source.json": "598293ace671f395939d3c591ac9ef99944a1839782070cba71fd94ad2c4989f"
+  },
+  "build_script_sha256": "c28c5da7f70623eb90c4388a28b79557062b841ee6a4b80ffb8900b5291af059",
+  "figure_sha256": {
+    "outputs/figures/q1-dispatch.png": "1a297466ded0c57e8fb23bbef0e629db82db84f9409918b4b3e1fda9712bbc50",
+    "outputs/figures/monthly-comparison.png": "3c11eaf351546a6e28a225a2ff5d5b2f1593afea20b7a6235c2785620f7cbff4"
   },
   "limits": [
     "Same-year retrospective evaluation; no new annual data.",
     "Economic optimality is established for Q1 only under the stated assumptions."
-  ],
-  "table_count": 31,
-  "build_script_sha256": "4b154267d1bc0ec9eefb58daaecff418bfc91c6ad1de6963cb4ed1a1c9cda7ba",
-  "figure_sha256": {
-    "outputs\\figures\\q1-dispatch.png": "1a297466ded0c57e8fb23bbef0e629db82db84f9409918b4b3e1fda9712bbc50",
-    "outputs\\figures\\monthly-comparison.png": "3c11eaf351546a6e28a225a2ff5d5b2f1593afea20b7a6235c2785620f7cbff4"
-  }
+  ]
 }

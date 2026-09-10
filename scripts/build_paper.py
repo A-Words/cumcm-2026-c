@@ -34,8 +34,26 @@ def main() -> None:
     output = ROOT / "output/pdf"
     build.mkdir(parents=True, exist_ok=True)
     output.mkdir(parents=True, exist_ok=True)
+    # Cross-reference formats can differ after switching document classes.
+    # Start the three-pass build with fresh project-local auxiliary files.
+    for suffix in ("aux", "out", "toc", "lof", "lot"):
+        (build / f"main.{suffix}").unlink(missing_ok=True)
     if not args.skip_tables:
         run([sys.executable, str(ROOT / "scripts/build_paper_tables.py")], ROOT, build / "tables.log")
+    # Editors may compile paper/main.tex automatically and leave same-named aux
+    # files there. Compile an isolated source snapshot so those cannot shadow
+    # this build's references or bibliography.
+    source = build / "source/paper"
+    source.mkdir(parents=True, exist_ok=True)
+    for path in (ROOT / "paper").rglob("*"):
+        if path.is_file() and path.suffix in {".tex", ".bib", ".cls", ".sty"}:
+            target = source / path.relative_to(ROOT / "paper")
+            target.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(path, target)
+    for name in ("q1-dispatch.png", "monthly-comparison.png"):
+        target = source.parent / "outputs/figures" / name
+        target.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(ROOT / "outputs/figures" / name, target)
     xelatex, bibtex = shutil.which("xelatex"), shutil.which("bibtex8") or shutil.which("bibtex")
     if not xelatex or not bibtex:
         raise SystemExit("XeLaTeX and BibTeX must be available on PATH (TeX Live or MiKTeX).")
@@ -44,15 +62,15 @@ def main() -> None:
     command = [xelatex, "-interaction=nonstopmode", "-halt-on-error",
                "-disable-write18" if miktex else "-no-shell-escape",
                f"-output-directory={build}", "main.tex"]
-    run(command, ROOT / "paper", build / "xelatex-1.log")
+    run(command, source, build / "xelatex-1.log")
     env = os.environ.copy()
-    env["BIBINPUTS"] = str(ROOT / "paper") + os.pathsep + env.get("BIBINPUTS", "")
+    env["BIBINPUTS"] = str(source) + os.pathsep + env.get("BIBINPUTS", "")
     bib_command = [bibtex]
     if "bibtex8" in Path(bibtex).stem.lower():
         bib_command.append("--8bit")
     run(bib_command + ["main"], build, build / "bibtex.log", env)
     for index in (2, 3):
-        run(command, ROOT / "paper", build / f"xelatex-{index}.log")
+        run(command, source, build / f"xelatex-{index}.log")
     log = (build / "main.log").read_text(encoding="utf-8", errors="replace")
     defects = [line for line in log.splitlines() if re.search(
         r"Overfull \\[hv]box|Missing character:|undefined|Rerun to get|Label\(s\) may have changed", line)]
