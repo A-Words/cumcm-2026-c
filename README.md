@@ -2,6 +2,8 @@
 
 四问的模型、思路、指定日期表格、数值结果、敏感性与边界见 **[完整解答](docs/solution.md)**。已按附件模板生成五个结果文件。
 
+已新增 [LaTeX 论文 PDF](output/pdf/microgrid-paper.pdf)，可编辑入口为 [paper/main.tex](paper/main.tex)。论文表格直接从已验证结果生成，完整覆盖四问与两轮补充实验；[撰写记录与编译说明](docs/paper-writing-notes.md)、[文献核实笔记](docs/literature-notes.md) 记录写作取舍及参考资料。运行 `python scripts/build_paper.py` 可重新核对表格并编译论文。
+
 第一轮修订针对预报价值归因、缺少简单基准和增购撤回合约风险，处理依据见 [评审回应](docs/review-response.md)。问题 3、4-3 增加历史光伏/附件 3 融合候选；新小时预报贡献以保留重规划、当前库存、负载修正和当前光伏锚点的严格对照衡量。逐笔交易合约分别报告冻结主调度重计费与重新优化，不能混为一项结果。
 
 第二轮复审已关闭上述三项意见。本轮另补价格感知反馈基准、4—12 月按上月选参的滚动实验及未来年度数据入口，见 [第二轮回应](docs/round2-response.md) 与 [外部验证协议](docs/external-validation-protocol.md)。这些补充独立报告，不根据再次查看同年费用的结果改选下表主方案；真正未见过的外部年度数据仍未获得。
@@ -98,5 +100,7 @@ data/raw/                原始附件与空白模板
 data/processed/          对齐数组、统计与源文件哈希
 scripts/                 预处理、预测/优化、回测、验证与导出
 docs/                    完整解答、建模过程和审查
+paper/                   LaTeX 正文、参考文献与自动生成表格
+output/pdf/              排版后的论文 PDF
 outputs/                 五个 Excel、调度归档、汇总、验收与图表
 ```

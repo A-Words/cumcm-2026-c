@@ -1,0 +1,53 @@
+\section{问题三与四：日内信息更新和购电调整}
+\subsection{小时光伏预报的因果融合}
+在00、06、12、18点发布预报后，只接收此时及此前已发布的附件三记录。发布时刻$h$后的第$k$个小时预报对应绝对目标$h+k$，不能把不同发布行的第$k$列当成同一时刻。插值以最近一个已完成区间的光伏观测为当前锚点，连接可用的未来整点值，生成十分钟预测$\widehat P^{V,F}$；首日无历史锚点取0。到当日24点即截断。
+
+为平衡历史稳定性与预报更新，构造
+\begin{equation}
+ \widehat P^V=(1-\lambda)\widehat P^{V,H}+\lambda\widehat P^{V,F},
+ \qquad\lambda\in\{0,0.25,0.50,0.75,1\}.\label{eq:fusion}
+\end{equation}
+日内发布时刻$s\in\{36,72,108\}$，用已经完成的最近18段更新负荷水平：
+\begin{equation}
+ \widehat P^{L,(s)}_{d,t}=\widehat P^L_{d,t}\,
+ \operatorname{clip}\!\left(
+ \frac{\overline{P^L_{d,s-18:s}}}{\max(\overline{\widehat P^L_{d,s-18:s}},1)},0.75,1.25\right),\quad t\ge s.
+\end{equation}
+横线上标区间表示该区间均值，$\operatorname{clip}$将比例限制在给定范围。所有更新都排除当前未完成区间及之后的真实数据。
+
+将5个权重与6个分位组成30个候选，仍只用1月15—31日费用选参。表\ref{tab:jan-selection}对每个权重列出其最优分位，问题三和问题4-3均选择$(\lambda,\alpha)=(0.50,0.65)$。实际主策略的1月热启动固定为纯附件三、0.80分位和三次日内调整，2月1日才切换参数。候选回放与正式热启动是两条明确分开的流程。
+\input{generated/jan-selection}
+
+\subsection{主合约下的日内重规划}
+题目给出了增购、减购和紧急电的加价，但对多次调整的累计方式存在解释空间。本文主合约按同一交付段相对零时计划的最终净调整收费：
+\begin{equation}
+ C_3=\sum_{d,t}\left[p_tg_{d,t}+1.5p_t\pos{q_{d,t}-g_{d,t}}
+       +0.5p_t\pos{g_{d,t}-q_{d,t}}+5p_te_{d,t}\right].\label{eq:netbill}
+\end{equation}
+原计划款不退款。该解释把未交付增购视为可撤回的计划申报，尚未交付时可以重新改报；并非所有交易市场都采用这一规则。
+
+在免费不利用余电的模型中，把某段$q_t<g_t$提高至$g_t$、相应增加未利用量，可以保持储能轨迹并免去减购服务费，因此不减购原计划具有弱优势。日内时刻$s$只优化$t\ge s$，以当前实际$S_s$为起点，解
+\begin{equation}
+ \min\sum_{t=s}^{143}1.5\widehat p_t(q_t-g_t),\qquad
+ q_t\ge g_t,\quad S_{144}\ge6000,\label{eq:replan}
+\end{equation}
+并满足风险净负荷下的物理约束。已交付段保持不变。由于基准始终为$g_t$，新计划可低于此前尚未交付的增购申报；最终只在交付时按式\eqref{eq:netbill}收取一次调整费。问题三使用已知固定价格，问题4-3使用下述因果价格预测。
+
+\subsection{问题四的未知价格与统一执行流程}
+在波动价格情形，将历史价格按负荷相同的同星期规则加权得到$\overline p_{d,t}$；不足一周时使用衰减0.8的近期日均。首日各发布时间均沿用附件一固定价格，不作日内比例修正。对$d\ge1$，零时取$\widehat p_{d,t}=\max(\overline p_{d,t},0.001)$；日内更新为
+\begin{equation}
+ \widehat p^{(s)}_{d,t}=\max\left\{0.001,\overline p_{d,t}\,
+ \operatorname{clip}\!\left(
+ \frac{\overline{p_{d,s-18:s}}}{\max(\overline{\overline p_{d,s-18:s}},0.01)},0.5,1.5\right)\right\},\quad t\ge s.
+\end{equation}
+式中内层$\overline p$是历史价格曲线，外层横线为最近18段均值。问题4-2与问题二有相同决策频率，仅在零时形成价格预测；问题4-3允许三次日内更新。两种情况下，计划用$\widehat p$优化，而账单用交付时已经实现的$p$逐段重算。问题4-2选择$\alpha=0.80$，问题4-3采用上述融合参数。
+
+统一运行流程如下：
+\begin{enumerate}
+ \item 零时继承真实库存，构建只含可用历史的负荷、光伏及价格预测，计算风险净负荷并生成原计划。
+ \item 对每个十分钟段，若其起点是允许的发布时间，先读取已发布预报和已完成区间观测，以当前实际库存重规划剩余常规购电。
+ \item 在交付段实际需求到达后，执行充放电反馈和必要的紧急购电，计算本段电费并更新库存。
+ \item 日末将真实库存原样传递至次日。1月用于初始化和选参，2月起累计正式账单。
+\end{enumerate}
+离线预先计算预测数组只用于加速，任何决策取数仍受日期及发布时间约束。因果检查通过改变尚未发生的实测或尚未发布的预报，验证当前决策的输入不变。
+\FloatBarrier

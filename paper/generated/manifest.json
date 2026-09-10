@@ -1,0 +1,3329 @@
+{
+  "schema_version": 1,
+  "status": "passed",
+  "generator": "scripts/build_paper_tables.py",
+  "generator_sha256": "4b829cd7a0ed39799696687ac01bb206da43f57dc1a1e3d220dfade7f98e9687",
+  "source_sha256": {
+    "outputs/summary.json": "15e925db6ebee72733ed644954485c06b79660f0d07ea0e137b7323b8f5711b9",
+    "outputs/results.json": "4b09d15f7f749bea2fcc6804502afa0d4beb9b385a64d756542303bc6d07b9ba",
+    "outputs/dispatch.npz": "3556ad8cfd01f801aec0bcd557085e1df7511f2c2e9a3b281b4d25aedcc372ec",
+    "outputs/revision-experiments.json": "588b6b9fac8e83267e69e06836c7d2c60301e32827998f90f8dc70388e12c1d2",
+    "outputs/revision-dispatch.npz": "338dfa33627f8750da46524dbebb9aa65980b2ce41e772f65d7bc9fba23e6288",
+    "outputs/validation.json": "96f3a08a9a63a8bd10a995401686fef4f4ec9985d4a9704ec1a03a48dd69e417",
+    "outputs/revision-validation.json": "c05a89590c0beb39f3fede9d8e226e3a37d0c5f6b0d7cca04b19f8d72f2c5056",
+    "outputs/round2/experiments.json": "215b3198883e74e9706c7cd2a85ee8fcb2900cc731238efabc9c11c223e7e67a",
+    "outputs/round2/dispatch.npz": "f28c28c314225e32c1c5492411e313d28a6e8d85382f3f9e9e864bbd0b7ab28a",
+    "outputs/round2/validation.json": "64e2f138dd81d6ce150ec47128120e8a80be724cc77020e7cba064c9b67649a4",
+    "outputs/q1-milp-verification.json": "62daf052d8b35082450b12b130d400e66e6a55d01f5f533bdd7b64cae4e066d4",
+    "outputs/workbook-verification.json": "088ad7376e96aee1f6d458199bab09f0c9d272e3f4631572b447513e5b746185",
+    "data/processed/data.npz": "322d240bf033b2051cb0858bb1f5027a4439a1c06ec45812a6a0c47f1c5bcb1f"
+  },
+  "generated_sha256": {
+    "numbers.tex": "8ce718910a7d5bd21f4fd01f876ddab0fc58896cc3df16cc7a4dd98bd44a3cc1",
+    "core-costs.tex": "88d45a6b342a6a93f6e8d0246ac9aa4c3600ec01be2b94d1157c44661977b469",
+    "core-energy.tex": "11dc0f9b5ef0013c6384544981582ae0b2c68664fe9ebe4de158972d20fe67cd",
+    "core-storage.tex": "0d5f99b7dff55adfc7e43e987d8f75e2106354ea8d6b4a1831da9426b8e858e1",
+    "q1-tables.tex": "afe9809842d4d417a9e2a59fce471b3a6604145560fd332e4fce5e8fa0b8be33",
+    "jan-selection.tex": "a0662277b0301d58a5d9d15eb63de611305eb0fdae210ad4c54e9515fdf89d7e",
+    "jan-history-selection.tex": "f001de1321f9663655ef488aa48ef1752da49b420185ee39c08a0a0b7db02f96",
+    "forecast-baselines.tex": "5411cfb003a613162a1d90e0388cb3980701c779681726f761caeb5cb49aafd2",
+    "hourly-subsets.tex": "4e737c960bdabc894eaf9019688d675ad5552f1acde09349b220c161d0d84a1f",
+    "hourly-marginals.tex": "802b0af197cab0d67cd686f0054bafe5b553d714d271c6e28fa9cb97e02b7dd4",
+    "contracts.tex": "7e77f874c65778c39c237ecf287c3e289f939fffdbbd18e0ff91fa35b01c49f5",
+    "contract-parameters.tex": "6fffc06313e233c273b599a673c2ec42447121f1fde6eff994d59e0c060a86f8",
+    "mpc-comparison.tex": "60cc3e8dba927debab174ee7e93a0eeaa557dadbaf3634712aa67c2988ebb803",
+    "mpc-inventory.tex": "3d43f81afe0b68d5298b4a36edf19d5ec09beb3c2cf01fc9de057f2afc1456b1",
+    "rolling-summary.tex": "a19848005cb1d28797edfe8d0d35b8534783f3e57e24b40ba5b3a89df3e97d53",
+    "rolling-months.tex": "8ab720b9012b341f3d440661c38841681f524a3f7bc4c90da2d6f41abfa69bce",
+    "selected-days-q2.tex": "4c096d230cf6db3d8c2965f8af5de2014799181b57efec162c7d14b593003b49",
+    "selected-days-q3.tex": "7c6a4df2c508ef7f0a3b6451b17be8398e11a223098beb2394a41c316798b728",
+    "selected-days-q4-2.tex": "f28b4efa0d2b918cd983ee84a8795f01f273b36f3c3b9c2827d6fbc0763ab686",
+    "selected-days-q4-3.tex": "b551014b57ddb150766af3ad9f004044c1f218662c96ea59b6a89be7a9e022d8",
+    "table-data.json": "83f9a5293594550a3132d0e1aaf68a394329647343bcedbe9fcc3c8617527886"
+  },
+  "specified_date_count": 16,
+  "check_count": 656,
+  "checks": [
+    {
+      "name": "q2.plan_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q2.adjusted_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q2.emergency_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q2.charge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q2.discharge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q2.spill_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q2.plan_cost",
+      "max_abs_error": 5.587935447692871e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q2.adjustment_cost",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q2.emergency_cost",
+      "max_abs_error": 3.4924596548080444e-10,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q2.total_cost",
+      "max_abs_error": 3.725290298461914e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q2.start_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q2.end_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q3.plan_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q3.adjusted_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q3.emergency_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q3.charge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q3.discharge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q3.spill_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q3.plan_cost",
+      "max_abs_error": 7.450580596923828e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q3.adjustment_cost",
+      "max_abs_error": 1.1641532182693481e-10,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q3.emergency_cost",
+      "max_abs_error": 5.820766091346741e-11,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q3.total_cost",
+      "max_abs_error": 5.587935447692871e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q3.start_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q3.end_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_2.plan_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_2.adjusted_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_2.emergency_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_2.charge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_2.discharge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_2.spill_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_2.plan_cost",
+      "max_abs_error": 7.450580596923828e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_2.adjustment_cost",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_2.emergency_cost",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_2.total_cost",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_2.start_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_2.end_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_3.plan_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_3.adjusted_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_3.emergency_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_3.charge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_3.discharge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_3.spill_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_3.plan_cost",
+      "max_abs_error": 1.4901161193847656e-08,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_3.adjustment_cost",
+      "max_abs_error": 5.820766091346741e-10,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_3.emergency_cost",
+      "max_abs_error": 1.0186340659856796e-10,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_3.total_cost",
+      "max_abs_error": 3.725290298461914e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_3.start_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_3.end_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy.plan_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy.adjusted_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy.emergency_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy.charge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy.discharge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy.spill_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy.plan_cost",
+      "max_abs_error": 1.862645149230957e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy.adjustment_cost",
+      "max_abs_error": 1.1641532182693481e-10,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy.emergency_cost",
+      "max_abs_error": 1.4551915228366852e-11,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy.total_cost",
+      "max_abs_error": 5.587935447692871e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy.start_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy.end_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_historical.plan_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_historical.adjusted_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_historical.emergency_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_historical.charge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_historical.discharge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_historical.spill_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_historical.plan_cost",
+      "max_abs_error": 5.587935447692871e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_historical.adjustment_cost",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_historical.emergency_cost",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_historical.total_cost",
+      "max_abs_error": 1.862645149230957e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_historical.start_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_historical.end_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected.plan_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected.adjusted_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected.emergency_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected.charge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected.discharge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected.spill_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected.plan_cost",
+      "max_abs_error": 7.450580596923828e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected.adjustment_cost",
+      "max_abs_error": 1.1641532182693481e-10,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected.emergency_cost",
+      "max_abs_error": 5.820766091346741e-11,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected.total_cost",
+      "max_abs_error": 5.587935447692871e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected.start_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected.end_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_legacy.plan_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_legacy.adjusted_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_legacy.emergency_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_legacy.charge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_legacy.discharge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_legacy.spill_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_legacy.plan_cost",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_legacy.adjustment_cost",
+      "max_abs_error": 3.4924596548080444e-10,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_legacy.emergency_cost",
+      "max_abs_error": 4.3655745685100555e-11,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_legacy.total_cost",
+      "max_abs_error": 5.587935447692871e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_legacy.start_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_legacy.end_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_historical.plan_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_historical.adjusted_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_historical.emergency_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_historical.charge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_historical.discharge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_historical.spill_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_historical.plan_cost",
+      "max_abs_error": 3.725290298461914e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_historical.adjustment_cost",
+      "max_abs_error": 4.656612873077393e-10,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_historical.emergency_cost",
+      "max_abs_error": 2.9103830456733704e-11,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_historical.total_cost",
+      "max_abs_error": 1.862645149230957e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_historical.start_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_historical.end_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_selected.plan_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_selected.adjusted_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_selected.emergency_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_selected.charge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_selected.discharge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_selected.spill_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_selected.plan_cost",
+      "max_abs_error": 1.4901161193847656e-08,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_selected.adjustment_cost",
+      "max_abs_error": 5.820766091346741e-10,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_selected.emergency_cost",
+      "max_abs_error": 1.0186340659856796e-10,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_selected.total_cost",
+      "max_abs_error": 3.725290298461914e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_selected.start_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_selected.end_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_000.plan_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_000.adjusted_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_000.emergency_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_000.charge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_000.discharge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_000.spill_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_000.plan_cost",
+      "max_abs_error": 7.450580596923828e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_000.adjustment_cost",
+      "max_abs_error": 2.3283064365386963e-10,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_000.emergency_cost",
+      "max_abs_error": 2.9103830456733704e-11,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_000.total_cost",
+      "max_abs_error": 3.725290298461914e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_000.start_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_000.end_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_001.plan_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_001.adjusted_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_001.emergency_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_001.charge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_001.discharge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_001.spill_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_001.plan_cost",
+      "max_abs_error": 7.450580596923828e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_001.adjustment_cost",
+      "max_abs_error": 1.1641532182693481e-10,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_001.emergency_cost",
+      "max_abs_error": 2.9103830456733704e-11,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_001.total_cost",
+      "max_abs_error": 5.587935447692871e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_001.start_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_001.end_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_010.plan_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_010.adjusted_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_010.emergency_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_010.charge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_010.discharge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_010.spill_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_010.plan_cost",
+      "max_abs_error": 1.862645149230957e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_010.adjustment_cost",
+      "max_abs_error": 3.4924596548080444e-10,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_010.emergency_cost",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_010.total_cost",
+      "max_abs_error": 5.587935447692871e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_010.start_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_010.end_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_011.plan_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_011.adjusted_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_011.emergency_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_011.charge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_011.discharge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_011.spill_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_011.plan_cost",
+      "max_abs_error": 3.725290298461914e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_011.adjustment_cost",
+      "max_abs_error": 2.3283064365386963e-10,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_011.emergency_cost",
+      "max_abs_error": 5.820766091346741e-11,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_011.total_cost",
+      "max_abs_error": 3.725290298461914e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_011.start_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_011.end_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_100.plan_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_100.adjusted_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_100.emergency_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_100.charge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_100.discharge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_100.spill_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_100.plan_cost",
+      "max_abs_error": 3.725290298461914e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_100.adjustment_cost",
+      "max_abs_error": 1.1641532182693481e-10,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_100.emergency_cost",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_100.total_cost",
+      "max_abs_error": 9.313225746154785e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_100.start_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_100.end_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_101.plan_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_101.adjusted_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_101.emergency_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_101.charge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_101.discharge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_101.spill_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_101.plan_cost",
+      "max_abs_error": 3.725290298461914e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_101.adjustment_cost",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_101.emergency_cost",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_101.total_cost",
+      "max_abs_error": 9.313225746154785e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_101.start_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_101.end_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_110.plan_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_110.adjusted_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_110.emergency_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_110.charge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_110.discharge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_110.spill_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_110.plan_cost",
+      "max_abs_error": 5.587935447692871e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_110.adjustment_cost",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_110.emergency_cost",
+      "max_abs_error": 2.9103830456733704e-11,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_110.total_cost",
+      "max_abs_error": 3.725290298461914e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_110.start_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_info_110.end_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_000.plan_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_000.adjusted_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_000.emergency_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_000.charge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_000.discharge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_000.spill_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_000.plan_cost",
+      "max_abs_error": 1.862645149230957e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_000.adjustment_cost",
+      "max_abs_error": 1.1641532182693481e-10,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_000.emergency_cost",
+      "max_abs_error": 1.4551915228366852e-10,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_000.total_cost",
+      "max_abs_error": 7.450580596923828e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_000.start_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_000.end_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_001.plan_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_001.adjusted_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_001.emergency_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_001.charge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_001.discharge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_001.spill_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_001.plan_cost",
+      "max_abs_error": 1.862645149230957e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_001.adjustment_cost",
+      "max_abs_error": 1.1641532182693481e-10,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_001.emergency_cost",
+      "max_abs_error": 1.1641532182693481e-10,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_001.total_cost",
+      "max_abs_error": 7.450580596923828e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_001.start_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_001.end_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_010.plan_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_010.adjusted_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_010.emergency_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_010.charge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_010.discharge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_010.spill_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_010.plan_cost",
+      "max_abs_error": 7.450580596923828e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_010.adjustment_cost",
+      "max_abs_error": 2.3283064365386963e-10,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_010.emergency_cost",
+      "max_abs_error": 1.1641532182693481e-10,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_010.total_cost",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_010.start_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_010.end_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_011.plan_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_011.adjusted_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_011.emergency_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_011.charge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_011.discharge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_011.spill_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_011.plan_cost",
+      "max_abs_error": 7.450580596923828e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_011.adjustment_cost",
+      "max_abs_error": 3.4924596548080444e-10,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_011.emergency_cost",
+      "max_abs_error": 1.1641532182693481e-10,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_011.total_cost",
+      "max_abs_error": 1.862645149230957e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_011.start_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_011.end_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_100.plan_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_100.adjusted_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_100.emergency_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_100.charge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_100.discharge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_100.spill_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_100.plan_cost",
+      "max_abs_error": 1.862645149230957e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_100.adjustment_cost",
+      "max_abs_error": 4.656612873077393e-10,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_100.emergency_cost",
+      "max_abs_error": 5.820766091346741e-11,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_100.total_cost",
+      "max_abs_error": 5.587935447692871e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_100.start_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_100.end_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_101.plan_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_101.adjusted_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_101.emergency_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_101.charge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_101.discharge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_101.spill_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_101.plan_cost",
+      "max_abs_error": 3.725290298461914e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_101.adjustment_cost",
+      "max_abs_error": 3.4924596548080444e-10,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_101.emergency_cost",
+      "max_abs_error": 5.820766091346741e-11,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_101.total_cost",
+      "max_abs_error": 5.587935447692871e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_101.start_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_101.end_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_110.plan_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_110.adjusted_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_110.emergency_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_110.charge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_110.discharge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_110.spill_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_110.plan_cost",
+      "max_abs_error": 7.450580596923828e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_110.adjustment_cost",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_110.emergency_cost",
+      "max_abs_error": 5.820766091346741e-11,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_110.total_cost",
+      "max_abs_error": 5.587935447692871e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_110.start_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_selected_info_110.end_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_no_updates.plan_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_no_updates.adjusted_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_no_updates.emergency_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_no_updates.charge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_no_updates.discharge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_no_updates.spill_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_no_updates.plan_cost",
+      "max_abs_error": 3.725290298461914e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_no_updates.adjustment_cost",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_no_updates.emergency_cost",
+      "max_abs_error": 6.984919309616089e-10,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_no_updates.total_cost",
+      "max_abs_error": 1.30385160446167e-08,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_no_updates.start_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_legacy_no_updates.end_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_ladder_replan.plan_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_ladder_replan.adjusted_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_ladder_replan.emergency_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_ladder_replan.charge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_ladder_replan.discharge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_ladder_replan.spill_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_ladder_replan.plan_cost",
+      "max_abs_error": 7.450580596923828e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_ladder_replan.adjustment_cost",
+      "max_abs_error": 1.1641532182693481e-10,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_ladder_replan.emergency_cost",
+      "max_abs_error": 1.1641532182693481e-10,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_ladder_replan.total_cost",
+      "max_abs_error": 5.587935447692871e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_ladder_replan.start_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_ladder_replan.end_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_ladder_load.plan_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_ladder_load.adjusted_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_ladder_load.emergency_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_ladder_load.charge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_ladder_load.discharge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_ladder_load.spill_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_ladder_load.plan_cost",
+      "max_abs_error": 1.30385160446167e-08,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_ladder_load.adjustment_cost",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_ladder_load.emergency_cost",
+      "max_abs_error": 5.820766091346741e-11,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_ladder_load.total_cost",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_ladder_load.start_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_ladder_load.end_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_per_revision.plan_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_per_revision.adjusted_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_per_revision.emergency_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_per_revision.charge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_per_revision.discharge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_per_revision.spill_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_per_revision.plan_cost",
+      "max_abs_error": 9.313225746154785e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_per_revision.adjustment_cost",
+      "max_abs_error": 4.656612873077393e-10,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_per_revision.emergency_cost",
+      "max_abs_error": 5.820766091346741e-11,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_per_revision.total_cost",
+      "max_abs_error": 3.725290298461914e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_per_revision.start_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_per_revision.end_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_per_revision.plan_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_per_revision.adjusted_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_per_revision.emergency_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_per_revision.charge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_per_revision.discharge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_per_revision.spill_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_per_revision.plan_cost",
+      "max_abs_error": 3.725290298461914e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_per_revision.adjustment_cost",
+      "max_abs_error": 4.656612873077393e-10,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_per_revision.emergency_cost",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_per_revision.total_cost",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_per_revision.start_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_per_revision.end_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_historical_fixed.plan_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_historical_fixed.adjusted_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_historical_fixed.emergency_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_historical_fixed.charge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_historical_fixed.discharge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_historical_fixed.spill_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_historical_fixed.plan_cost",
+      "max_abs_error": 5.587935447692871e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_historical_fixed.adjustment_cost",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_historical_fixed.emergency_cost",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_historical_fixed.total_cost",
+      "max_abs_error": 1.862645149230957e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_historical_fixed.start_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_historical_fixed.end_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_historical_fixed.plan_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_historical_fixed.adjusted_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_historical_fixed.emergency_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_historical_fixed.charge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_historical_fixed.discharge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_historical_fixed.spill_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_historical_fixed.plan_cost",
+      "max_abs_error": 3.725290298461914e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_historical_fixed.adjustment_cost",
+      "max_abs_error": 4.656612873077393e-10,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_historical_fixed.emergency_cost",
+      "max_abs_error": 2.9103830456733704e-11,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_historical_fixed.total_cost",
+      "max_abs_error": 1.862645149230957e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_historical_fixed.start_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_historical_fixed.end_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q2_greedy.plan_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q2_greedy.adjusted_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q2_greedy.emergency_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q2_greedy.charge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q2_greedy.discharge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q2_greedy.spill_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q2_greedy.plan_cost",
+      "max_abs_error": 5.587935447692871e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q2_greedy.adjustment_cost",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q2_greedy.emergency_cost",
+      "max_abs_error": 3.4924596548080444e-10,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q2_greedy.total_cost",
+      "max_abs_error": 3.725290298461914e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q2_greedy.start_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q2_greedy.end_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q2_mpc.plan_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q2_mpc.adjusted_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q2_mpc.emergency_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q2_mpc.charge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q2_mpc.discharge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q2_mpc.spill_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q2_mpc.plan_cost",
+      "max_abs_error": 5.587935447692871e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q2_mpc.adjustment_cost",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q2_mpc.emergency_cost",
+      "max_abs_error": 5.820766091346741e-10,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q2_mpc.total_cost",
+      "max_abs_error": 1.862645149230957e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q2_mpc.start_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q2_mpc.end_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q3_greedy.plan_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q3_greedy.adjusted_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q3_greedy.emergency_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q3_greedy.charge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q3_greedy.discharge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q3_greedy.spill_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q3_greedy.plan_cost",
+      "max_abs_error": 7.450580596923828e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q3_greedy.adjustment_cost",
+      "max_abs_error": 1.1641532182693481e-10,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q3_greedy.emergency_cost",
+      "max_abs_error": 5.820766091346741e-11,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q3_greedy.total_cost",
+      "max_abs_error": 5.587935447692871e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q3_greedy.start_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q3_greedy.end_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q3_mpc.plan_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q3_mpc.adjusted_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q3_mpc.emergency_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q3_mpc.charge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q3_mpc.discharge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q3_mpc.spill_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q3_mpc.plan_cost",
+      "max_abs_error": 1.862645149230957e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q3_mpc.adjustment_cost",
+      "max_abs_error": 1.7462298274040222e-10,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q3_mpc.emergency_cost",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q3_mpc.total_cost",
+      "max_abs_error": 1.862645149230957e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q3_mpc.start_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q3_mpc.end_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q4_2_greedy.plan_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q4_2_greedy.adjusted_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q4_2_greedy.emergency_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q4_2_greedy.charge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q4_2_greedy.discharge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q4_2_greedy.spill_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q4_2_greedy.plan_cost",
+      "max_abs_error": 7.450580596923828e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q4_2_greedy.adjustment_cost",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q4_2_greedy.emergency_cost",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q4_2_greedy.total_cost",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q4_2_greedy.start_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q4_2_greedy.end_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q4_2_mpc.plan_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q4_2_mpc.adjusted_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q4_2_mpc.emergency_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q4_2_mpc.charge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q4_2_mpc.discharge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q4_2_mpc.spill_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q4_2_mpc.plan_cost",
+      "max_abs_error": 1.862645149230957e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q4_2_mpc.adjustment_cost",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q4_2_mpc.emergency_cost",
+      "max_abs_error": 5.820766091346741e-10,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q4_2_mpc.total_cost",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q4_2_mpc.start_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q4_2_mpc.end_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q4_3_greedy.plan_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q4_3_greedy.adjusted_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q4_3_greedy.emergency_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q4_3_greedy.charge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q4_3_greedy.discharge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q4_3_greedy.spill_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q4_3_greedy.plan_cost",
+      "max_abs_error": 1.4901161193847656e-08,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q4_3_greedy.adjustment_cost",
+      "max_abs_error": 5.820766091346741e-10,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q4_3_greedy.emergency_cost",
+      "max_abs_error": 1.0186340659856796e-10,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q4_3_greedy.total_cost",
+      "max_abs_error": 3.725290298461914e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q4_3_greedy.start_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q4_3_greedy.end_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q4_3_mpc.plan_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q4_3_mpc.adjusted_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q4_3_mpc.emergency_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q4_3_mpc.charge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q4_3_mpc.discharge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q4_3_mpc.spill_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q4_3_mpc.plan_cost",
+      "max_abs_error": 9.313225746154785e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q4_3_mpc.adjustment_cost",
+      "max_abs_error": 1.1641532182693481e-10,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q4_3_mpc.emergency_cost",
+      "max_abs_error": 1.7462298274040222e-10,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q4_3_mpc.total_cost",
+      "max_abs_error": 5.587935447692871e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q4_3_mpc.start_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.feedback_q4_3_mpc.end_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q3_fixed.plan_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q3_fixed.adjusted_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q3_fixed.emergency_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q3_fixed.charge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q3_fixed.discharge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q3_fixed.spill_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q3_fixed.plan_cost",
+      "max_abs_error": 1.862645149230957e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q3_fixed.adjustment_cost",
+      "max_abs_error": 5.820766091346741e-11,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q3_fixed.emergency_cost",
+      "max_abs_error": 7.275957614183426e-11,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q3_fixed.total_cost",
+      "max_abs_error": 3.725290298461914e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q3_fixed.start_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q3_fixed.end_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q3_adaptive.plan_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q3_adaptive.adjusted_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q3_adaptive.emergency_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q3_adaptive.charge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q3_adaptive.discharge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q3_adaptive.spill_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q3_adaptive.plan_cost",
+      "max_abs_error": 1.862645149230957e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q3_adaptive.adjustment_cost",
+      "max_abs_error": 2.3283064365386963e-10,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q3_adaptive.emergency_cost",
+      "max_abs_error": 2.0372681319713593e-10,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q3_adaptive.total_cost",
+      "max_abs_error": 1.862645149230957e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q3_adaptive.start_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q3_adaptive.end_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q3_historical.plan_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q3_historical.adjusted_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q3_historical.emergency_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q3_historical.charge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q3_historical.discharge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q3_historical.spill_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q3_historical.plan_cost",
+      "max_abs_error": 1.862645149230957e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q3_historical.adjustment_cost",
+      "max_abs_error": 2.3283064365386963e-10,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q3_historical.emergency_cost",
+      "max_abs_error": 2.9103830456733704e-11,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q3_historical.total_cost",
+      "max_abs_error": 3.725290298461914e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q3_historical.start_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q3_historical.end_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q4_3_fixed.plan_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q4_3_fixed.adjusted_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q4_3_fixed.emergency_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q4_3_fixed.charge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q4_3_fixed.discharge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q4_3_fixed.spill_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q4_3_fixed.plan_cost",
+      "max_abs_error": 7.450580596923828e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q4_3_fixed.adjustment_cost",
+      "max_abs_error": 3.4924596548080444e-10,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q4_3_fixed.emergency_cost",
+      "max_abs_error": 8.731149137020111e-11,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q4_3_fixed.total_cost",
+      "max_abs_error": 3.725290298461914e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q4_3_fixed.start_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q4_3_fixed.end_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q4_3_adaptive.plan_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q4_3_adaptive.adjusted_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q4_3_adaptive.emergency_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q4_3_adaptive.charge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q4_3_adaptive.discharge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q4_3_adaptive.spill_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q4_3_adaptive.plan_cost",
+      "max_abs_error": 1.862645149230957e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q4_3_adaptive.adjustment_cost",
+      "max_abs_error": 4.656612873077393e-10,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q4_3_adaptive.emergency_cost",
+      "max_abs_error": 2.9103830456733704e-11,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q4_3_adaptive.total_cost",
+      "max_abs_error": 1.862645149230957e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q4_3_adaptive.start_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q4_3_adaptive.end_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q4_3_historical.plan_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q4_3_historical.adjusted_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q4_3_historical.emergency_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q4_3_historical.charge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q4_3_historical.discharge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q4_3_historical.spill_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q4_3_historical.plan_cost",
+      "max_abs_error": 1.862645149230957e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q4_3_historical.adjustment_cost",
+      "max_abs_error": 3.4924596548080444e-10,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q4_3_historical.emergency_cost",
+      "max_abs_error": 5.820766091346741e-11,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q4_3_historical.total_cost",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q4_3_historical.start_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.rolling_q4_3_historical.end_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q1.json_plan",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q1.json_charge",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q1.json_discharge",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q1.total_grid",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q2.2025-03-20.plan",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q2.2025-03-20.charge",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q2.2025-03-20.discharge",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q2.2025-03-20.emergency",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q2.2025-03-20.adjusted",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q2.2025-03-20.bill",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q2.2025-03-20.event_sum",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q2.2025-06-21.plan",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q2.2025-06-21.charge",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q2.2025-06-21.discharge",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q2.2025-06-21.emergency",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q2.2025-06-21.adjusted",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q2.2025-06-21.bill",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q2.2025-06-21.event_sum",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q2.2025-09-23.plan",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q2.2025-09-23.charge",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q2.2025-09-23.discharge",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q2.2025-09-23.emergency",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q2.2025-09-23.adjusted",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q2.2025-09-23.bill",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q2.2025-09-23.event_sum",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q2.2025-12-21.plan",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q2.2025-12-21.charge",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q2.2025-12-21.discharge",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q2.2025-12-21.emergency",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q2.2025-12-21.adjusted",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q2.2025-12-21.bill",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q2.2025-12-21.event_sum",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q3.2025-03-20.plan",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q3.2025-03-20.charge",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q3.2025-03-20.discharge",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q3.2025-03-20.emergency",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q3.2025-03-20.adjusted",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q3.2025-03-20.bill",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q3.2025-03-20.event_sum",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q3.2025-06-21.plan",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q3.2025-06-21.charge",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q3.2025-06-21.discharge",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q3.2025-06-21.emergency",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q3.2025-06-21.adjusted",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q3.2025-06-21.bill",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q3.2025-06-21.event_sum",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q3.2025-09-23.plan",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q3.2025-09-23.charge",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q3.2025-09-23.discharge",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q3.2025-09-23.emergency",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q3.2025-09-23.adjusted",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q3.2025-09-23.bill",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q3.2025-09-23.event_sum",
+      "max_abs_error": 2.842170943040401e-14,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q3.2025-12-21.plan",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q3.2025-12-21.charge",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q3.2025-12-21.discharge",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q3.2025-12-21.emergency",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q3.2025-12-21.adjusted",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q3.2025-12-21.bill",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q3.2025-12-21.event_sum",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_2.2025-03-20.plan",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_2.2025-03-20.charge",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_2.2025-03-20.discharge",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_2.2025-03-20.emergency",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_2.2025-03-20.adjusted",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_2.2025-03-20.bill",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_2.2025-03-20.event_sum",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_2.2025-06-21.plan",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_2.2025-06-21.charge",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_2.2025-06-21.discharge",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_2.2025-06-21.emergency",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_2.2025-06-21.adjusted",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_2.2025-06-21.bill",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_2.2025-06-21.event_sum",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_2.2025-09-23.plan",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_2.2025-09-23.charge",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_2.2025-09-23.discharge",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_2.2025-09-23.emergency",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_2.2025-09-23.adjusted",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_2.2025-09-23.bill",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_2.2025-09-23.event_sum",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_2.2025-12-21.plan",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_2.2025-12-21.charge",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_2.2025-12-21.discharge",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_2.2025-12-21.emergency",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_2.2025-12-21.adjusted",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_2.2025-12-21.bill",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_2.2025-12-21.event_sum",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_3.2025-03-20.plan",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_3.2025-03-20.charge",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_3.2025-03-20.discharge",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_3.2025-03-20.emergency",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_3.2025-03-20.adjusted",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_3.2025-03-20.bill",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_3.2025-03-20.event_sum",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_3.2025-06-21.plan",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_3.2025-06-21.charge",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_3.2025-06-21.discharge",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_3.2025-06-21.emergency",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_3.2025-06-21.adjusted",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_3.2025-06-21.bill",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_3.2025-06-21.event_sum",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_3.2025-09-23.plan",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_3.2025-09-23.charge",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_3.2025-09-23.discharge",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_3.2025-09-23.emergency",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_3.2025-09-23.adjusted",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_3.2025-09-23.bill",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_3.2025-09-23.event_sum",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_3.2025-12-21.plan",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_3.2025-12-21.charge",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_3.2025-12-21.discharge",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_3.2025-12-21.emergency",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_3.2025-12-21.adjusted",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_3.2025-12-21.bill",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "q4_3.2025-12-21.event_sum",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    }
+  ],
+  "display_policy": "Money and energy use two decimals; conditional hourly differences use four. No model is rerun. Main window Feb-Dec; monthly rolling window Apr-Dec."
+}
