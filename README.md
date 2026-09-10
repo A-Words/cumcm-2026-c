@@ -2,7 +2,9 @@
 
 四问的模型、思路、指定日期表格、数值结果、敏感性与边界见 **[完整解答](docs/solution.md)**。已按附件模板生成五个结果文件。
 
-本次修订针对预报价值归因、缺少简单基准和增购撤回合约风险，处理依据见 [评审回应](docs/review-response.md)。问题 3、4-3 增加历史光伏/附件 3 融合候选；新小时预报贡献以保留重规划、当前库存、负载修正和当前光伏锚点的严格对照衡量。逐笔交易合约分别报告冻结主调度重计费与重新优化，不能混为一项结果。
+第一轮修订针对预报价值归因、缺少简单基准和增购撤回合约风险，处理依据见 [评审回应](docs/review-response.md)。问题 3、4-3 增加历史光伏/附件 3 融合候选；新小时预报贡献以保留重规划、当前库存、负载修正和当前光伏锚点的严格对照衡量。逐笔交易合约分别报告冻结主调度重计费与重新优化，不能混为一项结果。
+
+第二轮复审已关闭上述三项意见。本轮另补价格感知反馈基准、4—12 月按上月选参的滚动实验及未来年度数据入口，见 [第二轮回应](docs/round2-response.md) 与 [外部验证协议](docs/external-validation-protocol.md)。这些补充独立报告，不根据再次查看同年费用的结果改选下表主方案；真正未见过的外部年度数据仍未获得。
 
 | 问题 | 文件 | 正式评价期总费用 |
 | --- | --- | ---: |
@@ -19,6 +21,8 @@
 - [解答论文](docs/solution.md)：完整回答四问，包含题面要求的表 1、表 2、表 3。
 - [决策与过程记录](docs/decisions.md)、[数据审计](docs/data-audit.md)、[独立建模审查](docs/model-review.md)。
 - [评审回应](docs/review-response.md)、[修订实验与完整参数候选](outputs/revision-experiments.json)、[修订情景逐段归档](outputs/revision-dispatch.npz)。
+- [第二轮回应](docs/round2-response.md)、[第二轮实验计划](docs/round2-plan.md)、[外部年度验证协议](docs/external-validation-protocol.md)。
+- [第二轮实验汇总与逐月选参](outputs/round2/experiments.json)、[新增逐段归档](outputs/round2/dispatch.npz)、[第二轮专项核验](outputs/round2/validation.json)。
 - [Excel 模板说明](docs/template-spec.md)：时间标签纠错、列含义、费用口径与验证。
 - [汇总数据](outputs/summary.json)、[逐段调度及修订归档](outputs/dispatch.npz)、[输出接口 JSON](outputs/results.json)。
 - [物理及因果验证](outputs/validation.json)、[Q1 独立 MILP 验证](outputs/q1-milp-verification.json)、[Excel 验证](outputs/workbook-verification.json)。
@@ -33,7 +37,7 @@
 
 主结果采用两个单向效率各 90%、不售电、可放弃未利用电量、原计划付费不退款、按交付段最终净调整结算一次；这要求未交付增购仍是可以撤回的计划申报。逐笔已成交增购不可免费撤回的合约另行选参、重新优化，冻结主调度仅换账单的压力测试也单独列出。波动价格按历史预测作决策、真实价格结算。退款、效率、积分与价格先知的替代解释分列敏感性结果。
 
-修订主策略在 1 月固定用纯附件 3 和 0.8 分位热启动，2 月才启用所选光伏融合权重与分位；历史基准同时保留原热启动以复现评审，并新增与主策略共同热启动的版本用于正式比较。参数值只用 1 月选择，但模型族是在看到全年评审反例后扩展，属于同年再分析，不能称作新的外部验证。实时反馈仍未按价格优化跨时段电池库存，物理与结算检查不证明经济最优。
+修订主策略在 1 月固定用纯附件 3 和 0.8 分位热启动，2 月才启用所选光伏融合权重与分位；历史基准同时保留原热启动以复现评审，并新增与主策略共同热启动的版本用于正式比较。参数值只用 1 月选择，但模型族是在看到全年评审反例后扩展，属于同年再分析，不能称作新的外部验证。主方案的实时反馈仍未按价格优化跨时段电池库存，第二轮新增的确定性价格感知反馈单独比较；物理与结算检查不证明经济最优。
 
 后四个 Excel 的“计划购电量”费用列是原计划费；“调整购电量”费用列是原计划费加调整增量费，不含紧急费用，不能与计划表的费用列再次相加。完整总费用在论文及 JSON 中。
 
@@ -55,6 +59,22 @@ python scripts/build_report.py
 `solve.py` 完成 1 月权重/分位候选验证、全年正式策略、可实施历史基准、严格小时预报对照、逐笔合约重新优化及参数/语义敏感性；当前机器约需 5–7 分钟，验算和 Excel 导出另计，本次计算耗时见 `outputs/summary.json` 的 `elapsed_seconds`。主参数只用 1 月选择；2—12 月敏感性不会反过来替换主方案，但这不等同于模型开发未见过全年数据。运行后重新验证以更新结果和代码哈希。
 
 首次从代码复现时，Excel 验证 JSON 要在下述导出步骤完成后生成。`build_report.py` 读取计算结果、物理验证和修订专项验证，生成完整论文并刷新 README 总费表；论文中的 Excel 验证链接在导出后有效。
+
+### 第二轮补充实验
+
+以下流程追加四个价格感知反馈基准和问题 3、4-3 的跨月选参，输出至独立目录，不覆盖主结果或 Excel：
+
+```powershell
+python scripts/test_feedback.py
+python scripts/test_external_inputs.py
+python scripts/evaluate_round2.py
+python scripts/validate_round2.py
+python scripts/build_report.py --markdown-only
+```
+
+`evaluate_round2.py` 默认同时执行反馈与滚动两组实验；完整选择记录、费用分解与 14 条路径保存在 `outputs/round2/`。`build_report.py` 检测到该目录的实验 JSON 后，生成论文第 8.5 节和第二轮回应的数值表；`--markdown-only` 保留已有图文件。计算生成与独立验收分开，只有后者通过才可报告验证通过。
+
+未来数据入口为 `evaluate_round2.py --mode external --future-data ... --output-dir ...`，输入及独立核验命令见 [外部验证协议](docs/external-validation-protocol.md)。外部模式固定参数，按各自历史控制承接库存，不进行新一轮搜索。[合成输入接口验证](outputs/round2/interface-smoke.json) 的 727 项检查通过，仅检验加载、连续状态及验算链；没有新增真实年度数据，合成样例费用也未列作经济证据。
 
 ### Excel 导出
 
