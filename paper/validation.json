@@ -2,7 +2,7 @@
   "status": "passed",
   "checked_on": "2026-09-11",
   "pdf": "output/pdf/microgrid-paper.pdf",
-  "pdf_sha256": "987f3ed61264f5a82f0789ae4b4eeb69debcb3438aec953cba95c1be8fa3f07e",
+  "pdf_sha256": "c9393d425bc2f204f602b98865e172d08927291f0a394910d642e33fefcea462",
   "pages": 29,
   "figures": 2,
   "table_count": 31,
@@ -93,9 +93,10 @@
     ],
     "render_scale_to_pixels": 1200,
     "notes": [
-      "Pages 1-19 match the inspected earlier template rendering byte for byte.",
-      "Final pages 11-29 were also re-inspected after the appendix layout fix.",
-      "No clipping, missing glyphs, overlapping text or empty continuation-table headers."
+      "Page 17 declaration was visually reviewed against item 3(2) of the supplied scanned regulations.",
+      "Page 18 confirms the bibliography follows the declaration.",
+      "All other 28 rendered pages are byte-identical to the reviewed template edition.",
+      "No clipping, missing glyphs, overlapping text or split declaration paragraph."
     ]
   },
   "paper_source_sha256": {
@@ -124,7 +125,7 @@
     "paper/main.tex": "3c86b211c574b4139f4d0df6031e61fdcbb53c64510d6d562d7ab6d6425e91e8",
     "paper/references.bib": "e6874ad38abb7e08e78a74ccaaadd08a93003de4171412deb87c15bf75269584",
     "paper/sections/abstract.tex": "8f2154ba9ebafcd61f983aaf01a02315dccfe4beeda902a29c0c315eafd9e45d",
-    "paper/sections/ai-statement.tex": "a20df769399cfa76b526135b808800cba9f54fa43a3c28f4929eb16cce1631a7",
+    "paper/sections/ai-statement.tex": "a2afe616bb0b3edc321dd5e4d5a472e8c97d3f33a173af3ebca859c43b9a3f7f",
     "paper/sections/analysis.tex": "205c00236650ae193679a218803fba9a06631d82d4fd0c67d2c2f90e83aec0b5",
     "paper/sections/appendix.tex": "2f81c5a98ffcdc7b61ae28ff619a7d5e84545a1f98f560384506501ed5fb0715",
     "paper/sections/assumptions.tex": "3a3d8b13abe89bece3b52c71d3b5a06bcef5a87d683185f7142e6e2a7244e3fa",
@@ -150,5 +151,13 @@
   "limits": [
     "Same-year retrospective evaluation; no new annual data.",
     "Economic optimality is established for Q1 only under the stated assumptions."
-  ]
+  ],
+  "ai_tools_declaration": {
+    "rule_source": "全国大学生数学建模竞赛人工智能工具使用规定（2026版）.pdf",
+    "rule_source_sha256": "064ddda776e62f1b7094ba20675e13b39a1257e379cefc93042ef1c19ee02f61",
+    "implemented_item": "3(2)",
+    "position": "page 17, before bibliography on page 18",
+    "wording": "本参赛队在竞赛过程中使用了AI工具，主要用于数据处理与建模分析、代码生成与调试、文献检索与整理、计算结果核对、论文撰写与排版，详细使用情况见支撑材料。",
+    "item_4_status": "deferred by user; no detailed-use PDF generated"
+  }
 }
