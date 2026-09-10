@@ -32,9 +32,11 @@
 \subsection{逐笔收费的替代合约}
 若日内增购一旦成交就不可免费撤回，应把每次修订都记账。令$q^{(0)}=g$，第$r$次修订对应$q^{(r)}$，则对适用交付段收取
 \begin{equation}
- C^{\mathrm{trade}}=\sum_{d,t}\left[p_tg_{d,t}+5p_te_{d,t}
-  +\sum_r\left(1.5p_t\pos{q^{(r)}_{d,t}-q^{(r-1)}_{d,t}}
-  +0.5p_t\pos{q^{(r-1)}_{d,t}-q^{(r)}_{d,t}}\right)\right].
+ \begin{aligned}[b]
+ C^{\mathrm{trade}}&=\sum_{d,t}\Biggl[p_tg_{d,t}+5p_te_{d,t}\\
+ &\qquad+\sum_r\left(1.5p_t\pos{q^{(r)}_{d,t}-q^{(r-1)}_{d,t}}
+  +0.5p_t\pos{q^{(r-1)}_{d,t}-q^{(r)}_{d,t}}\right)\Biggr].
+ \end{aligned}
 \end{equation}
 这里$p_t$仍按交付段结算。由于已付购电款不返还、余电可以不利用，减购先前承诺没有优势。因此替代规划采用$q^{(r)}_t\ge q^{(r-1)}_t$，将新增加的量逐笔计入费用。按该制度从1月重新运行并选参，两种日内场景均得到$(\lambda,\alpha)=(0.25,0.65)$。
 

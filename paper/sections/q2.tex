@@ -1,18 +1,18 @@
 \subsection{问题二：历史预测、风险计划与实时执行}
 \subsubsection{历史负荷与光伏预测}
-设$P^L_{d,t},P^V_{d,t}$为功率观测。对具有至少一周历史的日期，负荷的同星期预测为
+设$P^{\mathrm{L}}_{d,t},P^{\mathrm{V}}_{d,t}$为功率观测。对具有至少一周历史的日期，负荷的同星期预测为
 \begin{equation}
- \widehat P^L_{d,t}=\frac{\sum_{k=1}^{K_d}0.55^{k-1}P^L_{d-7k,t}}
+ \widehat P^{\mathrm{L}}_{d,t}=\frac{\sum_{k=1}^{K_d}0.55^{k-1}P^{\mathrm{L}}_{d-7k,t}}
  {\sum_{k=1}^{K_d}0.55^{k-1}},\qquad K_d=\min\{4,\lfloor d/7\rfloor\}.
 \end{equation}
 日期索引从1月1日的$d=0$开始。历史不足7天时，改用此前最多7天同刻值，以$0.8^{k-1}$加权。光伏采用较短窗口：
 \begin{equation}
- \widehat P^{V,H}_{d,t}=\frac{\sum_{k=1}^{\min(7,d)}0.75^{k-1}P^V_{d-k,t}}
+ \widehat P^{\mathrm{V},\mathrm{H}}_{d,t}=\frac{\sum_{k=1}^{\min(7,d)}0.75^{k-1}P^{\mathrm{V}}_{d-k,t}}
  {\sum_{k=1}^{\min(7,d)}0.75^{k-1}}.
 \end{equation}
 无历史的首日负荷先验为4500\,kW、光伏为0，仅用于1月初始运行。两类预测均只读取日期$d$之前的观测，不把附件一包含全年信息的典型曲线作为先验。净负荷电量点预测为
 \begin{equation}
- \widehat N_{d,t}=\Delta(\widehat P^L_{d,t}-\widehat P^{V,H}_{d,t}),\qquad\Delta=1/6\ \mathrm{h}.
+ \widehat N_{d,t}=\Delta(\widehat P^{\mathrm{L}}_{d,t}-\widehat P^{\mathrm{V},\mathrm{H}}_{d,t}),\qquad\Delta=1/6\ \mathrm{h}.
 \end{equation}
 
 \subsubsection{经验风险分位与零时计划}

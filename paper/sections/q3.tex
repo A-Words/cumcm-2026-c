@@ -1,17 +1,17 @@
 \subsection{问题三：日内信息更新和购电调整}
 \subsubsection{小时光伏预报的因果融合}
-在00、06、12、18点发布预报后，只接收此时及此前已发布的附件三记录。发布时刻$h$后的第$k$个小时预报对应绝对目标$h+k$，不能把不同发布行的第$k$列当成同一时刻。插值以最近一个已完成区间的光伏观测为当前锚点，连接可用的未来整点值，生成十分钟预测$\widehat P^{V,F}$；首日无历史锚点取0。到当日24点即截断。
+在00、06、12、18点发布预报后，只接收此时及此前已发布的附件三记录。发布时刻$h$后的第$k$个小时预报对应绝对目标$h+k$，不能把不同发布行的第$k$列当成同一时刻。插值以最近一个已完成区间的光伏观测为当前锚点，连接可用的未来整点值，生成十分钟预测$\widehat P^{\mathrm{V},\mathrm{F}}$；首日无历史锚点取0。到当日24点即截断。
 
 预测组合可以利用不同来源的互补信息，组合权重已有基于历史误差的研究\upcite{bates1969combination}。光伏预测领域也有模态分解与自适应模型组合方法\upcite{wei2026pv}。本题直接提供历史功率和已发布预报，因而采用两来源线性融合，并按历史结算费用选择权重，以对应调度目标。为平衡历史稳定性与预报更新，构造
 \begin{equation}
- \widehat P^V=(1-\lambda)\widehat P^{V,H}+\lambda\widehat P^{V,F},
+ \widehat P^{\mathrm{V}}=(1-\lambda)\widehat P^{\mathrm{V},\mathrm{H}}+\lambda\widehat P^{\mathrm{V},\mathrm{F}},
  \qquad\lambda\in\{0,0.25,0.50,0.75,1\}.\label{eq:fusion}
 \end{equation}
 日内发布时刻$s\in\{36,72,108\}$，用已经完成的最近18段更新负荷水平：
 \begin{equation}
- \widehat P^{L,(s)}_{d,t}=\widehat P^L_{d,t}\,
+ \widehat P^{\mathrm{L},(s)}_{d,t}=\widehat P^{\mathrm{L}}_{d,t}\,
  \operatorname{clip}\!\left(
- \frac{\overline{P^L_{d,s-18:s}}}{\max(\overline{\widehat P^L_{d,s-18:s}},1)},0.75,1.25\right),\quad t\ge s.
+ \frac{\overline{P^{\mathrm{L}}_{d,s-18:s}}}{\max(\overline{\widehat P^{\mathrm{L}}_{d,s-18:s}},1)},0.75,1.25\right),\quad t\ge s.
 \end{equation}
 横线上标区间表示该区间均值，$\operatorname{clip}$将比例限制在给定范围。所有更新都排除当前未完成区间及之后的真实数据。
 

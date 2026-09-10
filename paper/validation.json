@@ -2,7 +2,7 @@
   "status": "passed",
   "checked_on": "2026-09-11",
   "pdf": "output/pdf/microgrid-paper.pdf",
-  "pdf_sha256": "710e0ad988485c65bece12fcdcf319f8b2d03f0befa9de4217e0ab528ce97816",
+  "pdf_sha256": "9b5ea612748fdde422c7dad7a8e690f69f45fce92355b8493b54f46c218e28c8",
   "pages": 44,
   "figures": 2,
   "table_count": 31,
@@ -75,13 +75,141 @@
   "preserved_existing_labels": 14,
   "equation_layout_update": {
     "equations": [
-      1,
-      2
+      20
     ],
-    "from": "align",
-    "to": "gather",
+    "from": "single-line equation with detached number",
+    "to": "equation with aligned[b], two lines",
     "content_labels_and_numbers_preserved": true,
-    "visual_check": "each equation independently centered on page 5"
+    "power_category_superscripts": "L, V, H and F set upright throughout q2 and q3; variables and indices unchanged",
+    "visual_check": "equation 20 number aligned with the second line; all 21 equation numbers remain beside equation content",
+    "number_position_checks": [
+      {
+        "number": 1,
+        "page": 5,
+        "tag_top_pdf_pt": 201.072,
+        "same_baseline_formula_characters": 14
+      },
+      {
+        "number": 2,
+        "page": 5,
+        "tag_top_pdf_pt": 223.496,
+        "same_baseline_formula_characters": 18
+      },
+      {
+        "number": 3,
+        "page": 5,
+        "tag_top_pdf_pt": 311.688,
+        "same_baseline_formula_characters": 14
+      },
+      {
+        "number": 4,
+        "page": 5,
+        "tag_top_pdf_pt": 334.111,
+        "same_baseline_formula_characters": 12
+      },
+      {
+        "number": 5,
+        "page": 5,
+        "tag_top_pdf_pt": 492.03,
+        "same_baseline_formula_characters": 37
+      },
+      {
+        "number": 6,
+        "page": 5,
+        "tag_top_pdf_pt": 688.519,
+        "same_baseline_formula_characters": 29
+      },
+      {
+        "number": 7,
+        "page": 7,
+        "tag_top_pdf_pt": 639.651,
+        "same_baseline_formula_characters": 15
+      },
+      {
+        "number": 8,
+        "page": 7,
+        "tag_top_pdf_pt": 735.145,
+        "same_baseline_formula_characters": 4
+      },
+      {
+        "number": 9,
+        "page": 8,
+        "tag_top_pdf_pt": 131.713,
+        "same_baseline_formula_characters": 15
+      },
+      {
+        "number": 10,
+        "page": 8,
+        "tag_top_pdf_pt": 223.864,
+        "same_baseline_formula_characters": 5
+      },
+      {
+        "number": 11,
+        "page": 8,
+        "tag_top_pdf_pt": 310.345,
+        "same_baseline_formula_characters": 6
+      },
+      {
+        "number": 12,
+        "page": 8,
+        "tag_top_pdf_pt": 680.028,
+        "same_baseline_formula_characters": 41
+      },
+      {
+        "number": 13,
+        "page": 8,
+        "tag_top_pdf_pt": 702.451,
+        "same_baseline_formula_characters": 40
+      },
+      {
+        "number": 14,
+        "page": 9,
+        "tag_top_pdf_pt": 128.418,
+        "same_baseline_formula_characters": 11
+      },
+      {
+        "number": 15,
+        "page": 9,
+        "tag_top_pdf_pt": 464.209,
+        "same_baseline_formula_characters": 31
+      },
+      {
+        "number": 16,
+        "page": 9,
+        "tag_top_pdf_pt": 539.151,
+        "same_baseline_formula_characters": 21
+      },
+      {
+        "number": 17,
+        "page": 10,
+        "tag_top_pdf_pt": 327.294,
+        "same_baseline_formula_characters": 27
+      },
+      {
+        "number": 18,
+        "page": 10,
+        "tag_top_pdf_pt": 484.516,
+        "same_baseline_formula_characters": 21
+      },
+      {
+        "number": 19,
+        "page": 10,
+        "tag_top_pdf_pt": 727.883,
+        "same_baseline_formula_characters": 28
+      },
+      {
+        "number": 20,
+        "page": 14,
+        "tag_top_pdf_pt": 719.409,
+        "same_baseline_formula_characters": 15
+      },
+      {
+        "number": 21,
+        "page": 15,
+        "tag_top_pdf_pt": 728.999,
+        "same_baseline_formula_characters": 15
+      }
+    ]
   },
   "visual_review": {
     "status": "passed",
@@ -133,12 +261,19 @@
     ],
     "render_scale_to_pixels": 1200,
     "equation_update_pages_reviewed": [
-      5
+      7,
+      8,
+      9,
+      14,
+      15,
+      16,
+      17,
+      18
     ],
-    "unchanged_page_renders": 43,
+    "unchanged_page_renders": 36,
     "notes": [
-      "All 44 pages retain reviewed coverage; page 5 affected by the gather change was re-rendered and inspected.",
-      "The other 43 page renders are byte-identical to the preceding reviewed delivery.",
+      "All 44 pages retain reviewed coverage; the 8 pages affected by equation formatting were re-rendered and inspected.",
+      "The other 36 page renders are byte-identical to the preceding reviewed delivery.",
       "Six tables have fully single-line headers; only the two stock columns remain wrapped in tables 13 and 14, based on measured widths.",
       "Storage tables have one set of four column headings, six interval rows and two endpoint-stock rows per date.",
       "The conclusion and AI declaration fit on one page without isolated paragraph remnants; four-row daily bills remain together.",
@@ -184,10 +319,10 @@
     "paper/sections/physical-model.tex": "960557dba5b06736b69ce1fe34314de2f2a71bc5f87c22876bd17da319f4bdc7",
     "paper/sections/problem.tex": "8dfeeec1d03a31b6799c0aca8d05c2601cfb845791f427c19814085833936810",
     "paper/sections/q1.tex": "78193df1db6aa389b08c6607cc9017fb05ddf1a1cd0d235c980fdbaaf7af3491",
-    "paper/sections/q2.tex": "56f0508f018597943e2e8a1ef36b0c693a9e9f9a8f799ba486dedb80d2d10872",
-    "paper/sections/q3.tex": "31015b4e1d39b952776eb9689db9cc83f0fc4ae0006884fdacfcd9f43a3848bd",
+    "paper/sections/q2.tex": "048ad1d798892c346dc790fe362f9ccad4a1564a1fa978422a1c83cc5690cefc",
+    "paper/sections/q3.tex": "3ba51cb6362e0f97e86cafed546bdea5bed1ca6121c7f882a4898a2682e637f4",
     "paper/sections/q4.tex": "a2dd311ccf8cb7886bb9d60b483af75d9f1ed526300d371d908561fa4ab81c7f",
-    "paper/sections/results.tex": "bce97d955d0e4b3bbc7735a16fa45865938736c274d2d8c87f87b2f7c84c1edd",
+    "paper/sections/results.tex": "1a429a4aabecae12b3b77a27bf6bf198027cd8c0c4957363de86df3087a46b77",
     "paper/sections/symbols.tex": "9cb60ddff878556163fc4b342a06c9ee6ab270a4bf7dbdd9533e41af36a38d59",
     "paper/template-source.json": "598293ace671f395939d3c591ac9ef99944a1839782070cba71fd94ad2c4989f"
   },
@@ -202,7 +337,7 @@
   ],
   "table_style_validation": {
     "path": "paper/table-style-validation.json",
-    "sha256": "0e7c61ac7afc01aa3e78b4d2680356f174178bd8b2ec8edac327b291bfc74a63",
+    "sha256": "ecebc6fccaacfa8a02c179d2a234ac4b6eb1a19ce23d0b898ac48b94327f49a2",
     "table_count": 31,
     "rendered_table_segments": 42,
     "checked_horizontal_rules": 126,
