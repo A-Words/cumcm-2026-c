@@ -66,36 +66,24 @@ def events(values):
     return result
 
 
-def table(caption, label, headers, rows, note="", long=False, size="small", spec=None, header_groups=None):
-    """Return a narrow booktabs table with repeated heads for appendices."""
+def table(caption, label, headers, rows, long=False, spec=None):
+    """Use template-sized text and three rules; explanations belong in prose."""
     spec = spec or "l" + "r" * (len(headers) - 1)
     body = [row if isinstance(row, str) else " & ".join(map(str, row)) + r" \\" for row in rows]
-    head = " & ".join(headers) + r" \\"
-    if header_groups:
-        head = " & ".join(rf"\multicolumn{{{span}}}{{c}}{{{title}}}" for span, title in header_groups) + r" \\" + "\n" + head
+    head = " & ".join(rf"\multicolumn{{1}}{{c}}{{{title}}}" for title in headers) + r" \\"
     if long:
-        lines = [r"\begingroup", rf"\{size}", r"\setlength{\tabcolsep}{4pt}",
-                 r"\renewcommand{\arraystretch}{1.13}", rf"\begin{{longtable}}{{{spec}}}",
+        lines = [r"\begingroup", r"\normalsize", r"\renewcommand{\arraystretch}{1.38}",
+                 rf"\begin{{longtable}}{{{spec}}}",
                  rf"\caption{{{caption}}}\label{{{label}}}\\", r"\toprule", head,
                  r"\midrule", r"\endfirsthead", rf"\multicolumn{{{len(headers)}}}{{c}}{{续表 \ref{{{label}}}}}\\",
                  r"\toprule", head, r"\midrule", r"\endhead", r"\bottomrule", r"\endfoot"]
-        if note:
-            # Keep the note in longtable's reserved final footer. A centered
-            # zero-width box preserves natural column widths, while its parbox
-            # contributes the full note height and stays inside the text area.
-            lines += [r"\bottomrule", r"\addlinespace[4pt]",
-                      rf"\multicolumn{{{len(headers)}}}{{c}}{{\makebox[0pt][c]{{\parbox[t]{{0.97\linewidth}}{{\footnotesize {note}}}}}}}\\",
-                      r"\endlastfoot"]
         lines.extend(body)
         lines += [r"\end{longtable}"]
         lines.append(r"\endgroup")
     else:
-        lines = [r"\begin{table}[htbp]", r"\centering", rf"\caption{{{caption}}}\label{{{label}}}",
-                 rf"\{size}", r"\setlength{\tabcolsep}{4pt}",
-                 r"\renewcommand{\arraystretch}{1.15}", rf"\begin{{tabular}}{{{spec}}}",
+        lines = [r"\begin{table}[!htbp]", r"\centering", rf"\caption{{{caption}}}\label{{{label}}}",
+                 r"\normalsize", rf"\begin{{tabular}}{{{spec}}}",
                  r"\toprule", head, r"\midrule", *body, r"\bottomrule", r"\end{tabular}"]
-        if note:
-            lines += [r"\par\smallskip", r"\begin{minipage}{0.97\linewidth}\footnotesize " + note + r"\end{minipage}"]
         lines.append(r"\end{table}")
     # End the surrounding prose explicitly: an \input containing a float may
     # otherwise leave the next source sentence in the previous paragraph.
@@ -109,19 +97,14 @@ def keep_rows_together(rows):
 
 
 def purchase_rows(plan, total_cost, final=None):
-    """Problem table 1: three interval/value pairs and a paired totals row."""
-    def value(i):
-        return number(plan[i]) if final is None else f"{number(plan[i])} / {number(final[i])}"
-
-    rows = []
-    for slots in (SLOTS[:3], SLOTS[3:]):
-        row = []
-        for i in slots:
-            row.extend((f"{clock(i)}--{clock(i + 1)}", value(i)))
-        rows.append(row)
-    total = number(sum(plan)) if final is None else f"{number(sum(plan))} / {number(sum(final))}"
-    rows.append([r"\multicolumn{2}{c}{全天购电量}", total,
-                 r"\multicolumn{2}{c}{全天常规购电费（元）}", number(total_cost)])
+    """One interval per row; original and final quantities have separate columns."""
+    rows = [[f"{clock(i)}--{clock(i + 1)}", number(plan[i]),
+             *([number(final[i])] if final is not None else [])] for i in SLOTS]
+    rows.append(["全天购电量", number(sum(plan)),
+                 *([number(sum(final))] if final is not None else [])])
+    cost = (rf"\multicolumn{{2}}{{r}}{{{number(total_cost)}}}"
+            if final is not None else number(total_cost))
+    rows.append(["全天常规购电费（元）", cost])
     return rows
 
 
@@ -238,9 +221,8 @@ def main():
         ["方案", "原计划费用", "调整费用", "紧急费用", "总费用"],
         [[NAMES[k], *[number(primary[k][c]) for c in ("plan_cost", "adjustment_cost", "emergency_cost", "total_cost")]] for k in KEYS])
     files["core-energy.tex"] = table("四种主方案的正式期电量与库存（kWh）", "tab:core-energy",
-        ["方案", "最终常规购电", "紧急购电", "未利用电量", "期初储电量", "期末储电量"],
-        [[NAMES[k], *[number(primary[k][c]) for c in ("adjusted_kwh", "emergency_kwh", "spill_kwh", "start_soc", "end_soc")]] for k in KEYS],
-        "期初为2月1日00:00；期末为12月31日24:00。未利用电量包括弃光和不接收的已付费常规购电。", size="footnotesize")
+        ["方案", r"\shortstack{最终常规\\购电量}", "紧急购电", "未利用电量", r"\shortstack{期初\\储电量}", r"\shortstack{期末\\储电量}"],
+        [[NAMES[k], *[number(primary[k][c]) for c in ("adjusted_kwh", "emergency_kwh", "spill_kwh", "start_soc", "end_soc")]] for k in KEYS])
     files["core-storage.tex"] = table("四种主方案的原计划购电与储能吞吐量（2—12月，kWh）", "tab:core-storage",
         ["方案", "原计划购电量", "充电输入", "放电输出"],
         [[NAMES[k], *[number(primary[k][c]) for c in ("plan_kwh", "charge_kwh", "discharge_kwh")]] for k in KEYS])
@@ -249,11 +231,10 @@ def main():
     for field, archive in (("plan", "grid"), ("charge", "charge"), ("discharge", "discharge")):
         check(f"q1.json_{field}", q1[field], dispatch[f"q1_{archive}"])
     check("q1.total_grid", sum(q1["plan"]), summary["q1_grid_kwh"])
-    text = table("问题1指定时段与全天购电（电量单位：kWh）", "tab:q1-purchase", ["时间段", "购电量"] * 3,
-        purchase_rows(q1["plan"], summary["q1"]["cost"]), spec="lrlrlr")
+    text = table("问题1指定时段与全天购电（电量单位：kWh）", "tab:q1-purchase", ["时间段", "购电量"],
+        purchase_rows(q1["plan"], summary["q1"]["cost"]))
     files["q1-tables.tex"] = text + "\n" + table("问题1六个时段的储能充放电量及首末储电量（kWh）", "tab:q1-storage", ["时间段", "充电量", "放电量"] * 2,
-        storage_rows(q1["charge"], q1["discharge"], q1["socStart"], q1["socEnd"]),
-        "充放电量采用交流母线侧口径；表尾分别为00:00和24:00的储电量。", spec="lrrlrr")
+        storage_rows(q1["charge"], q1["discharge"], q1["socStart"], q1["socEnd"]), spec="lrrlrr")
 
     rows = []
     for weight in (0, .25, .5, .75, 1):
@@ -263,8 +244,7 @@ def main():
             row += [param(candidate["quantile"]), number(candidate["validation_cost"])]
         rows.append(row)
     files["jan-selection.tex"] = table("各光伏融合权重下的1月最优分位候选", "tab:jan-selection",
-        [r"$\lambda$", r"问题3的$\alpha$", "验证费（元）", r"问题4-3的$\alpha$", "验证费（元）"], rows,
-        "每个权重在六个候选分位中按1月15—31日费用取最小；主方案均选中权重0.5、分位0.65。候选族扩展已接触本年评价结果，属于同年再分析。")
+        [r"$\lambda$", r"问题3的$\alpha$", "验证费（元）", r"问题4-3的$\alpha$", "验证费（元）"], rows)
     rows = []
     for c in summary["calibration"]["q2"]:
         q4c = next(x for x in summary["calibration"]["q4_2"] if x["quantile"] == c["quantile"])
@@ -280,8 +260,7 @@ def main():
             s = scene["summary"]
             rows.append([NAMES[key], label, param(scene["pv_weight"]), param(scene["quantile"]), number(s["total_cost"]), number(s["emergency_kwh"])])
     files["forecast-baselines.tex"] = table("共同热启动下的预测策略比较（2—12月）", "tab:forecast-baselines",
-        ["方案", "光伏预测", r"$\lambda$", r"$\alpha$", "费用（元）", "紧急电（kWh）"], rows,
-        "各问题内的比较共用1月热启动及正式期初库存。各预测器依据同一1月准则选参，费用差是策略组合之差。")
+        ["方案", "光伏预测", r"$\lambda$", r"$\alpha$", "费用（元）", r"\shortstack{紧急电\\（kWh）}"], rows)
 
     rows = []
     subset_groups = {}
@@ -296,15 +275,13 @@ def main():
         label = "、".join(f"{hour:02d}" for hour in subset) or "无"
         rows.append([label, number(legacy["total_cost"]), number(selected["total_cost"]), number(selected["emergency_kwh"])])
     files["hourly-subsets.tex"] = table("问题3新小时光伏预报的完整子集对照", "tab:hourly-subsets",
-        ["新增预报时刻", "纯附件3费用（元）", "融合策略费用（元）", "融合紧急电（kWh）"], rows,
-        "各行均保留06、12、18点重规划、实际SOC、负载修正及当前光伏观测锚点；仅开关新小时预报。融合子集共用1月热启动。")
+        ["新增预报时刻", r"\shortstack{纯附件3费用\\（元）}", r"\shortstack{融合策略费用\\（元）}", r"\shortstack{融合紧急电\\（kWh）}"], rows)
     rows = []
     for hour in (6, 12, 18):
         subset = tuple(i for i in (6, 12, 18) if i != hour)
         rows.append([f"{hour:02d}点", *[number(subset_groups[g][subset]["total_cost"] - subset_groups[g][(6, 12, 18)]["total_cost"], 4) for g in ("legacy", "selected")]])
     files["hourly-marginals.tex"] = table("单独撤去一次新小时预报的条件费用差（元）", "tab:hourly-marginals",
-        ["撤去的预报", "纯附件3", "融合主策略"], rows,
-        "正值表示撤去后更贵；三项条件费用差不能相加为总信息价值。")
+        ["撤去的预报", "纯附件3", "融合主策略"], rows)
 
     rows = []
     for key in ("q3", "q4_3"):
@@ -315,8 +292,7 @@ def main():
                             ("逐笔合约重新优化", revision["scenes"][contract["reoptimized"]]["summary"]["total_cost"])):
             rows.append([NAMES[key], label, number(cost), number(base - cost)])
     files["contracts.tex"] = table("合约解释与相应策略费用（2—12月，元）", "tab:contracts",
-        ["方案", "结算与策略", "总费用", "较无调整方案节省"], rows,
-        "冻结重计保持调度路径；重新优化另以1月选参，并从1月起使用逐笔合约，因而也改变状态路径。")
+        ["方案", "结算与策略", "总费用", r"\shortstack{较无调整\\方案节省}"], rows)
     rows = []
     for key in ("q3", "q4_3"):
         contract = revision["contracts"][key]
@@ -324,7 +300,7 @@ def main():
         s = revision["scenes"][contract["reoptimized"]]["summary"]
         rows.append([NAMES[key], param(selected["pv_weight"]), param(selected["quantile"]), number(s["emergency_kwh"]), number(s["start_soc"]), number(s["end_soc"])])
     files["contract-parameters.tex"] = table("逐笔合约重优化的参数与库存（电量单位：kWh）", "tab:contract-parameters",
-        ["方案", r"$\lambda$", r"$\alpha$", "紧急购电", "2月初储电量", "年末储电量"], rows)
+        ["方案", r"$\lambda$", r"$\alpha$", "紧急购电", r"\shortstack{2月初\\储电量}", r"\shortstack{年末\\储电量}"], rows)
 
     rows = []
     for key in KEYS:
@@ -332,16 +308,14 @@ def main():
             s = round2["scenes"][round2["feedback"][key][feedback]]["summary"]
             rows.append([NAMES[key], label, number(s["plan_cost"] + s["adjustment_cost"]), number(s["emergency_cost"]), number(s["total_cost"])])
     files["mpc-comparison.tex"] = table("确定性价格感知反馈与原反馈的费用比较（2—12月，元）", "tab:mpc-comparison",
-        ["方案", "反馈规则", "常规购电费", "紧急购电费", "总费用"], rows,
-        "常规购电费为原计划费与调整费之和。两种反馈共用参数、发布时间、1月热启动和正式期初库存；反馈改变库存后，后续常规计划也随之改变。", size="footnotesize")
+        ["方案", "反馈规则", "常规购电费", "紧急购电费", "总费用"], rows)
     rows = []
     for key in KEYS:
         g = round2["scenes"][round2["feedback"][key]["greedy"]]["summary"]
         m = round2["scenes"][round2["feedback"][key]["mpc"]]["summary"]
         rows.append([NAMES[key], number(m["total_cost"] - g["total_cost"]), number(m["emergency_kwh"]), number(m["spill_kwh"]), number(m["start_soc"]), number(m["end_soc"])])
     files["mpc-inventory.tex"] = table("滚动反馈的费用增量与物理统计", "tab:mpc-inventory",
-        ["方案", "增费（元）", "紧急电（kWh）", "未利用电（kWh）", "期初SOC", "期末SOC"], rows,
-        "首末SOC单位为kWh，且分别与对应原反馈相同。增费为滚动反馈总费减去原反馈总费。", size="footnotesize")
+        ["方案", r"\shortstack{增费\\（元）}", r"\shortstack{紧急电\\（kWh）}", r"\shortstack{未利用电\\（kWh）}", r"\shortstack{期初SOC\\（kWh）}", r"\shortstack{期末SOC\\（kWh）}"], rows)
 
     rows = []
     for key in ("q3", "q4_3"):
@@ -349,8 +323,7 @@ def main():
             s = round2["scenes"][round2["rolling"][key]["scenes"][rule]]["summary"]
             rows.append([NAMES[key], label, number(s["total_cost"]), number(s["emergency_kwh"]), number(s["start_soc"]), number(s["end_soc"])])
     files["rolling-summary.tex"] = table("按月选参与固定参数比较（2025年4—12月）", "tab:rolling-summary",
-        ["方案", "参数规则", "总费用（元）", "紧急电（kWh）", "期初SOC", "期末SOC"], rows,
-        "三条路径共用4月1日期初库存，此后逐月连续；SOC单位为kWh。本表覆盖275天，不与2—12月334天总费直接相减。", size="footnotesize")
+        ["方案", "参数规则", r"\shortstack{总费用\\（元）}", r"\shortstack{紧急电\\（kWh）}", r"\shortstack{期初SOC\\（kWh）}", r"\shortstack{期末SOC\\（kWh）}"], rows)
     rows = []
     for key in ("q3", "q4_3"):
         for fold in round2["rolling"][key]["folds"]:
@@ -359,8 +332,7 @@ def main():
                          number(monthly["fixed"]["total_cost"] - monthly["adaptive"]["total_cost"]),
                          number(monthly["historical"]["total_cost"] - monthly["adaptive"]["total_cost"])])
     files["rolling-months.tex"] = table("月初参数选择及当月费用差（2025年4—12月）", "tab:rolling-months",
-        ["方案", "评价月份", r"$\lambda$", r"$\alpha$", r"历史$\alpha$", r"固定$-$融合（元）", r"历史$-$融合（元）"], rows,
-        "各月参数仅按上一完整月现金费用选择；两个费用差均以正值表示融合自适应路径较省。月度差额不是独立同分布样本。", long=True, size="footnotesize")
+        ["方案", "评价月份", r"$\lambda$", r"$\alpha$", r"历史$\alpha$", r"\shortstack{固定$-$融合\\（元）}", r"\shortstack{历史$-$融合\\（元）}"], rows, long=True)
 
     for key in KEYS:
         chosen = [next(day for day in results[key]["days"] if day["date"] == date) for date in DATES]
@@ -378,16 +350,16 @@ def main():
             check(f"{key}.{date}.adjusted", final, dispatch[f"{key}_adjusted"][index])
             check(f"{key}.{date}.bill", day["totalCost"], dispatch[f"{key}_costs"][index, 3])
             if purchase:
-                purchase.append(r"\midrule")
-                storage.append(r"\midrule")
-            group = rf"\multicolumn{{6}}{{l}}{{\textbf{{{date}}}}} \\*"
-            purchase.append(group)
+                purchase.append(r"\addlinespace")
+                storage.append(r"\addlinespace")
+            purchase_columns = 3 if key in ("q3", "q4_3") else 2
+            purchase.append(rf"\multicolumn{{{purchase_columns}}}{{l}}{{\textbf{{{date}}}}} \\*")
             purchase.extend(keep_rows_together(purchase_rows(
                 day["plan"], day.get("adjustedCost", day["planCost"]),
                 final if key in ("q3", "q4_3") else None)))
             c = np.asarray(day["charge"]).reshape(6, 24).sum(1)
             d = np.asarray(day["discharge"]).reshape(6, 24).sum(1)
-            storage.append(group)
+            storage.append(rf"\multicolumn{{6}}{{l}}{{\textbf{{{date}}}}} \\*")
             storage.extend(keep_rows_together(storage_rows(
                 day["charge"], day["discharge"], day["socStart"], day["socEnd"])))
             adjustment = day.get("adjustedCost", day["planCost"]) - day["planCost"]
@@ -400,25 +372,22 @@ def main():
                 "soc_start": day["socStart"], "soc_end": day["socEnd"], "emergency_events": ev,
                 "daily_total_cost": day["totalCost"]})
         appendix.append(table(f"{name}指定日期的六个购电时段（2025年，kWh）", f"tab:{tag}-days-purchase",
-            ["时间段", "购电量"] * 3, purchase,
-            ("购电量和全天购电量均按“原计划 / 最终常规”列示，两者之差为净调整量。" if key in ("q3", "q4_3") else "全天按00:00所定计划购电，常规购电量不再调整。")
-            + "全天常规购电费为计划费加调整费，不含另列的紧急费。", long=True, size="footnotesize", spec="lrlrlr"))
+            ["时间段", "原计划购电量", "最终常规购电量"] if key in ("q3", "q4_3") else ["时间段", "购电量"],
+            purchase, long=True))
         appendix.append(table(f"{name}指定日期的六段充放电量（kWh）", f"tab:{tag}-days-storage",
             ["时间段", "充电量", "放电量"] * 2, storage,
-            long=True, size="footnotesize", spec="lrrlrr"))
+            long=True, spec="lrrlrr"))
         appendix.append(table(f"{name}指定日期的全天账单（元）", f"tab:{tag}-days-costs",
-            ["日期", "原计划费", "调整费", "紧急费", "总费用"], costs, long=True, size="footnotesize"))
+            ["日期", "原计划费", "调整费", "紧急费", "总费用"], costs, long=True))
         emergency = []
-        for event_index in range(max(map(len, all_events))):
-            row = []
-            for ev in all_events:
-                row.extend([ev[event_index][0], number(ev[event_index][1])] if event_index < len(ev) else ["", ""])
-            emergency.append(row)
-        emergency.append([cell for ev in all_events for cell in ("全天合计", number(sum(v for _, v in ev)))])
-        appendix.append(table(f"{name}指定日期的紧急购电事件", f"tab:{tag}-days-emergency",
-            ["时间段", "购电量"] * 4, emergency,
-            long=True, size="footnotesize", spec="lrlrlrlr",
-            header_groups=[(2, date) for date in DATES]))
+        for date, ev in zip(DATES, all_events):
+            if emergency:
+                emergency.append(r"\addlinespace")
+            rows = [[date if i == 0 else "", period, number(value)] for i, (period, value) in enumerate(ev)]
+            rows.append(["", "全天合计", number(sum(value for _, value in ev))])
+            emergency.extend(keep_rows_together(rows))
+        appendix.append(table(f"{name}指定日期的紧急购电事件（kWh）", f"tab:{tag}-days-emergency",
+            ["日期", "时间段", "购电量"], emergency, long=True, spec="llr"))
         files[f"selected-days-{tag}.tex"] = "\n".join(appendix)
 
     for name, content in files.items():

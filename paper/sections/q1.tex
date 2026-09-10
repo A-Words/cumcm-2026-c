@@ -10,6 +10,7 @@
 不加选解项的纯电费LP给出相同费用；另引入144个充放电模式二元变量，独立求解MILP，所得费用亦为35126.948589元，最优性间隙为0，最大约束残差约$7.62\times10^{-12}$。故最优性结论适用于给定离散化、效率和余电处理假设下的问题一。
 
 \subsubsection{指定时段结果与储能作用}
+表\ref{tab:q1-purchase}给出六个指定区间及全天购电结果，表\ref{tab:q1-storage}按六个连续四小时区间汇总交流母线侧的充电输入与放电输出，末行分别列出00:00和24:00的储电量。这样既能核对日循环边界，也能区分能量损耗前后的充、放电量。
 \input{generated/q1-tables}
 \begin{figure}[htbp]
   \centering\includegraphics[width=\textwidth]{../outputs/figures/q1-dispatch.png}
