@@ -1,7 +1,7 @@
 """Generate the Chinese Markdown solution and standalone scientific figures."""
 from pathlib import Path
+import argparse
 import json
-import sys
 import numpy as np
 import matplotlib
 matplotlib.use('Agg')
@@ -194,6 +194,59 @@ def contract_comparison(summary):
     return '\n'.join(lines)
 
 
+def round2_comparison(report):
+    """Render the independent second-round benchmarks without changing main results."""
+    scenes=report['scenes']
+    lines=['**价格感知反馈：2025 年 2—12 月，334 天。** 参数、预报发布时间和 1 月热启动与对应主策略相同；仅从 2 月开始改为每十分钟重算的确定性反馈。反馈 LP 固定当前常规承诺，最小化预测的剩余当日紧急费，只执行首动作，不用紧急电充电。未来量使用最新允许的预测，首段使用已实现净负荷和当前实价；午夜终端价值取 0。因此结果是这一具体反馈基准的费用差，不是随机全局最优或所有 MPC 方法的结论。', '',
+           '| 问题与反馈 | 计划费用 / 元 | 调整费用 / 元 | 紧急费用 / 元 | 总费用 / 元 |',
+           '| --- | ---: | ---: | ---: | ---: |']
+    for strategy,comparison in report['feedback'].items():
+        for control,label in [('greedy','原贪心'),('mpc','确定性滚动')]:
+            row=scenes[comparison[control]]['summary']
+            lines.append(f"| {NAMES[strategy]}：{label} | {f(row['plan_cost'])} | {f(row['adjustment_cost'])} | {f(row['emergency_cost'])} | {f(row['total_cost'])} |")
+    lines += ['', '| 问题与反馈 | 紧急电 / kWh | 未利用电 / kWh | 2 月初 SOC / kWh | 年末 SOC / kWh |',
+              '| --- | ---: | ---: | ---: | ---: |']
+    for strategy,comparison in report['feedback'].items():
+        for control,label in [('greedy','原贪心'),('mpc','确定性滚动')]:
+            row=scenes[comparison[control]]['summary']
+            lines.append(f"| {NAMES[strategy]}：{label} | {f(row['emergency_kwh'])} | {f(row['spill_kwh'])} | {f(row['start_soc'],4)} | {f(row['end_soc'],4)} |")
+    lines += ['', '| 问题 | 贪心总费用 − 滚动反馈总费用 / 元 | 相对贪心费用节省 |',
+              '| --- | ---: | ---: |']
+    for strategy,comparison in report['feedback'].items():
+        lines.append(f"| {NAMES[strategy]} | {f(comparison['cash_saving_yuan'])} | {comparison['saving_percent']:+.3f}% |")
+    feedback_worse=sum(row['cash_saving_yuan']<0 for row in report['feedback'].values())
+    matching_ends=all(abs(row['end_soc_difference'])<1e-6 for row in report['feedback'].values())
+    lines += ['', f'最后两列均以正值表示滚动反馈节省、负值表示更贵。本次 {len(report["feedback"])} 种策略中有 {feedback_worse} 种使用滚动反馈后总费用增加。两种反馈具有相同评价期初库存，'+
+              ('本次各对应年末库存也相同，费用差不能归于不同的边界库存。' if matching_ends else '年末库存见表，未将库存折价成虚构的现金收入。')+
+              '期间库存和后续常规计划仍可以不同；后续计划读取各自真实 SOC，因此总费差含计划及调整路径的变化，这里没有冻结整年购电路径来单独识别当段动作价值。', '',
+              '本次四组账单均显示常规购电费用（计划加调整）减少、紧急费增加，后者超过前者。这说明在当前预测、参数和终端规则下，按预测分配电池并没有产生实际费用改善。反馈基准沿用原先针对贪心策略选定的权重和分位，没有另外为 MPC 搜索参数。其不利结果既不证明贪心全局最优，也不排除专门校准、跨日价值或多情景 MPC 的可能改进。', '',
+              '**按月选参：2025 年 4—12 月，275 天。** 每次只按上一完整月现金费用选择，次月参数冻结。30 组融合候选和其中 6 组纯历史候选分别选参；所有评分候选共享参考主策略的评分月初库存，并披露各自月末库存。正式三条路径共用 4 月初库存，此后各自连续，不能按月重置库存。下面总费覆盖 4—12 月，不能直接与上面 2—12 月总费相减。', '',
+              '| 问题与参数规则 | 总费用 / 元 | 紧急电 / kWh | 4 月初 SOC / kWh | 年末 SOC / kWh |',
+              '| --- | ---: | ---: | ---: | ---: |']
+    for strategy,study in report['rolling'].items():
+        for key,label in [('fixed','固定 1 月参数'),('adaptive','按上月选择融合候选'),('historical','按上月选择纯历史候选')]:
+            row=scenes[study['scenes'][key]]['summary']
+            lines.append(f"| {NAMES[strategy]}：{label} | {f(row['total_cost'])} | {f(row['emergency_kwh'])} | {f(row['start_soc'],4)} | {f(row['end_soc'],4)} |")
+    lines += ['', '| 问题 | 评价月份 | 上月所选 λ | 上月所选 α | 历史候选所选 α | 固定费用 − 融合自适应费用 / 元 | 历史自适应费用 − 融合自适应费用 / 元 |',
+              '| --- | --- | ---: | ---: | ---: | ---: | ---: |']
+    for strategy,study in report['rolling'].items():
+        for fold in study['folds']:
+            chosen=fold['selected']
+            month=fold['monthly']
+            lines.append(f"| {NAMES[strategy]} | {fold['month']} | {chosen['pv_weight']:g} | {chosen['quantile']:g} | {fold['historical_selected']['quantile']:g} | {f(month['fixed']['total_cost']-month['adaptive']['total_cost'])} | {f(month['historical']['total_cost']-month['adaptive']['total_cost'])} |")
+    lines += ['']
+    for strategy,study in report['rolling'].items():
+        worst=max(study['folds'],key=lambda fold:fold['monthly']['adaptive']['total_cost']-fold['monthly']['fixed']['total_cost'])
+        deterioration=worst['monthly']['adaptive']['total_cost']-worst['monthly']['fixed']['total_cost']
+        fixed_difference=study['cash_saving_adaptive_vs_fixed']
+        direction='节省' if fixed_difference>=0 else '增加'
+        lines.append(f"{NAMES[strategy]} 的融合自适应相对固定参数累计{direction} {f(abs(fixed_difference))} 元，9 个月中 {study['adaptive_wins_vs_fixed']} 个月费用更低；相对纯历史自适应累计节省 {f(study['cash_saving_adaptive_vs_historical'])} 元，{study['adaptive_wins_vs_historical']} 个月更低。相对固定参数最不利月份为 {worst['month']}，自适应费用减去固定费用为 {f(deterioration)} 元。")
+        lines.append('')
+    lines += ['本次两种电价下的融合自适应都比固定主参数更贵，不能据此主张每月重选参数更稳健。它们相对纯历史自适应的费用更低，仅支持这一年度和这些预设路径之间的比较。三条路径在各自问题内的评价期首末库存均相同，评分候选的末库存则不必相同，选参评分也没有将其折价。候选族与本轮检验设计均已接触 2025 年数据，九个月差额又不是独立同分布样本，因此本实验是回顾式跨月再分析，既不证明独立外部泛化，也不由月份胜率推出统计显著性。原主方案和 Excel 沿用已交付策略，不根据这些新结果事后改选。', '',
+              '完整参数候选、发布时间、费用分解和路径见 [第二轮实验 JSON](../outputs/round2/experiments.json) 与 [逐段归档](../outputs/round2/dispatch.npz)。新增控制器定义及对第二轮意见的逐项回应见 [第二轮回应](round2-response.md)；未来年度接口与冻结规则见 [外部验证协议](external-validation-protocol.md)。目前没有未见过的外部年度结果；输入日期在后、接口能够运行和外部泛化已验证是三件不同的事。']
+    return '\n'.join(lines)
+
+
 def figures(data,dispatch,summary):
     target=OUT/'figures'
     target.mkdir(exist_ok=True)
@@ -248,13 +301,35 @@ def figures(data,dispatch,summary):
 
 
 def main():
+    parser=argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--markdown-only',action='store_true',
+                        help='Refresh Markdown without rewriting the existing figure artifacts.')
+    args=parser.parse_args()
     data=dict(np.load(ROOT/'data/processed/data.npz'))
     d=dict(np.load(OUT/'dispatch.npz'))
     s=json.loads((OUT/'summary.json').read_text(encoding='utf-8'))
     s['revision_experiments']=json.loads((OUT/'revision-experiments.json').read_text(encoding='utf-8'))
     v=json.loads((OUT/'validation.json').read_text(encoding='utf-8'))
     rv=json.loads((OUT/'revision-validation.json').read_text(encoding='utf-8'))
-    figures(data,d,s)
+    round2_path=OUT/'round2/experiments.json'
+    round2_text=(round2_comparison(json.loads(round2_path.read_text(encoding='utf-8')))
+                 if round2_path.exists() else '')
+    round2_evidence=''
+    round2_validation_path=OUT/'round2/validation.json'
+    if round2_text and round2_validation_path.exists():
+        round2_validation=json.loads(round2_validation_path.read_text(encoding='utf-8'))
+        if round2_validation['status']!='passed':
+            raise ValueError('Second-round validation failed; do not publish a passed report.')
+        round2_evidence=(f"第二轮补充核验：[独立验证](../outputs/round2/validation.json) 共 {round2_validation['check_count']} 项通过，"
+            f"包括全部 14 个场景的物理约束及路径账单、{round2_validation['representative_candidate_replays']} 个代表性候选月重放、"
+            f"12 个正式月的完整 11 字段重放、{round2_validation['future_month_mutation_replays']} 个修改未来月份后的评分重放及 2 个跨预报发布边界的 MPC 因果探针。"
+            "另有 9 个反馈回归测试与 10 个外部输入测试通过。它们检验当前实现、因果和账单一致性，不证明预测策略最优或外部泛化。")
+        round2_text+='\n\n'+round2_evidence
+    round2_section=('### 8.5 第二轮补充：价格感知反馈与跨月检验\n\n'+round2_text+'\n\n'
+                    if round2_text else '')
+    round2_evidence_line='- '+round2_evidence+'\n' if round2_evidence else ''
+    if not args.markdown_only:
+        figures(data,d,s)
     p=s['primary']
     saving=p['q2']['total_cost']-p['q3']['total_cost']
     saving4=p['q4_2']['total_cost']-p['q4_3']['total_cost']
@@ -268,11 +343,13 @@ def main():
 
 后续问题包含预测误差和控制近似，本文不声称其结果为严格随机全局最优。修订版增加历史光伏与附件 3 的融合候选，参数仍只按 1 月费用选择；但候选模型族是在评审已有全年结果后扩展，因此本次属于同一数据集上的再分析，不能称为新的独立测试或前瞻验证。费用优势还以未交付增购可撤回、按最终净调整结算的主合约为前提；逐笔收费合约另行优化并报告。
 
+第二轮补充的确定性价格感知反馈和按上月重选参数均未降低对应本年评价期总费，原主方案保持；这些不利结果也不证明贪心全局最优。外部年度数据接口及核验协议已提供，真实独立泛化实证尚未完成。
+
 **关键词：** 微网；储能调度；线性规划；因果回测；风险分位；实时电价。
 
 ## 1. 题目理解与数据审查
 
-题面为 [C 题 PDF](../problem/C题.pdf)，原始输入为 [附件目录](../data/raw/)。完整审计见 [数据审计](data-audit.md)，计算前的判断与修正过程见 [决策记录](decisions.md)，初次方法审查见 [模型审查](model-review.md)，后续反向评审及修订回应见 [评审回应](review-response.md)。
+题面为 [C 题 PDF](../problem/C题.pdf)，原始输入为 [附件目录](../data/raw/)。完整审计见 [数据审计](data-audit.md)，计算前的判断与修正过程见 [决策记录](decisions.md)，初次方法审查见 [模型审查](model-review.md)，后续反向评审及修订回应见 [评审回应](review-response.md) 与 [第二轮回应](round2-response.md)。
 
 附件 1 有 144 条电价、负载、光伏预测；附件 2 有全年 365×144 条实际负载和光伏；附件 3 有 365×4×24 个小时预报；附件 4 有 365×144 条实际电价。所需数值无缺失、负数和非有限值，日期连续。原始文件 SHA-256 已保存并在验收时重核。
 
@@ -503,18 +580,18 @@ $$C_3=\sum_t[p_tg_t+1.5p_tu_t+0.5p_tv_t+5p_te_t].$$
 
 1. 后续方案是逐点分位规划与贪心反馈，没有完整建模联合时序不确定性，也没有全局最优或概率约束证明。
 2. 计划只优化当天剩余区间，附件 3 超出当天的预报已正确读取，但没有利用它们构造跨日价值函数。日末参考储备是近似处理。
-3. 反馈没有按未来高低价格分配电池库存。可进一步用多情景 MPC，只执行当前动作并共享当前控制以遵守非预知性；需额外的场景建模和独立滚动验证，本文未声称已经实现。
-4. 单年数据和 1 月短窗口不足以证明多年稳健。融合模型族是在评审后扩展的；即使权重只以 1 月费用选择，也不能抹去模型开发已经看到全年表现的事实，仍需新年度或独立滚动留出验证。
+3. 主反馈没有按未来高低价格分配电池库存。第二轮已另行实现并比较确定性价格感知反馈，但它的午夜零终端价值仍是近似，也没有完整联合不确定性模型；多情景 MPC 的情景建模、共享当前控制和稳健性分析尚未实现。
+4. 单年数据和 1 月短窗口不足以证明多年稳健。融合模型族是在评审后扩展的；即使权重只以 1 月费用选择，也不能抹去模型开发已经看到全年表现的事实。第二轮按月选参仍是同年再分析；真正未见过的外部年度数据尚缺，接入协议不等于实证已经完成。
 5. 未计老化、网络输电约束、逆变器非线性与响应延迟。题面没给这些参数，不能人为编造后输出更“真实”的数字。主、逐笔及退款合约只是明确列出的解释情景，不能替题面确认真实交易制度。
 
-## 9. 可复现与独立核验
+{round2_section}## 9. 可复现与独立核验
 
 完整计算流程见 [项目说明](../README.md)。所有金额由未四舍五入的 10 分钟数据计算，论文只显示两位小数；Excel 保留底层精度。两位小数的逐行显示数重新相加与总计可能有末位差异。
 
 - 数据核验：完整日期、列时刻、预报发布次序、非负/有限值、整点插值还原与梯形积分守恒、原始附件哈希不变。
 - 独立物理与费用核验：{v['check_count']} 项通过，覆盖四种策略全年每一段的供电平衡、90% 损耗、1200–10800 kWh 边界、5000 kW 功率、互斥、跨日连续、原始计划不变、修订时间范围及各项费用。物理可行和费用自洽不能证明库存分配最优、预报具有经济价值或合约解释唯一正确。
 - 修订实验核验：[专项验证](../outputs/revision-validation.json) 共 {rv['check_count']} 项通过，检查新增基准、严格小时预报对照和逐笔合约归档；[合约检查脚本](../scripts/test_contracts.py) 检查冻结路径收费与重新优化的区别。完整参数候选和情景配置保存在 [修订实验 JSON](../outputs/revision-experiments.json)。
-- 因果篡改试验：96 个点预测用例修改决策后真值或尚未发布预报，当前预测不变；48 个风险预测用例修改当日及未来残差，当前风险预测不变。另有两个修改已到达信息的正向对照，确认检验确实能感知可用输入。
+{round2_evidence_line}- 因果篡改试验：96 个点预测用例修改决策后真值或尚未发布预报，当前预测不变；48 个风险预测用例修改当日及未来残差，当前风险预测不变。另有两个修改已到达信息的正向对照，确认检验确实能感知可用输入。
 - 问题 1 最优性：纯 LP 与独立互斥 MILP 一致，MIP gap 为 0。后续四种策略只验证可行性和结算，不借用问题 1 证明它们全局最优。
 - Excel 核验：五个输出均重新读取，与模型 JSON 全量对照；计划、调整、六个四小时充放电聚合、日初日末 SOC、连续紧急区间及全天总量/费用一致。模板预览已检查，标签错位修复见 [模板说明](template-spec.md)。
 
@@ -531,6 +608,17 @@ $$C_3=\sum_t[p_tg_t+1.5p_tu_t+0.5p_tv_t+5p_te_t].$$
 '''
     # Raw f-strings above escape LaTeX consistently; Markdown needs single slashes.
     (ROOT/'docs/solution.md').write_text(text.replace('\\\\','\\'),encoding='utf-8',newline='\n')
+    if round2_text:
+        response_path=ROOT/'docs/round2-response.md'
+        response=response_path.read_text(encoding='utf-8')
+        opening='<!-- BEGIN ROUND2 RESULTS -->'
+        closing='<!-- END ROUND2 RESULTS -->'
+        before,rest=response.split(opening,1)
+        _,after=rest.split(closing,1)
+        response_text=round2_text.replace('新增控制器定义及对第二轮意见的逐项回应见 [第二轮回应](round2-response.md)；',
+                                          '控制器定义及建模边界见本文件第 1 节；')
+        response_path.write_text(before+opening+'\n\n'+response_text+'\n\n'+closing+after,
+                                 encoding='utf-8',newline='\n')
     readme = (ROOT/'README.md').read_text(encoding='utf-8').splitlines()
     rows = {
         '| 1:': f"| 1：确定性日循环 | [result1.xlsx](outputs/result1.xlsx) | {f(s['q1']['cost'])} 元/天 |",
@@ -545,7 +633,8 @@ $$C_3=\sum_t[p_tg_t+1.5p_tu_t+0.5p_tv_t+5p_te_t].$$
                 readme[i] = row
                 break
     (ROOT/'README.md').write_text('\n'.join(readme)+'\n',encoding='utf-8',newline='\n')
-    print('Generated docs/solution.md, refreshed README result table and 3 figures (PNG/SVG).')
+    print('Generated docs/solution.md and refreshed README result table.'+
+          ('' if args.markdown_only else ' Refreshed 3 figures (PNG/SVG).'))
 
 
 if __name__=='__main__':
