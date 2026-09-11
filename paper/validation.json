@@ -1,7 +1,7 @@
 {
   "status": "passed",
   "checked_on": "2026-09-11",
-  "pdf": "output/pdf/microgrid-paper.pdf",
+  "pdf": "outputs/pdf/microgrid-paper.pdf",
   "pdf_sha256": "9b5ea612748fdde422c7dad7a8e690f69f45fce92355b8493b54f46c218e28c8",
   "pages": 44,
   "figures": 2,

@@ -2,7 +2,7 @@
 
 四问的模型、思路、指定日期表格、数值结果、敏感性与边界见 **[完整解答](docs/solution.md)**。已按附件模板生成五个结果文件。
 
-已完成 [LaTeX 论文 PDF](output/pdf/microgrid-paper.pdf)，可编辑入口为 [paper/main.tex](paper/main.tex)。论文采用用户指定的 [CUMCMThesis 模板](https://github.com/latexstudio/CUMCMThesis)，按模板组织章节，并按广东赛区的本次提交要求去掉承诺书、编号页和目录。12 篇参考文献均在正文中引用，表格直接从已验证结果生成，覆盖四问与两轮补充实验。[模板适配说明](docs/template-adaptation.md)、[撰写记录与编译说明](docs/paper-writing-notes.md)、[文献核实笔记](docs/literature-notes.md) 记录结构、写作取舍及来源。运行 `python scripts/build_paper.py` 可重新核对表格并编译论文。
+已完成 [LaTeX 论文 PDF](outputs/pdf/microgrid-paper.pdf)，可编辑入口为 [paper/main.tex](paper/main.tex)。论文采用用户指定的 [CUMCMThesis 模板](https://github.com/latexstudio/CUMCMThesis)，按模板组织章节，并按广东赛区的本次提交要求去掉承诺书、编号页和目录。12 篇参考文献均在正文中引用，表格直接从已验证结果生成，覆盖四问与两轮补充实验。[模板适配说明](docs/template-adaptation.md)、[撰写记录与编译说明](docs/paper-writing-notes.md)、[文献核实笔记](docs/literature-notes.md) 记录结构、写作取舍及来源。运行 `python scripts/build_paper.py` 可重新核对表格并编译论文。
 
 31 张表已按模板“标准三线表格”统一，表内使用正文同等字号，储能表使用单组列逐时段排列，必要说明融入正文，不另设表下小字。正文不使用下划线，文献引用采用模板上标。具体依据、宽表重排及数据保留检查见 [三线表核查记录](docs/table-style-audit.md) 和 [逐表验收](paper/table-style-validation.json)。
 
@@ -103,6 +103,6 @@ data/processed/          对齐数组、统计与源文件哈希
 scripts/                 预处理、预测/优化、回测、验证与导出
 docs/                    完整解答、建模过程和审查
 paper/                   LaTeX 正文、参考文献与自动生成表格
-output/pdf/              排版后的论文 PDF
+outputs/pdf/              排版后的论文 PDF
 outputs/                 五个 Excel、调度归档、汇总、验收与图表
 ```

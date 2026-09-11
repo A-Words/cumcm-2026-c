@@ -1,6 +1,6 @@
 # 公式样式核查（2026-09-11）
 
-本次先按用户要求核查样式，再依“改吧”的指示修复。初查对象为提交 `67cc37f` 的论文，PDF SHA-256 为 `710e0ad988485c65bece12fcdcf319f8b2d03f0befa9de4217e0ab528ce97816`。修复后的 PDF 为 `output/pdf/microgrid-paper.pdf`，共 44 页，SHA-256 为 `9b5ea612748fdde422c7dad7a8e690f69f45fce92355b8493b54f46c218e28c8`。
+本次先按用户要求核查样式，再依“改吧”的指示修复。初查对象为提交 `67cc37f` 的论文，PDF SHA-256 为 `710e0ad988485c65bece12fcdcf319f8b2d03f0befa9de4217e0ab528ce97816`。修复后的 PDF 为 `outputs/pdf/microgrid-paper.pdf`，共 44 页，SHA-256 为 `9b5ea612748fdde422c7dad7a8e690f69f45fce92355b8493b54f46c218e28c8`。
 
 ## 结论
 
