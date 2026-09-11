@@ -1,20 +1,131 @@
-\subsection{问题四：波动电价下的购电调控}
-\subsubsection{未知价格的因果预测}
-在波动价格情形，将历史价格按负荷相同的同星期规则加权得到$\overline p_{d,t}$；不足一周时使用衰减0.8的近期日均。首日各发布时间均沿用附件一固定价格，不作日内比例修正。对$d\ge1$，零时取$\widehat p_{d,t}=\max(\overline p_{d,t},0.001)$；日内更新为
-\begin{equation}
- \widehat p^{(s)}_{d,t}=\max\left\{0.001,\overline p_{d,t}\,
- \operatorname{clip}\!\left(
- \frac{\overline{p_{d,s-18:s}}}{\max(\overline{\overline p_{d,s-18:s}},0.01)},0.5,1.5\right)\right\},\quad t\ge s.
-\end{equation}
-式中内层$\overline p$是历史价格曲线，外层横线为最近18段均值。问题4-2与问题二有相同决策频率，仅在零时形成价格预测；问题4-3允许三次日内更新。两种情况下，计划用$\widehat p$优化，而账单用交付时已经实现的$p$逐段重算。问题4-2选择$\alpha=0.80$，问题4-3采用上述融合参数。
+\subsection{问题四：波动电价下的规划}\label{sec:q4}
+\subsubsection{价格信息与两种决策频率}
+问题四在相同负荷、光伏和储能条件下，将固定日内电价换为附件四的实时波动价格。不能只把问题二、三的购电量乘上新电价，因为价格会改变充放电和购电安排；也不能在每天零时提前读取当天全部实际电价，否则实际执行策略含有先知信息。动态价格研究也区分预测驱动的可实施控制与全知性能参考\upcite{perez2023hem}。
 
-\subsubsection{统一执行流程}
-统一运行流程如下：
+本文把“交易时刻电价”解释为对应交付区间的实际价格$p_{d,t}$。该价格在实际交付和结算时可知，未来值则需要预测。沿用问题三的交易变量，记$\widehat p^{(s)}_{d,t}$为时刻$s$基于已到达信息得到的未来价格估计。问题4-2只允许$s=0$制定固定计划；问题4-3允许$s\in\{0,36,72,108\}$规划，并沿用光伏预报融合和最终净调整合约。
+
+两种策略保持同一物理设备、十分钟步长、充放电反馈和连续库存约定。增加的只是价格预测，不引入题目未给出的输电容量、需求响应或储能寿命费用。
+
+\subsubsection{费用目标与价格预测}
+问题4-2和4-3的真实评价费用分别为
+\begin{equation}
+ C_{4-2}=\sum_{d,t}p_{d,t}(g_{d,t}+5e_{d,t}),
+\end{equation}
+\begin{equation}
+\begin{aligned}[b]
+ C_{4-3}=\sum_{d,t}p_{d,t}\bigl[&g_{d,t}
+ +1.5(q_{d,t}-g_{d,t})_+\\
+ &+0.5(g_{d,t}-q_{d,t})_++5e_{d,t}\bigr].
+\end{aligned}\label{eq:q4-bill}
+\end{equation}
+求和均覆盖2—12月，计费系数为实际价格。在制定计划时，这些未来系数尚未知，因而零时和日内分别求解
+\begin{equation}
+ \min\sum_{t=0}^{143}\widehat p^{(0)}_{d,t}g_{d,t},
+ \qquad
+ \min\sum_{t=s}^{143}1.5\widehat p^{(s)}_{d,t}
+       (q^{(s)}_{d,t}-g_{d,t}).\label{eq:q4-objectives}
+\end{equation}
+第二个目标只用于问题4-3的$s>0$。规划目标用于选择动作，实际账单用于评价，不能将预测目标值作为最终费用报告。
+
+价格预测沿用负荷的同星期加权结构。对$d\ge7$，定义历史价格曲线
+\begin{equation}
+ \overline p_{d,t}=
+ \frac{\sum_{k=1}^{K_d}0.55^{k-1}p_{d-7k,t}}
+      {\sum_{k=1}^{K_d}0.55^{k-1}},
+ \qquad K_d=\min\{4,\lfloor d/7\rfloor\}.
+\end{equation}
+不足一周时取此前最多7天，以0.8的衰减系数加权。零时取$\widehat p^{(0)}_{d,t}=\max(\overline p_{d,t},0.001)$。问题4-3在日内用最近18段已实现价格的均值修正水平。记
+\begin{equation}
+ r^{p}_{d,s}=\operatorname{clip}\!\left(
+ \frac{\frac1{18}\sum_{j=s-18}^{s-1}p_{d,j}}
+      {\max\left(\frac1{18}\sum_{j=s-18}^{s-1}\overline p_{d,j},0.01\right)},
+ 0.5,1.5\right),
+\end{equation}
+则剩余预测为
+\begin{equation}
+ \widehat p^{(s)}_{d,t}=\max\{0.001,r^{p}_{d,s}\overline p_{d,t}\},
+ \qquad t\ge s,\quad d\ge1.\label{eq:price-update}
+\end{equation}
+截断避免极小历史均值使比例失控，正下限保证购电系数非负。首日各发布时间统一沿用附件一给定的固定价格，不进行当日比例修正；该先验只参与1月初始化。预测不读取当前未完成区间或未来实际价格。
+
+\subsubsection{分条约束与汇总模型}
+\textbf{a) 物理约束。}每次规划仍满足风险净负荷下的能量平衡、储能效率、功率和安全库存限制。价格改变目标系数，不改变物理守恒关系。
+
+\textbf{b) 库存衔接。}零时从实际$S_{d,0}$开始，日内从实际$S_{d,s}$开始，预测日末恢复目标均为6000\,kWh。实际跨日运行不重置库存。
+
+\textbf{c) 交易频率与原计划下界。}问题4-2全天$q_t=g_t$；问题4-3只在三次允许时刻改报未交付量，且$q^{(s)}_t\ge g_t$。实际和预测价格均为正，问题三的不减购支配关系仍成立。
+
+\textbf{d) 可用信息与实际结算。}预测价格、净负荷和本次计划均来自$\mathcal H_{d,s}$；之后发生的$p_{d,t}$只进入对应实际费用。即使事后发现价格预测偏差，也不回写已执行的决策。
+
+为统一两种频率，令允许的发布时间集合为$\mathcal S$；零时取$\ell^{(0)}_t=0$、$\kappa_0=1$，日内取$\ell^{(s)}_t=g_t$、$\kappa_s=1.5$。每次求解
+\begin{equation}
+\begin{aligned}[b]
+ (\mathrm P_4^{(s)})\quad\min\quad&
+  \sum_{t=s}^{143}\kappa_s\widehat p^{(s)}_{d,t}
+       (q^{(s)}_t-\ell^{(s)}_t),\\
+ \mathrm{s.t.}\quad&q^{(s)}_t+\widehat b_t
+       =\widetilde N^{(s)}_{d,t}+\widehat c_t+\widehat w_t,\\
+ &\widehat S_{t+1}=\widehat S_t+0.9\widehat c_t-\widehat b_t/0.9,\\
+ &0\le\widehat c_t,\widehat b_t\le5000/6,\quad
+   q^{(s)}_t\ge\ell^{(s)}_t,\quad\widehat w_t\ge0,\\
+ &1200\le\widehat S_t\le10800,\quad
+   \widehat S_s=S_{d,s},\quad\widehat S_{144}\ge6000.
+\end{aligned}\label{eq:q4-summary}
+\end{equation}
+零时输出定义为$g_t=q^{(0)}_t$。问题4-2取$\mathcal S=\{0\}$，问题4-3取$\mathcal S=\{0,36,72,108\}$；区间约束作用于$t=s,\ldots,143$，库存边界包括144。这样明确列出两种模型的差异，无需为波动价格重新定义一套物理变量。
+
+\subsubsection{求解与价格到账顺序}
+沿用问题二、三的候选集合和1月15—31日现金评分规则。问题4-2选中$\alpha=0.80$，问题4-3选中$(\lambda,\alpha)=(0.50,0.65)$。问题4-3的1月热启动仍固定使用纯附件三、0.80分位与三次调整，2月才切换参数。
+
+按时间先后运行以下步骤：
 \begin{enumerate}
- \item 零时继承真实库存，构建只含可用历史的负荷、光伏及价格预测，计算风险净负荷并生成原计划。
- \item 对每个十分钟段，若其起点是允许的发布时间，先读取已发布预报和已完成区间观测，以当前实际库存重规划剩余常规购电。
- \item 在交付段实际需求到达后，执行充放电反馈和必要的紧急购电，计算本段电费并更新库存。
- \item 日末将真实库存原样传递至次日。1月用于初始化和选参，2月起累计正式账单。
+ \item 零时继承真实库存，以过去日期分别预测负荷、光伏和价格；构造风险净负荷。
+ \item 用预测价格作为目标系数求解$(\mathrm P_4^{(0)})$，锁定原计划并保存预测曲线。
+ \item 问题4-2不再修改常规计划；问题4-3在允许发布时刻更新已到达预报、负荷及价格水平，求解剩余时域模型。
+ \item 实际交付时以当段真实净负荷执行充放电与紧急补购，不将新观测传回此前决策。
+ \item 用该段实际价格结算原计划、最终净调整和紧急购电，更新实际库存。
+ \item 日末传递库存，2月起累计正式费用；从逐段数组分别重算全年和指定日期账单。
 \end{enumerate}
-离线预先计算预测数组只用于加速，任何决策取数仍受日期及发布时间约束。因果检查通过改变尚未发生的实测或尚未发布的预报，验证当前决策的输入不变。
+改变未来价格数据不应改变当前的预测和计划，这是检验该步骤顺序的直接办法。离线预先生成预测数组只是计算缓存，每次使用仍按日期与发布时间限定，不能把缓存中保存了未来预测误差理解为当前可读取这些误差。
+
+\subsubsection{波动电价结果及比较}
+问题4-2总费用为\PaperValue{q4-2-cost}\,元，问题4-3为\PaperValue{q4-3-cost}\,元，日内方案节省\PaperValue{q4-3-saving}\,元，降幅\PaperValue{q4-3-saving-percent}\%。表\ref{tab:q4-comparison}给出费用与电量分解。
+\input{generated/q4-comparison}
 \FloatBarrier
+日内方案的原计划费和紧急费下降，新增550605.94元调整费后，总支出仍较低。紧急电量由101425.76\,kWh降至24227.41\,kWh，但发生紧急电的天数由108增至134，与固定价格下的现象一致：总量改善与出现频率不是同一个指标。
+
+图\ref{fig:q4-months}给出逐月费用及紧急电量。费用比较应在同一月份、同一价格制度下进行；直接将固定价格总费与波动价格总费相减，同时包含价格水平、购电路径和库存变化，不能作为价格预测误差的估计。
+\begin{figure}[!htbp]
+ \centering\includegraphics[width=\textwidth]{../outputs/figures/paper-q4-months.pdf}
+ \caption{波动电价下各月费用与紧急购电量}\label{fig:q4-months}
+\end{figure}
+\FloatBarrier
+指定日期费用列于表\ref{tab:q4-days-summary}。在9月23日，允许调整后的全天总费从49762.23元降至45799.34元；12月21日两种方案费用均较高，反映该日期负荷与电价共同作用。四日期的指定时段购电、储能及紧急事件见附录\ref{app:days}，完整策略分别保存在\texttt{result4-2.xlsx}、\texttt{result4-3.xlsx}。
+\input{generated/q4-days-summary}
+
+采用共同热启动比较光伏来源，表\ref{tab:q4-3-forecast}中融合方案比纯历史基准少支出122075.92元，纯附件三仍未优于融合。这说明波动价格没有消除对光伏预测来源的依赖；但由于各预测器分别选参，该差额仍是预测与控制组合的经济差异。
+\input{generated/q4-3-forecast}
+\FloatBarrier
+
+\subsubsection{价格与参数灵敏度检验}
+首先针对价格预测形状作局部扰动。记$m_{d,s}$为本次剩余时域预测价格均值，将价格曲线改为
+\begin{equation}
+ \widehat p^{(s,\theta)}_{d,t}
+ =\max\{0.001,m_{d,s}+(1+\theta)
+       (\widehat p^{(s)}_{d,t}-m_{d,s})\},\qquad
+ \theta\in\{-0.2,0,0.2\}.\label{eq:price-sensitivity}
+\end{equation}
+负扰动缩小预测峰谷差，正扰动扩大预测峰谷差。该变换只使用当时可得的预测曲线，不加入未来真值。负荷、光伏、实际结算价、控制参数和共同1月热启动保持一致，从2月起重新规划并连续执行。表\ref{tab:q4-price-sensitivity}列出实际费用和年末库存。
+\input{generated/q4-price-sensitivity}
+\FloatBarrier
+扩大预测价差20\%时，两种策略分别增费7445.26元和16264.42元；缩小20\%时分别减费1365.55元和2061.48元。四个扰动路径与各自主方案的期末库存一致，因此这次费用差不由边界库存不同造成。在本次范围内，总费变化均小于0.12\%，日内调整方案仍较低；但这只检验价差幅度误差，没有覆盖峰谷时刻错位或极端电价冲击。
+
+若直接把未来实际价格作为规划输入，问题4-2与4-3费用分别为\PaperValue{q4-2-oracle}\,元和\PaperValue{q4-3-oracle}\,元。这个诊断改变了可用信息，并伴随热启动和库存路径变化；它不是可执行策略，也不是随机全年最优值的严格下界。具体预测策略中约0.04456元/kWh的零时平均绝对价格误差，同样不能直接换算为这项费用差。
+
+其次检查风险参数选择。表\ref{tab:q4-calibration}报告1月15—31日评分，问题4-3固定融合权重0.50。固定计划在0.80处、日内调整在0.65处取得本组最低评分；较高分位继续减少缺口，却增加提前购买的支出。这里的曲线属于选参窗口，不能当作未见年度的敏感性证据。
+\input{generated/q4-calibration}
+\FloatBarrier
+为检查这种选择能否跨月保持，再使用既有4—12月滚动实验：每月开始前仅以上个月费用重选参数，所有正式路径共用4月1日库存，之后各自连续运行。时序评价应保持训练和评价先后关系\upcite{cerqueira2020evaluation}。问题4-3逐月选参比固定1月参数多支出16320.66元，9个月中仅1个月费用更低；问题三也多支出2109.14元。逐月选择没有在本年自动改善累计费用，参数与库存明细见附录\ref{app:rolling}。
+
+最后检验反馈选择。在同等信息、共同热启动及参数条件下，用每个十分钟段重新优化剩余紧急费用的确定性滚动反馈作对照\upcite{wytock2017dem}，问题4-2和4-3分别多支出33995.79元、213489.58元，期末库存与对应原反馈一致。该对照的常规费下降，但紧急费增加更多；其午夜库存价值设为0，且没有为新反馈另行校准参数。结果只能说明这一具体反馈配置没有改善，不能据此证明贪心反馈最优。完整模型和四组账单见附录\ref{app:comparisons}。
+\label{end:q4}

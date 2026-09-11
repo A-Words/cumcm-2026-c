@@ -40,6 +40,9 @@ def main() -> None:
         (build / f"main.{suffix}").unlink(missing_ok=True)
     if not args.skip_tables:
         run([sys.executable, str(ROOT / "scripts/build_paper_tables.py")], ROOT, build / "tables.log")
+        run([sys.executable, str(ROOT / "scripts/evaluate_paper_sensitivity.py")], ROOT, build / "sensitivity.log")
+        run([sys.executable, str(ROOT / "scripts/validate_paper_sensitivity.py")], ROOT, build / "sensitivity-validation.log")
+        run([sys.executable, str(ROOT / "scripts/build_paper_evidence.py")], ROOT, build / "evidence.log")
     # Editors may compile paper/main.tex automatically and leave same-named aux
     # files there. Compile an isolated source snapshot so those cannot shadow
     # this build's references or bibliography.
@@ -50,7 +53,8 @@ def main() -> None:
             target = source / path.relative_to(ROOT / "paper")
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(path, target)
-    for name in ("q1-dispatch.png", "monthly-comparison.png"):
+    for name in ("q1-dispatch.png", "monthly-comparison.png", "paper-q1-dispatch.pdf",
+                 "paper-q2-day.pdf", "paper-q3-day.pdf", "paper-q4-months.pdf"):
         target = source.parent / "outputs/figures" / name
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(ROOT / "outputs/figures" / name, target)

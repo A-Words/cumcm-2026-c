@@ -24,8 +24,12 @@
 \FloatBarrier
 \clearpage
 
+\section{补充对照与参数明细}\label{app:comparisons}
+\input{sections/supplementary}
+\clearpage
+
 \section{数据、计算与复现说明}
-原始附件经十分钟区间对齐后，以Python 3.14、NumPy和SciPy 1.17.1完成数值计算，线性优化使用HiGHS接口。原始数据哈希、逐段调度、完整参数候选、费用分解及验证结果随配套仓库提供。所有正式数值由JSON和NPZ归档自动生成LaTeX表格，并独立从逐段数组重新聚合核对。
+原始附件经十分钟区间对齐后，以Python 3.14、NumPy和SciPy 1.17.1完成数值计算，线性优化使用HiGHS接口。原始数据哈希、逐段调度、完整参数候选、费用分解及验证结果随配套仓库提供。所有正式数值由JSON和NPZ归档自动生成LaTeX表格，并独立从逐段数组重新聚合核对。本轮另以\texttt{evaluate\_paper\_sensitivity.py}生成问题一设备参数扰动和问题四预测价差扰动，逐段结果单独归档；\texttt{validate\_paper\_sensitivity.py}独立核算约束与账单，\texttt{build\_paper\_evidence.py}生成逐问图表。
 
 物理验证覆盖能量平衡、容量和功率边界、互斥、无缺供、连续库存及逐段费用。因果验证通过修改未来实测、未发布小时预报或未来残差，检验既有决策不受影响；正向对照验证已到达信息能够影响预测。问题一另有含充放电二元模式的MILP交叉检验。这些验证支持实现与所写模型一致，不替代对经济最优性或外部泛化的证明。
 

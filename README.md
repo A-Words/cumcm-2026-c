@@ -4,7 +4,9 @@
 
 已完成 [LaTeX 论文 PDF](outputs/pdf/microgrid-paper.pdf)，可编辑入口为 [paper/main.tex](paper/main.tex)。论文采用用户指定的 [CUMCMThesis 模板](https://github.com/latexstudio/CUMCMThesis)，按模板组织章节，并按广东赛区的本次提交要求去掉承诺书、编号页和目录。12 篇参考文献均在正文中引用，表格直接从已验证结果生成，覆盖四问与两轮补充实验。[模板适配说明](docs/template-adaptation.md)、[撰写记录与编译说明](docs/paper-writing-notes.md)、[文献核实笔记](docs/literature-notes.md) 记录结构、写作取舍及来源。运行 `python scripts/build_paper.py` 可重新核对表格并编译论文。
 
-31 张表已按模板“标准三线表格”统一，表内使用正文同等字号，储能表使用单组列逐时段排列，必要说明融入正文，不另设表下小字。正文不使用下划线，文献引用采用模板上标。具体依据、宽表重排及数据保留检查见 [三线表核查记录](docs/table-style-audit.md) 和 [逐表验收](paper/table-style-validation.json)。
+按教师意见完成[逐问修订](docs/paper-revision-teacher.md)：问题重述至总结共 27 页，问题一至四分别为 6、5、6、6 页。每问包括目标函数、分条约束、汇总模型、求解步骤、结果分析和灵敏度检验。完整 PDF 59 页，另外包含摘要、参考文献及完整日期附录；页数口径见修订记录。
+
+全文 46 张表保持正文同等字号和三线表样式，储能表使用单组列，说明融入正文；4 幅数据图采用矢量图。正文不使用下划线，文献引用采用模板上标。当前验收见 [论文验证](paper/validation.json)、[逐表验收](paper/table-style-validation.json)，历次调整见 [三线表核查记录](docs/table-style-audit.md)。
 
 第一轮修订针对预报价值归因、缺少简单基准和增购撤回合约风险，处理依据见 [评审回应](docs/review-response.md)。问题 3、4-3 增加历史光伏/附件 3 融合候选；新小时预报贡献以保留重规划、当前库存、负载修正和当前光伏锚点的严格对照衡量。逐笔交易合约分别报告冻结主调度重计费与重新优化，不能混为一项结果。
 
@@ -80,6 +82,18 @@ python scripts/build_report.py --markdown-only
 `evaluate_round2.py` 默认同时执行反馈与滚动两组实验；完整选择记录、费用分解与 14 条路径保存在 `outputs/round2/`。`build_report.py` 检测到该目录的实验 JSON 后，生成论文第 8.5 节和第二轮回应的数值表；`--markdown-only` 保留已有图文件。计算生成与独立验收分开，只有后者通过才可报告验证通过。
 
 未来数据入口为 `evaluate_round2.py --mode external --future-data ... --output-dir ...`，输入及独立核验命令见 [外部验证协议](docs/external-validation-protocol.md)。外部模式固定参数，按各自历史控制承接库存，不进行新一轮搜索。[合成输入接口验证](outputs/round2/interface-smoke.json) 的 727 项检查通过，仅检验加载、连续状态及验算链；没有新增真实年度数据，合成样例费用也未列作经济证据。
+
+### 论文补充灵敏度与构建
+
+`outputs/paper-study/` 独立保存第一问可用库存、功率、效率的 16 个单日情景（含无储能对照），以及第四问预测价差幅度 ±20% 的 4 条全年路径。价差实验保持原实际结算价格和共同 1 月热启动，不替换主策略。
+
+```powershell
+python scripts/evaluate_paper_sensitivity.py
+python scripts/validate_paper_sensitivity.py
+python scripts/build_paper.py
+```
+
+补充实验的 201 项独立验算包括物理边界、现金账单、共同期初库存和问题一原始目标与记录的对偶下界一致。构建器会检查实验源哈希，复用未改变的结果，并调用 `build_paper_evidence.py` 重建逐问图表；原有 656 项表格聚合核对继续运行。只改文字或分页且图表来源未变时可用 `--skip-tables`。最终视觉验收随本次 PDF 保存，重新修改后仍需检查实际渲染。
 
 ### Excel 导出
 

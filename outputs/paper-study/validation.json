@@ -1,0 +1,1218 @@
+{
+  "status": "passed",
+  "check_count": 201,
+  "checks": [
+    {
+      "name": "hash.scripts/evaluate_paper_sensitivity.py",
+      "error": 0.0,
+      "tolerance": 0,
+      "passed": true
+    },
+    {
+      "name": "hash.scripts/model.py",
+      "error": 0.0,
+      "tolerance": 0,
+      "passed": true
+    },
+    {
+      "name": "hash.data/processed/data.npz",
+      "error": 0.0,
+      "tolerance": 0,
+      "passed": true
+    },
+    {
+      "name": "hash.outputs/summary.json",
+      "error": 0.0,
+      "tolerance": 0,
+      "passed": true
+    },
+    {
+      "name": "hash.outputs/dispatch.npz",
+      "error": 0.0,
+      "tolerance": 0,
+      "passed": true
+    },
+    {
+      "name": "archive_hash",
+      "error": 0.0,
+      "tolerance": 0,
+      "passed": true
+    },
+    {
+      "name": "q1_usable_7680.balance",
+      "error": 1.1368683772161603e-13,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_usable_7680.state",
+      "error": 8.739675649849232e-13,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_usable_7680.inventory",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_usable_7680.power",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_usable_7680.nonnegative",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_usable_7680.exclusive",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_usable_7680.boundary",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_usable_7680.bill",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_usable_7680.dual_gap",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_usable_8640.balance",
+      "error": 1.1368683772161603e-13,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_usable_8640.state",
+      "error": 8.739675649849232e-13,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_usable_8640.inventory",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_usable_8640.power",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_usable_8640.nonnegative",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_usable_8640.exclusive",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_usable_8640.boundary",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_usable_8640.bill",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_usable_8640.dual_gap",
+      "error": 7.275957614183426e-12,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_usable_9600.balance",
+      "error": 1.7053025658242404e-13,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_usable_9600.state",
+      "error": 8.739675649849232e-13,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_usable_9600.inventory",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_usable_9600.power",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_usable_9600.nonnegative",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_usable_9600.exclusive",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_usable_9600.boundary",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_usable_9600.bill",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_usable_9600.dual_gap",
+      "error": 7.275957614183426e-12,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_usable_9600.main_cost",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_usable_10560.balance",
+      "error": 1.1368683772161603e-13,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_usable_10560.state",
+      "error": 8.739675649849232e-13,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_usable_10560.inventory",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_usable_10560.power",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_usable_10560.nonnegative",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_usable_10560.exclusive",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_usable_10560.boundary",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_usable_10560.bill",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_usable_10560.dual_gap",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_usable_11520.balance",
+      "error": 2.2737367544323206e-13,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_usable_11520.state",
+      "error": 8.739675649849232e-13,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_usable_11520.inventory",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_usable_11520.power",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_usable_11520.nonnegative",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_usable_11520.exclusive",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_usable_11520.boundary",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_usable_11520.bill",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_usable_11520.dual_gap",
+      "error": 7.275957614183426e-12,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_power_4000.balance",
+      "error": 2.2737367544323206e-13,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_power_4000.state",
+      "error": 8.739675649849232e-13,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_power_4000.inventory",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_power_4000.power",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_power_4000.nonnegative",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_power_4000.exclusive",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_power_4000.boundary",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_power_4000.bill",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_power_4000.dual_gap",
+      "error": 1.4551915228366852e-11,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_power_4500.balance",
+      "error": 1.1368683772161603e-13,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_power_4500.state",
+      "error": 8.739675649849232e-13,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_power_4500.inventory",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_power_4500.power",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_power_4500.nonnegative",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_power_4500.exclusive",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_power_4500.boundary",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_power_4500.bill",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_power_4500.dual_gap",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_power_5000.balance",
+      "error": 1.7053025658242404e-13,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_power_5000.state",
+      "error": 8.739675649849232e-13,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_power_5000.inventory",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_power_5000.power",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_power_5000.nonnegative",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_power_5000.exclusive",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_power_5000.boundary",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_power_5000.bill",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_power_5000.dual_gap",
+      "error": 7.275957614183426e-12,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_power_5000.main_cost",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_power_5500.balance",
+      "error": 2.2737367544323206e-13,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_power_5500.state",
+      "error": 8.739675649849232e-13,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_power_5500.inventory",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_power_5500.power",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_power_5500.nonnegative",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_power_5500.exclusive",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_power_5500.boundary",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_power_5500.bill",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_power_5500.dual_gap",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_power_6000.balance",
+      "error": 1.1368683772161603e-13,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_power_6000.state",
+      "error": 8.739675649849232e-13,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_power_6000.inventory",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_power_6000.power",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_power_6000.nonnegative",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_power_6000.exclusive",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_power_6000.boundary",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_power_6000.bill",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_power_6000.dual_gap",
+      "error": 7.275957614183426e-12,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_eta_0.85.balance",
+      "error": 1.1368683772161603e-13,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_eta_0.85.state",
+      "error": 8.810729923425242e-13,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_eta_0.85.inventory",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_eta_0.85.power",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_eta_0.85.nonnegative",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_eta_0.85.exclusive",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_eta_0.85.boundary",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_eta_0.85.bill",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_eta_0.85.dual_gap",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_eta_0.875.balance",
+      "error": 1.1368683772161603e-13,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_eta_0.875.state",
+      "error": 8.526512829121202e-13,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_eta_0.875.inventory",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_eta_0.875.power",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_eta_0.875.nonnegative",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_eta_0.875.exclusive",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_eta_0.875.boundary",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_eta_0.875.bill",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_eta_0.875.dual_gap",
+      "error": 7.275957614183426e-12,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_eta_0.9.balance",
+      "error": 1.7053025658242404e-13,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_eta_0.9.state",
+      "error": 8.739675649849232e-13,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_eta_0.9.inventory",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_eta_0.9.power",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_eta_0.9.nonnegative",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_eta_0.9.exclusive",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_eta_0.9.boundary",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_eta_0.9.bill",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_eta_0.9.dual_gap",
+      "error": 7.275957614183426e-12,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_eta_0.9.main_cost",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_eta_0.925.balance",
+      "error": 1.1368683772161603e-13,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_eta_0.925.state",
+      "error": 7.958078640513122e-13,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_eta_0.925.inventory",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_eta_0.925.power",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_eta_0.925.nonnegative",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_eta_0.925.exclusive",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_eta_0.925.boundary",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_eta_0.925.bill",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_eta_0.925.dual_gap",
+      "error": 7.275957614183426e-12,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_eta_0.95.balance",
+      "error": 1.1368683772161603e-13,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_eta_0.95.state",
+      "error": 8.526512829121202e-13,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_eta_0.95.inventory",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_eta_0.95.power",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_eta_0.95.nonnegative",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_eta_0.95.exclusive",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_eta_0.95.boundary",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_eta_0.95.bill",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_eta_0.95.dual_gap",
+      "error": 7.275957614183426e-12,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_no_storage_0.balance",
+      "error": 1.1368683772161603e-13,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_no_storage_0.state",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_no_storage_0.inventory",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_no_storage_0.power",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_no_storage_0.nonnegative",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_no_storage_0.exclusive",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_no_storage_0.boundary",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_no_storage_0.bill",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q1_no_storage_0.dual_gap",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q4_2_spread_-0.2.balance",
+      "error": 2.2737367544323206e-13,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q4_2_spread_-0.2.state",
+      "error": 9.094947017729282e-13,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q4_2_spread_-0.2.bounds",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q4_2_spread_-0.2.power",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q4_2_spread_-0.2.nonnegative",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q4_2_spread_-0.2.exclusive",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q4_2_spread_-0.2.no_plan_reduction",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q4_2_spread_-0.2.continuity",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q4_2_spread_-0.2.common_start",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q4_2_spread_-0.2.daily_bills",
+      "error": 2.9103830456733704e-11,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q4_2_spread_-0.2.total_bill",
+      "error": 5.587935447692871e-09,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q4_2_spread_-0.2.emergency_total",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q4_2_spread_+0.2.balance",
+      "error": 2.2737367544323206e-13,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q4_2_spread_+0.2.state",
+      "error": 9.094947017729282e-13,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q4_2_spread_+0.2.bounds",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q4_2_spread_+0.2.power",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q4_2_spread_+0.2.nonnegative",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q4_2_spread_+0.2.exclusive",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q4_2_spread_+0.2.no_plan_reduction",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q4_2_spread_+0.2.continuity",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q4_2_spread_+0.2.common_start",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q4_2_spread_+0.2.daily_bills",
+      "error": 2.9103830456733704e-11,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q4_2_spread_+0.2.total_bill",
+      "error": 9.313225746154785e-09,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q4_2_spread_+0.2.emergency_total",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q4_3_spread_-0.2.balance",
+      "error": 2.2737367544323206e-13,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q4_3_spread_-0.2.state",
+      "error": 9.094947017729282e-13,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q4_3_spread_-0.2.bounds",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q4_3_spread_-0.2.power",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q4_3_spread_-0.2.nonnegative",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q4_3_spread_-0.2.exclusive",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q4_3_spread_-0.2.no_plan_reduction",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q4_3_spread_-0.2.continuity",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q4_3_spread_-0.2.common_start",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q4_3_spread_-0.2.daily_bills",
+      "error": 1.4551915228366852e-11,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q4_3_spread_-0.2.total_bill",
+      "error": 3.725290298461914e-09,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q4_3_spread_-0.2.emergency_total",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q4_3_spread_+0.2.balance",
+      "error": 2.2737367544323206e-13,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q4_3_spread_+0.2.state",
+      "error": 9.094947017729282e-13,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q4_3_spread_+0.2.bounds",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q4_3_spread_+0.2.power",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q4_3_spread_+0.2.nonnegative",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q4_3_spread_+0.2.exclusive",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q4_3_spread_+0.2.no_plan_reduction",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q4_3_spread_+0.2.continuity",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q4_3_spread_+0.2.common_start",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q4_3_spread_+0.2.daily_bills",
+      "error": 1.4551915228366852e-11,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q4_3_spread_+0.2.total_bill",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    },
+    {
+      "name": "q4_3_spread_+0.2.emergency_total",
+      "error": 0.0,
+      "tolerance": 1e-06,
+      "passed": true
+    }
+  ],
+  "source_sha256": {
+    "scripts/validate_paper_sensitivity.py": "45b921326bf36198392e43dce1c4929ef961dca1571161c89b459eb9974a3c1c",
+    "outputs/paper-study/sensitivity.json": "147989b2621aac32399c0b2072a2ba5031cfddaba2398d11b4f19022433e38ad",
+    "outputs/paper-study/dispatch.npz": "022e0ef5218cc3d671e470353454101e442da75d647071c1893e0820a32c4f10"
+  },
+  "limits": "Direct feasibility and billing checks; Q1 primal/recorded dual agreement. Q4 retains the existing causal predictor and is same-year sensitivity, not optimality or external validation."
+}

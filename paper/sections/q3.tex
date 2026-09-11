@@ -1,35 +1,126 @@
-\subsection{问题三：日内信息更新和购电调整}
-\subsubsection{小时光伏预报的因果融合}
-在00、06、12、18点发布预报后，只接收此时及此前已发布的附件三记录。发布时刻$h$后的第$k$个小时预报对应绝对目标$h+k$，不能把不同发布行的第$k$列当成同一时刻。插值以最近一个已完成区间的光伏观测为当前锚点，连接可用的未来整点值，生成十分钟预测$\widehat P^{\mathrm{V},\mathrm{F}}$；首日无历史锚点取0。到当日24点即截断。
+\subsection{问题三：日内调整购电规划}\label{sec:q3}
+\subsubsection{新增信息与交易变量}
+问题三在固定电价下增加了两项条件：每天00、06、12、18点可接收未来整点光伏预报，且允许在后三个时刻修订尚未交付的购电量。新预报能够改变对未来光伏的判断，调整机会则允许根据实际库存和近期负荷重新安排购电。这两种作用必须分别比较，不能将总费用下降全部归因于预报精度。
 
-预测组合可以利用不同来源的互补信息，组合权重已有基于历史误差的研究\upcite{bates1969combination}。光伏预测领域也有模态分解与自适应模型组合方法\upcite{wei2026pv}。本题直接提供历史功率和已发布预报，因而采用两来源线性融合，并按历史结算费用选择权重，以对应调度目标。为平衡历史稳定性与预报更新，构造
+记零时计划为$g_{d,t}$，发布时间对应的区间索引为$s\in\{0,36,72,108\}$，在$s$修订的剩余计划记为$q^{(s)}_{d,t}$，实际交付的最终常规电量记为$q_{d,t}$。规划仍使用预测充放电和库存，实际执行仍采用问题二反馈。$\mathcal H_{d,s}$包含此前日期的历史、当日$s$之前已完成区间观测，以及截至$s$已发布的预报。
+
+本问沿用余电可以不利用、原计划款不返还的假设。主合约按同一交付段相对于零时原计划的最终净调整收费；未交付的追加申报允许被后续修订撤回。这是对多次调整累计方式的明确解释，逐笔成交不可撤回的替代制度另作检验。
+
+\subsubsection{费用目标与预报融合}
+总费用由原计划、调整和紧急购电三项组成：
 \begin{equation}
- \widehat P^{\mathrm{V}}=(1-\lambda)\widehat P^{\mathrm{V},\mathrm{H}}+\lambda\widehat P^{\mathrm{V},\mathrm{F}},
- \qquad\lambda\in\{0,0.25,0.50,0.75,1\}.\label{eq:fusion}
+\begin{aligned}[b]
+ C_3=\sum_{d,t}\bigl[&p_tg_{d,t}
+ +1.5p_t(q_{d,t}-g_{d,t})_+\\
+ &+0.5p_t(g_{d,t}-q_{d,t})_+
+ +5p_te_{d,t}\bigr].
+\end{aligned}\label{eq:netbill}
 \end{equation}
-日内发布时刻$s\in\{36,72,108\}$，用已经完成的最近18段更新负荷水平：
+其中$(x)_+=\max(x,0)$，求和覆盖正式期。增购1\,kWh额外支付$1.5p_t$，减购1\,kWh仍保留原计划款并增加$0.5p_t$违约费。不能将减购解释成退回原价后只损失50\%，否则会得到不同模型。
+
+在零时仍求解$(\mathrm P_2)$的计划电费目标，只将净负荷预测换成已发布预报与历史曲线的融合值。在日内$s>0$，原计划费用已确定，以剩余时域的增购费用最小为目标：
 \begin{equation}
- \widehat P^{\mathrm{L},(s)}_{d,t}=\widehat P^{\mathrm{L}}_{d,t}\,
+ \min \widehat C_{3,d,s}=\sum_{t=s}^{143}1.5p_t\bigl(q^{(s)}_{d,t}-g_{d,t}\bigr).\label{eq:replan}
+\end{equation}
+本式采用$q^{(s)}_{d,t}\ge g_{d,t}$的约束，其合理性将在下节说明。未来紧急支出仍通过风险净负荷间接防范，故该目标是日内规划近似，不等于直接优化随机全年账单。
+
+附件三预报必须按绝对目标时刻对齐：发布于$h$点的第$k$列对应$h+k$点。接收新行后，以最近一个已完成区间的光伏观测作为当前锚点，连接未来整点值，线性插值为十分钟预测$\widehat P^{\mathrm{V,F}}$，到当日24点截断。不能把不同发布行的同列数据误当作同一时刻。
+
+采用两来源线性融合：
+\begin{equation}
+ \widehat P^{\mathrm V}_{d,t}
+ =(1-\lambda)\widehat P^{\mathrm{V,H}}_{d,t}
+ +\lambda\widehat P^{\mathrm{V,F}}_{d,t},
+ \qquad 0\le\lambda\le1.\label{eq:fusion}
+\end{equation}
+预测组合可以利用不同来源的误差差异\upcite{bates1969combination}；光伏预测也有更复杂的自适应组合方法\upcite{wei2026pv}。本题采用可核对的凸组合，并通过真实购电费用选择权重，避免把预测精度较好直接等同于经济表现较好。
+
+在日内发布时刻，再用此前18个已完成区间修正负荷水平：
+\begin{equation}
+ \widehat P^{\mathrm L,(s)}_{d,t}
+ =\widehat P^{\mathrm L}_{d,t}
  \operatorname{clip}\!\left(
- \frac{\overline{P^{\mathrm{L}}_{d,s-18:s}}}{\max(\overline{\widehat P^{\mathrm{L}}_{d,s-18:s}},1)},0.75,1.25\right),\quad t\ge s.
+ \frac{\overline{P^{\mathrm L}_{d,s-18:s}}}
+      {\max(\overline{\widehat P^{\mathrm L}_{d,s-18:s}},1)},0.75,1.25
+ \right),\quad t\ge s.
 \end{equation}
-横线上标区间表示该区间均值，$\operatorname{clip}$将比例限制在给定范围。所有更新都排除当前未完成区间及之后的真实数据。
+横线表示区间均值，$\operatorname{clip}$将修正比例截在给定范围。以修正后的负荷和融合光伏形成点预测，再按式\eqref{eq:risk}加入该发布时刻对应的历史残差分位。每种$\lambda$及预报信息集合分别构造残差池，且只读取此前日期。
 
-将5个权重与6个分位组成30个候选，仍只用1月15—31日费用选参。表\ref{tab:jan-selection}对每个权重列出其最优分位，问题三和问题4-3均选择$(\lambda,\alpha)=(0.50,0.65)$。实际主策略的1月热启动固定为纯附件三、0.80分位和三次日内调整，2月1日才切换参数。候选回放与正式热启动是两条明确分开的流程。候选族是在查看本年结果和评审反例后扩展的，因此这里的选参与比较属于同年再分析，不能作为未参与开发数据上的独立验证。
-\input{generated/jan-selection}
+\subsubsection{分条约束与汇总模型}
+\textbf{a) 剩余时域供需平衡。}仅对$t\ge s$规划未来交付：
+\begin{equation}
+ q^{(s)}_{d,t}+\widehat b_{d,t}
+ =\widetilde N^{(s)}_{d,t}+\widehat c_{d,t}+\widehat w_{d,t}.
+\end{equation}
+已交付区间不重新优化，其实际费用和库存变化均保留。
+
+\textbf{b) 真实库存起点。}本次规划从$\widehat S_{d,s}=S_{d,s}$开始，并要求$\widehat S_{d,144}\ge6000$；不能沿用零时预测的$\widehat S_{d,s}$代替实际库存。所有预测态继续满足问题一的状态递推、功率和库存边界。
+
+\textbf{c) 原计划下界。}若某段$q<g$，将$q$提高到$g$并将差额计入未利用量，可以保持充放电和库存不变，却免去减购违约费。因此在主假设下不减购原计划具有弱优势，可以加入
+\begin{equation}
+ q^{(s)}_{d,t}\ge g_{d,t},\qquad t\ge s.\label{eq:plan-floor}
+\end{equation}
+这个下界是零时$g_t$，不是此前的$q^{(s-36)}_t$。后续修订可以撤回尚未交付的追加量，仍只在交付时按最终净差收费。
+
+\textbf{d) 信息与动作时点。}本次$q^{(s)}$仅由$\mathcal H_{d,s}$产生；交付段实际需求到达后，只执行充放电反馈和紧急补购。当段真值不用于回写零时计划或此前已经交付的量。
+
+省略日期下标，得到每次日内重规划的完整形式：
+\begin{equation}
+\begin{aligned}[b]
+ (\mathrm P_3^{(s)})\quad\min\quad&
+       \sum_{t=s}^{143}1.5p_t(q^{(s)}_t-g_t),\\
+ \mathrm{s.t.}\quad&q^{(s)}_t+\widehat b_t
+      =\widetilde N^{(s)}_t+\widehat c_t+\widehat w_t,\\
+ &\widehat S_{t+1}=\widehat S_t+0.9\widehat c_t-\widehat b_t/0.9,\\
+ &0\le\widehat c_t,\widehat b_t\le5000/6,\quad\widehat w_t\ge0,\quad q^{(s)}_t\ge g_t,\\
+ &1200\le\widehat S_t\le10800,\quad
+   \widehat S_s=S_{d,s},\quad\widehat S_{144}\ge6000.
+\end{aligned}\label{eq:q3-summary}
+\end{equation}
+区间约束作用于$t=s,\ldots,143$，库存边界还包括144。剩余时域分别为108、72、36段，相应线性规划为540、360、180个连续变量。充放电互斥仍可按问题一的论证处理。
+
+\subsubsection{求解与日内执行步骤}
+权重候选为$\{0,0.25,0.50,0.75,1\}$，与六个分位组成30个候选。只按1月15—31日真实费用选参，得到$(\lambda,\alpha)=(0.50,0.65)$。正式策略的1月热启动固定采用纯附件三、0.80分位和三次日内调整，2月1日才切换到所选参数。候选评分回放与这条热启动路径分别保存，不能把月底选择结果倒灌到此前执行。
+
+日前与日内协调优化已有相关研究\upcite{xiao2019mpc}。本问采用如下分时执行步骤：
+\begin{enumerate}
+ \item 零时继承真实库存，读取已发布光伏预报，与历史曲线融合并作风险修正，求解全天原计划$g$。
+ \item 每到06、12、18点，接收本次新预报和此前已完成区间的负荷、光伏观测，更新剩余预测。
+ \item 以当前实际库存为起点，求解$(\mathrm P_3^{(s)})$，仅覆盖尚未交付的常规计划；保存每次修订以供核账。
+ \item 在每个交付段以当前$q_t$替换问题二反馈式中的$g_t$，执行储能和必要的紧急购电。
+ \item 按最终$q_t-g_t$而非每次申报变化累计主合约调整费，日末将实际库存传至次日。
+\end{enumerate}
+日内LP只决定常规购电承诺，后续真实负荷仍可能偏离风险输入，故不能将该LP最优性描述为日内随机控制的全局最优性。
+
+\subsubsection{调度结果与费用来源}
+正式期总费用为\PaperValue{q3-cost}\,元，比问题二减少\PaperValue{q3-saving}\,元，降幅\PaperValue{q3-saving-percent}\%。表\ref{tab:q3-comparison}将费用、电量和库存放在同一口径下比较。
+\input{generated/q3-comparison}
+\FloatBarrier
+原计划费由13291625.72元降至12649467.17元，紧急费由616550.23元降至138430.89元，两项节省抵消了527937.93元调整费。常规购电量和未利用电量也下降，说明本次收益并非只把紧急电重新命名为常规电，而是购电时点和数量共同发生了变化。
+
+紧急购电总量下降约74.84\%，但发生紧急购电的天数从115天增至139天。由此应将结论表述为紧急电量及支出下降，不能写成紧急事件全面减少。两种主策略的热启动不同，首末库存已在表中报告；上述差额是完整策略路径的现金比较。
+
+四个指定日期的结果见表\ref{tab:q3-days-summary}，完整明细见附录\ref{app:days}和\texttt{result3.xlsx}。9月23日紧急电量从892.40\,kWh降至170.85\,kWh，总费下降3909.92元；3月20日日内方案却比问题二多支出109.40元，说明调整机会并不保证每一天都降低费用。
+\input{generated/q3-days-summary}
+图\ref{fig:q3-day}展示9月23日的原计划、最终购电与实际净需求；竖虚线标出三次允许修订的时刻。最终购电在原计划上补充部分缺口，后续库存因此改变，紧急购电的规模随之下降。
+\begin{figure}[!htbp]
+ \centering\includegraphics[width=\textwidth]{../outputs/figures/paper-q3-day.pdf}
+ \caption{9月23日的日内购电调整与库存变化}\label{fig:q3-day}
+\end{figure}
 \FloatBarrier
 
-\subsubsection{主合约下的日内重规划}
-题目给出了增购、减购和紧急电的加价，但对多次调整的累计方式存在解释空间。本文主合约按同一交付段相对零时计划的最终净调整收费：
-\begin{equation}
- C_3=\sum_{d,t}\left[p_tg_{d,t}+1.5p_t\pos{q_{d,t}-g_{d,t}}
-       +0.5p_t\pos{g_{d,t}-q_{d,t}}+5p_te_{d,t}\right].\label{eq:netbill}
-\end{equation}
-原计划款不退款。该解释把未交付增购视为可撤回的计划申报，尚未交付时可以重新改报；并非所有交易市场都采用这一规则。
+\subsubsection{预报贡献与参数灵敏度}
+先比较不同光伏来源。各来源在相同1月区间选参，正式期共用热启动和期初库存。融合方案比纯历史基准节省112379.91元，纯附件三反而较贵，因而保留历史曲线。完整费用见附录表\ref{tab:q3-forecast}；这种组合比较尚不能单独识别某次新预报的价值。
 
-在免费不利用余电的模型中，把某段$q_t<g_t$提高至$g_t$、相应增加未利用量，可以保持储能轨迹并免去减购服务费，因此不减购原计划具有弱优势。日内时刻$s$只优化$t\ge s$，以当前实际$S_s$为起点，解
-\begin{equation}
- \min\sum_{t=s}^{143}1.5\widehat p_t(q_t-g_t),\qquad
- q_t\ge g_t,\quad S_{144}\ge6000,\label{eq:replan}
-\end{equation}
-并满足风险净负荷下的物理约束。已交付段保持不变。由于基准始终为$g_t$，新计划可低于此前尚未交付的增购申报；最终只在交付时按式\eqref{eq:netbill}收取一次调整费。问题三使用已知固定价格，问题4-3使用下述因果价格预测。
+为回答是否引入其他时刻预报，固定主参数、三次重规划、负荷修正及当前光伏锚点，仅切换允许读取的新预报；未读取时沿用最近可用发布行。各子集共用1月热启动，之后连续演化库存。表\ref{tab:hourly-marginals}列出单独撤去一次新预报的条件费用差，全部八个子集见附录表\ref{tab:hourly-subsets}。
+\input{generated/hourly-marginals}
+\FloatBarrier
+全部新预报相对全部不读取节省17225.82元。撤去06或12点新预报会增加费用，撤去18点的变化仅$-0.31$元。前两次预报在当前组合下有可辨认的价值，18点新预报未显示经济增益。这些边际量有交互，不能相加；对照中三次调整机会仍保留，也不能据此取消18点调整购电。
+
+分位扰动见表\ref{tab:q3-risk-sensitivity}。正式期$\alpha=0.50$费用比主参数0.65低15787.50元，但紧急电量明显增大。该结果暴露了1月短评分窗口对全年选择的局限，本文保留按1月选出的主参数，不在观察全年后追认更便宜的参数为预先选定结果。
+\input{generated/q3-risk-sensitivity}
+进一步将日末预测恢复目标改为3000或9000\,kWh，结果见表\ref{tab:q3-reserve}。目标较低时现金费用下降，但热启动库存和期末库存也降低；这不是同一边界库存下的纯参数效应，不能把费用差全视为运行效率改进。
+\input{generated/q3-reserve}
+\FloatBarrier
+最后检验结算解释。若增购成交后不能撤回，则要求本次计划不低于上次已承诺计划，并按每次新增量收费。从1月重新按逐笔制度选参和运行，固定价格总费为\PaperValue{q3-per-trade-cost}\,元，仍比问题二低447673.33元，但节省少于主合约。冻结主路径后重计逐笔费用与在新制度下重新优化是不同实验，完整账单及库存见附录\ref{app:comparisons}。因此，调整策略的收益依赖题面中多次交易如何累计的解释。
+\label{end:q3}

@@ -1,21 +1,84 @@
-\subsection{问题一：确定性日循环购电}
-\subsubsection{模型求解与最优性核验}
-在附件一预测确定时，令$e_t=0,q_t=g_t$，施加$S_0=S_{144}=6000$，求解
+\subsection{问题一：确定性购电规划}\label{sec:q1}
+\subsubsection{输入、假设与变量}
+附件一给出了同一天144个十分钟区间的负荷、光伏预测和电价。按照题意，本问将这些曲线视为确定输入；需要选择的是在哪些区间购电、充电和放电。分时电价下的储能经济调度已有相关研究\upcite{wu2018tou}，本题的特殊约束在于日初和日末库存必须一致，故不能逐时段独立选择购电量。
+
+记区间集合为$\mathcal T=\{0,\ldots,143\}$，以$L_t=P_t^{\mathrm L}\Delta$、$V_t=P_t^{\mathrm V}\Delta$表示负荷和光伏电量。每段设置购电量$g_t$、充电量$c_t$、放电量$b_t$、未利用电量$w_t$及段末储电量$S_{t+1}$。五类变量均为连续量，单位为kWh；电价$p_t$的单位为元/kWh。当前储电量连接相邻时段，不能在各时段独立重置。
+
+本问没有另设紧急购电变量，因为全部输入已知，可在零时一次性安排满足需求的购电量。效率按充、放电各0.9解释，允许免费不利用余电，其余物理条件采用题给参数。效率含义和可用容量对结果的影响，在本问末尾单独检验。
+
+\subsubsection{目标函数与分条约束}
+以全天外网购电支出最小为目标。光伏没有题给的使用费用，储能损耗通过能量递推体现，不再额外添加一项损耗电费：
 \begin{equation}
- \min \sum_{t=0}^{143}p_tg_t
- \quad\text{s.t. 式\eqref{eq:balance}--\eqref{eq:nonnegative}的线性约束及日循环边界。}
+ \min C_1=\sum_{t\in\mathcal T}p_tg_t.\label{eq:q1-objective}
 \end{equation}
-依据前述等价论证，求解时去掉互斥乘积约束。以购电、充电、放电、段末储电量和未利用量为变量，共有720个连续变量与288个线性等式。经SciPy的HiGHS接口求解\upcite{scipyHighs}；对偶修正单纯形算法已有详细论述\upcite{huangfu2018simplex}。数值计算以微小吞吐项$10^{-6}\sum_t(c_t+b_t)+10^{-7}\sum_tw_t$选择退化解，但报告费用不包含这些选解项。
+目标函数中“电价乘电量”的结果为元；若直接将功率代入，费用会多算六倍。为使该目标对应可实际运行的日计划，依次建立以下六类约束。
 
-不加选解项的纯电费LP给出相同费用；另引入144个充放电模式二元变量，独立求解MILP，所得费用亦为35126.948589元，最优性间隙为0，最大约束残差约$7.62\times10^{-12}$。故最优性结论适用于给定离散化、效率和余电处理假设下的问题一。
+\input{sections/physical-model}
 
-\subsubsection{指定时段结果与储能作用}
-表\ref{tab:q1-purchase}给出六个指定区间及全天购电结果。表\ref{tab:q1-storage}逐行列出六个连续四小时区间的充电输入与放电输出，均按交流母线侧电量计；末两行列出00:00和24:00的储电量，以核对日循环边界。破折号表示该项不适用。
+\subsubsection{汇总模型与线性化}
+将目标和约束合并，得到问题一的规划模型：
+\begin{equation}
+\begin{aligned}[b]
+ (\mathrm P_1)\quad \min\quad&\sum_{t=0}^{143}p_tg_t,\\
+ \mathrm{s.t.}\quad&g_t+V_t+b_t=L_t+c_t+w_t,\\
+ &S_{t+1}=S_t+0.9c_t-b_t/0.9,\\
+ &0\le c_t,b_t\le5000/6,\quad g_t,w_t\ge0,\\
+ &1200\le S_t\le10800,\quad S_0=S_{144}=6000,\\
+ &c_tb_t=0\qquad(t\in\mathcal T).
+\end{aligned}\label{eq:q1-summary}
+\end{equation}
+库存限制另包括日末$t=144$。只有互斥条件不是线性的。通常可引入二元变量$y_t$，以$c_t\le(5000/6)y_t$、$b_t\le(5000/6)(1-y_t)$代替乘积约束，得到混合整数线性规划。但在本题余电处置条件下，可以先求解更简洁的连续线性规划。
+
+考虑松弛模型中某一同时充放电的时段，令
+\begin{equation}
+ \delta=\min\{c_t,b_t/(\eta_c\eta_d)\},\qquad
+ c'_t=c_t-\delta,\quad b'_t=b_t-\eta_c\eta_d\delta.\label{eq:cycle-remove}
+\end{equation}
+再令$w'_t=w_t+(1-\eta_c\eta_d)\delta$。该变换使$c'_t$、$b'_t$中至少一个为0，并保持
+\begin{equation}
+ \eta_cc'_t-b'_t/\eta_d=\eta_cc_t-b_t/\eta_d.
+\end{equation}
+故全部库存不变，充放电功率不增加；增加的未利用量恰好补回能量平衡的差额。购电量$g_t$没有改变，目标费用保持不变。因此，线性松弛的任一最优解都能转成同费用的互斥解，松弛不会降低实际可达的最低电费。
+
+这一结论依赖允许不利用余电，且目标不奖励额外充放电。若以后加入弃电惩罚、禁止弃电或循环补贴，应重新检查等价关系，不能直接沿用本次线性化。
+
+\subsubsection{求解步骤与最优性核验}
+去掉互斥乘积后，使用$\boldsymbol x=(\boldsymbol g,\boldsymbol c,\boldsymbol b,\boldsymbol S_{1:144},\boldsymbol w)$作为求解向量，共720个连续变量。每个时段有一条平衡等式和一条状态等式，共288条；容量、功率和日末等式通过变量边界给定。系数矩阵只连接本段动作与相邻库存，适合使用稀疏矩阵存储。
+
+计算通过SciPy的HiGHS接口完成\upcite{scipyHighs}；所用求解器包含对偶修正单纯形等线性优化方法\upcite{huangfu2018simplex}。求解过程为：
+\begin{enumerate}
+ \item 将144行功率乘以$1/6$，形成负荷、光伏电量与目标系数向量，检查单位和时段顺序。
+ \item 按两类等式逐行装配系数矩阵，设置充放电、库存及首末库存边界。
+ \item 求解纯电费LP，保存最低费用；另以微小选解项$10^{-6}\sum_t(c_t+b_t)+10^{-7}\sum_tw_t$确定交付用的退化解。
+ \item 将选解后的实际电费与纯电费下界比较，不把选解项计入购电账单。
+ \item 独立建立含144个模式变量的MILP，检查目标差、整数性和物理残差。
+ \item 将通过核验的十分钟结果按指定区间聚合，生成购电表、储能表和完整工作簿。
+\end{enumerate}
+纯电费LP和独立MILP均得到35126.948589元，MILP最优性间隙为0，最大约束残差约$7.62\times10^{-12}$\,kWh。加入选解项的交付调度也达到相同纯电费。因此，问题一的最优性有目标下界和独立整数模型的共同支持；该证据不延伸到后续含预测误差的全年策略。
+
+\subsubsection{购电结果与储能作用}
+最优日购电量为\PaperValue{q1-grid}\,kWh，全天费用为\PaperValue{q1-cost}\,元。表\ref{tab:q1-purchase}给出题目指定的六个十分钟区间；表\ref{tab:q1-storage}列出六个四小时区间的充放电量以及首末库存。
 \input{generated/q1-tables}
-\begin{figure}[htbp]
-  \centering\includegraphics[width=\textwidth]{../outputs/figures/q1-dispatch.png}
-  \caption{问题一的最优购电与储能调度}\label{fig:q1}
+\FloatBarrier
+为解释购电时段的安排，图\ref{fig:q1}同时给出购电、充放电、库存和电价。库存上限使低价区间不能无限购电，功率上限使高价区间不能一次性释放全部库存，日循环条件又要求当天用掉的库存得到补充。
+\begin{figure}[!htbp]
+ \centering\includegraphics[width=\textwidth]{../outputs/figures/paper-q1-dispatch.pdf}
+ \caption{问题一的购电、储能及电价关系}\label{fig:q1}
 \end{figure}
 \FloatBarrier
-在低电价或光伏富余区间储能，可在高电价时替代购电。但每向电池输入1\,kWh，只能最终向母线输出0.81\,kWh；仅考虑套利时，放电段替代电价至少要高于充电段电价除以0.81。容量和功率约束进一步限制了负荷可以转移的数量。表中某个四小时区间内充电总量与放电总量同时为正，并不意味着某个十分钟段同时充放电。
+在相同已知曲线下，关闭储能并逐段购买正净负荷，费用为\PaperValue{q1-no-storage-cost}\,元。储能使当日电费减少\PaperValue{q1-storage-saving}\,元，降幅\PaperValue{q1-storage-saving-percent}\%。这是同一确定输入和同一费用规则下的比较，节省主要来自光伏余量利用与跨时段购电转移。
+
+全天充电输入为\PaperValue{q1-charge}\,kWh，放电输出为\PaperValue{q1-discharge}\,kWh，两者相差\PaperValue{q1-cycle-loss}\,kWh。由日循环边界对式\eqref{eq:soc}求和可得
+\begin{equation}
+ \sum_t b_t=\eta_c\eta_d\sum_t c_t=0.81\sum_t c_t.
+\end{equation}
+该差额正是充放电往返损耗，不能把它视为缺供。若只考虑从低价段向高价段转移1\,kWh电量，只有高价超过低价除以0.81时才有套利空间；实际调度还受到同时到达的光伏、库存和功率限制。四小时汇总中充电和放电同时为正，只说明该区间内不同十分钟段执行了不同动作。
+
+\subsubsection{容量、功率与效率灵敏度}
+固定附件一曲线和6000\,kWh首末库存，分别改变可用库存幅度$B_{\mathrm u}$、充放电功率上限$P_{\max}$和单向效率$\eta$，每次只改变一个参数并重新优化。容量实验令库存范围为$[6000-B_{\mathrm u}/2,6000+B_{\mathrm u}/2]$，因此改变的是可用窗口，而不是额外赠送初始电能。表\ref{tab:q1-sensitivity}列出局部扰动的代表结果，费用变化以主方案为基准。
+\input{generated/q1-sensitivity}
 \FloatBarrier
+可用容量增加20\%使费用下降3.58\%，同幅度提高功率只降费0.12\%，说明在这一天、这一运行点附近，可用库存的限制比放电速度更突出。单向效率由0.90提高到0.95又可降费3.87\%，原因是同一放电输出所需的充电输入减少。扰动解逐一通过能量平衡、首末库存、功率、互斥和电费重算检查，并核对LP原始目标与记录的对偶下界一致。这些结果不含设备投资，不能直接推断扩容的经济回收期。
+
+另将题给90\%理解为往返效率，两侧效率设为$\sqrt{0.9}$，费用变为\PaperValue{q1-roundtrip-cost}\,元；将输入功率按梯形积分处理，费用为\PaperValue{q1-trapezoid-cost}\,元。二者属于题意与计量解释的对照，不用于替换按区间均值、两侧效率0.9求得的主结果。
+\label{end:q1}

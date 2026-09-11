@@ -1,0 +1,61 @@
+{
+  "status": "passed",
+  "source_sha256": {
+    "scripts/build_paper_evidence.py": "f3cd2df77aac1fe222671b7f8b210d19913869df2d9200a4601a3ceae3a82269",
+    "scripts/build_paper_tables.py": "f2fd728b69801e116899c2d216f8e93f20657d9252777c47eaa4a1285dfc0b9f",
+    "scripts/model.py": "329a81345f52c1e73756fb4ef189e787dd4e5b970e7bdb57e9dd2cabc4695cdc",
+    "outputs/summary.json": "15e925db6ebee72733ed644954485c06b79660f0d07ea0e137b7323b8f5711b9",
+    "outputs/revision-experiments.json": "588b6b9fac8e83267e69e06836c7d2c60301e32827998f90f8dc70388e12c1d2",
+    "outputs/round2/experiments.json": "215b3198883e74e9706c7cd2a85ee8fcb2900cc731238efabc9c11c223e7e67a",
+    "outputs/dispatch.npz": "3556ad8cfd01f801aec0bcd557085e1df7511f2c2e9a3b281b4d25aedcc372ec",
+    "data/processed/data.npz": "322d240bf033b2051cb0858bb1f5027a4439a1c06ec45812a6a0c47f1c5bcb1f",
+    "outputs/paper-study/sensitivity.json": "147989b2621aac32399c0b2072a2ba5031cfddaba2398d11b4f19022433e38ad",
+    "outputs/paper-study/validation.json": "ed71bcf60ba6e7dba39d359702b4869866012fd861190c8f86fda4271393b77d"
+  },
+  "generated_sha256": {
+    "paper/generated/q1-sensitivity.tex": "64f12f6500996b6833c877837366fee22b6dfcc973403b228b0317d037b1fe8b",
+    "paper/generated/q2-summary.tex": "ae9c94f27527f7c035f0ecf45fdceee76bade79517f35d0f37f0faf1e16cb25a",
+    "paper/generated/q3-comparison.tex": "84ac4a4f0b0e1e9f3ff3d2291105a8f1cf79bb53393f63c8804b4d55d5d573a1",
+    "paper/generated/q4-comparison.tex": "7ba637a4f977e799e8217c6dabdfb4430996404e45585850e392e68a9c95ea10",
+    "paper/generated/q2-risk-sensitivity.tex": "a4d751559f05afa931a79d21b5d927585ba97803d40b7ee86097205d61a00916",
+    "paper/generated/q3-risk-sensitivity.tex": "18c79f6d1c4bd8032dc8543b36dd169a3c56cccbc75063ecd9bedd332fc6a494",
+    "paper/generated/q3-reserve.tex": "a902386ef4e6a4d8802564b87186df73cfb4414ed29085de64b551ed87f914b9",
+    "paper/generated/q2-days-summary.tex": "a057d7b878c0f71f8faa98bb0d2d8e4f68a6b64d9fab5a69f57a5558971970d3",
+    "paper/generated/q3-days-summary.tex": "f7372087c1b772a58b37bdafd97c76526209e517624b5b2e35496e14853da98f",
+    "paper/generated/q4-days-summary.tex": "cddb212a4984e4282d211a09800699a09afd6b7ba13179764f9d94fef1c34767",
+    "paper/generated/q3-forecast.tex": "b89ff4165a8a8772df7babd50f6823169836cfae79fd4d469beb0c346edbb0f4",
+    "paper/generated/q4-3-forecast.tex": "224eb5bd6e0ec8c3d0274969839c0bf84c6a479a233f6e333bc8574518b61f85",
+    "paper/generated/q4-calibration.tex": "01fa5a2ee96b1c8c970264fed953d119a49e0d325fb2d2531c9b94a33ee30776",
+    "paper/generated/q4-price-sensitivity.tex": "3fc511964786afcc82b9b28890eecad4122ba6278429c34732152c8510005ae7",
+    "paper/generated/evidence-numbers.tex": "3eb136ca84a47e05b14c1f83c68cd3c42e0153615d93f4c90ce7f53a34018c54"
+  },
+  "figure_sha256": {
+    "outputs/figures/paper-q1-dispatch.pdf": "b7191868e7800f7da4854973ead06f4dfbe76340ec5adef910762b800f974901",
+    "outputs/figures/paper-q1-dispatch.png": "08ffe5a9dee21f898c431c282735f001d5380aeaf4c26685f011f4efab3101b9",
+    "outputs/figures/paper-q2-day.pdf": "b3da51f1c917c3cbc75c6ad0465ca0c056eadd89cf17a4df3da70e7c0620f802",
+    "outputs/figures/paper-q2-day.png": "485aab1aec192d6ee1de86cb85f2664afa04569fc34ce8bdf0ebb1d206682511",
+    "outputs/figures/paper-q3-day.pdf": "a0dea11a5e19634fcfaf641b0abcc0499aff7950f3a9ad9d89b17f1625e94f9f",
+    "outputs/figures/paper-q3-day.png": "857504db9a80e077584513c27fa13e6f83fb146339155514c995fbe753b5dde8",
+    "outputs/figures/paper-q4-months.pdf": "e324b06cfde01e9b8fdfa728358a6345ebe8fff5882ec2099e762417d2d8d251",
+    "outputs/figures/paper-q4-months.png": "8a82f78fe18eecaf3573a79d25a34ed3806884ffa8a1ae085d7874dd91189331"
+  },
+  "numbers": {
+    "q1-no-storage-cost": "48,052.05",
+    "q1-storage-saving": "12,925.10",
+    "q1-storage-saving-percent": "26.90",
+    "q1-load": "111,024.81",
+    "q1-pv": "55,482.84",
+    "q1-charge": "20,740.67",
+    "q1-discharge": "16,799.94",
+    "q1-unused": "0.00",
+    "q1-cycle-loss": "3,940.73",
+    "q1-trapezoid-cost": "35,042.54",
+    "q1-roundtrip-cost": "33,801.50",
+    "q4-2-oracle": "14,566,416.06",
+    "q4-2-oracle-saving": "109,428.81",
+    "q4-3-oracle": "13,932,754.85",
+    "q4-3-oracle-saving": "112,130.40",
+    "q3-per-trade-cost": "13,460,502.62"
+  },
+  "provenance": "Tables regroup existing verified archives; new parameter experiments are independently checked in outputs/paper-study/validation.json."
+}
