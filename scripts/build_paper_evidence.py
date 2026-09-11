@@ -23,13 +23,13 @@ def read(name):
 
 
 def main():
-    study_validation = read("outputs/paper-study/validation.json")
+    study_validation = read("outputs/experiments/paper-study/validation.json")
     assert study_validation["status"] == "passed"
     for name, expected in study_validation["source_sha256"].items():
         assert hashlib.sha256((ROOT / name).read_bytes()).hexdigest() == expected, name
-    s, r, r2 = [read(f) for f in ("outputs/summary.json", "outputs/revision-experiments.json", "outputs/round2/experiments.json")]
-    study = read("outputs/paper-study/sensitivity.json")
-    a, d = np.load(ROOT / "outputs/dispatch.npz"), np.load(ROOT / "data/processed/data.npz")
+    s, r, r2 = [read(f) for f in ("outputs/main/summary.json", "outputs/experiments/revision/experiments.json", "outputs/experiments/round2/experiments.json")]
+    study = read("outputs/experiments/paper-study/sensitivity.json")
+    a, d = np.load(ROOT / "outputs/main/dispatch.npz"), np.load(ROOT / "data/processed/data.npz")
     p = s["primary"]
     files, numbers, figures = {}, {}, []
 
@@ -193,12 +193,12 @@ def main():
     for name, content in files.items():
         (DEST / name).write_text(content, encoding="utf-8", newline="\n")
     sources = ["scripts/build_paper_evidence.py", "scripts/build_paper_tables.py", "scripts/model.py",
-               "outputs/summary.json", "outputs/revision-experiments.json", "outputs/round2/experiments.json",
-               "outputs/dispatch.npz", "data/processed/data.npz", "outputs/paper-study/sensitivity.json", "outputs/paper-study/validation.json"]
+               "outputs/main/summary.json", "outputs/experiments/revision/experiments.json", "outputs/experiments/round2/experiments.json",
+               "outputs/main/dispatch.npz", "data/processed/data.npz", "outputs/experiments/paper-study/sensitivity.json", "outputs/experiments/paper-study/validation.json"]
     manifest = dict(status="passed", source_sha256={f: hashlib.sha256((ROOT/f).read_bytes()).hexdigest() for f in sources},
                     generated_sha256={"paper/generated/"+f: hashlib.sha256((DEST/f).read_bytes()).hexdigest() for f in files},
                     figure_sha256={f: hashlib.sha256((ROOT/f).read_bytes()).hexdigest() for f in figures}, numbers=numbers,
-                    provenance="Tables regroup existing verified archives; new parameter experiments are independently checked in outputs/paper-study/validation.json.")
+                    provenance="Tables regroup existing verified archives; new parameter experiments are independently checked in outputs/experiments/paper-study/validation.json.")
     (DEST / "evidence-manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2)+"\n", encoding="utf-8", newline="\n")
     print(f"Generated {len(files)-1} tables and {len(figures)//2} figures.")
 

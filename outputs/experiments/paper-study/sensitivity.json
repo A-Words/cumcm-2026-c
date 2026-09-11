@@ -1,0 +1,275 @@
+{
+  "source_sha256": {
+    "scripts/evaluate_paper_sensitivity.py": "25f7baf0fda922b4b8c65c2f58f112643fd80781d6358f5f98327ce67047d9ba",
+    "scripts/model.py": "329a81345f52c1e73756fb4ef189e787dd4e5b970e7bdb57e9dd2cabc4695cdc",
+    "data/processed/data.npz": "322d240bf033b2051cb0858bb1f5027a4439a1c06ec45812a6a0c47f1c5bcb1f",
+    "outputs/main/summary.json": "4a86227270e8e51dae16e7def18aeef41559f9725635626200b96ddd9c4259d9",
+    "outputs/main/dispatch.npz": "3556ad8cfd01f801aec0bcd557085e1df7511f2c2e9a3b281b4d25aedcc372ec"
+  },
+  "q1": {
+    "q1_usable_7680": {
+      "parameter": "usable",
+      "value": 7680,
+      "usable_kwh": 7680,
+      "power_kw": 5000.0,
+      "eta": 0.9,
+      "cost": 36704.73460051179,
+      "grid_kwh": 58806.008560288064,
+      "dual_bound_yuan": 36704.73460051179,
+      "solver_status": 0
+    },
+    "q1_usable_8640": {
+      "parameter": "usable",
+      "value": 8640,
+      "usable_kwh": 8640,
+      "power_kw": 5000.0,
+      "eta": 0.9,
+      "cost": 35816.809051026794,
+      "grid_kwh": 59211.3418936214,
+      "dual_bound_yuan": 35816.80905102679,
+      "solver_status": 0
+    },
+    "q1_usable_9600": {
+      "parameter": "usable",
+      "value": 9600,
+      "usable_kwh": 9600,
+      "power_kw": 5000.0,
+      "eta": 0.9,
+      "cost": 35126.948589289634,
+      "grid_kwh": 59482.69899835391,
+      "dual_bound_yuan": 35126.94858928963,
+      "solver_status": 0
+    },
+    "q1_usable_10560": {
+      "parameter": "usable",
+      "value": 10560,
+      "usable_kwh": 10560,
+      "power_kw": 5000.0,
+      "eta": 0.9,
+      "cost": 34496.576225476296,
+      "grid_kwh": 59685.36566502058,
+      "dual_bound_yuan": 34496.576225476296,
+      "solver_status": 0
+    },
+    "q1_usable_11520": {
+      "parameter": "usable",
+      "value": 11520,
+      "usable_kwh": 11520,
+      "power_kw": 5000.0,
+      "eta": 0.9,
+      "cost": 33868.527518277966,
+      "grid_kwh": 59888.032331687245,
+      "dual_bound_yuan": 33868.52751827796,
+      "solver_status": 0
+    },
+    "q1_power_4000": {
+      "parameter": "power",
+      "value": 4000,
+      "usable_kwh": 9600.0,
+      "power_kw": 4000,
+      "eta": 0.9,
+      "cost": 35247.87089961686,
+      "grid_kwh": 59482.32668827161,
+      "dual_bound_yuan": 35247.87089961684,
+      "solver_status": 0
+    },
+    "q1_power_4500": {
+      "parameter": "power",
+      "value": 4500,
+      "usable_kwh": 9600.0,
+      "power_kw": 4500,
+      "eta": 0.9,
+      "cost": 35156.49995290284,
+      "grid_kwh": 59482.69899835391,
+      "dual_bound_yuan": 35156.49995290284,
+      "solver_status": 0
+    },
+    "q1_power_5000": {
+      "parameter": "power",
+      "value": 5000,
+      "usable_kwh": 9600.0,
+      "power_kw": 5000,
+      "eta": 0.9,
+      "cost": 35126.948589289634,
+      "grid_kwh": 59482.69899835391,
+      "dual_bound_yuan": 35126.94858928963,
+      "solver_status": 0
+    },
+    "q1_power_5500": {
+      "parameter": "power",
+      "value": 5500,
+      "usable_kwh": 9600.0,
+      "power_kw": 5500,
+      "eta": 0.9,
+      "cost": 35103.85181341475,
+      "grid_kwh": 59482.69899835391,
+      "dual_bound_yuan": 35103.85181341475,
+      "solver_status": 0
+    },
+    "q1_power_6000": {
+      "parameter": "power",
+      "value": 6000,
+      "usable_kwh": 9600.0,
+      "power_kw": 6000,
+      "eta": 0.9,
+      "cost": 35083.29348008142,
+      "grid_kwh": 59482.69899835391,
+      "dual_bound_yuan": 35083.293480081426,
+      "solver_status": 0
+    },
+    "q1_eta_0.85": {
+      "parameter": "eta",
+      "value": 0.85,
+      "usable_kwh": 9600.0,
+      "power_kw": 5000.0,
+      "eta": 0.85,
+      "cost": 36603.40648002707,
+      "grid_kwh": 61728.97512460496,
+      "dual_bound_yuan": 36603.40648002707,
+      "solver_status": 0
+    },
+    "q1_eta_0.875": {
+      "parameter": "eta",
+      "value": 0.875,
+      "usable_kwh": 9600.0,
+      "power_kw": 5000.0,
+      "eta": 0.875,
+      "cost": 35843.87242472822,
+      "grid_kwh": 60611.341688435365,
+      "dual_bound_yuan": 35843.87242472823,
+      "solver_status": 0
+    },
+    "q1_eta_0.9": {
+      "parameter": "eta",
+      "value": 0.9,
+      "usable_kwh": 9600.0,
+      "power_kw": 5000.0,
+      "eta": 0.9,
+      "cost": 35126.948589289634,
+      "grid_kwh": 59482.69899835391,
+      "dual_bound_yuan": 35126.94858928963,
+      "solver_status": 0
+    },
+    "q1_eta_0.925": {
+      "parameter": "eta",
+      "value": 0.925,
+      "usable_kwh": 9600.0,
+      "power_kw": 5000.0,
+      "eta": 0.925,
+      "cost": 34437.72476510031,
+      "grid_kwh": 58516.97566642318,
+      "dual_bound_yuan": 34437.724765100305,
+      "solver_status": 0
+    },
+    "q1_eta_0.95": {
+      "parameter": "eta",
+      "value": 0.95,
+      "usable_kwh": 9600.0,
+      "power_kw": 5000.0,
+      "eta": 0.95,
+      "cost": 33767.03262075283,
+      "grid_kwh": 57472.64310064636,
+      "dual_bound_yuan": 33767.03262075282,
+      "solver_status": 0
+    },
+    "q1_no_storage_0": {
+      "parameter": "no_storage",
+      "value": 0,
+      "usable_kwh": 0,
+      "power_kw": 0,
+      "eta": 0.9,
+      "cost": 48052.046590846665,
+      "grid_kwh": 61789.9354,
+      "dual_bound_yuan": 48052.046590846665,
+      "solver_status": 0
+    }
+  },
+  "q4": {
+    "q4_2_spread_-0.2": {
+      "strategy": "q4_2",
+      "theta": -0.2,
+      "summary": {
+        "plan_kwh": 21666924.030811824,
+        "adjusted_kwh": 21666924.030811824,
+        "emergency_kwh": 100517.35337172024,
+        "spill_kwh": 2624962.978179698,
+        "charge_kwh": 6335947.548876992,
+        "discharge_kwh": 5132658.637839811,
+        "plan_cost": 14034102.59273648,
+        "adjustment_cost": 0.0,
+        "emergency_cost": 640376.7275712191,
+        "total_cost": 14674479.3203077,
+        "start_soc": 6864.266205895117,
+        "end_soc": 6263.018150954446,
+        "emergency_days": 106
+      },
+      "evaluation": "2025-02-01/2025-12-31",
+      "common_january_warmup": true
+    },
+    "q4_2_spread_+0.2": {
+      "strategy": "q4_2",
+      "theta": 0.2,
+      "summary": {
+        "plan_kwh": 21762184.70602729,
+        "adjusted_kwh": 21762184.70602729,
+        "emergency_kwh": 101885.41669962174,
+        "spill_kwh": 2639449.37557982,
+        "charge_kwh": 6768275.660157245,
+        "discharge_kwh": 5482844.4079768155,
+        "plan_cost": 14043428.27431651,
+        "adjustment_cost": 0.0,
+        "emergency_cost": 639861.860412818,
+        "total_cost": 14683290.134729335,
+        "start_soc": 6864.266205895117,
+        "end_soc": 6263.018150954446,
+        "emergency_days": 108
+      },
+      "evaluation": "2025-02-01/2025-12-31",
+      "common_january_warmup": true
+    },
+    "q4_3_spread_-0.2": {
+      "strategy": "q4_3",
+      "theta": -0.2,
+      "summary": {
+        "plan_kwh": 20717156.53757514,
+        "adjusted_kwh": 21157374.228847824,
+        "emergency_kwh": 22222.309846660617,
+        "spill_kwh": 2005820.7983417488,
+        "charge_kwh": 6503115.41737451,
+        "discharge_kwh": 5268529.171988442,
+        "plan_cost": 13367207.327813135,
+        "adjustment_cost": 555871.7231984725,
+        "emergency_cost": 119744.71089375245,
+        "total_cost": 14042823.761905363,
+        "start_soc": 7114.535790030982,
+        "end_soc": 5997.109217710668,
+        "emergency_days": 130
+      },
+      "evaluation": "2025-02-01/2025-12-31",
+      "common_january_warmup": true
+    },
+    "q4_3_spread_+0.2": {
+      "strategy": "q4_3",
+      "theta": 0.2,
+      "summary": {
+        "plan_kwh": 20803544.59703502,
+        "adjusted_kwh": 21243553.858420454,
+        "emergency_kwh": 26260.94242495732,
+        "spill_kwh": 2015038.7858699046,
+        "charge_kwh": 6929432.652231203,
+        "discharge_kwh": 5613846.132222364,
+        "plan_cost": 13376662.328740792,
+        "adjustment_cost": 548166.7651891265,
+        "emergency_cost": 136320.56949236876,
+        "total_cost": 14061149.663422292,
+        "start_soc": 7114.535790030982,
+        "end_soc": 5997.109217710668,
+        "emergency_days": 138
+      },
+      "evaluation": "2025-02-01/2025-12-31",
+      "common_january_warmup": true
+    }
+  },
+  "scope": "Same-year sensitivity; original main strategies remain unchanged.",
+  "dispatch_sha256": "022e0ef5218cc3d671e470353454101e442da75d647071c1893e0820a32c4f10"
+}

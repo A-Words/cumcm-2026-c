@@ -2,20 +2,20 @@
   "schema_version": 1,
   "status": "passed",
   "generator": "scripts/build_paper_tables.py",
-  "generator_sha256": "f2fd728b69801e116899c2d216f8e93f20657d9252777c47eaa4a1285dfc0b9f",
+  "generator_sha256": "df18f1cccec9d2c516db062dc9e064ed6062f7fe72e14b528d8c4685f39692a0",
   "source_sha256": {
-    "outputs/summary.json": "15e925db6ebee72733ed644954485c06b79660f0d07ea0e137b7323b8f5711b9",
-    "outputs/results.json": "4b09d15f7f749bea2fcc6804502afa0d4beb9b385a64d756542303bc6d07b9ba",
-    "outputs/dispatch.npz": "3556ad8cfd01f801aec0bcd557085e1df7511f2c2e9a3b281b4d25aedcc372ec",
-    "outputs/revision-experiments.json": "588b6b9fac8e83267e69e06836c7d2c60301e32827998f90f8dc70388e12c1d2",
-    "outputs/revision-dispatch.npz": "338dfa33627f8750da46524dbebb9aa65980b2ce41e772f65d7bc9fba23e6288",
-    "outputs/validation.json": "96f3a08a9a63a8bd10a995401686fef4f4ec9985d4a9704ec1a03a48dd69e417",
-    "outputs/revision-validation.json": "c05a89590c0beb39f3fede9d8e226e3a37d0c5f6b0d7cca04b19f8d72f2c5056",
-    "outputs/round2/experiments.json": "215b3198883e74e9706c7cd2a85ee8fcb2900cc731238efabc9c11c223e7e67a",
-    "outputs/round2/dispatch.npz": "f28c28c314225e32c1c5492411e313d28a6e8d85382f3f9e9e864bbd0b7ab28a",
-    "outputs/round2/validation.json": "64e2f138dd81d6ce150ec47128120e8a80be724cc77020e7cba064c9b67649a4",
-    "outputs/q1-milp-verification.json": "62daf052d8b35082450b12b130d400e66e6a55d01f5f533bdd7b64cae4e066d4",
-    "outputs/workbook-verification.json": "088ad7376e96aee1f6d458199bab09f0c9d272e3f4631572b447513e5b746185",
+    "outputs/main/summary.json": "4a86227270e8e51dae16e7def18aeef41559f9725635626200b96ddd9c4259d9",
+    "outputs/main/results.json": "4b09d15f7f749bea2fcc6804502afa0d4beb9b385a64d756542303bc6d07b9ba",
+    "outputs/main/dispatch.npz": "3556ad8cfd01f801aec0bcd557085e1df7511f2c2e9a3b281b4d25aedcc372ec",
+    "outputs/experiments/revision/experiments.json": "66ce8b308ffbe9d812b0a4f108e0c724e069ccd408b35d1c3bc95fb07c6ee022",
+    "outputs/experiments/revision/dispatch.npz": "6b0c1aae1204694ecb7de3729c6048dbbfe2d485e1c3b27782699384173375fe",
+    "outputs/main/validation.json": "74f858f18bb3aa31b451f981ad679316da19dd871addbc34d4077b2f649b156c",
+    "outputs/experiments/revision/validation.json": "1f4302e24194c084b540caa5916f848539be71e551f49ea0bf78e0cc9003376f",
+    "outputs/experiments/round2/experiments.json": "961ebf1c45fb3e32c25b101187bb84e498afd22375e66e9b82e3955bc466f707",
+    "outputs/experiments/round2/dispatch.npz": "f28c28c314225e32c1c5492411e313d28a6e8d85382f3f9e9e864bbd0b7ab28a",
+    "outputs/experiments/round2/validation.json": "2726e8676bbe4f3b078e23ff88da6b10ac34f841a911be8dfe38fceff491c1ef",
+    "outputs/main/q1-milp-verification.json": "37b4b6455e02d7c2fcc19139742cede273417f2651e1d5de13a323a1d699dc9c",
+    "outputs/verification/workbook-verification.json": "831c686dbd5049258d8eadd41ec85b545ddaa551ff1bf794b30d2cb07b24e248",
     "data/processed/data.npz": "322d240bf033b2051cb0858bb1f5027a4439a1c06ec45812a6a0c47f1c5bcb1f"
   },
   "generated_sha256": {
@@ -405,6 +405,66 @@
       "tolerance": 1e-06
     },
     {
+      "name": "experiment.q3_historical_fixed.plan_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_historical_fixed.adjusted_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_historical_fixed.emergency_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_historical_fixed.charge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_historical_fixed.discharge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_historical_fixed.spill_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_historical_fixed.plan_cost",
+      "max_abs_error": 5.587935447692871e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_historical_fixed.adjustment_cost",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_historical_fixed.emergency_cost",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_historical_fixed.total_cost",
+      "max_abs_error": 1.862645149230957e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_historical_fixed.start_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q3_historical_fixed.end_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
       "name": "experiment.q3_selected.plan_kwh",
       "max_abs_error": 0.0,
       "tolerance": 1e-06
@@ -581,6 +641,66 @@
     },
     {
       "name": "experiment.q4_3_historical.end_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_historical_fixed.plan_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_historical_fixed.adjusted_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_historical_fixed.emergency_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_historical_fixed.charge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_historical_fixed.discharge_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_historical_fixed.spill_kwh",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_historical_fixed.plan_cost",
+      "max_abs_error": 3.725290298461914e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_historical_fixed.adjustment_cost",
+      "max_abs_error": 4.656612873077393e-10,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_historical_fixed.emergency_cost",
+      "max_abs_error": 2.9103830456733704e-11,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_historical_fixed.total_cost",
+      "max_abs_error": 1.862645149230957e-09,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_historical_fixed.start_soc",
+      "max_abs_error": 0.0,
+      "tolerance": 1e-06
+    },
+    {
+      "name": "experiment.q4_3_historical_fixed.end_soc",
       "max_abs_error": 0.0,
       "tolerance": 1e-06
     },
@@ -1781,126 +1901,6 @@
     },
     {
       "name": "experiment.q4_3_per_revision.end_soc",
-      "max_abs_error": 0.0,
-      "tolerance": 1e-06
-    },
-    {
-      "name": "experiment.q3_historical_fixed.plan_kwh",
-      "max_abs_error": 0.0,
-      "tolerance": 1e-06
-    },
-    {
-      "name": "experiment.q3_historical_fixed.adjusted_kwh",
-      "max_abs_error": 0.0,
-      "tolerance": 1e-06
-    },
-    {
-      "name": "experiment.q3_historical_fixed.emergency_kwh",
-      "max_abs_error": 0.0,
-      "tolerance": 1e-06
-    },
-    {
-      "name": "experiment.q3_historical_fixed.charge_kwh",
-      "max_abs_error": 0.0,
-      "tolerance": 1e-06
-    },
-    {
-      "name": "experiment.q3_historical_fixed.discharge_kwh",
-      "max_abs_error": 0.0,
-      "tolerance": 1e-06
-    },
-    {
-      "name": "experiment.q3_historical_fixed.spill_kwh",
-      "max_abs_error": 0.0,
-      "tolerance": 1e-06
-    },
-    {
-      "name": "experiment.q3_historical_fixed.plan_cost",
-      "max_abs_error": 5.587935447692871e-09,
-      "tolerance": 1e-06
-    },
-    {
-      "name": "experiment.q3_historical_fixed.adjustment_cost",
-      "max_abs_error": 0.0,
-      "tolerance": 1e-06
-    },
-    {
-      "name": "experiment.q3_historical_fixed.emergency_cost",
-      "max_abs_error": 0.0,
-      "tolerance": 1e-06
-    },
-    {
-      "name": "experiment.q3_historical_fixed.total_cost",
-      "max_abs_error": 1.862645149230957e-09,
-      "tolerance": 1e-06
-    },
-    {
-      "name": "experiment.q3_historical_fixed.start_soc",
-      "max_abs_error": 0.0,
-      "tolerance": 1e-06
-    },
-    {
-      "name": "experiment.q3_historical_fixed.end_soc",
-      "max_abs_error": 0.0,
-      "tolerance": 1e-06
-    },
-    {
-      "name": "experiment.q4_3_historical_fixed.plan_kwh",
-      "max_abs_error": 0.0,
-      "tolerance": 1e-06
-    },
-    {
-      "name": "experiment.q4_3_historical_fixed.adjusted_kwh",
-      "max_abs_error": 0.0,
-      "tolerance": 1e-06
-    },
-    {
-      "name": "experiment.q4_3_historical_fixed.emergency_kwh",
-      "max_abs_error": 0.0,
-      "tolerance": 1e-06
-    },
-    {
-      "name": "experiment.q4_3_historical_fixed.charge_kwh",
-      "max_abs_error": 0.0,
-      "tolerance": 1e-06
-    },
-    {
-      "name": "experiment.q4_3_historical_fixed.discharge_kwh",
-      "max_abs_error": 0.0,
-      "tolerance": 1e-06
-    },
-    {
-      "name": "experiment.q4_3_historical_fixed.spill_kwh",
-      "max_abs_error": 0.0,
-      "tolerance": 1e-06
-    },
-    {
-      "name": "experiment.q4_3_historical_fixed.plan_cost",
-      "max_abs_error": 3.725290298461914e-09,
-      "tolerance": 1e-06
-    },
-    {
-      "name": "experiment.q4_3_historical_fixed.adjustment_cost",
-      "max_abs_error": 4.656612873077393e-10,
-      "tolerance": 1e-06
-    },
-    {
-      "name": "experiment.q4_3_historical_fixed.emergency_cost",
-      "max_abs_error": 2.9103830456733704e-11,
-      "tolerance": 1e-06
-    },
-    {
-      "name": "experiment.q4_3_historical_fixed.total_cost",
-      "max_abs_error": 1.862645149230957e-09,
-      "tolerance": 1e-06
-    },
-    {
-      "name": "experiment.q4_3_historical_fixed.start_soc",
-      "max_abs_error": 0.0,
-      "tolerance": 1e-06
-    },
-    {
-      "name": "experiment.q4_3_historical_fixed.end_soc",
       "max_abs_error": 0.0,
       "tolerance": 1e-06
     },

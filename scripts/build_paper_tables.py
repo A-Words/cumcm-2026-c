@@ -19,12 +19,12 @@ NAMES = {"q2": "问题2", "q3": "问题3", "q4_2": "问题4-2", "q4_3": "问题4
 DATES = ("2025-03-20", "2025-06-21", "2025-09-23", "2025-12-21")
 SLOTS = (60, 72, 84, 96, 108, 120)
 SOURCES = (
-    "outputs/summary.json", "outputs/results.json", "outputs/dispatch.npz",
-    "outputs/revision-experiments.json", "outputs/revision-dispatch.npz",
-    "outputs/validation.json", "outputs/revision-validation.json",
-    "outputs/round2/experiments.json", "outputs/round2/dispatch.npz",
-    "outputs/round2/validation.json", "outputs/q1-milp-verification.json",
-    "outputs/workbook-verification.json", "data/processed/data.npz",
+    "outputs/main/summary.json", "outputs/main/results.json", "outputs/main/dispatch.npz",
+    "outputs/experiments/revision/experiments.json", "outputs/experiments/revision/dispatch.npz",
+    "outputs/main/validation.json", "outputs/experiments/revision/validation.json",
+    "outputs/experiments/round2/experiments.json", "outputs/experiments/round2/dispatch.npz",
+    "outputs/experiments/round2/validation.json", "outputs/main/q1-milp-verification.json",
+    "outputs/verification/workbook-verification.json", "data/processed/data.npz",
 )
 
 
@@ -122,15 +122,15 @@ def storage_rows(charge, discharge, start_soc, end_soc):
 
 def main():
     DEST.mkdir(parents=True, exist_ok=True)
-    summary = read_json("outputs/summary.json")
-    results = read_json("outputs/results.json")
-    revision = read_json("outputs/revision-experiments.json")
-    round2 = read_json("outputs/round2/experiments.json")
-    validation = read_json("outputs/validation.json")
-    revision_validation = read_json("outputs/revision-validation.json")
-    round2_validation = read_json("outputs/round2/validation.json")
-    workbook = read_json("outputs/workbook-verification.json")
-    dispatch = np.load(ROOT / "outputs/dispatch.npz")
+    summary = read_json("outputs/main/summary.json")
+    results = read_json("outputs/main/results.json")
+    revision = read_json("outputs/experiments/revision/experiments.json")
+    round2 = read_json("outputs/experiments/round2/experiments.json")
+    validation = read_json("outputs/main/validation.json")
+    revision_validation = read_json("outputs/experiments/revision/validation.json")
+    round2_validation = read_json("outputs/experiments/round2/validation.json")
+    workbook = read_json("outputs/verification/workbook-verification.json")
+    dispatch = np.load(ROOT / "outputs/main/dispatch.npz")
     data = np.load(ROOT / "data/processed/data.npz")
     files = {}
     checks = []
@@ -164,8 +164,8 @@ def main():
     # Re-aggregate both experimental archives too, so tables do not only trust
     # precomputed JSON summaries. These are presentation checks, not new proofs.
     for report, archive_path, separator in (
-        (revision, "outputs/revision-dispatch.npz", "_"),
-        (round2, "outputs/round2/dispatch.npz", "__"),
+        (revision, "outputs/experiments/revision/dispatch.npz", "_"),
+        (round2, "outputs/experiments/round2/dispatch.npz", "__"),
     ):
         archive = np.load(ROOT / archive_path)
         for key, scene in report["scenes"].items():

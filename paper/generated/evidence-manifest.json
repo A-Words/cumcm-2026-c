@@ -1,16 +1,16 @@
 {
   "status": "passed",
   "source_sha256": {
-    "scripts/build_paper_evidence.py": "f3cd2df77aac1fe222671b7f8b210d19913869df2d9200a4601a3ceae3a82269",
-    "scripts/build_paper_tables.py": "f2fd728b69801e116899c2d216f8e93f20657d9252777c47eaa4a1285dfc0b9f",
+    "scripts/build_paper_evidence.py": "fd07d097921bfb9bf60e5af71da6adc808e3f901941eeb4bc61867e440df40c6",
+    "scripts/build_paper_tables.py": "df18f1cccec9d2c516db062dc9e064ed6062f7fe72e14b528d8c4685f39692a0",
     "scripts/model.py": "329a81345f52c1e73756fb4ef189e787dd4e5b970e7bdb57e9dd2cabc4695cdc",
-    "outputs/summary.json": "15e925db6ebee72733ed644954485c06b79660f0d07ea0e137b7323b8f5711b9",
-    "outputs/revision-experiments.json": "588b6b9fac8e83267e69e06836c7d2c60301e32827998f90f8dc70388e12c1d2",
-    "outputs/round2/experiments.json": "215b3198883e74e9706c7cd2a85ee8fcb2900cc731238efabc9c11c223e7e67a",
-    "outputs/dispatch.npz": "3556ad8cfd01f801aec0bcd557085e1df7511f2c2e9a3b281b4d25aedcc372ec",
+    "outputs/main/summary.json": "4a86227270e8e51dae16e7def18aeef41559f9725635626200b96ddd9c4259d9",
+    "outputs/experiments/revision/experiments.json": "66ce8b308ffbe9d812b0a4f108e0c724e069ccd408b35d1c3bc95fb07c6ee022",
+    "outputs/experiments/round2/experiments.json": "961ebf1c45fb3e32c25b101187bb84e498afd22375e66e9b82e3955bc466f707",
+    "outputs/main/dispatch.npz": "3556ad8cfd01f801aec0bcd557085e1df7511f2c2e9a3b281b4d25aedcc372ec",
     "data/processed/data.npz": "322d240bf033b2051cb0858bb1f5027a4439a1c06ec45812a6a0c47f1c5bcb1f",
-    "outputs/paper-study/sensitivity.json": "147989b2621aac32399c0b2072a2ba5031cfddaba2398d11b4f19022433e38ad",
-    "outputs/paper-study/validation.json": "ed71bcf60ba6e7dba39d359702b4869866012fd861190c8f86fda4271393b77d"
+    "outputs/experiments/paper-study/sensitivity.json": "3175bb964977ff1e16813e22a168c8308d0fa0ab83cd6f70822eb4b9d1e64def",
+    "outputs/experiments/paper-study/validation.json": "76135f7298be406a192e1270a9fd2d6d13d8ee5e62e15010faacc0a4c49cc004"
   },
   "generated_sha256": {
     "paper/generated/q1-sensitivity.tex": "64f12f6500996b6833c877837366fee22b6dfcc973403b228b0317d037b1fe8b",
@@ -30,13 +30,13 @@
     "paper/generated/evidence-numbers.tex": "3eb136ca84a47e05b14c1f83c68cd3c42e0153615d93f4c90ce7f53a34018c54"
   },
   "figure_sha256": {
-    "outputs/figures/paper-q1-dispatch.pdf": "b7191868e7800f7da4854973ead06f4dfbe76340ec5adef910762b800f974901",
+    "outputs/figures/paper-q1-dispatch.pdf": "de9f5a9fcd4670f2ae7778dc100fd31d5448a08e38ab3fa8d87e5850e0be221c",
     "outputs/figures/paper-q1-dispatch.png": "08ffe5a9dee21f898c431c282735f001d5380aeaf4c26685f011f4efab3101b9",
-    "outputs/figures/paper-q2-day.pdf": "b3da51f1c917c3cbc75c6ad0465ca0c056eadd89cf17a4df3da70e7c0620f802",
+    "outputs/figures/paper-q2-day.pdf": "8a46ecad626a275f2ecd4c5441991512952c2273aa8d85c2f015536a29e1d235",
     "outputs/figures/paper-q2-day.png": "485aab1aec192d6ee1de86cb85f2664afa04569fc34ce8bdf0ebb1d206682511",
-    "outputs/figures/paper-q3-day.pdf": "a0dea11a5e19634fcfaf641b0abcc0499aff7950f3a9ad9d89b17f1625e94f9f",
+    "outputs/figures/paper-q3-day.pdf": "843119b3ff2abbb4a368e22c5f962f58b5e43cdbfd9512eaf3cf8a07c10d81b0",
     "outputs/figures/paper-q3-day.png": "857504db9a80e077584513c27fa13e6f83fb146339155514c995fbe753b5dde8",
-    "outputs/figures/paper-q4-months.pdf": "e324b06cfde01e9b8fdfa728358a6345ebe8fff5882ec2099e762417d2d8d251",
+    "outputs/figures/paper-q4-months.pdf": "84d729ea6dbd4f57bfe10f921bf6ab1c4763bd0f687592ea4cbc19c90f2d6679",
     "outputs/figures/paper-q4-months.png": "8a82f78fe18eecaf3573a79d25a34ed3806884ffa8a1ae085d7874dd91189331"
   },
   "numbers": {
@@ -57,5 +57,5 @@
     "q4-3-oracle-saving": "112,130.40",
     "q3-per-trade-cost": "13,460,502.62"
   },
-  "provenance": "Tables regroup existing verified archives; new parameter experiments are independently checked in outputs/paper-study/validation.json."
+  "provenance": "Tables regroup existing verified archives; new parameter experiments are independently checked in outputs/experiments/paper-study/validation.json."
 }

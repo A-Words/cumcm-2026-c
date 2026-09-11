@@ -12,9 +12,9 @@ from scipy.optimize import linprog
 from model import DT, build_cache, lp_structure, simulate, summarize
 
 ROOT = Path(__file__).resolve().parents[1]
-OUT = ROOT / "outputs/paper-study"
+OUT = ROOT / "outputs/experiments/paper-study"
 SOURCES = ("scripts/evaluate_paper_sensitivity.py", "scripts/model.py",
-           "data/processed/data.npz", "outputs/summary.json", "outputs/dispatch.npz")
+           "data/processed/data.npz", "outputs/main/summary.json", "outputs/main/dispatch.npz")
 
 
 def hashes():
@@ -64,8 +64,8 @@ def main():
             print("Supplementary experiments already match current inputs.")
             return
     data = dict(np.load(ROOT / "data/processed/data.npz"))
-    summary = json.loads((ROOT / "outputs/summary.json").read_text(encoding="utf-8"))
-    primary = np.load(ROOT / "outputs/dispatch.npz")
+    summary = json.loads((ROOT / "outputs/main/summary.json").read_text(encoding="utf-8"))
+    primary = np.load(ROOT / "outputs/main/dispatch.npz")
     report = dict(source_sha256=source_hashes, q1={}, q4={},
                   scope="Same-year sensitivity; original main strategies remain unchanged.")
     archive = {}

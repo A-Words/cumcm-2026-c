@@ -14,7 +14,7 @@
 
 ## 1. 题目理解与数据审查
 
-题面为 [C 题 PDF](../problem/C题.pdf)，原始输入为 [附件目录](../data/raw/)。完整审计见 [数据审计](data-audit.md)，计算前的判断与修正过程见 [决策记录](decisions.md)，初次方法审查见 [模型审查](model-review.md)，后续反向评审及修订回应见 [评审回应](review-response.md) 与 [第二轮回应](round2-response.md)。
+题面为 [C 题 PDF](../problem/C题.pdf)，原始输入为 [附件目录](../data/raw/)。完整审计见 [数据审计](modeling/data-audit.md)，计算前的判断与修正过程见 [决策记录](modeling/decisions.md)，初次方法审查见 [模型审查](reviews/model-review.md)，后续反向评审及修订回应见 [评审回应](reviews/review-response.md) 与 [第二轮回应](reviews/round2-response.md)。
 
 附件 1 有 144 条电价、负载、光伏预测；附件 2 有全年 365×144 条实际负载和光伏；附件 3 有 365×4×24 个小时预报；附件 4 有 365×144 条实际电价。所需数值无缺失、负数和非有限值，日期连续。原始文件 SHA-256 已保存并在验收时重核。
 
@@ -68,7 +68,7 @@ $$
 
 $$\min\sum_{t=0}^{143}p_tg_t$$
 
-及第 2 节约束。实现有 $5\times144=720$ 个连续变量和 $2\times144=288$ 个线性等式，用 SciPy/HiGHS 求解 [3,4]。数值选解项为 $10^{-6}\sum(c_t+d_t)+10^{-7}\sum w_t$，只用于选解，不计入报告电费。与纯电费目标差为 **0 元**。独立 MILP 增加 144 个二元变量，也获得相同费用，见 [MILP 验证结果](../outputs/q1-milp-verification.json)。
+及第 2 节约束。实现有 $5\times144=720$ 个连续变量和 $2\times144=288$ 个线性等式，用 SciPy/HiGHS 求解 [3,4]。数值选解项为 $10^{-6}\sum(c_t+d_t)+10^{-7}\sum w_t$，只用于选解，不计入报告电费。与纯电费目标差为 **0 元**。独立 MILP 增加 144 个二元变量，也获得相同费用，见 [MILP 验证结果](../outputs/main/q1-milp-verification.json)。
 
 **表 1：指定时段与全天购电。**
 
@@ -89,7 +89,7 @@ $$\min\sum_{t=0}^{143}p_tg_t$$
 
 ![问题1最优调度](../outputs/figures/q1-dispatch.png)
 
-电池在低价/光伏富余段积累能量，在高价段替代外网购电。每充入 1 kWh 只能最终输出 0.81 kWh，纯套利至少要求放电时段的替代电价大于充电时段电价除以 0.81。容量及功率约束决定不能把全部负荷都移至最低价段。完整 144 段见 [result1.xlsx](../outputs/result1.xlsx)。
+电池在低价/光伏富余段积累能量，在高价段替代外网购电。每充入 1 kWh 只能最终输出 0.81 kWh，纯套利至少要求放电时段的替代电价大于充电时段电价除以 0.81。容量及功率约束决定不能把全部负荷都移至最低价段。完整 144 段见 [result1.xlsx](../outputs/deliverables/result1.xlsx)。
 
 ## 4. 问题 2：历史预测、风险计划与实时执行
 
@@ -159,7 +159,7 @@ $$C_3=\sum_t[p_tg_t+1.5p_tu_t+0.5p_tv_t+5p_te_t].$$
 | 问题 4-3：历史光伏，共同热启动 | 0 | 0.65 | 962,646.48 | 14,166,961.16 | 38,253.28 | 7,114.5358 | 5,997.1092 |
 | 问题 4-3：修订后主方案 | 0.5 | 0.65 | 957,308.74 | **14,044,885.25** | 24,227.41 | 7,114.5358 | 5,997.1092 |
 
-各个权重下最优的 1 月候选如下，完整 30 组结果保存在 [修订实验归档](../outputs/revision-experiments.json)。
+各个权重下最优的 1 月候选如下，完整 30 组结果保存在 [修订实验归档](../outputs/experiments/revision/experiments.json)。
 
 | 附件 3 权重 λ | 问题 3：选中 α | 1 月费用 / 元 | 问题 4-3：选中 α | 1 月费用 / 元 |
 | ---: | ---: | ---: | ---: | ---: |
@@ -755,9 +755,9 @@ $$C_{\rm txn}=\sum_t p_tg_t+\sum_{r,t\text{ 未交付}}p_t[1.5(q_t^{(r)}-q_t^{(r
 
 本次两种电价下的融合自适应都比固定主参数更贵，不能据此主张每月重选参数更稳健。它们相对纯历史自适应的费用更低，仅支持这一年度和这些预设路径之间的比较。三条路径在各自问题内的评价期首末库存均相同，评分候选的末库存则不必相同，选参评分也没有将其折价。候选族与本轮检验设计均已接触 2025 年数据，九个月差额又不是独立同分布样本，因此本实验是回顾式跨月再分析，既不证明独立外部泛化，也不由月份胜率推出统计显著性。原主方案和 Excel 沿用已交付策略，不根据这些新结果事后改选。
 
-完整参数候选、发布时间、费用分解和路径见 [第二轮实验 JSON](../outputs/round2/experiments.json) 与 [逐段归档](../outputs/round2/dispatch.npz)。新增控制器定义及对第二轮意见的逐项回应见 [第二轮回应](round2-response.md)；未来年度接口与冻结规则见 [外部验证协议](external-validation-protocol.md)。目前没有未见过的外部年度结果；输入日期在后、接口能够运行和外部泛化已验证是三件不同的事。
+完整参数候选、发布时间、费用分解和路径见 [第二轮实验 JSON](../outputs/experiments/round2/experiments.json) 与 [逐段归档](../outputs/experiments/round2/dispatch.npz)。新增控制器定义及对第二轮意见的逐项回应见 [第二轮回应](reviews/round2-response.md)；未来年度接口与冻结规则见 [外部验证协议](modeling/external-validation-protocol.md)。目前没有未见过的外部年度结果；输入日期在后、接口能够运行和外部泛化已验证是三件不同的事。
 
-第二轮补充核验：[独立验证](../outputs/round2/validation.json) 共 2962 项通过，包括全部 14 个场景的物理约束及路径账单、180 个代表性候选月重放、12 个正式月的完整 11 字段重放、10 个修改未来月份后的评分重放及 2 个跨预报发布边界的 MPC 因果探针。另有 9 个反馈回归测试与 10 个外部输入测试通过。它们检验当前实现、因果和账单一致性，不证明预测策略最优或外部泛化。
+第二轮补充核验：[独立验证](../outputs/experiments/round2/validation.json) 共 2962 项通过，包括全部 14 个场景的物理约束及路径账单、180 个代表性候选月重放、12 个正式月的完整 11 字段重放、10 个修改未来月份后的评分重放及 2 个跨预报发布边界的 MPC 因果探针。另有 9 个反馈回归测试与 10 个外部输入测试通过。它们检验当前实现、因果和账单一致性，不证明预测策略最优或外部泛化。
 
 ## 9. 可复现与独立核验
 
@@ -765,13 +765,13 @@ $$C_{\rm txn}=\sum_t p_tg_t+\sum_{r,t\text{ 未交付}}p_t[1.5(q_t^{(r)}-q_t^{(r
 
 - 数据核验：完整日期、列时刻、预报发布次序、非负/有限值、整点插值还原与梯形积分守恒、原始附件哈希不变。
 - 独立物理与费用核验：179 项通过，覆盖四种策略全年每一段的供电平衡、90% 损耗、1200–10800 kWh 边界、5000 kW 功率、互斥、跨日连续、原始计划不变、修订时间范围及各项费用。物理可行和费用自洽不能证明库存分配最优、预报具有经济价值或合约解释唯一正确。
-- 修订实验核验：[专项验证](../outputs/revision-validation.json) 共 1134 项通过，检查新增基准、严格小时预报对照和逐笔合约归档；[合约检查脚本](../scripts/test_contracts.py) 检查冻结路径收费与重新优化的区别。完整参数候选和情景配置保存在 [修订实验 JSON](../outputs/revision-experiments.json)。
-- 第二轮补充核验：[独立验证](../outputs/round2/validation.json) 共 2962 项通过，包括全部 14 个场景的物理约束及路径账单、180 个代表性候选月重放、12 个正式月的完整 11 字段重放、10 个修改未来月份后的评分重放及 2 个跨预报发布边界的 MPC 因果探针。另有 9 个反馈回归测试与 10 个外部输入测试通过。它们检验当前实现、因果和账单一致性，不证明预测策略最优或外部泛化。
+- 修订实验核验：[专项验证](../outputs/experiments/revision/validation.json) 共 1134 项通过，检查新增基准、严格小时预报对照和逐笔合约归档；[合约检查脚本](../scripts/test_contracts.py) 检查冻结路径收费与重新优化的区别。完整参数候选和情景配置保存在 [修订实验 JSON](../outputs/experiments/revision/experiments.json)。
+- 第二轮补充核验：[独立验证](../outputs/experiments/round2/validation.json) 共 2962 项通过，包括全部 14 个场景的物理约束及路径账单、180 个代表性候选月重放、12 个正式月的完整 11 字段重放、10 个修改未来月份后的评分重放及 2 个跨预报发布边界的 MPC 因果探针。另有 9 个反馈回归测试与 10 个外部输入测试通过。它们检验当前实现、因果和账单一致性，不证明预测策略最优或外部泛化。
 - 因果篡改试验：96 个点预测用例修改决策后真值或尚未发布预报，当前预测不变；48 个风险预测用例修改当日及未来残差，当前风险预测不变。另有两个修改已到达信息的正向对照，确认检验确实能感知可用输入。
 - 问题 1 最优性：纯 LP 与独立互斥 MILP 一致，MIP gap 为 0。后续四种策略只验证可行性和结算，不借用问题 1 证明它们全局最优。
-- Excel 核验：五个输出均重新读取，与模型 JSON 全量对照；计划、调整、六个四小时充放电聚合、日初日末 SOC、连续紧急区间及全天总量/费用一致。模板预览已检查，标签错位修复见 [模板说明](template-spec.md)。
+- Excel 核验：五个输出均重新读取，与模型 JSON 全量对照；计划、调整、六个四小时充放电聚合、日初日末 SOC、连续紧急区间及全天总量/费用一致。模板预览已检查，标签错位修复见 [模板说明](modeling/template-spec.md)。
 
-验收证据为 [物理/因果验证 JSON](../outputs/validation.json)、[修订专项验证 JSON](../outputs/revision-validation.json)、[问题1 MILP 验证 JSON](../outputs/q1-milp-verification.json)、[模板/Excel 验证 JSON](../outputs/workbook-verification.json)。[全年逐段归档](../outputs/dispatch.npz) 保存包括 1 月热启动在内的计划、最终交付、充放电、SOC、紧急电、未利用量、三次修订快照及费用；新增对照的配置和汇总在 [修订实验 JSON](../outputs/revision-experiments.json)，逐段路径在 [修订调度归档](../outputs/revision-dispatch.npz)，由同一计算脚本复现。
+验收证据为 [物理/因果验证 JSON](../outputs/main/validation.json)、[修订专项验证 JSON](../outputs/experiments/revision/validation.json)、[问题1 MILP 验证 JSON](../outputs/main/q1-milp-verification.json)、[模板/Excel 验证 JSON](../outputs/verification/workbook-verification.json)。[全年逐段归档](../outputs/main/dispatch.npz) 保存包括 1 月热启动在内的计划、最终交付、充放电、SOC、紧急电、未利用量、三次修订快照及费用；新增对照的配置和汇总在 [修订实验 JSON](../outputs/experiments/revision/experiments.json)，逐段路径在 [修订调度归档](../outputs/experiments/revision/dispatch.npz)，由同一计算脚本复现。
 
 ## 参考文献
 

@@ -1,0 +1,163 @@
+{
+  "status": "passed",
+  "baseline_commit": "a40a535c07d27488c0a024560fd891f346526f1c",
+  "scope": "directory migration; numerical rerun and relocated delivery verification",
+  "independent_validation": {
+    "outputs/main/validation.json": {
+      "sha256": "74f858f18bb3aa31b451f981ad679316da19dd871addbc34d4077b2f649b156c",
+      "check_count": 179
+    },
+    "outputs/main/q1-milp-verification.json": {
+      "sha256": "37b4b6455e02d7c2fcc19139742cede273417f2651e1d5de13a323a1d699dc9c",
+      "check_count": null
+    },
+    "outputs/experiments/revision/validation.json": {
+      "sha256": "1f4302e24194c084b540caa5916f848539be71e551f49ea0bf78e0cc9003376f",
+      "check_count": 1134
+    },
+    "outputs/experiments/round2/validation.json": {
+      "sha256": "2726e8676bbe4f3b078e23ff88da6b10ac34f841a911be8dfe38fceff491c1ef",
+      "check_count": 2962
+    },
+    "outputs/experiments/paper-study/validation.json": {
+      "sha256": "76135f7298be406a192e1270a9fd2d6d13d8ee5e62e15010faacc0a4c49cc004",
+      "check_count": 201
+    },
+    "outputs/verification/workbook-verification.json": {
+      "sha256": "831c686dbd5049258d8eadd41ec85b545ddaa551ff1bf794b30d2cb07b24e248",
+      "check_count": null
+    }
+  },
+  "mapping": {
+    "docs/decisions.md": "docs/modeling/decisions.md",
+    "docs/data-audit.md": "docs/modeling/data-audit.md",
+    "docs/external-validation-protocol.md": "docs/modeling/external-validation-protocol.md",
+    "docs/template-spec.md": "docs/modeling/template-spec.md",
+    "docs/model-review.md": "docs/reviews/model-review.md",
+    "docs/review-response.md": "docs/reviews/review-response.md",
+    "docs/revision-plan.md": "docs/reviews/revision-plan.md",
+    "docs/round2-response.md": "docs/reviews/round2-response.md",
+    "docs/round2-plan.md": "docs/reviews/round2-plan.md",
+    "docs/template-adaptation.md": "docs/paper/template-adaptation.md",
+    "docs/table-style-audit.md": "docs/paper/table-style-audit.md",
+    "docs/equation-style-audit.md": "docs/paper/equation-style-audit.md",
+    "docs/paper-writing-notes.md": "docs/paper/paper-writing-notes.md",
+    "docs/paper-revision-teacher.md": "docs/paper/paper-revision-teacher.md",
+    "docs/literature-notes.md": "docs/paper/literature-notes.md",
+    "outputs/dispatch.npz": "outputs/main/dispatch.npz",
+    "outputs/q1-milp-verification.json": "outputs/main/q1-milp-verification.json",
+    "outputs/reproduction-validation.json": "outputs/verification/reproduction-validation.json",
+    "outputs/result1.xlsx": "outputs/deliverables/result1.xlsx",
+    "outputs/result2.xlsx": "outputs/deliverables/result2.xlsx",
+    "outputs/result3.xlsx": "outputs/deliverables/result3.xlsx",
+    "outputs/result4-2.xlsx": "outputs/deliverables/result4-2.xlsx",
+    "outputs/result4-3.xlsx": "outputs/deliverables/result4-3.xlsx",
+    "outputs/results.json": "outputs/main/results.json",
+    "outputs/revision-dispatch.npz": "outputs/experiments/revision/dispatch.npz",
+    "outputs/revision-experiments.json": "outputs/experiments/revision/experiments.json",
+    "outputs/revision-validation.json": "outputs/experiments/revision/validation.json",
+    "outputs/summary.json": "outputs/main/summary.json",
+    "outputs/validation.json": "outputs/main/validation.json",
+    "outputs/workbook-verification.json": "outputs/verification/workbook-verification.json",
+    "outputs/paper-study/dispatch.npz": "outputs/experiments/paper-study/dispatch.npz",
+    "outputs/paper-study/sensitivity.json": "outputs/experiments/paper-study/sensitivity.json",
+    "outputs/paper-study/validation.json": "outputs/experiments/paper-study/validation.json",
+    "outputs/pdf/microgrid-paper.pdf": "outputs/deliverables/microgrid-paper.pdf",
+    "outputs/round2/dispatch.npz": "outputs/experiments/round2/dispatch.npz",
+    "outputs/round2/experiments.json": "outputs/experiments/round2/experiments.json",
+    "outputs/round2/interface-smoke.json": "outputs/experiments/round2/interface-smoke.json",
+    "outputs/round2/validation.json": "outputs/experiments/round2/validation.json",
+    "paper/validation.json": "outputs/verification/paper-validation.json",
+    "paper/table-style-validation.json": "outputs/verification/table-style-validation.json"
+  },
+  "numerical_comparisons": [
+    {
+      "file": "outputs/main/dispatch.npz",
+      "arrays": 50,
+      "comparison": "exact array equality",
+      "passed": true
+    },
+    {
+      "file": "outputs/main/results.json",
+      "comparison": "JSON values excluding timing and provenance metadata",
+      "passed": true
+    },
+    {
+      "file": "outputs/experiments/revision/dispatch.npz",
+      "arrays": 297,
+      "comparison": "exact array equality",
+      "passed": true
+    },
+    {
+      "file": "outputs/experiments/revision/experiments.json",
+      "comparison": "JSON values excluding timing and provenance metadata",
+      "passed": true
+    },
+    {
+      "file": "outputs/main/summary.json",
+      "comparison": "JSON values excluding timing and provenance metadata",
+      "passed": true
+    },
+    {
+      "file": "outputs/experiments/paper-study/dispatch.npz",
+      "arrays": 124,
+      "comparison": "exact array equality",
+      "passed": true
+    },
+    {
+      "file": "outputs/experiments/paper-study/sensitivity.json",
+      "comparison": "JSON values excluding timing and provenance metadata",
+      "passed": true
+    },
+    {
+      "file": "outputs/experiments/round2/dispatch.npz",
+      "arrays": 154,
+      "comparison": "exact array equality",
+      "passed": true
+    },
+    {
+      "file": "outputs/experiments/round2/experiments.json",
+      "comparison": "JSON values excluding timing and provenance metadata",
+      "passed": true
+    }
+  ],
+  "workbook_sha256": {
+    "outputs/deliverables/result1.xlsx": "91e274a48c831cd545049339c2356133d70d439565a6acaf31f51b99dcf0b2a7",
+    "outputs/deliverables/result2.xlsx": "b6a5bdf4efba0aa56b5eb6f1ad42da9a1d6c1cb74b991320df0963818d573ead",
+    "outputs/deliverables/result3.xlsx": "475de86caadc40ba246c9429603824470051570d7283d9808c5dbc012ef3a7ea",
+    "outputs/deliverables/result4-2.xlsx": "8d3ab0c78201abbfe2047efe4cb1e46052bfec8a02fc9451cd6c52dade129ea8",
+    "outputs/deliverables/result4-3.xlsx": "0a8aed140d6815370bca305b8a57638442f35332d35f62016b25bc5175075391"
+  },
+  "pdf_comparison": {
+    "pages": 59,
+    "changed_pages": [
+      59
+    ],
+    "other_pages_pixel_identical": true,
+    "text_change": "literature notes path only"
+  },
+  "historical_receipts": [
+    "outputs/verification/reproduction-validation.json",
+    "outputs/experiments/round2/interface-smoke.json"
+  ],
+  "historical_receipt_note": "These two receipts describe earlier runs and retain their original evidence; they are not new-run approvals.",
+  "regression_tests": {
+    "test_contracts": 7,
+    "test_feedback": 9,
+    "test_external_inputs": 10
+  },
+  "commands": [
+    "python scripts/solve.py",
+    "python scripts/validate_results.py",
+    "python scripts/validate_revision.py",
+    "python scripts/verify_q1_milp.py",
+    "python scripts/evaluate_round2.py",
+    "python scripts/validate_round2.py",
+    "python scripts/evaluate_paper_sensitivity.py",
+    "python scripts/validate_paper_sensitivity.py",
+    "node scripts/export_results.mjs --verify",
+    "python scripts/build_report.py --markdown-only",
+    "python scripts/build_paper.py"
+  ],
+  "limits": "Numerical equality excludes timing and provenance metadata. Historical full-source replay is retained separately."
+}

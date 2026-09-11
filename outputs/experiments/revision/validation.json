@@ -1,0 +1,5992 @@
+{
+  "status": "passed",
+  "checked_at_utc": "2026-09-11T17:41:17.203617+00:00",
+  "scope": "forecast_controls_january_selection_and_transaction_contracts",
+  "limits": "Physics and billing checks do not establish optimality or out-of-year generalization. January replay samples the selected setting and both predictor endpoints; minimum-score comparison covers every archived candidate.",
+  "artifact_sha256": {
+    "data\\processed\\data.npz": "322d240bf033b2051cb0858bb1f5027a4439a1c06ec45812a6a0c47f1c5bcb1f",
+    "outputs\\experiments\\revision\\experiments.json": "66ce8b308ffbe9d812b0a4f108e0c724e069ccd408b35d1c3bc95fb07c6ee022",
+    "outputs\\experiments\\revision\\dispatch.npz": "6b0c1aae1204694ecb7de3729c6048dbbfe2d485e1c3b27782699384173375fe",
+    "outputs\\main\\dispatch.npz": "3556ad8cfd01f801aec0bcd557085e1df7511f2c2e9a3b281b4d25aedcc372ec",
+    "scripts\\validate_revision.py": "d2453d82c224344755a0d1c7f67892d866d02fc446bc8152aa326b37eb40e65f",
+    "scripts\\model.py": "329a81345f52c1e73756fb4ef189e787dd4e5b970e7bdb57e9dd2cabc4695cdc"
+  },
+  "check_count": 1134,
+  "failed_checks": [],
+  "summary": {
+    "q3_legacy": {
+      "total_cost": 13511208.119078286,
+      "path_repriced_total_cost": 13907124.312438112,
+      "cancelled_purchase_kwh": 260660.49658599935,
+      "path_up_kwh": 773079.800493846,
+      "active_days": {
+        "6": 365,
+        "12": 365,
+        "18": 365
+      }
+    },
+    "q3_historical": {
+      "total_cost": 13428215.907104008,
+      "path_repriced_total_cost": 13709964.041416515,
+      "cancelled_purchase_kwh": 168001.5538902038,
+      "path_up_kwh": 607507.7900639488,
+      "active_days": {
+        "6": 365,
+        "12": 365,
+        "18": 365
+      }
+    },
+    "q3_historical_fixed": {
+      "total_cost": 13428215.905051574,
+      "path_repriced_total_cost": 13709964.03936408,
+      "cancelled_purchase_kwh": 168001.5538902038,
+      "path_up_kwh": 607507.7900639488,
+      "active_days": {
+        "6": 365,
+        "12": 365,
+        "18": 365
+      }
+    },
+    "q3_selected": {
+      "total_cost": 13315835.992389668,
+      "path_repriced_total_cost": 13642823.28606068,
+      "cancelled_purchase_kwh": 207516.6130252284,
+      "path_up_kwh": 649038.2657757933,
+      "active_days": {
+        "6": 365,
+        "12": 365,
+        "18": 365
+      }
+    },
+    "q4_3_legacy": {
+      "total_cost": 14258363.919303134,
+      "path_repriced_total_cost": 14672741.762069937,
+      "cancelled_purchase_kwh": 257206.3870176407,
+      "path_up_kwh": 770591.3961923795,
+      "active_days": {
+        "6": 365,
+        "12": 365,
+        "18": 365
+      }
+    },
+    "q4_3_historical": {
+      "total_cost": 14166961.16475403,
+      "path_repriced_total_cost": 14463408.054927053,
+      "cancelled_purchase_kwh": 165383.6456854226,
+      "path_up_kwh": 604229.8308402742,
+      "active_days": {
+        "6": 365,
+        "12": 365,
+        "18": 365
+      }
+    },
+    "q4_3_historical_fixed": {
+      "total_cost": 14166961.163177341,
+      "path_repriced_total_cost": 14463408.053350365,
+      "cancelled_purchase_kwh": 165383.6456854226,
+      "path_up_kwh": 604229.8308402742,
+      "active_days": {
+        "6": 365,
+        "12": 365,
+        "18": 365
+      }
+    },
+    "q4_3_selected": {
+      "total_cost": 14044885.245008577,
+      "path_repriced_total_cost": 14390498.180816527,
+      "cancelled_purchase_kwh": 206799.46796783753,
+      "path_up_kwh": 647124.9094339974,
+      "active_days": {
+        "6": 365,
+        "12": 365,
+        "18": 365
+      }
+    },
+    "q3_legacy_info_000": {
+      "total_cost": 13580285.746725675,
+      "path_repriced_total_cost": 13861710.498767745,
+      "cancelled_purchase_kwh": 168776.65508347657,
+      "path_up_kwh": 633546.437512428,
+      "active_days": {
+        "6": 365,
+        "12": 365,
+        "18": 365
+      }
+    },
+    "q3_legacy_info_001": {
+      "total_cost": 13580285.299805403,
+      "path_repriced_total_cost": 13861708.854282655,
+      "cancelled_purchase_kwh": 168776.19168613068,
+      "path_up_kwh": 633546.6224111208,
+      "active_days": {
+        "6": 365,
+        "12": 365,
+        "18": 365
+      }
+    },
+    "q3_legacy_info_010": {
+      "total_cost": 13564801.300743528,
+      "path_repriced_total_cost": 13867441.770905506,
+      "cancelled_purchase_kwh": 181372.34065389278,
+      "path_up_kwh": 683022.1528349601,
+      "active_days": {
+        "6": 365,
+        "12": 365,
+        "18": 365
+      }
+    },
+    "q3_legacy_info_011": {
+      "total_cost": 13564801.43037017,
+      "path_repriced_total_cost": 13867442.445917709,
+      "cancelled_purchase_kwh": 181372.54920042056,
+      "path_up_kwh": 683022.2136657934,
+      "active_days": {
+        "6": 365,
+        "12": 365,
+        "18": 365
+      }
+    },
+    "q3_legacy_info_100": {
+      "total_cost": 13585837.75329646,
+      "path_repriced_total_cost": 13883240.83179277,
+      "cancelled_purchase_kwh": 191994.62752100063,
+      "path_up_kwh": 769911.6324352678,
+      "active_days": {
+        "6": 365,
+        "12": 365,
+        "18": 365
+      }
+    },
+    "q3_legacy_info_101": {
+      "total_cost": 13585837.08738666,
+      "path_repriced_total_cost": 13883239.290167458,
+      "cancelled_purchase_kwh": 191994.28911516728,
+      "path_up_kwh": 769911.8922984622,
+      "active_days": {
+        "6": 365,
+        "12": 365,
+        "18": 365
+      }
+    },
+    "q3_legacy_info_110": {
+      "total_cost": 13511207.989451641,
+      "path_repriced_total_cost": 13907123.637425907,
+      "cancelled_purchase_kwh": 260660.28803947158,
+      "path_up_kwh": 773079.7396630126,
+      "active_days": {
+        "6": 365,
+        "12": 365,
+        "18": 365
+      }
+    },
+    "q3_selected_info_000": {
+      "total_cost": 13333061.816506356,
+      "path_repriced_total_cost": 13622082.71070978,
+      "cancelled_purchase_kwh": 173203.65188801807,
+      "path_up_kwh": 591802.7954424558,
+      "active_days": {
+        "6": 365,
+        "12": 365,
+        "18": 365
+      }
+    },
+    "q3_selected_info_001": {
+      "total_cost": 13333062.817399472,
+      "path_repriced_total_cost": 13622082.017654318,
+      "cancelled_purchase_kwh": 173202.98840294866,
+      "path_up_kwh": 591802.8039177788,
+      "active_days": {
+        "6": 365,
+        "12": 365,
+        "18": 365
+      }
+    },
+    "q3_selected_info_010": {
+      "total_cost": 13344238.231905174,
+      "path_repriced_total_cost": 13640807.425322853,
+      "cancelled_purchase_kwh": 177535.48434521566,
+      "path_up_kwh": 624799.1754992583,
+      "active_days": {
+        "6": 365,
+        "12": 365,
+        "18": 365
+      }
+    },
+    "q3_selected_info_011": {
+      "total_cost": 13344238.544224694,
+      "path_repriced_total_cost": 13640807.89289619,
+      "cancelled_purchase_kwh": 177535.54248896564,
+      "path_up_kwh": 624799.0150111334,
+      "active_days": {
+        "6": 365,
+        "12": 365,
+        "18": 365
+      }
+    },
+    "q3_selected_info_100": {
+      "total_cost": 13335964.18901367,
+      "path_repriced_total_cost": 13630658.973506672,
+      "cancelled_purchase_kwh": 184923.8730609864,
+      "path_up_kwh": 646833.2813651126,
+      "active_days": {
+        "6": 365,
+        "12": 365,
+        "18": 365
+      }
+    },
+    "q3_selected_info_101": {
+      "total_cost": 13335963.516479231,
+      "path_repriced_total_cost": 13630659.172685575,
+      "cancelled_purchase_kwh": 184924.21561731314,
+      "path_up_kwh": 646833.3687665443,
+      "active_days": {
+        "6": 365,
+        "12": 365,
+        "18": 365
+      }
+    },
+    "q3_selected_info_110": {
+      "total_cost": 13315835.680070147,
+      "path_repriced_total_cost": 13642822.818487342,
+      "cancelled_purchase_kwh": 207516.55488147843,
+      "path_up_kwh": 649038.4262639184,
+      "active_days": {
+        "6": 365,
+        "12": 365,
+        "18": 365
+      }
+    },
+    "q3_legacy_no_updates": {
+      "total_cost": 14422460.47730251,
+      "path_repriced_total_cost": 14422460.47730251,
+      "cancelled_purchase_kwh": 0.0,
+      "path_up_kwh": 0.0,
+      "active_days": {
+        "6": 0,
+        "12": 0,
+        "18": 0
+      }
+    },
+    "q3_ladder_replan": {
+      "total_cost": 13685368.957792135,
+      "path_repriced_total_cost": 13686589.033634499,
+      "cancelled_purchase_kwh": 1150.8599736439626,
+      "path_up_kwh": 249862.24450080766,
+      "active_days": {
+        "6": 365,
+        "12": 365,
+        "18": 365
+      }
+    },
+    "q3_ladder_load": {
+      "total_cost": 13584091.599258104,
+      "path_repriced_total_cost": 13865580.805870509,
+      "cancelled_purchase_kwh": 168936.4686865147,
+      "path_up_kwh": 630199.0935678743,
+      "active_days": {
+        "6": 365,
+        "12": 365,
+        "18": 365
+      }
+    },
+    "q3_per_revision": {
+      "total_cost": 13460502.615321342,
+      "path_repriced_total_cost": 13460502.615321342,
+      "cancelled_purchase_kwh": 0.0,
+      "path_up_kwh": 578498.1440529141,
+      "active_days": {
+        "6": 365,
+        "12": 365,
+        "18": 365
+      }
+    },
+    "q4_3_per_revision": {
+      "total_cost": 14199964.359579738,
+      "path_repriced_total_cost": 14199964.359579738,
+      "cancelled_purchase_kwh": 0.0,
+      "path_up_kwh": 575323.5988027686,
+      "active_days": {
+        "6": 365,
+        "12": 365,
+        "18": 365
+      }
+    }
+  },
+  "checks": [
+    {
+      "name": "contract_fixture.final_net_fee",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "contract_fixture.path_fee_includes_cancelled_purchase",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "contract_fixture.path_up",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "contract_fixture.path_down",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "contract_fixture.final_delivery",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "information.absolute_hourly_targets_and_interpolation",
+      "passed": true,
+      "cases": 80,
+      "maximum_absolute_error": 3.183231456205249e-12
+    },
+    {
+      "name": "information.all_routes_keep_identical_current_anchor",
+      "passed": true,
+      "cases": 80,
+      "maximum_absolute_error": 9.094947017729282e-13
+    },
+    {
+      "name": "information.excluded_forecasts_and_future_actuals_invariance",
+      "passed": true,
+      "cases": 384,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "information.visible_old_hourly_target_positive_control",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 1e-09
+    },
+    {
+      "name": "information.current_observation_anchor_positive_control",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 1e-09
+    },
+    {
+      "name": "information.anchor_disabled_retains_original_midnight_curve",
+      "passed": true,
+      "maximum_absolute_error": 2.7284841053187847e-12,
+      "tolerance": 1e-09
+    },
+    {
+      "name": "information.anchor_disabled_ignores_current_observation",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 1e-09
+    },
+    {
+      "name": "information.load_update_disabled_ignores_recent_load",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 1e-09
+    },
+    {
+      "name": "information.load_update_enabled_responds_to_recent_load",
+      "passed": true
+    },
+    {
+      "name": "information.risk_quantile_independent_past_window_and_slot_pool",
+      "passed": true,
+      "cases": 36,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "information.risk_current_and_future_residuals_excluded",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 1e-09
+    },
+    {
+      "name": "selection.q3.minimum_january_score",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 0.001
+    },
+    {
+      "name": "selection.q3.winner_is_archived_candidate",
+      "passed": true
+    },
+    {
+      "name": "selection.q3.finite_january_scores",
+      "passed": true
+    },
+    {
+      "name": "selection.q3.both_historical_and_published_endpoints_present",
+      "passed": true
+    },
+    {
+      "name": "selection.q3.w0.5.q0.65.all_january_forecasts_ignore_february_onwards",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "selection.q3.w0.5.q0.65.archived_score_reproduced_from_january_only",
+      "passed": true,
+      "maximum_absolute_error": 1.1641532182693481e-10,
+      "tolerance": 0.001
+    },
+    {
+      "name": "selection.q3.w0.5.q0.65.score_unchanged_when_all_test_months_are_replaced",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 0.001
+    },
+    {
+      "name": "selection.q3.w0.5.q0.65.plans_unchanged_when_all_test_months_are_replaced",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "selection.q3.w0.q0.65.all_january_forecasts_ignore_february_onwards",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "selection.q3.w0.q0.65.archived_score_reproduced_from_january_only",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 0.001
+    },
+    {
+      "name": "selection.q3.w0.q0.65.score_unchanged_when_all_test_months_are_replaced",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 0.001
+    },
+    {
+      "name": "selection.q3.w0.q0.65.plans_unchanged_when_all_test_months_are_replaced",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "selection.q3.w1.q0.65.all_january_forecasts_ignore_february_onwards",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "selection.q3.w1.q0.65.archived_score_reproduced_from_january_only",
+      "passed": true,
+      "maximum_absolute_error": 1.1641532182693481e-10,
+      "tolerance": 0.001
+    },
+    {
+      "name": "selection.q3.w1.q0.65.score_unchanged_when_all_test_months_are_replaced",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 0.001
+    },
+    {
+      "name": "selection.q3.w1.q0.65.plans_unchanged_when_all_test_months_are_replaced",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "selection.q4_3.minimum_january_score",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 0.001
+    },
+    {
+      "name": "selection.q4_3.winner_is_archived_candidate",
+      "passed": true
+    },
+    {
+      "name": "selection.q4_3.finite_january_scores",
+      "passed": true
+    },
+    {
+      "name": "selection.q4_3.both_historical_and_published_endpoints_present",
+      "passed": true
+    },
+    {
+      "name": "selection.q4_3.w0.5.q0.65.all_january_forecasts_ignore_february_onwards",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "selection.q4_3.w0.5.q0.65.archived_score_reproduced_from_january_only",
+      "passed": true,
+      "maximum_absolute_error": 2.3283064365386963e-10,
+      "tolerance": 0.001
+    },
+    {
+      "name": "selection.q4_3.w0.5.q0.65.score_unchanged_when_all_test_months_are_replaced",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 0.001
+    },
+    {
+      "name": "selection.q4_3.w0.5.q0.65.plans_unchanged_when_all_test_months_are_replaced",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "selection.q4_3.w0.q0.65.all_january_forecasts_ignore_february_onwards",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "selection.q4_3.w0.q0.65.archived_score_reproduced_from_january_only",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 0.001
+    },
+    {
+      "name": "selection.q4_3.w0.q0.65.score_unchanged_when_all_test_months_are_replaced",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 0.001
+    },
+    {
+      "name": "selection.q4_3.w0.q0.65.plans_unchanged_when_all_test_months_are_replaced",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "selection.q4_3.w1.q0.65.all_january_forecasts_ignore_february_onwards",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "selection.q4_3.w1.q0.65.archived_score_reproduced_from_january_only",
+      "passed": true,
+      "maximum_absolute_error": 1.1641532182693481e-10,
+      "tolerance": 0.001
+    },
+    {
+      "name": "selection.q4_3.w1.q0.65.score_unchanged_when_all_test_months_are_replaced",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 0.001
+    },
+    {
+      "name": "selection.q4_3.w1.q0.65.plans_unchanged_when_all_test_months_are_replaced",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "selection.q3.per_revision.minimum_january_score",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 0.001
+    },
+    {
+      "name": "selection.q3.per_revision.winner_is_archived_candidate",
+      "passed": true
+    },
+    {
+      "name": "selection.q3.per_revision.finite_january_scores",
+      "passed": true
+    },
+    {
+      "name": "selection.q3.per_revision.both_historical_and_published_endpoints_present",
+      "passed": true
+    },
+    {
+      "name": "selection.q3.per_revision.w0.25.q0.65.all_january_forecasts_ignore_february_onwards",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "selection.q3.per_revision.w0.25.q0.65.archived_score_reproduced_from_january_only",
+      "passed": true,
+      "maximum_absolute_error": 2.3283064365386963e-10,
+      "tolerance": 0.001
+    },
+    {
+      "name": "selection.q3.per_revision.w0.25.q0.65.score_unchanged_when_all_test_months_are_replaced",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 0.001
+    },
+    {
+      "name": "selection.q3.per_revision.w0.25.q0.65.plans_unchanged_when_all_test_months_are_replaced",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "selection.q3.per_revision.w0.q0.65.all_january_forecasts_ignore_february_onwards",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "selection.q3.per_revision.w0.q0.65.archived_score_reproduced_from_january_only",
+      "passed": true,
+      "maximum_absolute_error": 1.1641532182693481e-10,
+      "tolerance": 0.001
+    },
+    {
+      "name": "selection.q3.per_revision.w0.q0.65.score_unchanged_when_all_test_months_are_replaced",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 0.001
+    },
+    {
+      "name": "selection.q3.per_revision.w0.q0.65.plans_unchanged_when_all_test_months_are_replaced",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "selection.q3.per_revision.w1.q0.5.all_january_forecasts_ignore_february_onwards",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "selection.q3.per_revision.w1.q0.5.archived_score_reproduced_from_january_only",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 0.001
+    },
+    {
+      "name": "selection.q3.per_revision.w1.q0.5.score_unchanged_when_all_test_months_are_replaced",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 0.001
+    },
+    {
+      "name": "selection.q3.per_revision.w1.q0.5.plans_unchanged_when_all_test_months_are_replaced",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "selection.q4_3.per_revision.minimum_january_score",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 0.001
+    },
+    {
+      "name": "selection.q4_3.per_revision.winner_is_archived_candidate",
+      "passed": true
+    },
+    {
+      "name": "selection.q4_3.per_revision.finite_january_scores",
+      "passed": true
+    },
+    {
+      "name": "selection.q4_3.per_revision.both_historical_and_published_endpoints_present",
+      "passed": true
+    },
+    {
+      "name": "selection.q4_3.per_revision.w0.25.q0.65.all_january_forecasts_ignore_february_onwards",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "selection.q4_3.per_revision.w0.25.q0.65.archived_score_reproduced_from_january_only",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 0.001
+    },
+    {
+      "name": "selection.q4_3.per_revision.w0.25.q0.65.score_unchanged_when_all_test_months_are_replaced",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 0.001
+    },
+    {
+      "name": "selection.q4_3.per_revision.w0.25.q0.65.plans_unchanged_when_all_test_months_are_replaced",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "selection.q4_3.per_revision.w0.q0.65.all_january_forecasts_ignore_february_onwards",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "selection.q4_3.per_revision.w0.q0.65.archived_score_reproduced_from_january_only",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 0.001
+    },
+    {
+      "name": "selection.q4_3.per_revision.w0.q0.65.score_unchanged_when_all_test_months_are_replaced",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 0.001
+    },
+    {
+      "name": "selection.q4_3.per_revision.w0.q0.65.plans_unchanged_when_all_test_months_are_replaced",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "selection.q4_3.per_revision.w1.q0.5.all_january_forecasts_ignore_february_onwards",
+      "passed": true,
+      "maximum_absolute_error": 0.0
+    },
+    {
+      "name": "selection.q4_3.per_revision.w1.q0.5.archived_score_reproduced_from_january_only",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 0.001
+    },
+    {
+      "name": "selection.q4_3.per_revision.w1.q0.5.score_unchanged_when_all_test_months_are_replaced",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 0.001
+    },
+    {
+      "name": "selection.q4_3.per_revision.w1.q0.5.plans_unchanged_when_all_test_months_are_replaced",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_historical_fixed.january_uses_fixed_attachment3_warmup_plan",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_historical_fixed.january_uses_fixed_attachment3_warmup_adjusted",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_historical_fixed.january_uses_fixed_attachment3_warmup_costs",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_historical_fixed.january_uses_fixed_attachment3_warmup_soc",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected.january_uses_fixed_attachment3_warmup_plan",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected.january_uses_fixed_attachment3_warmup_adjusted",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected.january_uses_fixed_attachment3_warmup_costs",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_selected.january_uses_fixed_attachment3_warmup_soc",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q4_3_historical_fixed.january_uses_fixed_attachment3_warmup_plan",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q4_3_historical_fixed.january_uses_fixed_attachment3_warmup_adjusted",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q4_3_historical_fixed.january_uses_fixed_attachment3_warmup_costs",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q4_3_historical_fixed.january_uses_fixed_attachment3_warmup_soc",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q4_3_selected.january_uses_fixed_attachment3_warmup_plan",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q4_3_selected.january_uses_fixed_attachment3_warmup_adjusted",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q4_3_selected.january_uses_fixed_attachment3_warmup_costs",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q4_3_selected.january_uses_fixed_attachment3_warmup_soc",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_000.january_uses_fixed_attachment3_warmup_plan",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_000.january_uses_fixed_attachment3_warmup_adjusted",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_000.january_uses_fixed_attachment3_warmup_costs",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_selected_info_000.january_uses_fixed_attachment3_warmup_soc",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_001.january_uses_fixed_attachment3_warmup_plan",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_001.january_uses_fixed_attachment3_warmup_adjusted",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_001.january_uses_fixed_attachment3_warmup_costs",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_selected_info_001.january_uses_fixed_attachment3_warmup_soc",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_010.january_uses_fixed_attachment3_warmup_plan",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_010.january_uses_fixed_attachment3_warmup_adjusted",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_010.january_uses_fixed_attachment3_warmup_costs",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_selected_info_010.january_uses_fixed_attachment3_warmup_soc",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_011.january_uses_fixed_attachment3_warmup_plan",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_011.january_uses_fixed_attachment3_warmup_adjusted",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_011.january_uses_fixed_attachment3_warmup_costs",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_selected_info_011.january_uses_fixed_attachment3_warmup_soc",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_100.january_uses_fixed_attachment3_warmup_plan",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_100.january_uses_fixed_attachment3_warmup_adjusted",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_100.january_uses_fixed_attachment3_warmup_costs",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_selected_info_100.january_uses_fixed_attachment3_warmup_soc",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_101.january_uses_fixed_attachment3_warmup_plan",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_101.january_uses_fixed_attachment3_warmup_adjusted",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_101.january_uses_fixed_attachment3_warmup_costs",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_selected_info_101.january_uses_fixed_attachment3_warmup_soc",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_110.january_uses_fixed_attachment3_warmup_plan",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_110.january_uses_fixed_attachment3_warmup_adjusted",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_110.january_uses_fixed_attachment3_warmup_costs",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_selected_info_110.january_uses_fixed_attachment3_warmup_soc",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_per_revision.january_uses_fixed_attachment3_warmup_plan",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_per_revision.january_uses_fixed_attachment3_warmup_adjusted",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_per_revision.january_uses_fixed_attachment3_warmup_costs",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_per_revision.january_uses_fixed_attachment3_warmup_soc",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q4_3_per_revision.january_uses_fixed_attachment3_warmup_plan",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q4_3_per_revision.january_uses_fixed_attachment3_warmup_adjusted",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q4_3_per_revision.january_uses_fixed_attachment3_warmup_costs",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q4_3_per_revision.january_uses_fixed_attachment3_warmup_soc",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "selection.validation_window_is_january15_through31",
+      "passed": true
+    },
+    {
+      "name": "selection.warmup_protocol_is_fixed_before_february",
+      "passed": true
+    },
+    {
+      "name": "selection.q3.primary_uses_selected_pv_weight",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "selection.q3.primary_uses_selected_quantile",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "selection.q3.primary_artifact_matches_plan",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "selection.q3.primary_artifact_matches_adjusted",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "selection.q3.primary_artifact_matches_costs",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 0.001
+    },
+    {
+      "name": "selection.q3.primary_artifact_matches_soc",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "selection.q3.primary_artifact_matches_emergency",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "baseline.q3.historical_only",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "baseline.q3.historical_parameter_selected_in_january",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "baseline.q3.same_planning_and_information_opportunities",
+      "passed": true
+    },
+    {
+      "name": "baseline.q3.same_february_starting_inventory",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "selection.q4_3.primary_uses_selected_pv_weight",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "selection.q4_3.primary_uses_selected_quantile",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "selection.q4_3.primary_artifact_matches_plan",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "selection.q4_3.primary_artifact_matches_adjusted",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "selection.q4_3.primary_artifact_matches_costs",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 0.001
+    },
+    {
+      "name": "selection.q4_3.primary_artifact_matches_soc",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "selection.q4_3.primary_artifact_matches_emergency",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "baseline.q4_3.historical_only",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "baseline.q4_3.historical_parameter_selected_in_january",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "baseline.q4_3.same_planning_and_information_opportunities",
+      "passed": true
+    },
+    {
+      "name": "baseline.q4_3.same_february_starting_inventory",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "selection.q3.contract_uses_selected_pv_weight",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "selection.q3.contract_uses_selected_quantile",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "selection.q4_3.contract_uses_selected_pv_weight",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "selection.q4_3.contract_uses_selected_quantile",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 1e-12
+    },
+    {
+      "name": "information.legacy.all_eight_release_subsets_present",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_000.only_hourly_information_is_changed",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_000.all_replanning_and_observation_updates_retained",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_001.only_hourly_information_is_changed",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_001.all_replanning_and_observation_updates_retained",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_010.only_hourly_information_is_changed",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_010.all_replanning_and_observation_updates_retained",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_011.only_hourly_information_is_changed",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_011.all_replanning_and_observation_updates_retained",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_100.only_hourly_information_is_changed",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_100.all_replanning_and_observation_updates_retained",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_101.only_hourly_information_is_changed",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_101.all_replanning_and_observation_updates_retained",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_110.only_hourly_information_is_changed",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_110.all_replanning_and_observation_updates_retained",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy.only_hourly_information_is_changed",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy.all_replanning_and_observation_updates_retained",
+      "passed": true
+    },
+    {
+      "name": "information.legacy.eight_distinct_causal_release_routes",
+      "passed": true
+    },
+    {
+      "name": "information.selected.all_eight_release_subsets_present",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_000.only_hourly_information_is_changed",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_000.all_replanning_and_observation_updates_retained",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_001.only_hourly_information_is_changed",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_001.all_replanning_and_observation_updates_retained",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_010.only_hourly_information_is_changed",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_010.all_replanning_and_observation_updates_retained",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_011.only_hourly_information_is_changed",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_011.all_replanning_and_observation_updates_retained",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_100.only_hourly_information_is_changed",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_100.all_replanning_and_observation_updates_retained",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_101.only_hourly_information_is_changed",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_101.all_replanning_and_observation_updates_retained",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_110.only_hourly_information_is_changed",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_110.all_replanning_and_observation_updates_retained",
+      "passed": true
+    },
+    {
+      "name": "q3_selected.only_hourly_information_is_changed",
+      "passed": true
+    },
+    {
+      "name": "q3_selected.all_replanning_and_observation_updates_retained",
+      "passed": true
+    },
+    {
+      "name": "information.selected.eight_distinct_causal_release_routes",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy.shape_plan",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy.shape_adjusted",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy.shape_charge",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy.shape_discharge",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy.shape_emergency",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy.shape_spill",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy.shape_soc",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy.shape_costs",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy.shape_revisions",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy.midnight_snapshot",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy.complete_revision_versions",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy.does_not_rewrite_delivered_slots",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy.replayed_final_delivery",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy.archived_revision_up",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy.archived_revision_down",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy.all_daily_cost_components",
+      "passed": true,
+      "maximum_absolute_error": 1.4551915228366852e-11,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_legacy.ac_energy_balance",
+      "passed": true,
+      "maximum_absolute_error": 2.2737367544323206e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy.soc_dynamics",
+      "passed": true,
+      "maximum_absolute_error": 9.094947017729282e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy.soc_bounds",
+      "passed": true,
+      "minimum": 1200.0,
+      "maximum": 10800.0
+    },
+    {
+      "name": "q3_legacy.nonnegative_grid",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_legacy.nonnegative_charge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_legacy.nonnegative_discharge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_legacy.nonnegative_emergency",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_legacy.nonnegative_spill",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_legacy.charge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q3_legacy.discharge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q3_legacy.charge_discharge_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q3_legacy.emergency_spill_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q3_legacy.initial_soc",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy.continuous_days",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy.summary_total_cost",
+      "passed": true,
+      "maximum_absolute_error": 5.587935447692871e-09,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_legacy.archived_update_schedule_06",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy.archived_update_schedule_12",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy.archived_update_schedule_18",
+      "passed": true
+    },
+    {
+      "name": "q3_historical.shape_plan",
+      "passed": true
+    },
+    {
+      "name": "q3_historical.shape_adjusted",
+      "passed": true
+    },
+    {
+      "name": "q3_historical.shape_charge",
+      "passed": true
+    },
+    {
+      "name": "q3_historical.shape_discharge",
+      "passed": true
+    },
+    {
+      "name": "q3_historical.shape_emergency",
+      "passed": true
+    },
+    {
+      "name": "q3_historical.shape_spill",
+      "passed": true
+    },
+    {
+      "name": "q3_historical.shape_soc",
+      "passed": true
+    },
+    {
+      "name": "q3_historical.shape_costs",
+      "passed": true
+    },
+    {
+      "name": "q3_historical.shape_revisions",
+      "passed": true
+    },
+    {
+      "name": "q3_historical.midnight_snapshot",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_historical.complete_revision_versions",
+      "passed": true
+    },
+    {
+      "name": "q3_historical.does_not_rewrite_delivered_slots",
+      "passed": true
+    },
+    {
+      "name": "q3_historical.replayed_final_delivery",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_historical.archived_revision_up",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_historical.archived_revision_down",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_historical.all_daily_cost_components",
+      "passed": true,
+      "maximum_absolute_error": 1.4551915228366852e-11,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_historical.ac_energy_balance",
+      "passed": true,
+      "maximum_absolute_error": 2.2737367544323206e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_historical.soc_dynamics",
+      "passed": true,
+      "maximum_absolute_error": 9.094947017729282e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_historical.soc_bounds",
+      "passed": true,
+      "minimum": 1200.0,
+      "maximum": 10800.0
+    },
+    {
+      "name": "q3_historical.nonnegative_grid",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_historical.nonnegative_charge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_historical.nonnegative_discharge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_historical.nonnegative_emergency",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_historical.nonnegative_spill",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_historical.charge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q3_historical.discharge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q3_historical.charge_discharge_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q3_historical.emergency_spill_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q3_historical.initial_soc",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_historical.continuous_days",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_historical.summary_total_cost",
+      "passed": true,
+      "maximum_absolute_error": 1.862645149230957e-09,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_historical.archived_update_schedule_06",
+      "passed": true
+    },
+    {
+      "name": "q3_historical.archived_update_schedule_12",
+      "passed": true
+    },
+    {
+      "name": "q3_historical.archived_update_schedule_18",
+      "passed": true
+    },
+    {
+      "name": "q3_historical_fixed.shape_plan",
+      "passed": true
+    },
+    {
+      "name": "q3_historical_fixed.shape_adjusted",
+      "passed": true
+    },
+    {
+      "name": "q3_historical_fixed.shape_charge",
+      "passed": true
+    },
+    {
+      "name": "q3_historical_fixed.shape_discharge",
+      "passed": true
+    },
+    {
+      "name": "q3_historical_fixed.shape_emergency",
+      "passed": true
+    },
+    {
+      "name": "q3_historical_fixed.shape_spill",
+      "passed": true
+    },
+    {
+      "name": "q3_historical_fixed.shape_soc",
+      "passed": true
+    },
+    {
+      "name": "q3_historical_fixed.shape_costs",
+      "passed": true
+    },
+    {
+      "name": "q3_historical_fixed.shape_revisions",
+      "passed": true
+    },
+    {
+      "name": "q3_historical_fixed.midnight_snapshot",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_historical_fixed.complete_revision_versions",
+      "passed": true
+    },
+    {
+      "name": "q3_historical_fixed.does_not_rewrite_delivered_slots",
+      "passed": true
+    },
+    {
+      "name": "q3_historical_fixed.replayed_final_delivery",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_historical_fixed.archived_revision_up",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_historical_fixed.archived_revision_down",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_historical_fixed.all_daily_cost_components",
+      "passed": true,
+      "maximum_absolute_error": 1.4551915228366852e-11,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_historical_fixed.ac_energy_balance",
+      "passed": true,
+      "maximum_absolute_error": 2.2737367544323206e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_historical_fixed.soc_dynamics",
+      "passed": true,
+      "maximum_absolute_error": 9.094947017729282e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_historical_fixed.soc_bounds",
+      "passed": true,
+      "minimum": 1200.0,
+      "maximum": 10800.0
+    },
+    {
+      "name": "q3_historical_fixed.nonnegative_grid",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_historical_fixed.nonnegative_charge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_historical_fixed.nonnegative_discharge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_historical_fixed.nonnegative_emergency",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_historical_fixed.nonnegative_spill",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_historical_fixed.charge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q3_historical_fixed.discharge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q3_historical_fixed.charge_discharge_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q3_historical_fixed.emergency_spill_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q3_historical_fixed.initial_soc",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_historical_fixed.continuous_days",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_historical_fixed.summary_total_cost",
+      "passed": true,
+      "maximum_absolute_error": 1.862645149230957e-09,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_historical_fixed.archived_update_schedule_06",
+      "passed": true
+    },
+    {
+      "name": "q3_historical_fixed.archived_update_schedule_12",
+      "passed": true
+    },
+    {
+      "name": "q3_historical_fixed.archived_update_schedule_18",
+      "passed": true
+    },
+    {
+      "name": "q3_selected.shape_plan",
+      "passed": true
+    },
+    {
+      "name": "q3_selected.shape_adjusted",
+      "passed": true
+    },
+    {
+      "name": "q3_selected.shape_charge",
+      "passed": true
+    },
+    {
+      "name": "q3_selected.shape_discharge",
+      "passed": true
+    },
+    {
+      "name": "q3_selected.shape_emergency",
+      "passed": true
+    },
+    {
+      "name": "q3_selected.shape_spill",
+      "passed": true
+    },
+    {
+      "name": "q3_selected.shape_soc",
+      "passed": true
+    },
+    {
+      "name": "q3_selected.shape_costs",
+      "passed": true
+    },
+    {
+      "name": "q3_selected.shape_revisions",
+      "passed": true
+    },
+    {
+      "name": "q3_selected.midnight_snapshot",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected.complete_revision_versions",
+      "passed": true
+    },
+    {
+      "name": "q3_selected.does_not_rewrite_delivered_slots",
+      "passed": true
+    },
+    {
+      "name": "q3_selected.replayed_final_delivery",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected.archived_revision_up",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected.archived_revision_down",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected.all_daily_cost_components",
+      "passed": true,
+      "maximum_absolute_error": 1.4551915228366852e-11,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_selected.ac_energy_balance",
+      "passed": true,
+      "maximum_absolute_error": 2.2737367544323206e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected.soc_dynamics",
+      "passed": true,
+      "maximum_absolute_error": 9.094947017729282e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected.soc_bounds",
+      "passed": true,
+      "minimum": 1200.0,
+      "maximum": 10800.0
+    },
+    {
+      "name": "q3_selected.nonnegative_grid",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_selected.nonnegative_charge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_selected.nonnegative_discharge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_selected.nonnegative_emergency",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_selected.nonnegative_spill",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_selected.charge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q3_selected.discharge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q3_selected.charge_discharge_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q3_selected.emergency_spill_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q3_selected.initial_soc",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected.continuous_days",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected.summary_total_cost",
+      "passed": true,
+      "maximum_absolute_error": 5.587935447692871e-09,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_selected.archived_update_schedule_06",
+      "passed": true
+    },
+    {
+      "name": "q3_selected.archived_update_schedule_12",
+      "passed": true
+    },
+    {
+      "name": "q3_selected.archived_update_schedule_18",
+      "passed": true
+    },
+    {
+      "name": "q4_3_legacy.shape_plan",
+      "passed": true
+    },
+    {
+      "name": "q4_3_legacy.shape_adjusted",
+      "passed": true
+    },
+    {
+      "name": "q4_3_legacy.shape_charge",
+      "passed": true
+    },
+    {
+      "name": "q4_3_legacy.shape_discharge",
+      "passed": true
+    },
+    {
+      "name": "q4_3_legacy.shape_emergency",
+      "passed": true
+    },
+    {
+      "name": "q4_3_legacy.shape_spill",
+      "passed": true
+    },
+    {
+      "name": "q4_3_legacy.shape_soc",
+      "passed": true
+    },
+    {
+      "name": "q4_3_legacy.shape_costs",
+      "passed": true
+    },
+    {
+      "name": "q4_3_legacy.shape_revisions",
+      "passed": true
+    },
+    {
+      "name": "q4_3_legacy.midnight_snapshot",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q4_3_legacy.complete_revision_versions",
+      "passed": true
+    },
+    {
+      "name": "q4_3_legacy.does_not_rewrite_delivered_slots",
+      "passed": true
+    },
+    {
+      "name": "q4_3_legacy.replayed_final_delivery",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q4_3_legacy.archived_revision_up",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q4_3_legacy.archived_revision_down",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q4_3_legacy.all_daily_cost_components",
+      "passed": true,
+      "maximum_absolute_error": 1.4551915228366852e-11,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q4_3_legacy.ac_energy_balance",
+      "passed": true,
+      "maximum_absolute_error": 2.2737367544323206e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q4_3_legacy.soc_dynamics",
+      "passed": true,
+      "maximum_absolute_error": 9.094947017729282e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q4_3_legacy.soc_bounds",
+      "passed": true,
+      "minimum": 1200.0,
+      "maximum": 10800.0
+    },
+    {
+      "name": "q4_3_legacy.nonnegative_grid",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q4_3_legacy.nonnegative_charge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q4_3_legacy.nonnegative_discharge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q4_3_legacy.nonnegative_emergency",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q4_3_legacy.nonnegative_spill",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q4_3_legacy.charge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q4_3_legacy.discharge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q4_3_legacy.charge_discharge_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q4_3_legacy.emergency_spill_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q4_3_legacy.initial_soc",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q4_3_legacy.continuous_days",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q4_3_legacy.summary_total_cost",
+      "passed": true,
+      "maximum_absolute_error": 5.587935447692871e-09,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q4_3_legacy.archived_update_schedule_06",
+      "passed": true
+    },
+    {
+      "name": "q4_3_legacy.archived_update_schedule_12",
+      "passed": true
+    },
+    {
+      "name": "q4_3_legacy.archived_update_schedule_18",
+      "passed": true
+    },
+    {
+      "name": "q4_3_historical.shape_plan",
+      "passed": true
+    },
+    {
+      "name": "q4_3_historical.shape_adjusted",
+      "passed": true
+    },
+    {
+      "name": "q4_3_historical.shape_charge",
+      "passed": true
+    },
+    {
+      "name": "q4_3_historical.shape_discharge",
+      "passed": true
+    },
+    {
+      "name": "q4_3_historical.shape_emergency",
+      "passed": true
+    },
+    {
+      "name": "q4_3_historical.shape_spill",
+      "passed": true
+    },
+    {
+      "name": "q4_3_historical.shape_soc",
+      "passed": true
+    },
+    {
+      "name": "q4_3_historical.shape_costs",
+      "passed": true
+    },
+    {
+      "name": "q4_3_historical.shape_revisions",
+      "passed": true
+    },
+    {
+      "name": "q4_3_historical.midnight_snapshot",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q4_3_historical.complete_revision_versions",
+      "passed": true
+    },
+    {
+      "name": "q4_3_historical.does_not_rewrite_delivered_slots",
+      "passed": true
+    },
+    {
+      "name": "q4_3_historical.replayed_final_delivery",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q4_3_historical.archived_revision_up",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q4_3_historical.archived_revision_down",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q4_3_historical.all_daily_cost_components",
+      "passed": true,
+      "maximum_absolute_error": 1.4551915228366852e-11,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q4_3_historical.ac_energy_balance",
+      "passed": true,
+      "maximum_absolute_error": 2.2737367544323206e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q4_3_historical.soc_dynamics",
+      "passed": true,
+      "maximum_absolute_error": 9.094947017729282e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q4_3_historical.soc_bounds",
+      "passed": true,
+      "minimum": 1200.0,
+      "maximum": 10800.0
+    },
+    {
+      "name": "q4_3_historical.nonnegative_grid",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q4_3_historical.nonnegative_charge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q4_3_historical.nonnegative_discharge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q4_3_historical.nonnegative_emergency",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q4_3_historical.nonnegative_spill",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q4_3_historical.charge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q4_3_historical.discharge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q4_3_historical.charge_discharge_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q4_3_historical.emergency_spill_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q4_3_historical.initial_soc",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q4_3_historical.continuous_days",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q4_3_historical.summary_total_cost",
+      "passed": true,
+      "maximum_absolute_error": 1.862645149230957e-09,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q4_3_historical.archived_update_schedule_06",
+      "passed": true
+    },
+    {
+      "name": "q4_3_historical.archived_update_schedule_12",
+      "passed": true
+    },
+    {
+      "name": "q4_3_historical.archived_update_schedule_18",
+      "passed": true
+    },
+    {
+      "name": "q4_3_historical_fixed.shape_plan",
+      "passed": true
+    },
+    {
+      "name": "q4_3_historical_fixed.shape_adjusted",
+      "passed": true
+    },
+    {
+      "name": "q4_3_historical_fixed.shape_charge",
+      "passed": true
+    },
+    {
+      "name": "q4_3_historical_fixed.shape_discharge",
+      "passed": true
+    },
+    {
+      "name": "q4_3_historical_fixed.shape_emergency",
+      "passed": true
+    },
+    {
+      "name": "q4_3_historical_fixed.shape_spill",
+      "passed": true
+    },
+    {
+      "name": "q4_3_historical_fixed.shape_soc",
+      "passed": true
+    },
+    {
+      "name": "q4_3_historical_fixed.shape_costs",
+      "passed": true
+    },
+    {
+      "name": "q4_3_historical_fixed.shape_revisions",
+      "passed": true
+    },
+    {
+      "name": "q4_3_historical_fixed.midnight_snapshot",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q4_3_historical_fixed.complete_revision_versions",
+      "passed": true
+    },
+    {
+      "name": "q4_3_historical_fixed.does_not_rewrite_delivered_slots",
+      "passed": true
+    },
+    {
+      "name": "q4_3_historical_fixed.replayed_final_delivery",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q4_3_historical_fixed.archived_revision_up",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q4_3_historical_fixed.archived_revision_down",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q4_3_historical_fixed.all_daily_cost_components",
+      "passed": true,
+      "maximum_absolute_error": 1.4551915228366852e-11,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q4_3_historical_fixed.ac_energy_balance",
+      "passed": true,
+      "maximum_absolute_error": 2.2737367544323206e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q4_3_historical_fixed.soc_dynamics",
+      "passed": true,
+      "maximum_absolute_error": 9.094947017729282e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q4_3_historical_fixed.soc_bounds",
+      "passed": true,
+      "minimum": 1200.0,
+      "maximum": 10800.0
+    },
+    {
+      "name": "q4_3_historical_fixed.nonnegative_grid",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q4_3_historical_fixed.nonnegative_charge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q4_3_historical_fixed.nonnegative_discharge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q4_3_historical_fixed.nonnegative_emergency",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q4_3_historical_fixed.nonnegative_spill",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q4_3_historical_fixed.charge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q4_3_historical_fixed.discharge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q4_3_historical_fixed.charge_discharge_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q4_3_historical_fixed.emergency_spill_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q4_3_historical_fixed.initial_soc",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q4_3_historical_fixed.continuous_days",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q4_3_historical_fixed.summary_total_cost",
+      "passed": true,
+      "maximum_absolute_error": 1.862645149230957e-09,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q4_3_historical_fixed.archived_update_schedule_06",
+      "passed": true
+    },
+    {
+      "name": "q4_3_historical_fixed.archived_update_schedule_12",
+      "passed": true
+    },
+    {
+      "name": "q4_3_historical_fixed.archived_update_schedule_18",
+      "passed": true
+    },
+    {
+      "name": "q4_3_selected.shape_plan",
+      "passed": true
+    },
+    {
+      "name": "q4_3_selected.shape_adjusted",
+      "passed": true
+    },
+    {
+      "name": "q4_3_selected.shape_charge",
+      "passed": true
+    },
+    {
+      "name": "q4_3_selected.shape_discharge",
+      "passed": true
+    },
+    {
+      "name": "q4_3_selected.shape_emergency",
+      "passed": true
+    },
+    {
+      "name": "q4_3_selected.shape_spill",
+      "passed": true
+    },
+    {
+      "name": "q4_3_selected.shape_soc",
+      "passed": true
+    },
+    {
+      "name": "q4_3_selected.shape_costs",
+      "passed": true
+    },
+    {
+      "name": "q4_3_selected.shape_revisions",
+      "passed": true
+    },
+    {
+      "name": "q4_3_selected.midnight_snapshot",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q4_3_selected.complete_revision_versions",
+      "passed": true
+    },
+    {
+      "name": "q4_3_selected.does_not_rewrite_delivered_slots",
+      "passed": true
+    },
+    {
+      "name": "q4_3_selected.replayed_final_delivery",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q4_3_selected.archived_revision_up",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q4_3_selected.archived_revision_down",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q4_3_selected.all_daily_cost_components",
+      "passed": true,
+      "maximum_absolute_error": 1.4551915228366852e-11,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q4_3_selected.ac_energy_balance",
+      "passed": true,
+      "maximum_absolute_error": 2.2737367544323206e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q4_3_selected.soc_dynamics",
+      "passed": true,
+      "maximum_absolute_error": 9.094947017729282e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q4_3_selected.soc_bounds",
+      "passed": true,
+      "minimum": 1200.0,
+      "maximum": 10800.0
+    },
+    {
+      "name": "q4_3_selected.nonnegative_grid",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q4_3_selected.nonnegative_charge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q4_3_selected.nonnegative_discharge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q4_3_selected.nonnegative_emergency",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q4_3_selected.nonnegative_spill",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q4_3_selected.charge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q4_3_selected.discharge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q4_3_selected.charge_discharge_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q4_3_selected.emergency_spill_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q4_3_selected.initial_soc",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q4_3_selected.continuous_days",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q4_3_selected.summary_total_cost",
+      "passed": true,
+      "maximum_absolute_error": 3.725290298461914e-09,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q4_3_selected.archived_update_schedule_06",
+      "passed": true
+    },
+    {
+      "name": "q4_3_selected.archived_update_schedule_12",
+      "passed": true
+    },
+    {
+      "name": "q4_3_selected.archived_update_schedule_18",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_000.shape_plan",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_000.shape_adjusted",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_000.shape_charge",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_000.shape_discharge",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_000.shape_emergency",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_000.shape_spill",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_000.shape_soc",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_000.shape_costs",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_000.shape_revisions",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_000.midnight_snapshot",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_000.complete_revision_versions",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_000.does_not_rewrite_delivered_slots",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_000.replayed_final_delivery",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_000.archived_revision_up",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_000.archived_revision_down",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_000.all_daily_cost_components",
+      "passed": true,
+      "maximum_absolute_error": 1.4551915228366852e-11,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_legacy_info_000.ac_energy_balance",
+      "passed": true,
+      "maximum_absolute_error": 2.2737367544323206e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_000.soc_dynamics",
+      "passed": true,
+      "maximum_absolute_error": 9.094947017729282e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_000.soc_bounds",
+      "passed": true,
+      "minimum": 1200.0,
+      "maximum": 10800.0
+    },
+    {
+      "name": "q3_legacy_info_000.nonnegative_grid",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_legacy_info_000.nonnegative_charge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_legacy_info_000.nonnegative_discharge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_legacy_info_000.nonnegative_emergency",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_legacy_info_000.nonnegative_spill",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_legacy_info_000.charge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q3_legacy_info_000.discharge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q3_legacy_info_000.charge_discharge_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q3_legacy_info_000.emergency_spill_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q3_legacy_info_000.initial_soc",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_000.continuous_days",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_000.summary_total_cost",
+      "passed": true,
+      "maximum_absolute_error": 3.725290298461914e-09,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_legacy_info_000.archived_update_schedule_06",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_000.archived_update_schedule_12",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_000.archived_update_schedule_18",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_001.shape_plan",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_001.shape_adjusted",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_001.shape_charge",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_001.shape_discharge",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_001.shape_emergency",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_001.shape_spill",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_001.shape_soc",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_001.shape_costs",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_001.shape_revisions",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_001.midnight_snapshot",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_001.complete_revision_versions",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_001.does_not_rewrite_delivered_slots",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_001.replayed_final_delivery",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_001.archived_revision_up",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_001.archived_revision_down",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_001.all_daily_cost_components",
+      "passed": true,
+      "maximum_absolute_error": 1.4551915228366852e-11,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_legacy_info_001.ac_energy_balance",
+      "passed": true,
+      "maximum_absolute_error": 2.2737367544323206e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_001.soc_dynamics",
+      "passed": true,
+      "maximum_absolute_error": 9.094947017729282e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_001.soc_bounds",
+      "passed": true,
+      "minimum": 1200.0,
+      "maximum": 10800.0
+    },
+    {
+      "name": "q3_legacy_info_001.nonnegative_grid",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_legacy_info_001.nonnegative_charge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_legacy_info_001.nonnegative_discharge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_legacy_info_001.nonnegative_emergency",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_legacy_info_001.nonnegative_spill",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_legacy_info_001.charge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q3_legacy_info_001.discharge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q3_legacy_info_001.charge_discharge_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q3_legacy_info_001.emergency_spill_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q3_legacy_info_001.initial_soc",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_001.continuous_days",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_001.summary_total_cost",
+      "passed": true,
+      "maximum_absolute_error": 5.587935447692871e-09,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_legacy_info_001.archived_update_schedule_06",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_001.archived_update_schedule_12",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_001.archived_update_schedule_18",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_010.shape_plan",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_010.shape_adjusted",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_010.shape_charge",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_010.shape_discharge",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_010.shape_emergency",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_010.shape_spill",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_010.shape_soc",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_010.shape_costs",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_010.shape_revisions",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_010.midnight_snapshot",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_010.complete_revision_versions",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_010.does_not_rewrite_delivered_slots",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_010.replayed_final_delivery",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_010.archived_revision_up",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_010.archived_revision_down",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_010.all_daily_cost_components",
+      "passed": true,
+      "maximum_absolute_error": 1.4551915228366852e-11,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_legacy_info_010.ac_energy_balance",
+      "passed": true,
+      "maximum_absolute_error": 2.2737367544323206e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_010.soc_dynamics",
+      "passed": true,
+      "maximum_absolute_error": 9.094947017729282e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_010.soc_bounds",
+      "passed": true,
+      "minimum": 1200.0,
+      "maximum": 10800.0
+    },
+    {
+      "name": "q3_legacy_info_010.nonnegative_grid",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_legacy_info_010.nonnegative_charge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_legacy_info_010.nonnegative_discharge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_legacy_info_010.nonnegative_emergency",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_legacy_info_010.nonnegative_spill",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_legacy_info_010.charge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q3_legacy_info_010.discharge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q3_legacy_info_010.charge_discharge_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q3_legacy_info_010.emergency_spill_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q3_legacy_info_010.initial_soc",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_010.continuous_days",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_010.summary_total_cost",
+      "passed": true,
+      "maximum_absolute_error": 5.587935447692871e-09,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_legacy_info_010.archived_update_schedule_06",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_010.archived_update_schedule_12",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_010.archived_update_schedule_18",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_011.shape_plan",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_011.shape_adjusted",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_011.shape_charge",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_011.shape_discharge",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_011.shape_emergency",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_011.shape_spill",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_011.shape_soc",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_011.shape_costs",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_011.shape_revisions",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_011.midnight_snapshot",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_011.complete_revision_versions",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_011.does_not_rewrite_delivered_slots",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_011.replayed_final_delivery",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_011.archived_revision_up",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_011.archived_revision_down",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_011.all_daily_cost_components",
+      "passed": true,
+      "maximum_absolute_error": 1.4551915228366852e-11,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_legacy_info_011.ac_energy_balance",
+      "passed": true,
+      "maximum_absolute_error": 2.2737367544323206e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_011.soc_dynamics",
+      "passed": true,
+      "maximum_absolute_error": 9.094947017729282e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_011.soc_bounds",
+      "passed": true,
+      "minimum": 1200.0,
+      "maximum": 10800.0
+    },
+    {
+      "name": "q3_legacy_info_011.nonnegative_grid",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_legacy_info_011.nonnegative_charge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_legacy_info_011.nonnegative_discharge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_legacy_info_011.nonnegative_emergency",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_legacy_info_011.nonnegative_spill",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_legacy_info_011.charge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q3_legacy_info_011.discharge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q3_legacy_info_011.charge_discharge_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q3_legacy_info_011.emergency_spill_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q3_legacy_info_011.initial_soc",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_011.continuous_days",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_011.summary_total_cost",
+      "passed": true,
+      "maximum_absolute_error": 3.725290298461914e-09,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_legacy_info_011.archived_update_schedule_06",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_011.archived_update_schedule_12",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_011.archived_update_schedule_18",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_100.shape_plan",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_100.shape_adjusted",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_100.shape_charge",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_100.shape_discharge",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_100.shape_emergency",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_100.shape_spill",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_100.shape_soc",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_100.shape_costs",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_100.shape_revisions",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_100.midnight_snapshot",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_100.complete_revision_versions",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_100.does_not_rewrite_delivered_slots",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_100.replayed_final_delivery",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_100.archived_revision_up",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_100.archived_revision_down",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_100.all_daily_cost_components",
+      "passed": true,
+      "maximum_absolute_error": 1.4551915228366852e-11,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_legacy_info_100.ac_energy_balance",
+      "passed": true,
+      "maximum_absolute_error": 2.2737367544323206e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_100.soc_dynamics",
+      "passed": true,
+      "maximum_absolute_error": 9.094947017729282e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_100.soc_bounds",
+      "passed": true,
+      "minimum": 1200.0,
+      "maximum": 10800.0
+    },
+    {
+      "name": "q3_legacy_info_100.nonnegative_grid",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_legacy_info_100.nonnegative_charge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_legacy_info_100.nonnegative_discharge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_legacy_info_100.nonnegative_emergency",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_legacy_info_100.nonnegative_spill",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_legacy_info_100.charge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q3_legacy_info_100.discharge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q3_legacy_info_100.charge_discharge_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q3_legacy_info_100.emergency_spill_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q3_legacy_info_100.initial_soc",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_100.continuous_days",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_100.summary_total_cost",
+      "passed": true,
+      "maximum_absolute_error": 9.313225746154785e-09,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_legacy_info_100.archived_update_schedule_06",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_100.archived_update_schedule_12",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_100.archived_update_schedule_18",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_101.shape_plan",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_101.shape_adjusted",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_101.shape_charge",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_101.shape_discharge",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_101.shape_emergency",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_101.shape_spill",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_101.shape_soc",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_101.shape_costs",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_101.shape_revisions",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_101.midnight_snapshot",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_101.complete_revision_versions",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_101.does_not_rewrite_delivered_slots",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_101.replayed_final_delivery",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_101.archived_revision_up",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_101.archived_revision_down",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_101.all_daily_cost_components",
+      "passed": true,
+      "maximum_absolute_error": 1.4551915228366852e-11,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_legacy_info_101.ac_energy_balance",
+      "passed": true,
+      "maximum_absolute_error": 2.2737367544323206e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_101.soc_dynamics",
+      "passed": true,
+      "maximum_absolute_error": 9.094947017729282e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_101.soc_bounds",
+      "passed": true,
+      "minimum": 1200.0,
+      "maximum": 10800.0
+    },
+    {
+      "name": "q3_legacy_info_101.nonnegative_grid",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_legacy_info_101.nonnegative_charge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_legacy_info_101.nonnegative_discharge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_legacy_info_101.nonnegative_emergency",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_legacy_info_101.nonnegative_spill",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_legacy_info_101.charge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q3_legacy_info_101.discharge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q3_legacy_info_101.charge_discharge_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q3_legacy_info_101.emergency_spill_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q3_legacy_info_101.initial_soc",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_101.continuous_days",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_101.summary_total_cost",
+      "passed": true,
+      "maximum_absolute_error": 9.313225746154785e-09,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_legacy_info_101.archived_update_schedule_06",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_101.archived_update_schedule_12",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_101.archived_update_schedule_18",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_110.shape_plan",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_110.shape_adjusted",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_110.shape_charge",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_110.shape_discharge",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_110.shape_emergency",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_110.shape_spill",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_110.shape_soc",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_110.shape_costs",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_110.shape_revisions",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_110.midnight_snapshot",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_110.complete_revision_versions",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_110.does_not_rewrite_delivered_slots",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_110.replayed_final_delivery",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_110.archived_revision_up",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_110.archived_revision_down",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_110.all_daily_cost_components",
+      "passed": true,
+      "maximum_absolute_error": 1.4551915228366852e-11,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_legacy_info_110.ac_energy_balance",
+      "passed": true,
+      "maximum_absolute_error": 2.2737367544323206e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_110.soc_dynamics",
+      "passed": true,
+      "maximum_absolute_error": 9.094947017729282e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_110.soc_bounds",
+      "passed": true,
+      "minimum": 1200.0,
+      "maximum": 10800.0
+    },
+    {
+      "name": "q3_legacy_info_110.nonnegative_grid",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_legacy_info_110.nonnegative_charge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_legacy_info_110.nonnegative_discharge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_legacy_info_110.nonnegative_emergency",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_legacy_info_110.nonnegative_spill",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_legacy_info_110.charge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q3_legacy_info_110.discharge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q3_legacy_info_110.charge_discharge_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q3_legacy_info_110.emergency_spill_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q3_legacy_info_110.initial_soc",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_110.continuous_days",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_info_110.summary_total_cost",
+      "passed": true,
+      "maximum_absolute_error": 3.725290298461914e-09,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_legacy_info_110.archived_update_schedule_06",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_110.archived_update_schedule_12",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_info_110.archived_update_schedule_18",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_000.shape_plan",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_000.shape_adjusted",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_000.shape_charge",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_000.shape_discharge",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_000.shape_emergency",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_000.shape_spill",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_000.shape_soc",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_000.shape_costs",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_000.shape_revisions",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_000.midnight_snapshot",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_000.complete_revision_versions",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_000.does_not_rewrite_delivered_slots",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_000.replayed_final_delivery",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_000.archived_revision_up",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_000.archived_revision_down",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_000.all_daily_cost_components",
+      "passed": true,
+      "maximum_absolute_error": 1.4551915228366852e-11,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_selected_info_000.ac_energy_balance",
+      "passed": true,
+      "maximum_absolute_error": 2.2737367544323206e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_000.soc_dynamics",
+      "passed": true,
+      "maximum_absolute_error": 9.094947017729282e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_000.soc_bounds",
+      "passed": true,
+      "minimum": 1200.0,
+      "maximum": 10800.0
+    },
+    {
+      "name": "q3_selected_info_000.nonnegative_grid",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_selected_info_000.nonnegative_charge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_selected_info_000.nonnegative_discharge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_selected_info_000.nonnegative_emergency",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_selected_info_000.nonnegative_spill",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_selected_info_000.charge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q3_selected_info_000.discharge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q3_selected_info_000.charge_discharge_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q3_selected_info_000.emergency_spill_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q3_selected_info_000.initial_soc",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_000.continuous_days",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_000.summary_total_cost",
+      "passed": true,
+      "maximum_absolute_error": 7.450580596923828e-09,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_selected_info_000.archived_update_schedule_06",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_000.archived_update_schedule_12",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_000.archived_update_schedule_18",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_001.shape_plan",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_001.shape_adjusted",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_001.shape_charge",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_001.shape_discharge",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_001.shape_emergency",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_001.shape_spill",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_001.shape_soc",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_001.shape_costs",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_001.shape_revisions",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_001.midnight_snapshot",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_001.complete_revision_versions",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_001.does_not_rewrite_delivered_slots",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_001.replayed_final_delivery",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_001.archived_revision_up",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_001.archived_revision_down",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_001.all_daily_cost_components",
+      "passed": true,
+      "maximum_absolute_error": 1.4551915228366852e-11,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_selected_info_001.ac_energy_balance",
+      "passed": true,
+      "maximum_absolute_error": 2.2737367544323206e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_001.soc_dynamics",
+      "passed": true,
+      "maximum_absolute_error": 9.094947017729282e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_001.soc_bounds",
+      "passed": true,
+      "minimum": 1200.0,
+      "maximum": 10800.0
+    },
+    {
+      "name": "q3_selected_info_001.nonnegative_grid",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_selected_info_001.nonnegative_charge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_selected_info_001.nonnegative_discharge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_selected_info_001.nonnegative_emergency",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_selected_info_001.nonnegative_spill",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_selected_info_001.charge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q3_selected_info_001.discharge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q3_selected_info_001.charge_discharge_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q3_selected_info_001.emergency_spill_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q3_selected_info_001.initial_soc",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_001.continuous_days",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_001.summary_total_cost",
+      "passed": true,
+      "maximum_absolute_error": 7.450580596923828e-09,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_selected_info_001.archived_update_schedule_06",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_001.archived_update_schedule_12",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_001.archived_update_schedule_18",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_010.shape_plan",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_010.shape_adjusted",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_010.shape_charge",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_010.shape_discharge",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_010.shape_emergency",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_010.shape_spill",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_010.shape_soc",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_010.shape_costs",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_010.shape_revisions",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_010.midnight_snapshot",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_010.complete_revision_versions",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_010.does_not_rewrite_delivered_slots",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_010.replayed_final_delivery",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_010.archived_revision_up",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_010.archived_revision_down",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_010.all_daily_cost_components",
+      "passed": true,
+      "maximum_absolute_error": 1.4551915228366852e-11,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_selected_info_010.ac_energy_balance",
+      "passed": true,
+      "maximum_absolute_error": 2.2737367544323206e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_010.soc_dynamics",
+      "passed": true,
+      "maximum_absolute_error": 9.094947017729282e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_010.soc_bounds",
+      "passed": true,
+      "minimum": 1200.0,
+      "maximum": 10800.0
+    },
+    {
+      "name": "q3_selected_info_010.nonnegative_grid",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_selected_info_010.nonnegative_charge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_selected_info_010.nonnegative_discharge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_selected_info_010.nonnegative_emergency",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_selected_info_010.nonnegative_spill",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_selected_info_010.charge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q3_selected_info_010.discharge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q3_selected_info_010.charge_discharge_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q3_selected_info_010.emergency_spill_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q3_selected_info_010.initial_soc",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_010.continuous_days",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_010.summary_total_cost",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_selected_info_010.archived_update_schedule_06",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_010.archived_update_schedule_12",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_010.archived_update_schedule_18",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_011.shape_plan",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_011.shape_adjusted",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_011.shape_charge",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_011.shape_discharge",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_011.shape_emergency",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_011.shape_spill",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_011.shape_soc",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_011.shape_costs",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_011.shape_revisions",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_011.midnight_snapshot",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_011.complete_revision_versions",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_011.does_not_rewrite_delivered_slots",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_011.replayed_final_delivery",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_011.archived_revision_up",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_011.archived_revision_down",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_011.all_daily_cost_components",
+      "passed": true,
+      "maximum_absolute_error": 1.4551915228366852e-11,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_selected_info_011.ac_energy_balance",
+      "passed": true,
+      "maximum_absolute_error": 2.2737367544323206e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_011.soc_dynamics",
+      "passed": true,
+      "maximum_absolute_error": 9.094947017729282e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_011.soc_bounds",
+      "passed": true,
+      "minimum": 1200.0,
+      "maximum": 10800.0
+    },
+    {
+      "name": "q3_selected_info_011.nonnegative_grid",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_selected_info_011.nonnegative_charge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_selected_info_011.nonnegative_discharge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_selected_info_011.nonnegative_emergency",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_selected_info_011.nonnegative_spill",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_selected_info_011.charge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q3_selected_info_011.discharge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q3_selected_info_011.charge_discharge_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q3_selected_info_011.emergency_spill_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q3_selected_info_011.initial_soc",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_011.continuous_days",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_011.summary_total_cost",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_selected_info_011.archived_update_schedule_06",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_011.archived_update_schedule_12",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_011.archived_update_schedule_18",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_100.shape_plan",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_100.shape_adjusted",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_100.shape_charge",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_100.shape_discharge",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_100.shape_emergency",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_100.shape_spill",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_100.shape_soc",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_100.shape_costs",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_100.shape_revisions",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_100.midnight_snapshot",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_100.complete_revision_versions",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_100.does_not_rewrite_delivered_slots",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_100.replayed_final_delivery",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_100.archived_revision_up",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_100.archived_revision_down",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_100.all_daily_cost_components",
+      "passed": true,
+      "maximum_absolute_error": 1.4551915228366852e-11,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_selected_info_100.ac_energy_balance",
+      "passed": true,
+      "maximum_absolute_error": 2.2737367544323206e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_100.soc_dynamics",
+      "passed": true,
+      "maximum_absolute_error": 9.094947017729282e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_100.soc_bounds",
+      "passed": true,
+      "minimum": 1200.0,
+      "maximum": 10800.0
+    },
+    {
+      "name": "q3_selected_info_100.nonnegative_grid",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_selected_info_100.nonnegative_charge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_selected_info_100.nonnegative_discharge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_selected_info_100.nonnegative_emergency",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_selected_info_100.nonnegative_spill",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_selected_info_100.charge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q3_selected_info_100.discharge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q3_selected_info_100.charge_discharge_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q3_selected_info_100.emergency_spill_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q3_selected_info_100.initial_soc",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_100.continuous_days",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_100.summary_total_cost",
+      "passed": true,
+      "maximum_absolute_error": 5.587935447692871e-09,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_selected_info_100.archived_update_schedule_06",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_100.archived_update_schedule_12",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_100.archived_update_schedule_18",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_101.shape_plan",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_101.shape_adjusted",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_101.shape_charge",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_101.shape_discharge",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_101.shape_emergency",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_101.shape_spill",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_101.shape_soc",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_101.shape_costs",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_101.shape_revisions",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_101.midnight_snapshot",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_101.complete_revision_versions",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_101.does_not_rewrite_delivered_slots",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_101.replayed_final_delivery",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_101.archived_revision_up",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_101.archived_revision_down",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_101.all_daily_cost_components",
+      "passed": true,
+      "maximum_absolute_error": 1.4551915228366852e-11,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_selected_info_101.ac_energy_balance",
+      "passed": true,
+      "maximum_absolute_error": 2.2737367544323206e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_101.soc_dynamics",
+      "passed": true,
+      "maximum_absolute_error": 9.094947017729282e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_101.soc_bounds",
+      "passed": true,
+      "minimum": 1200.0,
+      "maximum": 10800.0
+    },
+    {
+      "name": "q3_selected_info_101.nonnegative_grid",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_selected_info_101.nonnegative_charge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_selected_info_101.nonnegative_discharge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_selected_info_101.nonnegative_emergency",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_selected_info_101.nonnegative_spill",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_selected_info_101.charge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q3_selected_info_101.discharge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q3_selected_info_101.charge_discharge_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q3_selected_info_101.emergency_spill_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q3_selected_info_101.initial_soc",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_101.continuous_days",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_101.summary_total_cost",
+      "passed": true,
+      "maximum_absolute_error": 5.587935447692871e-09,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_selected_info_101.archived_update_schedule_06",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_101.archived_update_schedule_12",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_101.archived_update_schedule_18",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_110.shape_plan",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_110.shape_adjusted",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_110.shape_charge",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_110.shape_discharge",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_110.shape_emergency",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_110.shape_spill",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_110.shape_soc",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_110.shape_costs",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_110.shape_revisions",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_110.midnight_snapshot",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_110.complete_revision_versions",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_110.does_not_rewrite_delivered_slots",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_110.replayed_final_delivery",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_110.archived_revision_up",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_110.archived_revision_down",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_110.all_daily_cost_components",
+      "passed": true,
+      "maximum_absolute_error": 1.4551915228366852e-11,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_selected_info_110.ac_energy_balance",
+      "passed": true,
+      "maximum_absolute_error": 2.2737367544323206e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_110.soc_dynamics",
+      "passed": true,
+      "maximum_absolute_error": 9.094947017729282e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_110.soc_bounds",
+      "passed": true,
+      "minimum": 1200.0,
+      "maximum": 10800.0
+    },
+    {
+      "name": "q3_selected_info_110.nonnegative_grid",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_selected_info_110.nonnegative_charge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_selected_info_110.nonnegative_discharge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_selected_info_110.nonnegative_emergency",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_selected_info_110.nonnegative_spill",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_selected_info_110.charge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q3_selected_info_110.discharge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q3_selected_info_110.charge_discharge_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q3_selected_info_110.emergency_spill_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q3_selected_info_110.initial_soc",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_110.continuous_days",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_selected_info_110.summary_total_cost",
+      "passed": true,
+      "maximum_absolute_error": 5.587935447692871e-09,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_selected_info_110.archived_update_schedule_06",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_110.archived_update_schedule_12",
+      "passed": true
+    },
+    {
+      "name": "q3_selected_info_110.archived_update_schedule_18",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_no_updates.shape_plan",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_no_updates.shape_adjusted",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_no_updates.shape_charge",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_no_updates.shape_discharge",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_no_updates.shape_emergency",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_no_updates.shape_spill",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_no_updates.shape_soc",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_no_updates.shape_costs",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_no_updates.shape_revisions",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_no_updates.midnight_snapshot",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_no_updates.complete_revision_versions",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_no_updates.does_not_rewrite_delivered_slots",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_no_updates.replayed_final_delivery",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_no_updates.archived_revision_up",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_no_updates.archived_revision_down",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_no_updates.all_daily_cost_components",
+      "passed": true,
+      "maximum_absolute_error": 5.820766091346741e-11,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_legacy_no_updates.ac_energy_balance",
+      "passed": true,
+      "maximum_absolute_error": 2.2737367544323206e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_no_updates.soc_dynamics",
+      "passed": true,
+      "maximum_absolute_error": 9.094947017729282e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_no_updates.soc_bounds",
+      "passed": true,
+      "minimum": 1200.0,
+      "maximum": 10800.0
+    },
+    {
+      "name": "q3_legacy_no_updates.nonnegative_grid",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_legacy_no_updates.nonnegative_charge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_legacy_no_updates.nonnegative_discharge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_legacy_no_updates.nonnegative_emergency",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_legacy_no_updates.nonnegative_spill",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_legacy_no_updates.charge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q3_legacy_no_updates.discharge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q3_legacy_no_updates.charge_discharge_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q3_legacy_no_updates.emergency_spill_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q3_legacy_no_updates.initial_soc",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_no_updates.continuous_days",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_legacy_no_updates.summary_total_cost",
+      "passed": true,
+      "maximum_absolute_error": 1.30385160446167e-08,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_legacy_no_updates.archived_update_schedule_06",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_no_updates.archived_update_schedule_12",
+      "passed": true
+    },
+    {
+      "name": "q3_legacy_no_updates.archived_update_schedule_18",
+      "passed": true
+    },
+    {
+      "name": "q3_ladder_replan.shape_plan",
+      "passed": true
+    },
+    {
+      "name": "q3_ladder_replan.shape_adjusted",
+      "passed": true
+    },
+    {
+      "name": "q3_ladder_replan.shape_charge",
+      "passed": true
+    },
+    {
+      "name": "q3_ladder_replan.shape_discharge",
+      "passed": true
+    },
+    {
+      "name": "q3_ladder_replan.shape_emergency",
+      "passed": true
+    },
+    {
+      "name": "q3_ladder_replan.shape_spill",
+      "passed": true
+    },
+    {
+      "name": "q3_ladder_replan.shape_soc",
+      "passed": true
+    },
+    {
+      "name": "q3_ladder_replan.shape_costs",
+      "passed": true
+    },
+    {
+      "name": "q3_ladder_replan.shape_revisions",
+      "passed": true
+    },
+    {
+      "name": "q3_ladder_replan.midnight_snapshot",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_ladder_replan.complete_revision_versions",
+      "passed": true
+    },
+    {
+      "name": "q3_ladder_replan.does_not_rewrite_delivered_slots",
+      "passed": true
+    },
+    {
+      "name": "q3_ladder_replan.replayed_final_delivery",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_ladder_replan.archived_revision_up",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_ladder_replan.archived_revision_down",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_ladder_replan.all_daily_cost_components",
+      "passed": true,
+      "maximum_absolute_error": 2.9103830456733704e-11,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_ladder_replan.ac_energy_balance",
+      "passed": true,
+      "maximum_absolute_error": 2.2737367544323206e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_ladder_replan.soc_dynamics",
+      "passed": true,
+      "maximum_absolute_error": 9.094947017729282e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_ladder_replan.soc_bounds",
+      "passed": true,
+      "minimum": 1200.0,
+      "maximum": 10800.0
+    },
+    {
+      "name": "q3_ladder_replan.nonnegative_grid",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_ladder_replan.nonnegative_charge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_ladder_replan.nonnegative_discharge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_ladder_replan.nonnegative_emergency",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_ladder_replan.nonnegative_spill",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_ladder_replan.charge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q3_ladder_replan.discharge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q3_ladder_replan.charge_discharge_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q3_ladder_replan.emergency_spill_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q3_ladder_replan.initial_soc",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_ladder_replan.continuous_days",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_ladder_replan.summary_total_cost",
+      "passed": true,
+      "maximum_absolute_error": 7.450580596923828e-09,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_ladder_replan.archived_update_schedule_06",
+      "passed": true
+    },
+    {
+      "name": "q3_ladder_replan.archived_update_schedule_12",
+      "passed": true
+    },
+    {
+      "name": "q3_ladder_replan.archived_update_schedule_18",
+      "passed": true
+    },
+    {
+      "name": "q3_ladder_load.shape_plan",
+      "passed": true
+    },
+    {
+      "name": "q3_ladder_load.shape_adjusted",
+      "passed": true
+    },
+    {
+      "name": "q3_ladder_load.shape_charge",
+      "passed": true
+    },
+    {
+      "name": "q3_ladder_load.shape_discharge",
+      "passed": true
+    },
+    {
+      "name": "q3_ladder_load.shape_emergency",
+      "passed": true
+    },
+    {
+      "name": "q3_ladder_load.shape_spill",
+      "passed": true
+    },
+    {
+      "name": "q3_ladder_load.shape_soc",
+      "passed": true
+    },
+    {
+      "name": "q3_ladder_load.shape_costs",
+      "passed": true
+    },
+    {
+      "name": "q3_ladder_load.shape_revisions",
+      "passed": true
+    },
+    {
+      "name": "q3_ladder_load.midnight_snapshot",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_ladder_load.complete_revision_versions",
+      "passed": true
+    },
+    {
+      "name": "q3_ladder_load.does_not_rewrite_delivered_slots",
+      "passed": true
+    },
+    {
+      "name": "q3_ladder_load.replayed_final_delivery",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_ladder_load.archived_revision_up",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_ladder_load.archived_revision_down",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_ladder_load.all_daily_cost_components",
+      "passed": true,
+      "maximum_absolute_error": 1.4551915228366852e-11,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_ladder_load.ac_energy_balance",
+      "passed": true,
+      "maximum_absolute_error": 2.2737367544323206e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_ladder_load.soc_dynamics",
+      "passed": true,
+      "maximum_absolute_error": 9.094947017729282e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_ladder_load.soc_bounds",
+      "passed": true,
+      "minimum": 1200.0,
+      "maximum": 10800.0
+    },
+    {
+      "name": "q3_ladder_load.nonnegative_grid",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_ladder_load.nonnegative_charge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_ladder_load.nonnegative_discharge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_ladder_load.nonnegative_emergency",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_ladder_load.nonnegative_spill",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_ladder_load.charge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q3_ladder_load.discharge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q3_ladder_load.charge_discharge_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q3_ladder_load.emergency_spill_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q3_ladder_load.initial_soc",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_ladder_load.continuous_days",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_ladder_load.summary_total_cost",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_ladder_load.archived_update_schedule_06",
+      "passed": true
+    },
+    {
+      "name": "q3_ladder_load.archived_update_schedule_12",
+      "passed": true
+    },
+    {
+      "name": "q3_ladder_load.archived_update_schedule_18",
+      "passed": true
+    },
+    {
+      "name": "q3_per_revision.shape_plan",
+      "passed": true
+    },
+    {
+      "name": "q3_per_revision.shape_adjusted",
+      "passed": true
+    },
+    {
+      "name": "q3_per_revision.shape_charge",
+      "passed": true
+    },
+    {
+      "name": "q3_per_revision.shape_discharge",
+      "passed": true
+    },
+    {
+      "name": "q3_per_revision.shape_emergency",
+      "passed": true
+    },
+    {
+      "name": "q3_per_revision.shape_spill",
+      "passed": true
+    },
+    {
+      "name": "q3_per_revision.shape_soc",
+      "passed": true
+    },
+    {
+      "name": "q3_per_revision.shape_costs",
+      "passed": true
+    },
+    {
+      "name": "q3_per_revision.shape_revisions",
+      "passed": true
+    },
+    {
+      "name": "q3_per_revision.midnight_snapshot",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_per_revision.complete_revision_versions",
+      "passed": true
+    },
+    {
+      "name": "q3_per_revision.does_not_rewrite_delivered_slots",
+      "passed": true
+    },
+    {
+      "name": "q3_per_revision.replayed_final_delivery",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_per_revision.archived_revision_up",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_per_revision.archived_revision_down",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_per_revision.committed_orders_never_reduced",
+      "passed": true
+    },
+    {
+      "name": "q3_per_revision.zero_cancelled_commitments",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_per_revision.all_daily_cost_components",
+      "passed": true,
+      "maximum_absolute_error": 1.4551915228366852e-11,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_per_revision.ac_energy_balance",
+      "passed": true,
+      "maximum_absolute_error": 2.2737367544323206e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_per_revision.soc_dynamics",
+      "passed": true,
+      "maximum_absolute_error": 9.094947017729282e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_per_revision.soc_bounds",
+      "passed": true,
+      "minimum": 1200.0,
+      "maximum": 10800.0
+    },
+    {
+      "name": "q3_per_revision.nonnegative_grid",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_per_revision.nonnegative_charge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_per_revision.nonnegative_discharge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_per_revision.nonnegative_emergency",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_per_revision.nonnegative_spill",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q3_per_revision.charge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q3_per_revision.discharge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q3_per_revision.charge_discharge_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q3_per_revision.emergency_spill_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q3_per_revision.initial_soc",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_per_revision.continuous_days",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q3_per_revision.summary_total_cost",
+      "passed": true,
+      "maximum_absolute_error": 3.725290298461914e-09,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q3_per_revision.archived_update_schedule_06",
+      "passed": true
+    },
+    {
+      "name": "q3_per_revision.archived_update_schedule_12",
+      "passed": true
+    },
+    {
+      "name": "q3_per_revision.archived_update_schedule_18",
+      "passed": true
+    },
+    {
+      "name": "q4_3_per_revision.shape_plan",
+      "passed": true
+    },
+    {
+      "name": "q4_3_per_revision.shape_adjusted",
+      "passed": true
+    },
+    {
+      "name": "q4_3_per_revision.shape_charge",
+      "passed": true
+    },
+    {
+      "name": "q4_3_per_revision.shape_discharge",
+      "passed": true
+    },
+    {
+      "name": "q4_3_per_revision.shape_emergency",
+      "passed": true
+    },
+    {
+      "name": "q4_3_per_revision.shape_spill",
+      "passed": true
+    },
+    {
+      "name": "q4_3_per_revision.shape_soc",
+      "passed": true
+    },
+    {
+      "name": "q4_3_per_revision.shape_costs",
+      "passed": true
+    },
+    {
+      "name": "q4_3_per_revision.shape_revisions",
+      "passed": true
+    },
+    {
+      "name": "q4_3_per_revision.midnight_snapshot",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q4_3_per_revision.complete_revision_versions",
+      "passed": true
+    },
+    {
+      "name": "q4_3_per_revision.does_not_rewrite_delivered_slots",
+      "passed": true
+    },
+    {
+      "name": "q4_3_per_revision.replayed_final_delivery",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q4_3_per_revision.archived_revision_up",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q4_3_per_revision.archived_revision_down",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q4_3_per_revision.committed_orders_never_reduced",
+      "passed": true
+    },
+    {
+      "name": "q4_3_per_revision.zero_cancelled_commitments",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q4_3_per_revision.all_daily_cost_components",
+      "passed": true,
+      "maximum_absolute_error": 1.4551915228366852e-11,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q4_3_per_revision.ac_energy_balance",
+      "passed": true,
+      "maximum_absolute_error": 2.2737367544323206e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q4_3_per_revision.soc_dynamics",
+      "passed": true,
+      "maximum_absolute_error": 9.094947017729282e-13,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q4_3_per_revision.soc_bounds",
+      "passed": true,
+      "minimum": 1200.0,
+      "maximum": 10800.0
+    },
+    {
+      "name": "q4_3_per_revision.nonnegative_grid",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q4_3_per_revision.nonnegative_charge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q4_3_per_revision.nonnegative_discharge",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q4_3_per_revision.nonnegative_emergency",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q4_3_per_revision.nonnegative_spill",
+      "passed": true,
+      "minimum": 0.0
+    },
+    {
+      "name": "q4_3_per_revision.charge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q4_3_per_revision.discharge_power_limit",
+      "passed": true,
+      "maximum_kw": 5000.0
+    },
+    {
+      "name": "q4_3_per_revision.charge_discharge_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q4_3_per_revision.emergency_spill_exclusion",
+      "passed": true,
+      "maximum_simultaneous_kwh": 0.0
+    },
+    {
+      "name": "q4_3_per_revision.initial_soc",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q4_3_per_revision.continuous_days",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "q4_3_per_revision.summary_total_cost",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 0.001
+    },
+    {
+      "name": "q4_3_per_revision.archived_update_schedule_06",
+      "passed": true
+    },
+    {
+      "name": "q4_3_per_revision.archived_update_schedule_12",
+      "passed": true
+    },
+    {
+      "name": "q4_3_per_revision.archived_update_schedule_18",
+      "passed": true
+    },
+    {
+      "name": "contract.q3.frozen_legacy.path_repriced_total",
+      "passed": true,
+      "maximum_absolute_error": 5.587935447692871e-09,
+      "tolerance": 0.001
+    },
+    {
+      "name": "contract.q3.frozen_legacy.extra_fee",
+      "passed": true,
+      "maximum_absolute_error": 5.820766091346741e-10,
+      "tolerance": 0.001
+    },
+    {
+      "name": "contract.q3.frozen_legacy.cancelled_purchase_kwh",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "contract.q3.frozen_legacy.identified_as_frozen_dispatch",
+      "passed": true
+    },
+    {
+      "name": "contract.q3.frozen_selected.path_repriced_total",
+      "passed": true,
+      "maximum_absolute_error": 5.587935447692871e-09,
+      "tolerance": 0.001
+    },
+    {
+      "name": "contract.q3.frozen_selected.extra_fee",
+      "passed": true,
+      "maximum_absolute_error": 4.656612873077393e-10,
+      "tolerance": 0.001
+    },
+    {
+      "name": "contract.q3.frozen_selected.cancelled_purchase_kwh",
+      "passed": true,
+      "maximum_absolute_error": 0.0,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "contract.q3.frozen_selected.identified_as_frozen_dispatch",
+      "passed": true
+    },
+    {
+      "name": "contract.q4_3.frozen_legacy.path_repriced_total",
+      "passed": true,
+      "maximum_absolute_error": 5.587935447692871e-09,
+      "tolerance": 0.001
+    },
+    {
+      "name": "contract.q4_3.frozen_legacy.extra_fee",
+      "passed": true,
+      "maximum_absolute_error": 2.3283064365386963e-10,
+      "tolerance": 0.001
+    },
+    {
+      "name": "contract.q4_3.frozen_legacy.cancelled_purchase_kwh",
+      "passed": true,
+      "maximum_absolute_error": 2.9103830456733704e-11,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "contract.q4_3.frozen_legacy.identified_as_frozen_dispatch",
+      "passed": true
+    },
+    {
+      "name": "contract.q4_3.frozen_selected.path_repriced_total",
+      "passed": true,
+      "maximum_absolute_error": 1.862645149230957e-09,
+      "tolerance": 0.001
+    },
+    {
+      "name": "contract.q4_3.frozen_selected.extra_fee",
+      "passed": true,
+      "maximum_absolute_error": 1.5133991837501526e-09,
+      "tolerance": 0.001
+    },
+    {
+      "name": "contract.q4_3.frozen_selected.cancelled_purchase_kwh",
+      "passed": true,
+      "maximum_absolute_error": 2.9103830456733704e-11,
+      "tolerance": 2e-05
+    },
+    {
+      "name": "contract.q4_3.frozen_selected.identified_as_frozen_dispatch",
+      "passed": true
+    }
+  ]
+}

@@ -45,7 +45,8 @@ def workbook_payload(data, q1, results):
 
 def main():
     started = time.perf_counter()
-    OUT.mkdir(exist_ok=True)
+    (OUT/'main').mkdir(parents=True, exist_ok=True)
+    (OUT/'experiments/revision').mkdir(parents=True, exist_ok=True)
     data = dict(np.load(ROOT/'data/processed/data.npz'))
     q1 = q1_solution(data)
     trap = q1_solution(data,trapezoid=True)
@@ -130,7 +131,7 @@ def main():
         print(name,'selected',choice,'summary',summarize(results[name]),flush=True)
 
     summary = dict(parameters=selected,calibration=calibration,
-                   pv_weights=weights,revision_experiments='revision-experiments.json',
+                   pv_weights=weights,revision_experiments='../experiments/revision/experiments.json',
                    q1={k:v for k,v in q1.items() if np.isscalar(v)},
                    q1_grid_kwh=float(q1['grid'].sum()),
                    q1_trapezoid_cost=trap['cost'],q1_trapezoid_grid_kwh=float(trap['grid'].sum()),
@@ -229,18 +230,18 @@ def main():
         grid_kwh=float(actual_net.sum()))
     summary['elapsed_seconds'] = time.perf_counter()-started
     revision['source_sha256']={p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest()
-        for p in ('scripts/model.py','scripts/solve.py','data/processed/data.npz','docs/revision-plan.md')}
+        for p in ('scripts/model.py','scripts/solve.py','data/processed/data.npz','docs/reviews/revision-plan.md')}
     # Publish one coherent generation after every scenario is complete.
     payload = workbook_payload(data,q1,results)
-    (OUT/'results.json').write_text(json.dumps(payload,default=plain,separators=(',',':')),encoding='utf-8')
+    (OUT/'main/results.json').write_text(json.dumps(payload,default=plain,separators=(',',':')),encoding='utf-8')
     arrays = {f'q1_{k}':v for k,v in q1.items() if isinstance(v,np.ndarray)}
     for name,result in results.items():
         arrays.update({f'{name}_{k}':v for k,v in result.items()})
-    np.savez_compressed(OUT/'dispatch.npz',**arrays)
-    np.savez_compressed(OUT/'revision-dispatch.npz',**{
+    np.savez_compressed(OUT/'main/dispatch.npz',**arrays)
+    np.savez_compressed(OUT/'experiments/revision/dispatch.npz',**{
         f'{name}_{k}':v for name,result in archived.items() for k,v in result.items()})
-    (OUT/'revision-experiments.json').write_text(json.dumps(revision,default=plain,indent=2),encoding='utf-8')
-    (OUT/'summary.json').write_text(json.dumps(summary,default=plain,indent=2),encoding='utf-8')
+    (OUT/'experiments/revision/experiments.json').write_text(json.dumps(revision,default=plain,indent=2),encoding='utf-8')
+    (OUT/'main/summary.json').write_text(json.dumps(summary,default=plain,indent=2),encoding='utf-8')
     print(f'Completed in {summary["elapsed_seconds"]:.1f}s',flush=True)
 
 

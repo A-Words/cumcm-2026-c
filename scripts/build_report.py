@@ -91,7 +91,7 @@ def forecast_comparison(summary):
         selected = revision['selection'][key]['selected']
         row = summary['primary'][key]
         lines.append(f"| {NAMES[key]}：修订后主方案 | {selected['pv_weight']:g} | {selected['quantile']:g} | {f(selected['validation_cost'])} | **{f(row['total_cost'])}** | {f(row['emergency_kwh'])} | {f(row['start_soc'],4)} | {f(row['end_soc'],4)} |")
-    lines += ['', '各个权重下最优的 1 月候选如下，完整 30 组结果保存在 [修订实验归档](../outputs/revision-experiments.json)。', '',
+    lines += ['', '各个权重下最优的 1 月候选如下，完整 30 组结果保存在 [修订实验归档](../outputs/experiments/revision/experiments.json)。', '',
               '| 附件 3 权重 λ | 问题 3：选中 α | 1 月费用 / 元 | 问题 4-3：选中 α | 1 月费用 / 元 |',
               '| ---: | ---: | ---: | ---: | ---: |']
     for weight in (0,.25,.5,.75,1):
@@ -243,7 +243,7 @@ def round2_comparison(report):
         lines.append(f"{NAMES[strategy]} 的融合自适应相对固定参数累计{direction} {f(abs(fixed_difference))} 元，9 个月中 {study['adaptive_wins_vs_fixed']} 个月费用更低；相对纯历史自适应累计节省 {f(study['cash_saving_adaptive_vs_historical'])} 元，{study['adaptive_wins_vs_historical']} 个月更低。相对固定参数最不利月份为 {worst['month']}，自适应费用减去固定费用为 {f(deterioration)} 元。")
         lines.append('')
     lines += ['本次两种电价下的融合自适应都比固定主参数更贵，不能据此主张每月重选参数更稳健。它们相对纯历史自适应的费用更低，仅支持这一年度和这些预设路径之间的比较。三条路径在各自问题内的评价期首末库存均相同，评分候选的末库存则不必相同，选参评分也没有将其折价。候选族与本轮检验设计均已接触 2025 年数据，九个月差额又不是独立同分布样本，因此本实验是回顾式跨月再分析，既不证明独立外部泛化，也不由月份胜率推出统计显著性。原主方案和 Excel 沿用已交付策略，不根据这些新结果事后改选。', '',
-              '完整参数候选、发布时间、费用分解和路径见 [第二轮实验 JSON](../outputs/round2/experiments.json) 与 [逐段归档](../outputs/round2/dispatch.npz)。新增控制器定义及对第二轮意见的逐项回应见 [第二轮回应](round2-response.md)；未来年度接口与冻结规则见 [外部验证协议](external-validation-protocol.md)。目前没有未见过的外部年度结果；输入日期在后、接口能够运行和外部泛化已验证是三件不同的事。']
+              '完整参数候选、发布时间、费用分解和路径见 [第二轮实验 JSON](../outputs/experiments/round2/experiments.json) 与 [逐段归档](../outputs/experiments/round2/dispatch.npz)。新增控制器定义及对第二轮意见的逐项回应见 [第二轮回应](reviews/round2-response.md)；未来年度接口与冻结规则见 [外部验证协议](modeling/external-validation-protocol.md)。目前没有未见过的外部年度结果；输入日期在后、接口能够运行和外部泛化已验证是三件不同的事。']
     return '\n'.join(lines)
 
 
@@ -306,21 +306,21 @@ def main():
                         help='Refresh Markdown without rewriting the existing figure artifacts.')
     args=parser.parse_args()
     data=dict(np.load(ROOT/'data/processed/data.npz'))
-    d=dict(np.load(OUT/'dispatch.npz'))
-    s=json.loads((OUT/'summary.json').read_text(encoding='utf-8'))
-    s['revision_experiments']=json.loads((OUT/'revision-experiments.json').read_text(encoding='utf-8'))
-    v=json.loads((OUT/'validation.json').read_text(encoding='utf-8'))
-    rv=json.loads((OUT/'revision-validation.json').read_text(encoding='utf-8'))
-    round2_path=OUT/'round2/experiments.json'
+    d=dict(np.load(OUT/'main/dispatch.npz'))
+    s=json.loads((OUT/'main/summary.json').read_text(encoding='utf-8'))
+    s['revision_experiments']=json.loads((OUT/'experiments/revision/experiments.json').read_text(encoding='utf-8'))
+    v=json.loads((OUT/'main/validation.json').read_text(encoding='utf-8'))
+    rv=json.loads((OUT/'experiments/revision/validation.json').read_text(encoding='utf-8'))
+    round2_path=OUT/'experiments/round2/experiments.json'
     round2_text=(round2_comparison(json.loads(round2_path.read_text(encoding='utf-8')))
                  if round2_path.exists() else '')
     round2_evidence=''
-    round2_validation_path=OUT/'round2/validation.json'
+    round2_validation_path=OUT/'experiments/round2/validation.json'
     if round2_text and round2_validation_path.exists():
         round2_validation=json.loads(round2_validation_path.read_text(encoding='utf-8'))
         if round2_validation['status']!='passed':
             raise ValueError('Second-round validation failed; do not publish a passed report.')
-        round2_evidence=(f"第二轮补充核验：[独立验证](../outputs/round2/validation.json) 共 {round2_validation['check_count']} 项通过，"
+        round2_evidence=(f"第二轮补充核验：[独立验证](../outputs/experiments/round2/validation.json) 共 {round2_validation['check_count']} 项通过，"
             f"包括全部 14 个场景的物理约束及路径账单、{round2_validation['representative_candidate_replays']} 个代表性候选月重放、"
             f"12 个正式月的完整 11 字段重放、{round2_validation['future_month_mutation_replays']} 个修改未来月份后的评分重放及 2 个跨预报发布边界的 MPC 因果探针。"
             "另有 9 个反馈回归测试与 10 个外部输入测试通过。它们检验当前实现、因果和账单一致性，不证明预测策略最优或外部泛化。")
@@ -349,7 +349,7 @@ def main():
 
 ## 1. 题目理解与数据审查
 
-题面为 [C 题 PDF](../problem/C题.pdf)，原始输入为 [附件目录](../data/raw/)。完整审计见 [数据审计](data-audit.md)，计算前的判断与修正过程见 [决策记录](decisions.md)，初次方法审查见 [模型审查](model-review.md)，后续反向评审及修订回应见 [评审回应](review-response.md) 与 [第二轮回应](round2-response.md)。
+题面为 [C 题 PDF](../problem/C题.pdf)，原始输入为 [附件目录](../data/raw/)。完整审计见 [数据审计](modeling/data-audit.md)，计算前的判断与修正过程见 [决策记录](modeling/decisions.md)，初次方法审查见 [模型审查](reviews/model-review.md)，后续反向评审及修订回应见 [评审回应](reviews/review-response.md) 与 [第二轮回应](reviews/round2-response.md)。
 
 附件 1 有 144 条电价、负载、光伏预测；附件 2 有全年 365×144 条实际负载和光伏；附件 3 有 365×4×24 个小时预报；附件 4 有 365×144 条实际电价。所需数值无缺失、负数和非有限值，日期连续。原始文件 SHA-256 已保存并在验收时重核。
 
@@ -403,7 +403,7 @@ $$
 
 $$\min\sum_{{t=0}}^{{143}}p_tg_t$$
 
-及第 2 节约束。实现有 $5\times144=720$ 个连续变量和 $2\times144=288$ 个线性等式，用 SciPy/HiGHS 求解 [3,4]。数值选解项为 $10^{{-6}}\sum(c_t+d_t)+10^{{-7}}\sum w_t$，只用于选解，不计入报告电费。与纯电费目标差为 **{s['q1']['optimality_gap_yuan']:.3g} 元**。独立 MILP 增加 144 个二元变量，也获得相同费用，见 [MILP 验证结果](../outputs/q1-milp-verification.json)。
+及第 2 节约束。实现有 $5\times144=720$ 个连续变量和 $2\times144=288$ 个线性等式，用 SciPy/HiGHS 求解 [3,4]。数值选解项为 $10^{{-6}}\sum(c_t+d_t)+10^{{-7}}\sum w_t$，只用于选解，不计入报告电费。与纯电费目标差为 **{s['q1']['optimality_gap_yuan']:.3g} 元**。独立 MILP 增加 144 个二元变量，也获得相同费用，见 [MILP 验证结果](../outputs/main/q1-milp-verification.json)。
 
 **表 1：指定时段与全天购电。**
 
@@ -415,7 +415,7 @@ $$\min\sum_{{t=0}}^{{143}}p_tg_t$$
 
 ![问题1最优调度](../outputs/figures/q1-dispatch.png)
 
-电池在低价/光伏富余段积累能量，在高价段替代外网购电。每充入 1 kWh 只能最终输出 0.81 kWh，纯套利至少要求放电时段的替代电价大于充电时段电价除以 0.81。容量及功率约束决定不能把全部负荷都移至最低价段。完整 144 段见 [result1.xlsx](../outputs/result1.xlsx)。
+电池在低价/光伏富余段积累能量，在高价段替代外网购电。每充入 1 kWh 只能最终输出 0.81 kWh，纯套利至少要求放电时段的替代电价大于充电时段电价除以 0.81。容量及功率约束决定不能把全部负荷都移至最低价段。完整 144 段见 [result1.xlsx](../outputs/deliverables/result1.xlsx)。
 
 ## 4. 问题 2：历史预测、风险计划与实时执行
 
@@ -590,12 +590,12 @@ $$C_3=\sum_t[p_tg_t+1.5p_tu_t+0.5p_tv_t+5p_te_t].$$
 
 - 数据核验：完整日期、列时刻、预报发布次序、非负/有限值、整点插值还原与梯形积分守恒、原始附件哈希不变。
 - 独立物理与费用核验：{v['check_count']} 项通过，覆盖四种策略全年每一段的供电平衡、90% 损耗、1200–10800 kWh 边界、5000 kW 功率、互斥、跨日连续、原始计划不变、修订时间范围及各项费用。物理可行和费用自洽不能证明库存分配最优、预报具有经济价值或合约解释唯一正确。
-- 修订实验核验：[专项验证](../outputs/revision-validation.json) 共 {rv['check_count']} 项通过，检查新增基准、严格小时预报对照和逐笔合约归档；[合约检查脚本](../scripts/test_contracts.py) 检查冻结路径收费与重新优化的区别。完整参数候选和情景配置保存在 [修订实验 JSON](../outputs/revision-experiments.json)。
+- 修订实验核验：[专项验证](../outputs/experiments/revision/validation.json) 共 {rv['check_count']} 项通过，检查新增基准、严格小时预报对照和逐笔合约归档；[合约检查脚本](../scripts/test_contracts.py) 检查冻结路径收费与重新优化的区别。完整参数候选和情景配置保存在 [修订实验 JSON](../outputs/experiments/revision/experiments.json)。
 {round2_evidence_line}- 因果篡改试验：96 个点预测用例修改决策后真值或尚未发布预报，当前预测不变；48 个风险预测用例修改当日及未来残差，当前风险预测不变。另有两个修改已到达信息的正向对照，确认检验确实能感知可用输入。
 - 问题 1 最优性：纯 LP 与独立互斥 MILP 一致，MIP gap 为 0。后续四种策略只验证可行性和结算，不借用问题 1 证明它们全局最优。
-- Excel 核验：五个输出均重新读取，与模型 JSON 全量对照；计划、调整、六个四小时充放电聚合、日初日末 SOC、连续紧急区间及全天总量/费用一致。模板预览已检查，标签错位修复见 [模板说明](template-spec.md)。
+- Excel 核验：五个输出均重新读取，与模型 JSON 全量对照；计划、调整、六个四小时充放电聚合、日初日末 SOC、连续紧急区间及全天总量/费用一致。模板预览已检查，标签错位修复见 [模板说明](modeling/template-spec.md)。
 
-验收证据为 [物理/因果验证 JSON](../outputs/validation.json)、[修订专项验证 JSON](../outputs/revision-validation.json)、[问题1 MILP 验证 JSON](../outputs/q1-milp-verification.json)、[模板/Excel 验证 JSON](../outputs/workbook-verification.json)。[全年逐段归档](../outputs/dispatch.npz) 保存包括 1 月热启动在内的计划、最终交付、充放电、SOC、紧急电、未利用量、三次修订快照及费用；新增对照的配置和汇总在 [修订实验 JSON](../outputs/revision-experiments.json)，逐段路径在 [修订调度归档](../outputs/revision-dispatch.npz)，由同一计算脚本复现。
+验收证据为 [物理/因果验证 JSON](../outputs/main/validation.json)、[修订专项验证 JSON](../outputs/experiments/revision/validation.json)、[问题1 MILP 验证 JSON](../outputs/main/q1-milp-verification.json)、[模板/Excel 验证 JSON](../outputs/verification/workbook-verification.json)。[全年逐段归档](../outputs/main/dispatch.npz) 保存包括 1 月热启动在内的计划、最终交付、充放电、SOC、紧急电、未利用量、三次修订快照及费用；新增对照的配置和汇总在 [修订实验 JSON](../outputs/experiments/revision/experiments.json)，逐段路径在 [修订调度归档](../outputs/experiments/revision/dispatch.npz)，由同一计算脚本复现。
 
 ## 参考文献
 
@@ -609,23 +609,24 @@ $$C_3=\sum_t[p_tg_t+1.5p_tu_t+0.5p_tv_t+5p_te_t].$$
     # Raw f-strings above escape LaTeX consistently; Markdown needs single slashes.
     (ROOT/'docs/solution.md').write_text(text.replace('\\\\','\\'),encoding='utf-8',newline='\n')
     if round2_text:
-        response_path=ROOT/'docs/round2-response.md'
+        response_path=ROOT/'docs/reviews/round2-response.md'
         response=response_path.read_text(encoding='utf-8')
         opening='<!-- BEGIN ROUND2 RESULTS -->'
         closing='<!-- END ROUND2 RESULTS -->'
         before,rest=response.split(opening,1)
         _,after=rest.split(closing,1)
-        response_text=round2_text.replace('新增控制器定义及对第二轮意见的逐项回应见 [第二轮回应](round2-response.md)；',
+        response_text=round2_text.replace('新增控制器定义及对第二轮意见的逐项回应见 [第二轮回应](reviews/round2-response.md)；',
                                           '控制器定义及建模边界见本文件第 1 节；')
+        response_text = response_text.replace('](../outputs/', '](../../outputs/').replace('](modeling/', '](../modeling/')
         response_path.write_text(before+opening+'\n\n'+response_text+'\n\n'+closing+after,
                                  encoding='utf-8',newline='\n')
     readme = (ROOT/'README.md').read_text(encoding='utf-8').splitlines()
     rows = {
-        '| 1:': f"| 1：确定性日循环 | [result1.xlsx](outputs/result1.xlsx) | {f(s['q1']['cost'])} 元/天 |",
-        '| 2:': f"| 2：固定电价，无日内调整 | [result2.xlsx](outputs/result2.xlsx) | {f(p['q2']['total_cost'])} 元 |",
-        '| 3:': f"| 3：固定电价，有日内调整 | [result3.xlsx](outputs/result3.xlsx) | {f(p['q3']['total_cost'])} 元 |",
-        '| 4-2:': f"| 4-2：波动电价，无日内调整 | [result4-2.xlsx](outputs/result4-2.xlsx) | {f(p['q4_2']['total_cost'])} 元 |",
-        '| 4-3:': f"| 4-3：波动电价，有日内调整 | [result4-3.xlsx](outputs/result4-3.xlsx) | {f(p['q4_3']['total_cost'])} 元 |",
+        '| 1:': f"| 1：确定性日循环 | [result1.xlsx](outputs/deliverables/result1.xlsx) | {f(s['q1']['cost'])} 元/天 |",
+        '| 2:': f"| 2：固定电价，无日内调整 | [result2.xlsx](outputs/deliverables/result2.xlsx) | {f(p['q2']['total_cost'])} 元 |",
+        '| 3:': f"| 3：固定电价，有日内调整 | [result3.xlsx](outputs/deliverables/result3.xlsx) | {f(p['q3']['total_cost'])} 元 |",
+        '| 4-2:': f"| 4-2：波动电价，无日内调整 | [result4-2.xlsx](outputs/deliverables/result4-2.xlsx) | {f(p['q4_2']['total_cost'])} 元 |",
+        '| 4-3:': f"| 4-3：波动电价，有日内调整 | [result4-3.xlsx](outputs/deliverables/result4-3.xlsx) | {f(p['q4_3']['total_cost'])} 元 |",
     }
     for i,line in enumerate(readme):
         for prefix,row in rows.items():

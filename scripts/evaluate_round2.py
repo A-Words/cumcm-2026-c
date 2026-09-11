@@ -1,6 +1,6 @@
 """Additional feedback and chronological evaluation; never replace main outputs.
 
-All protocols are fixed in docs/round2-plan.md. The future-data mode extends the
+All protocols are fixed in docs/reviews/round2-plan.md. The future-data mode extends the
 historical trajectory with frozen settings; calendar separation alone does not
 establish that the developer has never seen the evaluation data.
 """
@@ -36,7 +36,7 @@ def write_json(path, value):
 
 
 def primary_path(name):
-    with np.load(ROOT/'outputs/dispatch.npz') as archive:
+    with np.load(ROOT/'outputs/main/dispatch.npz') as archive:
         prefix = name+'_'
         return {key[len(prefix):]: archive[key].copy() for key in archive.files if key.startswith(prefix)}
 
@@ -44,7 +44,7 @@ def primary_path(name):
 def source_hashes():
     names = ('scripts/model.py', 'scripts/feedback.py', 'scripts/external_inputs.py',
              'scripts/evaluate_round2.py', 'data/processed/data.npz',
-             'outputs/dispatch.npz', 'outputs/summary.json', 'docs/round2-plan.md')
+             'outputs/main/dispatch.npz', 'outputs/main/summary.json', 'docs/reviews/round2-plan.md')
     return {name: hashlib.sha256((ROOT/name).read_bytes()).hexdigest() for name in names}
 
 
@@ -174,7 +174,7 @@ def save_part(study, name, content, directory, seconds):
 
 
 def combine(parts, output):
-    report = dict(schema_version=1,protocol='docs/round2-plan.md',
+    report = dict(schema_version=1,protocol='docs/reviews/round2-plan.md',
         development_data_previously_seen=True,external_independence_verified=False,
         evaluation_type='retrospective_2025_feedback_and_monthly_rolling',
         scenes={},source_sha256=source_hashes(),part_seconds={})
@@ -198,7 +198,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--mode',choices=('all','feedback','rolling','combine','external'),default='all')
     parser.add_argument('--future-data',type=Path)
-    parser.add_argument('--output-dir',type=Path,default=ROOT/'outputs/round2')
+    parser.add_argument('--output-dir',type=Path,default=ROOT/'outputs/experiments/round2')
     args = parser.parse_args()
     output = args.output_dir.resolve()
     identifier = hashlib.sha256(str(output).encode()).hexdigest()[:10]
@@ -210,7 +210,7 @@ def main():
     if args.mode=='external':
         if args.future_data is None:
             parser.error('--mode external requires --future-data')
-        if output == (ROOT/'outputs/round2').resolve():
+        if output == (ROOT/'outputs/experiments/round2').resolve():
             parser.error('external mode requires a separate --output-dir to preserve retrospective results')
         history_days = len(data['dates'])
         data, metadata = load_future_data(data,args.future_data)

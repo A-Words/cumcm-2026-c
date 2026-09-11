@@ -3,7 +3,7 @@ __pycache__/
 node_modules/
 tmp/
 .venv/
-# Local editor/LaTeX preview products; canonical PDF is in output/pdf/.
+# Local editor/LaTeX preview products; canonical PDF is in outputs/deliverables/.
 paper/*.aux
 paper/*.bbl
 paper/*.blg

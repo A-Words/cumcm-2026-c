@@ -291,7 +291,7 @@ def check_feedback_causality(checks, data, paths):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--directory", type=Path, default=ROOT / "outputs/round2")
+    parser.add_argument("--directory", type=Path, default=ROOT / "outputs/experiments/round2")
     parser.add_argument("--output", type=Path)
     parser.add_argument("--future-data", type=Path,
                         help="Relocated external NPZ; its SHA-256 must match the archived source")
@@ -308,7 +308,7 @@ def main():
     with np.load(directory / "dispatch.npz") as archive:
         paths = {name: {field: archive[name + "__" + field].copy() for field in FIELDS}
                  for name in report["scenes"]}
-    primary = dict(np.load(ROOT / "outputs/dispatch.npz"))
+    primary = dict(np.load(ROOT / "outputs/main/dispatch.npz"))
     checks = Checks()
     checks.add("does_not_claim_verified_external_independence", report["external_independence_verified"] is False)
     for filename, expected in report["source_sha256"].items():

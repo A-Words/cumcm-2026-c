@@ -442,10 +442,10 @@ def check_frozen_contract_summaries(checks: Checks, experiments: dict, summary: 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--data", type=Path, default=ROOT / "data/processed/data.npz")
-    parser.add_argument("--experiments", type=Path, default=ROOT / "outputs/revision-experiments.json")
-    parser.add_argument("--dispatch", type=Path, default=ROOT / "outputs/revision-dispatch.npz")
-    parser.add_argument("--primary-dispatch", type=Path, default=ROOT / "outputs/dispatch.npz")
-    parser.add_argument("--output", type=Path, default=ROOT / "outputs/revision-validation.json")
+    parser.add_argument("--experiments", type=Path, default=ROOT / "outputs/experiments/revision/experiments.json")
+    parser.add_argument("--dispatch", type=Path, default=ROOT / "outputs/experiments/revision/dispatch.npz")
+    parser.add_argument("--primary-dispatch", type=Path, default=ROOT / "outputs/main/dispatch.npz")
+    parser.add_argument("--output", type=Path, default=ROOT / "outputs/experiments/revision/validation.json")
     args = parser.parse_args()
     with np.load(args.data, allow_pickle=False) as source:
         data = {key: source[key] for key in source.files}

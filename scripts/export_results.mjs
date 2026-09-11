@@ -7,7 +7,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 // Author only with the Codex-bundled artifact tool. Python is used separately
 // for independent, read-only verification of the saved OpenXML workbooks.
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const OUTPUT = path.join(ROOT, 'outputs');
+const OUTPUT = path.join(ROOT, 'outputs/deliverables');
 const PREVIEWS = path.join(ROOT, 'tmp', 'workbook-previews');
 const BUNDLED_MODULES = process.env.CODEX_BUNDLED_NODE_MODULES
   ?? 'C:/Users/A_Words/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/node_modules';
@@ -226,12 +226,12 @@ def tm(minutes):
     return f'{minutes//60}:{minutes%60:02}'
 intervals = [f'{tm(i*10)}-{tm((i+1)*10)}' for i in range(144)]
 for filename,key in files:
-    saved = root/'outputs'/filename
+    saved = root/'outputs/deliverables'/filename
     wb = openpyxl.load_workbook(saved,data_only=True)
     formulas = openpyxl.load_workbook(saved,data_only=False,read_only=True)
     template = openpyxl.load_workbook(root/'data/raw/附件5'/filename,data_only=False)
     assert wb.sheetnames == template.sheetnames
-    entry = {'file': 'outputs/'+filename, 'sha256': hashlib.sha256(saved.read_bytes()).hexdigest(),
+    entry = {'file': 'outputs/deliverables/'+filename, 'sha256': hashlib.sha256(saved.read_bytes()).hexdigest(),
              'bytes': saved.stat().st_size, 'passed': True, 'error_count': 0,
              'sheet_names': wb.sheetnames, 'sheets': [], 'time_headers': [], 'field_counts': {}}
     for sh in wb:
@@ -346,19 +346,21 @@ verification['passed'] = True
 verification['file_count'] = len(verification['files'])
 verification['field_counts'] = {field: sum(f['field_counts'][field] for f in verification['files'])
                                  for field in verification['files'][0]['field_counts']}
-(root/'outputs/workbook-verification.json').write_text(json.dumps(verification,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
-print('Saved outputs/workbook-verification.json; all five workbooks passed.')
+(root/'outputs/verification').mkdir(parents=True, exist_ok=True)
+(root/'outputs/verification/workbook-verification.json').write_text(json.dumps(verification,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+print('Saved outputs/verification/workbook-verification.json; all five workbooks passed.')
 `;
   try {
     console.log(execFileSync(python, ['-c', code, ROOT, inputPath], { encoding: 'utf8', maxBuffer: 1024 * 1024 }));
   } catch (error) {
     // Never leave an older passed report in place after a failed verification.
-    await fs.writeFile(path.join(OUTPUT, 'workbook-verification.json'), JSON.stringify({
+    await fs.mkdir(path.join(ROOT, 'outputs/verification'), { recursive: true });
+    await fs.writeFile(path.join(ROOT, 'outputs/verification/workbook-verification.json'), JSON.stringify({
       verification_version: '1.1.0', passed: false, error_count: 1,
       generated_at: new Date().toISOString(), validator: 'scripts/export_results.mjs --verify',
       errors: [String(error.stderr ?? error.message)],
     }, null, 2));
-    throw new Error('Saved workbook verification failed; see outputs/workbook-verification.json for details.');
+    throw new Error('Saved workbook verification failed; see outputs/verification/workbook-verification.json for details.');
   }
 }
 
@@ -377,7 +379,7 @@ async function main() {
   }
   const selectedFiles = requestedFiles ? FILES.filter(([filename]) => requestedFiles.includes(filename)) : FILES;
   const inputArg = process.argv.find((value) => value.startsWith('--input='));
-  const inputPath = inputArg ? path.resolve(inputArg.slice(8)) : path.join(OUTPUT, 'results.json');
+  const inputPath = inputArg ? path.resolve(inputArg.slice(8)) : path.join(ROOT, 'outputs/main/results.json');
   const results = inspectOnly ? null : JSON.parse(await fs.readFile(inputPath, 'utf8'));
   if (results) validateResults(results);
   if (process.argv.includes('--verify')) { await verifySavedFiles(inputPath); return; }

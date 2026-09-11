@@ -11,11 +11,11 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 def main():
-    folder = ROOT / "outputs/paper-study"
+    folder = ROOT / "outputs/experiments/paper-study"
     report = json.loads((folder / "sensitivity.json").read_text(encoding="utf-8"))
     arrays = np.load(folder / "dispatch.npz")
     data = np.load(ROOT / "data/processed/data.npz")
-    primary = np.load(ROOT / "outputs/dispatch.npz")
+    primary = np.load(ROOT / "outputs/main/dispatch.npz")
     checks = []
 
     def check(name, residual, tolerance=1e-6):
@@ -67,7 +67,7 @@ def main():
         check(scene + ".emergency_total", a["emergency"][31:].sum()-params["summary"]["emergency_kwh"])
     result = dict(status="passed" if all(c["passed"] for c in checks) else "failed", check_count=len(checks),
                   checks=checks, source_sha256={name: hashlib.sha256((ROOT / name).read_bytes()).hexdigest()
-                  for name in ("scripts/validate_paper_sensitivity.py", "outputs/paper-study/sensitivity.json", "outputs/paper-study/dispatch.npz")},
+                  for name in ("scripts/validate_paper_sensitivity.py", "outputs/experiments/paper-study/sensitivity.json", "outputs/experiments/paper-study/dispatch.npz")},
                   limits="Direct feasibility and billing checks; Q1 primal/recorded dual agreement. Q4 retains the existing causal predictor and is same-year sensitivity, not optimality or external validation.")
     (folder / "validation.json").write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8", newline="\n")
     print(result["status"], len(checks), "checks")

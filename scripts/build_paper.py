@@ -31,7 +31,7 @@ def main() -> None:
     parser.add_argument("--skip-tables", action="store_true", help="Use already generated tables")
     args = parser.parse_args()
     build = ROOT / "tmp/paper-build"
-    output = ROOT / "outputs/pdf"
+    output = ROOT / "outputs/deliverables"
     build.mkdir(parents=True, exist_ok=True)
     output.mkdir(parents=True, exist_ok=True)
     # Cross-reference formats can differ after switching document classes.

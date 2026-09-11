@@ -252,8 +252,8 @@ def check_causality(checks: Checks, data: dict) -> None:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--data", type=Path, default=ROOT / "data/processed/data.npz")
-    parser.add_argument("--dispatch", type=Path, default=ROOT / "outputs/dispatch.npz")
-    parser.add_argument("--output", type=Path, default=ROOT / "outputs/validation.json")
+    parser.add_argument("--dispatch", type=Path, default=ROOT / "outputs/main/dispatch.npz")
+    parser.add_argument("--output", type=Path, default=ROOT / "outputs/main/validation.json")
     parser.add_argument("--causality-only", action="store_true",
                         help="Run predictor temporal checks and source hashes; print without writing output.")
     args = parser.parse_args()

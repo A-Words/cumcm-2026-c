@@ -10,11 +10,11 @@
 | --- | --- |
 | [AGENTS.md](../../../../AGENTS.md) | 当前仓库规范、建模和验算要求 |
 | [题面](../../../../problem/C题.pdf) | 四问、指定日期、提交表格及信息条件 |
-| [完整解答](../../../../docs/solution.md)、[决策记录](../../../../docs/decisions.md) | 实际模型与假设，不靠范文补出未实现方法 |
-| [模板适配](../../../../docs/template-adaptation.md)、[模板来源](../../../../paper/template-source.json) | 已确认的章节、页面、表格和模板固定版本 |
-| [撰写记录](../../../../docs/paper-writing-notes.md)、[文献笔记](../../../../docs/literature-notes.md) | 写作取舍、引用依据和原文阅读深度 |
-| [第一轮回应](../../../../docs/review-response.md)、[第二轮回应](../../../../docs/round2-response.md) | 已关闭问题、比较设计与保留的局限 |
-| [外部验证协议](../../../../docs/external-validation-protocol.md) | 未见年度验证与接口烟测的区别 |
+| [完整解答](../../../../docs/solution.md)、[决策记录](../../../../docs/modeling/decisions.md) | 实际模型与假设，不靠范文补出未实现方法 |
+| [模板适配](../../../../docs/paper/template-adaptation.md)、[模板来源](../../../../paper/template-source.json) | 已确认的章节、页面、表格和模板固定版本 |
+| [撰写记录](../../../../docs/paper/paper-writing-notes.md)、[文献笔记](../../../../docs/paper/literature-notes.md) | 写作取舍、引用依据和原文阅读深度 |
+| [第一轮回应](../../../../docs/reviews/review-response.md)、[第二轮回应](../../../../docs/reviews/round2-response.md) | 已关闭问题、比较设计与保留的局限 |
+| [外部验证协议](../../../../docs/modeling/external-validation-protocol.md) | 未见年度验证与接口烟测的区别 |
 
 本项目要求遵循 [GB/T 7713.2-2022《学术论文编写规则》](https://openstd.samr.gov.cn/bzgk/std/newGbInfo?hcno=0B963916637B8F34B295FCF4A51A1BE5)。本次只复核了国家标准页面的标准名称和状态，未据该元数据页核读标准全文，因此本 skill 不编造条款号、字数上限或必需章节。后续修改章节、摘要、图表、公式、量和单位时，按 AGENTS.md 核对有关原文并记录依据。
 
@@ -25,7 +25,7 @@
 - 使用固定版本的 CUMCMThesis；`paper/cumcmthesis.cls` 和 `paper/cumcm2026.sty` 保持上游原样，本地适配放在主文件及相应生成器中。
 - 首页直接为标题、摘要和关键词；`withoutpreface` 去掉承诺书与编号页，不调用目录。这是用户确认的本次提交设置，不扩展为对其他年份、赛区的规则判断。
 - 正文使用现有“问题重述、模型的假设、符号说明、问题分析、模型的建立与求解、结果分析与模型检验、模型评价与推广、总结”骨架。四问在统一模型之后展开，见 `paper/sections/body.tex` 与 `model.tex`。
-- 三线表使用已确认的顶底线 `1.5pt`、中线 `1pt`；保留正文同等字号与当前行列间距。宽表优先按语义纵向展开，长表重复表头。储能表使用单组列逐时段排列，不在左右重复同组表头；说明融入正文或附录导语，不加表下小字。详见 [表格核查](../../../../docs/table-style-audit.md)。这些尺寸是本项目选择，不称为国标统一数值。
+- 三线表使用已确认的顶底线 `1.5pt`、中线 `1pt`；保留正文同等字号与当前行列间距。宽表优先按语义纵向展开，长表重复表头。储能表使用单组列逐时段排列，不在左右重复同组表头；说明融入正文或附录导语，不加表下小字。详见 [表格核查](../../../../docs/paper/table-style-audit.md)。这些尺寸是本项目选择，不称为国标统一数值。
 - 保留 `\normalem` 与将 `\emph` 映射为加粗的本地设置，正文不使用下划线。附注式文献引用使用模板 `\upcite`，不再嵌套上标命令。
 - 保留当前 AI 工具使用声明及其位置，依据实际辅助范围修改；独立使用详情材料是否已完成要查当前任务记录，不因论文中已有简短声明就视为全部完成。
 
@@ -48,7 +48,7 @@
 | 生成表格与数值 | [build_paper_tables.py](../../../../scripts/build_paper_tables.py) 读取 `outputs/` 归档，生成 `paper/generated/` |
 | 精度与追溯 | `paper/generated/table-data.json`、`manifest.json`、`numbers.tex`；正文可使用现有 `\PaperValue{key}` |
 | 编译 | [build_paper.py](../../../../scripts/build_paper.py) |
-| PDF 与交付验证 | `outputs/pdf/microgrid-paper.pdf`、`paper/validation.json`、`paper/table-style-validation.json` |
+| PDF 与交付验证 | `outputs/deliverables/microgrid-paper.pdf`、`outputs/verification/paper-validation.json`、`outputs/verification/table-style-validation.json` |
 
 从仓库根目录运行：
 

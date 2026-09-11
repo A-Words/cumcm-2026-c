@@ -158,8 +158,8 @@ def verify(data_path: Path, dispatch_path: Path, time_limit: float) -> dict:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--data", type=Path, default=ROOT / "data/processed/data.npz")
-    parser.add_argument("--dispatch", type=Path, default=ROOT / "outputs/dispatch.npz")
-    parser.add_argument("--output", type=Path, default=ROOT / "outputs/q1-milp-verification.json")
+    parser.add_argument("--dispatch", type=Path, default=ROOT / "outputs/main/dispatch.npz")
+    parser.add_argument("--output", type=Path, default=ROOT / "outputs/main/q1-milp-verification.json")
     parser.add_argument("--time-limit", type=float, default=60)
     args = parser.parse_args()
     evidence = verify(args.data.resolve(), args.dispatch.resolve(), args.time_limit)
