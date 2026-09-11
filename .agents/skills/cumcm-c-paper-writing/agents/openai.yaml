@@ -1,0 +1,4 @@
+interface:
+  display_name: "C 类数学建模论文写作"
+  short_description: "根据历年 C 类论文组织摘要、逐问论证、图表与检验，并遵循本项目排版约定"
+  default_prompt: "使用 $cumcm-c-paper-writing，基于本项目已验证的模型和结果组织数学建模论文，保留结论边界并遵循现有模板。"

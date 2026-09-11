@@ -23,6 +23,7 @@
 ## 阅读顺序与交付
 
 - [解答论文](docs/solution.md)：完整回答四问，包含题面要求的表 1、表 2、表 3。
+- [C 类数学建模论文写作 skill](.agents/skills/cumcm-c-paper-writing/SKILL.md)：整理 11 篇参考论文的结构、摘要、逐问论证和图表写法，附阅读页码与可复用大纲；后续可用 `$cumcm-c-paper-writing` 调用。
 - [决策与过程记录](docs/decisions.md)、[数据审计](docs/data-audit.md)、[独立建模审查](docs/model-review.md)。
 - [评审回应](docs/review-response.md)、[修订实验与完整参数候选](outputs/revision-experiments.json)、[修订情景逐段归档](outputs/revision-dispatch.npz)。
 - [第二轮回应](docs/round2-response.md)、[第二轮实验计划](docs/round2-plan.md)、[外部年度验证协议](docs/external-validation-protocol.md)。
