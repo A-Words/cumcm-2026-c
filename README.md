@@ -85,7 +85,20 @@ python scripts/verify_q1_milp.py
 python scripts/build_report.py
 ```
 
-`solve.py` 完成 1 月权重/分位候选验证、全年正式策略、可实施历史基准、严格小时预报对照、逐笔合约重新优化及参数/语义敏感性；当前机器约需 5–7 分钟，验算和 Excel 导出另计，本次计算耗时见 `outputs/main/summary.json` 的 `elapsed_seconds`。主参数只用 1 月选择；2—12 月敏感性不会反过来替换主方案，但这不等同于模型开发未见过全年数据。运行后重新验证以更新结果和代码哈希。
+解题主流程按题号拆分，可分别运行：
+
+```powershell
+python scripts/q1.py
+python scripts/q2.py
+python scripts/q3.py
+python scripts/q4.py
+```
+
+`q1.py` 求解单日确定性优化及积分、效率口径对照；`q2.py` 求解固定电价日前策略；`q3.py` 求解固定电价日内调整策略及历史基准；`q4.py` 复用第二、三问流程，在动态电价下生成 `q4_2` 和 `q4_3`。公共优化、预测和结算保留在 `model.py`，选参、缓存和场景归档放在 `solve_common.py`。
+
+单问运行默认将调度数组和选参摘要写入 `outputs/questions/q1/` 等对应目录，可用 `--data` 指定预处理数据、`--output` 指定输出目录。第三、四问另保存基准场景数组。单问输出不覆盖正式结果，也不包含完整补充实验；生成五份正式 Excel 前仍须运行总入口和独立验算。
+
+`solve.py` 调用四个题号文件，完成 1 月权重/分位候选验证、全年正式策略、可实施历史基准、严格小时预报对照、逐笔合约重新优化及参数/语义敏感性；当前机器约需 5–7 分钟，验算和 Excel 导出另计，本次计算耗时见 `outputs/main/summary.json` 的 `elapsed_seconds`。主参数只用 1 月选择；2—12 月敏感性不会反过来替换主方案，但这不等同于模型开发未见过全年数据。运行后重新验证以更新结果和代码哈希。
 
 首次从代码复现时，Excel 验证 JSON 要在下述导出步骤完成后生成。`build_report.py` 读取计算结果、物理验证和修订专项验证，生成完整论文并刷新 README 总费表；论文中的 Excel 验证链接在导出后有效。
 

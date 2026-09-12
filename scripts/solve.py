@@ -7,20 +7,16 @@ import hashlib
 import itertools
 import numpy as np
 import scipy
-from model import (DT, INITIAL, build_cache, q1_solution, simulate, summarize, settle_revisions)
+from model import (DT, build_cache, simulate, summarize, settle_revisions)
+
+from q1 import solve as solve_q1
+from q2 import solve as solve_q2
+from q3 import solve as solve_q3
+from q4 import solve as solve_q4
+from solve_common import SolveContext, PV_WEIGHTS, plain
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT/'outputs'
-QUANTILES = (0.5,0.65,0.7,0.8,0.9,0.95)
-PV_WEIGHTS = (0.0,0.25,0.5,0.75,1.0)
-
-
-def plain(obj):
-    if isinstance(obj,np.ndarray):
-        return obj.tolist()
-    if isinstance(obj,np.generic):
-        return obj.item()
-    raise TypeError(type(obj).__name__)
 
 
 def workbook_payload(data, q1, results):
@@ -48,87 +44,16 @@ def main():
     (OUT/'main').mkdir(parents=True, exist_ok=True)
     (OUT/'experiments/revision').mkdir(parents=True, exist_ok=True)
     data = dict(np.load(ROOT/'data/processed/data.npz'))
-    q1 = q1_solution(data)
-    trap = q1_solution(data,trapezoid=True)
-    roundtrip = q1_solution(data,eta=float(np.sqrt(.9)))
-    caches, selected, calibration, results, weights = {},{},{},{},{}
-    memo, archived = {},{}
-    revision = dict(schema_version=1,selection={},scenes={},baselines={},
-                    information_ablation={},contracts={},
-                    validation_days=[14,31],submission_days=[31,365],
-                    candidate_family_post_review=True,
-                    warmup=dict(quantile=0.8,pv_weight=1.0,ends_before_day=31,
-                                applies_to='scenes with warmup_mode=attachment3_fixed'))
-
-    def cache_for(dynamic=False,weight=1.0,sources=(0,1,2,3),load_update=True,anchor_updates=True):
-        key=(dynamic,weight,tuple(sources),load_update,anchor_updates)
-        if key not in memo:
-            memo[key]=build_cache(data,forecast=True,dynamic=dynamic,pv_weight=weight,
-                                  forecast_sources=sources,load_update=load_update,
-                                  anchor_updates=anchor_updates)
-        return memo[key]
-
-    def calibrate(dynamic,weight_candidates,issues=(36,72,108),settlement='final_net'):
-        trials=[]
-        for weight in weight_candidates:
-            for tau in QUANTILES:
-                r=simulate(data,cache_for(dynamic,weight),tau,issues=issues,days=31,
-                           dynamic=dynamic,warmup_quantile=None,settlement=settlement)
-                score=summarize(r,start=14)
-                trials.append(dict(pv_weight=weight,quantile=tau,
-                                   validation_cost=score['total_cost'],
-                                   validation_emergency_kwh=score['emergency_kwh']))
-        choice=min(trials,key=lambda x:(x['validation_cost'],x['pv_weight'],x['quantile']))
-        return dict(selected=choice,candidates=trials)
-
-    def scene(scene_id,label,weight,tau,dynamic=False,issues=(36,72,108),
-              sources=(0,1,2,3),load_update=True,anchor_updates=True,
-              settlement='final_net',warmup_mode='self'):
-        print(f'Scene {scene_id}: w={weight}, tau={tau}, {settlement}',flush=True)
-        cache=cache_for(dynamic,weight,sources,load_update,anchor_updates)
-        warm=cache_for(dynamic,1.0) if warmup_mode=='attachment3_fixed' else None
-        r=simulate(data,cache,tau,issues=issues,dynamic=dynamic,settlement=settlement,
-                   warmup_cache=warm)
-        archived[scene_id]=r
-        revision['scenes'][scene_id]=dict(label=label,pv_weight=weight,quantile=tau,
-            issues=list(issues),dynamic=dynamic,settlement=settlement,
-            forecast_sources=list(sources),load_update=load_update,anchor_updates=anchor_updates,
-            warmup_mode=warmup_mode,soc_observation='own_actual',summary=summarize(r))
-        return r
-
-    # Keep Q2/Q4-2 unchanged. New PV-model candidates are selected on January only.
-    for name,dynamic in [('q2',False),('q4_2',True)]:
-        print(f'January calibration: {name}',flush=True)
-        fit=calibrate(dynamic,(0.0,),issues=())
-        tau=fit['selected']['quantile']
-        selected[name],calibration[name],weights[name]=tau,fit['candidates'],0.0
-        caches[name]=cache_for(dynamic,0.0)
-        results[name]=simulate(data,caches[name],tau,dynamic=dynamic,progress=True)
-
-    for name,dynamic in [('q3',False),('q4_3',True)]:
-        print(f'January joint PV/quantile calibration: {name}',flush=True)
-        fit=calibrate(dynamic,PV_WEIGHTS)
-        revision['selection'][name]=fit
-        choice=fit['selected']; tau,weight=choice['quantile'],choice['pv_weight']
-        selected[name],weights[name]=tau,weight
-        calibration[name]=[x for x in fit['candidates'] if x['pv_weight']==weight]
-        caches[name]=cache_for(dynamic,weight)
-        revision['baselines'][name]={}
-        for w,label,kind in [(1.0,'原纯附件3基准','pure_attachment3'),(0.0,'历史光伏基准','historical')]:
-            baseline_choice=min((x for x in fit['candidates'] if x['pv_weight']==w),key=lambda x:x['validation_cost'])
-            scene_id=name+('_legacy' if w==1 else '_historical')
-            scene(scene_id,label,w,baseline_choice['quantile'],dynamic=dynamic)
-            revision['scenes'][scene_id]['validation_cost']=baseline_choice['validation_cost']
-            revision['baselines'][name][kind]=scene_id
-            if w == 0:
-                common_id=name+'_historical_fixed'
-                scene(common_id,'历史光伏基准（共同热启动）',w,baseline_choice['quantile'],
-                      dynamic=dynamic,warmup_mode='attachment3_fixed')
-                revision['scenes'][common_id]['validation_cost']=baseline_choice['validation_cost']
-                revision['baselines'][name]['historical_common_warmup']=common_id
-        results[name]=scene(name+'_selected','修订主策略',weight,tau,dynamic=dynamic,
-                            warmup_mode='attachment3_fixed')
-        print(name,'selected',choice,'summary',summarize(results[name]),flush=True)
+    variants = solve_q1(data)
+    q1, trap, roundtrip = (variants[key] for key in ('q1', 'q1_trapezoid', 'q1_roundtrip90'))
+    context = SolveContext(data)
+    solve_q2(context)
+    solve_q3(context)
+    solve_q4(context)
+    caches, selected = context.caches, context.selected
+    calibration, results, weights = context.calibration, context.results, context.weights
+    archived, revision = context.archived, context.revision
+    cache_for, calibrate, scene = context.cache_for, context.calibrate, context.scene
 
     summary = dict(parameters=selected,calibration=calibration,
                    pv_weights=weights,revision_experiments='../experiments/revision/experiments.json',
@@ -230,7 +155,8 @@ def main():
         grid_kwh=float(actual_net.sum()))
     summary['elapsed_seconds'] = time.perf_counter()-started
     revision['source_sha256']={p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest()
-        for p in ('scripts/model.py','scripts/solve.py','data/processed/data.npz','docs/reviews/revision-plan.md')}
+        for p in ('scripts/model.py','scripts/solve.py','scripts/solve_common.py',
+                  'scripts/q1.py','scripts/q2.py','scripts/q3.py','scripts/q4.py','data/processed/data.npz','docs/reviews/revision-plan.md')}
     # Publish one coherent generation after every scenario is complete.
     payload = workbook_payload(data,q1,results)
     (OUT/'main/results.json').write_text(json.dumps(payload,default=plain,separators=(',',':')),encoding='utf-8')

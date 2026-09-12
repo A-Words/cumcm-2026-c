@@ -82,15 +82,9 @@ def optimize(net, price, soc, base=None, refund=False, terminal=INITIAL, tie_bre
 
 
 def q1_solution(data, trapezoid=False, eta=ETA):
-    suffix = '_trapezoid' if trapezoid else ''
-    net = (data['q1_load'+suffix]-data['q1_pv'+suffix])*DT
-    sol = optimize(net, data['fixed_price'], INITIAL, terminal_equal=True,eta=eta)
-    exact = optimize(net, data['fixed_price'], INITIAL, tie_break=False, terminal_equal=True,eta=eta)
-    sol['cost'] = float(sol['grid']@data['fixed_price'])
-    sol['unperturbed_lower_bound'] = float(exact['grid']@data['fixed_price'])
-    sol['optimality_gap_yuan'] = sol['cost']-sol['unperturbed_lower_bound']
-    sol['net'] = net
-    return sol
+    """Compatibility entry point; question-one implementation lives in q1.py."""
+    from q1 import q1_solution as solve
+    return solve(data, trapezoid=trapezoid, eta=eta)
 
 
 def weighted_profile(history, day, weekly=True):

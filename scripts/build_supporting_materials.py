@@ -12,6 +12,8 @@ ARCHIVE = ROOT / "outputs/deliverables/supporting-materials.zip"
 RECEIPT = ROOT / "outputs/verification/supporting-materials-validation.json"
 COMPUTATION_SOURCES = (
     "scripts/prepare_data.py", "scripts/model.py", "scripts/solve.py",
+    "scripts/solve_common.py", "scripts/q1.py", "scripts/q2.py",
+    "scripts/q3.py", "scripts/q4.py",
     "scripts/feedback.py", "scripts/external_inputs.py", "scripts/evaluate_round2.py",
     "scripts/evaluate_paper_sensitivity.py", "scripts/export_results.mjs",
 )
