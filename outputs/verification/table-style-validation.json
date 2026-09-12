@@ -1,7 +1,7 @@
 {
   "status": "passed",
   "checked_on": "2026-09-12",
-  "pdf_sha256": "6462dd39f06cb18b5dc7091188226e13f8e1b77038667305b19302487dff6cea",
+  "pdf_sha256": "89a4f342a141f48844178c00e32e566099971fe6a3be8104e3d0a50479a829bc",
   "table_count": 65,
   "rendered_table_segments": 65,
   "checked_horizontal_rules": 195,
@@ -21,7 +21,7 @@
     "required_tables": "Problem Tables 1 and 2 use six horizontal columns; Table 3 uses four adjacent date groups."
   },
   "preservation": {
-    "baseline_commit": "f63304ddc4ccaf96971315d4f4b764ba407b799b",
+    "baseline_commit": "01eb139b3e4ca6bca84958531749ea3e656e5049",
     "aggregate_table_data_unchanged": true,
     "archive_aggregation_checks": 656,
     "independent_archive_to_pdf_fields": 576
@@ -35,12 +35,12 @@
     {
       "label": "tab:q1-purchase",
       "number": 2,
-      "page": 8
+      "page": 7
     },
     {
       "label": "tab:q1-storage",
       "number": 3,
-      "page": 8
+      "page": 7
     },
     {
       "label": "tab:q2-summary",
@@ -50,7 +50,7 @@
     {
       "label": "tab:q2-days-summary",
       "number": 5,
-      "page": 13
+      "page": 12
     },
     {
       "label": "tab:q2-2025-09-23-purchase",
@@ -70,7 +70,7 @@
     {
       "label": "tab:q3-comparison",
       "number": 9,
-      "page": 18
+      "page": 17
     },
     {
       "label": "tab:q3-days-summary",
@@ -80,7 +80,7 @@
     {
       "label": "tab:q3-2025-09-23-purchase",
       "number": 11,
-      "page": 19
+      "page": 18
     },
     {
       "label": "tab:q3-2025-09-23-storage",
@@ -95,17 +95,17 @@
     {
       "label": "tab:q3-risk-sensitivity",
       "number": 14,
-      "page": 21
+      "page": 20
     },
     {
       "label": "tab:q4-comparison",
       "number": 15,
-      "page": 24
+      "page": 23
     },
     {
       "label": "tab:q4-days-summary",
       "number": 16,
-      "page": 25
+      "page": 24
     },
     {
       "label": "tab:q4-2-2025-09-23-purchase",
@@ -120,7 +120,7 @@
     {
       "label": "tab:q4-3-2025-09-23-purchase",
       "number": 19,
-      "page": 26
+      "page": 25
     },
     {
       "label": "tab:q4-3-2025-09-23-storage",
@@ -130,12 +130,12 @@
     {
       "label": "tab:q4-price-sensitivity",
       "number": 21,
-      "page": 27
+      "page": 26
     },
     {
       "label": "tab:core-costs",
       "number": 22,
-      "page": 28
+      "page": 27
     },
     {
       "label": "tab:q2-2025-03-20-purchase",
@@ -360,9 +360,9 @@
       "page": 3,
       "x0": 70.86599731445312,
       "x1": 524.4089965820312,
-      "top": 436.6099853515625,
-      "mid": 462.4739990234375,
-      "bottom": 647.27001953125,
+      "top": 320.64300537109375,
+      "mid": 346.5060119628906,
+      "bottom": 531.302001953125,
       "widths_pdf_pt": [
         1.4944000244140625,
         0.9962999820709229,
@@ -372,12 +372,12 @@
     {
       "label": "tab:q1-purchase",
       "number": 2,
-      "page": 8,
+      "page": 7,
       "x0": 110.70800018310547,
       "x1": 484.5679931640625,
-      "top": 117.91200256347656,
-      "mid": 143.77499389648438,
-      "bottom": 209.3719940185547,
+      "top": 507.8609924316406,
+      "mid": 533.7249755859375,
+      "bottom": 599.3209838867188,
       "widths_pdf_pt": [
         1.4944000244140625,
         0.9962999820709229,
@@ -387,12 +387,12 @@
     {
       "label": "tab:q1-storage",
       "number": 3,
-      "page": 8,
+      "page": 7,
       "x0": 117.04399871826172,
       "x1": 478.2309875488281,
-      "top": 256.927978515625,
-      "mid": 282.7919921875,
-      "bottom": 368.2550048828125,
+      "top": 649.0850219726562,
+      "mid": 674.947998046875,
+      "bottom": 760.4110107421875,
       "widths_pdf_pt": [
         1.4944000244140625,
         0.9962999820709229,
@@ -405,9 +405,9 @@
       "page": 12,
       "x0": 213.822998046875,
       "x1": 381.4530029296875,
-      "top": 581.14599609375,
-      "mid": 607.0089721679688,
-      "bottom": 712.3389892578125,
+      "top": 319.1719970703125,
+      "mid": 345.0360107421875,
+      "bottom": 450.3659973144531,
       "widths_pdf_pt": [
         1.4944000244140625,
         0.9962999820709229,
@@ -417,12 +417,12 @@
     {
       "label": "tab:q2-days-summary",
       "number": 5,
-      "page": 13,
+      "page": 12,
       "x0": 147.35000610351562,
       "x1": 447.9259948730469,
-      "top": 91.98699951171875,
-      "mid": 117.8499984741211,
-      "bottom": 203.31399536132812,
+      "top": 493.90301513671875,
+      "mid": 519.7669677734375,
+      "bottom": 605.22998046875,
       "widths_pdf_pt": [
         1.4944000244140625,
         0.9962999820709229,
@@ -435,9 +435,9 @@
       "page": 13,
       "x0": 110.70800018310547,
       "x1": 484.5679931640625,
-      "top": 408.1780090332031,
-      "mid": 434.0419921875,
-      "bottom": 499.63800048828125,
+      "top": 91.98699951171875,
+      "mid": 117.8499984741211,
+      "bottom": 183.44699096679688,
       "widths_pdf_pt": [
         1.4944000244140625,
         0.9962999820709229,
@@ -450,9 +450,9 @@
       "page": 13,
       "x0": 117.04399871826172,
       "x1": 478.2309875488281,
-      "top": 549.4019775390625,
-      "mid": 575.2650146484375,
-      "bottom": 660.72802734375,
+      "top": 217.27000427246094,
+      "mid": 243.13400268554688,
+      "bottom": 328.59698486328125,
       "widths_pdf_pt": [
         1.4944000244140625,
         0.9962999820709229,
@@ -465,9 +465,9 @@
       "page": 14,
       "x0": 151.0159912109375,
       "x1": 444.2590026855469,
-      "top": 553.56396484375,
-      "mid": 579.427001953125,
-      "bottom": 664.8900146484375,
+      "top": 183.96200561523438,
+      "mid": 209.8249969482422,
+      "bottom": 295.2879943847656,
       "widths_pdf_pt": [
         1.4944000244140625,
         0.9962999820709229,
@@ -477,12 +477,12 @@
     {
       "label": "tab:q3-comparison",
       "number": 9,
-      "page": 18,
+      "page": 17,
       "x0": 153.6529998779297,
       "x1": 441.62298583984375,
-      "top": 91.98699951171875,
-      "mid": 117.8499984741211,
-      "bottom": 322.51300048828125,
+      "top": 490.06298828125,
+      "mid": 515.927001953125,
+      "bottom": 720.5889892578125,
       "widths_pdf_pt": [
         1.4944000244140625,
         0.9962999820709229,
@@ -495,9 +495,9 @@
       "page": 18,
       "x0": 147.35000610351562,
       "x1": 447.9259948730469,
-      "top": 585.7750244140625,
-      "mid": 611.6389770507812,
-      "bottom": 697.1019897460938,
+      "top": 274.5870056152344,
+      "mid": 300.45001220703125,
+      "bottom": 385.9129943847656,
       "widths_pdf_pt": [
         1.4944000244140625,
         0.9962999820709229,
@@ -507,12 +507,12 @@
     {
       "label": "tab:q3-2025-09-23-purchase",
       "number": 11,
-      "page": 19,
+      "page": 18,
       "x0": 110.70800018310547,
       "x1": 484.5679931640625,
-      "top": 91.98699951171875,
-      "mid": 137.71701049804688,
-      "bottom": 307.89599609375,
+      "top": 455.1109924316406,
+      "mid": 500.84100341796875,
+      "bottom": 671.02099609375,
       "widths_pdf_pt": [
         1.4944000244140625,
         0.9962999820709229,
@@ -525,9 +525,9 @@
       "page": 19,
       "x0": 117.04399871826172,
       "x1": 478.2309875488281,
-      "top": 341.718994140625,
-      "mid": 367.5830078125,
-      "bottom": 453.0459899902344,
+      "top": 91.98699951171875,
+      "mid": 117.8499984741211,
+      "bottom": 203.31399536132812,
       "widths_pdf_pt": [
         1.4944000244140625,
         0.9962999820709229,
@@ -540,9 +540,9 @@
       "page": 20,
       "x0": 189.66799926757812,
       "x1": 405.6080017089844,
-      "top": 562.4210205078125,
-      "mid": 588.2839965820312,
-      "bottom": 653.8809814453125,
+      "top": 135.74099731445312,
+      "mid": 161.60400390625,
+      "bottom": 227.2010040283203,
       "widths_pdf_pt": [
         1.4944000244140625,
         0.9962999820709229,
@@ -552,12 +552,12 @@
     {
       "label": "tab:q3-risk-sensitivity",
       "number": 14,
-      "page": 21,
+      "page": 20,
       "x0": 148.01499938964844,
       "x1": 447.260986328125,
-      "top": 138.54400634765625,
-      "mid": 164.40699768066406,
-      "bottom": 249.8699951171875,
+      "top": 426.7430114746094,
+      "mid": 452.6059875488281,
+      "bottom": 538.0689697265625,
       "widths_pdf_pt": [
         1.4944000244140625,
         0.9962999820709229,
@@ -567,12 +567,12 @@
     {
       "label": "tab:q4-comparison",
       "number": 15,
-      "page": 24,
+      "page": 23,
       "x0": 156.65399169921875,
       "x1": 438.62200927734375,
-      "top": 91.98699951171875,
-      "mid": 117.8499984741211,
-      "bottom": 322.51300048828125,
+      "top": 323.01800537109375,
+      "mid": 348.8810119628906,
+      "bottom": 553.5440063476562,
       "widths_pdf_pt": [
         1.4944000244140625,
         0.9962999820709229,
@@ -582,12 +582,12 @@
     {
       "label": "tab:q4-days-summary",
       "number": 16,
-      "page": 25,
+      "page": 24,
       "x0": 175.68899536132812,
       "x1": 419.5870056152344,
-      "top": 172.53298950195312,
-      "mid": 198.39700317382812,
-      "bottom": 283.8599853515625,
+      "top": 477.10198974609375,
+      "mid": 502.96600341796875,
+      "bottom": 588.4290161132812,
       "widths_pdf_pt": [
         1.4944000244140625,
         0.9962999820709229,
@@ -600,9 +600,9 @@
       "page": 25,
       "x0": 110.93000030517578,
       "x1": 484.3450012207031,
-      "top": 477.5429992675781,
-      "mid": 503.406005859375,
-      "bottom": 569.0029907226562,
+      "top": 91.98699951171875,
+      "mid": 117.8499984741211,
+      "bottom": 183.44699096679688,
       "widths_pdf_pt": [
         1.4944000244140625,
         0.9962999820709229,
@@ -615,9 +615,9 @@
       "page": 25,
       "x0": 117.04399871826172,
       "x1": 478.2309875488281,
-      "top": 611.156982421875,
-      "mid": 637.02001953125,
-      "bottom": 722.4829711914062,
+      "top": 217.27000427246094,
+      "mid": 243.13400268554688,
+      "bottom": 328.59698486328125,
       "widths_pdf_pt": [
         1.4944000244140625,
         0.9962999820709229,
@@ -627,12 +627,12 @@
     {
       "label": "tab:q4-3-2025-09-23-purchase",
       "number": 19,
-      "page": 26,
+      "page": 25,
       "x0": 110.70800018310547,
       "x1": 484.5679931640625,
-      "top": 138.4499969482422,
-      "mid": 184.17999267578125,
-      "bottom": 354.3590087890625,
+      "top": 455.8160095214844,
+      "mid": 501.5459899902344,
+      "bottom": 671.7260131835938,
       "widths_pdf_pt": [
         1.4944000244140625,
         0.9962999820709229,
@@ -645,9 +645,9 @@
       "page": 26,
       "x0": 117.04399871826172,
       "x1": 478.2309875488281,
-      "top": 404.12298583984375,
-      "mid": 429.9859924316406,
-      "bottom": 515.448974609375,
+      "top": 91.98699951171875,
+      "mid": 117.8499984741211,
+      "bottom": 203.31399536132812,
       "widths_pdf_pt": [
         1.4944000244140625,
         0.9962999820709229,
@@ -657,12 +657,12 @@
     {
       "label": "tab:q4-price-sensitivity",
       "number": 21,
-      "page": 27,
+      "page": 26,
       "x0": 113.80699920654297,
       "x1": 481.468994140625,
-      "top": 91.98699951171875,
-      "mid": 117.8499984741211,
-      "bottom": 243.0469970703125,
+      "top": 422.1910095214844,
+      "mid": 448.05499267578125,
+      "bottom": 573.2509765625,
       "widths_pdf_pt": [
         1.4944000244140625,
         0.9962999820709229,
@@ -672,12 +672,12 @@
     {
       "label": "tab:core-costs",
       "number": 22,
-      "page": 28,
+      "page": 27,
       "x0": 123.19200134277344,
       "x1": 472.0840148925781,
-      "top": 91.98699951171875,
-      "mid": 117.8499984741211,
-      "bottom": 203.31399536132812,
+      "top": 471.7760009765625,
+      "mid": 497.6390075683594,
+      "bottom": 583.1019897460938,
       "widths_pdf_pt": [
         1.4944000244140625,
         0.9962999820709229,
@@ -1290,9 +1290,9 @@
       "page": 44,
       "x0": 117.18899536132812,
       "x1": 478.08599853515625,
-      "top": 341.2860107421875,
-      "mid": 367.14898681640625,
-      "bottom": 532.0789794921875,
+      "top": 341.3680114746094,
+      "mid": 367.23199462890625,
+      "bottom": 532.1610107421875,
       "widths_pdf_pt": [
         1.4944000244140625,
         0.9962999820709229,
@@ -1305,9 +1305,9 @@
       "page": 44,
       "x0": 80.32600402832031,
       "x1": 514.9500122070312,
-      "top": 579.634033203125,
-      "mid": 614.8380126953125,
-      "bottom": 700.301025390625,
+      "top": 579.6920166015625,
+      "mid": 614.89697265625,
+      "bottom": 700.3599853515625,
       "widths_pdf_pt": [
         1.4944000244140625,
         0.9962999820709229,
@@ -1320,9 +1320,9 @@
       "page": 45,
       "x0": 75.31099700927734,
       "x1": 519.9649658203125,
-      "top": 226.20599365234375,
-      "mid": 261.4100036621094,
-      "bottom": 386.6059875488281,
+      "top": 265.12200927734375,
+      "mid": 300.32598876953125,
+      "bottom": 425.52301025390625,
       "widths_pdf_pt": [
         1.4944000244140625,
         0.9962999820709229,
@@ -1333,13 +1333,13 @@
   "archive_to_pdf_checks": [
     {
       "label": "tab:q1-purchase",
-      "page": 8,
+      "page": 7,
       "numeric_fields": 8,
       "status": "passed"
     },
     {
       "label": "tab:q1-storage",
-      "page": 8,
+      "page": 7,
       "numeric_fields": 14,
       "status": "passed"
     },
@@ -1429,7 +1429,7 @@
     },
     {
       "label": "tab:q3-2025-09-23-purchase",
-      "page": 19,
+      "page": 18,
       "numeric_fields": 16,
       "status": "passed"
     },
@@ -1549,7 +1549,7 @@
     },
     {
       "label": "tab:q4-3-2025-09-23-purchase",
-      "page": 26,
+      "page": 25,
       "numeric_fields": 16,
       "status": "passed"
     },
@@ -1585,7 +1585,7 @@
     },
     {
       "label": "tab:q2-days-summary",
-      "page": 13,
+      "page": 12,
       "numeric_fields": 12,
       "status": "passed"
     },
@@ -1597,7 +1597,7 @@
     },
     {
       "label": "tab:q4-days-summary",
-      "page": 25,
+      "page": 24,
       "numeric_fields": 12,
       "status": "passed"
     }
@@ -1646,22 +1646,22 @@
     "paper/generated/selected-days-q4-3.tex": "a267695dba49f788be938b0097c2d3584ba0313ee3bad9d496e786f72eb9483b",
     "paper/main.tex": "41c6368f7c9396a57ddbfd7ac3b522ce5b33088386e9c4aa48bf073afdfb58f4",
     "paper/references.bib": "b12527b9c76d90a72f9046c4e0030c0a4f9f0f11d2ca2fc446912c9931472330",
-    "paper/sections/abstract.tex": "6c628ca581286df7c592f3d61618f1e811ab44b68a6dea1b65073ad818c9450f",
+    "paper/sections/abstract.tex": "f1129fb4f3633240803ab8d9a7a296c2b6f768aa5cd5f4991a46b93d0b58472f",
     "paper/sections/ai-statement.tex": "a2afe616bb0b3edc321dd5e4d5a472e8c97d3f33a173af3ebca859c43b9a3f7f",
-    "paper/sections/analysis.tex": "5bc04d40f585b180b36c136def0bf9ebe68eed8ab0ec24dcc3297a303e5b865e",
+    "paper/sections/analysis.tex": "70a13f94a689d1f59056fac8019e2d843c709260b76951ac79b36c61e15dcc24",
     "paper/sections/appendix.tex": "1ade64dddd2f36af3a155af23e5fe7c859aabacea0bb72a52208f96c0b221895",
-    "paper/sections/assumptions.tex": "3a3d8b13abe89bece3b52c71d3b5a06bcef5a87d683185f7142e6e2a7244e3fa",
+    "paper/sections/assumptions.tex": "6bb1a3400239c3e90b41b45a630595b14e44c66df54e67f1a987101a65cf8fbd",
     "paper/sections/body.tex": "2f12a87bb5b18952a60f271f1c452f05b568465c418c299a0f82e0f232878195",
-    "paper/sections/evaluation.tex": "7bc5e4beb7565846aef0e91778b614aaccd16a3785be9da9fed91fcfb3da1262",
+    "paper/sections/evaluation.tex": "45b13710f3dcdb780b053c29ab12671b87b185fe748005b54ebbca7e38f597d6",
     "paper/sections/model.tex": "7093f008cca3d20b7b472d1e2b79b880d0abf05b62c94bbbe66ddf34c85e9e07",
-    "paper/sections/physical-model.tex": "03d0eeeeb0b29b10dd2554cc0bf1a866e73a70814f7ab4f089939d51868d9418",
-    "paper/sections/problem.tex": "8dfeeec1d03a31b6799c0aca8d05c2601cfb845791f427c19814085833936810",
-    "paper/sections/q1.tex": "3b7e2799ba123a11fdd5f4ef78d0cd96d289d28044241836c91841132642ef5e",
-    "paper/sections/q2.tex": "ac3426363fc15032d187bc075c2e1fb7061a9214a8fdaea15de80387a1d655d4",
-    "paper/sections/q3.tex": "8d9b75da737628735ac3a1d0a97c2e846ea245aaadea1f277cfd94d7c709dfbc",
-    "paper/sections/q4.tex": "a6c3362dc8f777e4c89056e4c4a978354534386594427f1dd72c928f8b085efe",
-    "paper/sections/results.tex": "136bfb2532cd2076b026eb07939a1aff7a4471000836381b294a3ee6cd334803",
-    "paper/sections/supplementary.tex": "fd44438b932b422f533c58f62ab94bcdd42a26d94d8da8578cf20b005f864484",
+    "paper/sections/physical-model.tex": "b6d6eb7b1e7e40aee12ccdffe15e026c2659c1f06001f67094eac2adae6b0580",
+    "paper/sections/problem.tex": "bcb5f72a5b72f931d6236e0eaba4e847513f61d6058c02689b449c1e08890401",
+    "paper/sections/q1.tex": "fc08f58400289a2e0cce3e93eb7fdafd45aa3c3b4d2e9d4b30d92e757d9bb8c3",
+    "paper/sections/q2.tex": "67c16919bfa5059ad990e5103ab834641b62ec4e6fe17b37e0222393a414adc9",
+    "paper/sections/q3.tex": "83972738d24f95f58b429ad122a1dc857e27f0f3415e5d1cc0e5f98abbd5cf04",
+    "paper/sections/q4.tex": "da3bb096a107a40f3d5ada76cf80c39527ee00c0ec0acc3f00a8fd282ffd9b40",
+    "paper/sections/results.tex": "2f19fff24d70c8a239243167021d8029ec027ac429e37295f0544f51b9bf4c53",
+    "paper/sections/supplementary.tex": "85fb24c2750b8b86c9638beba964ca9e17ae16122d04311f609a14813f8e1716",
     "paper/sections/symbols.tex": "9cb60ddff878556163fc4b342a06c9ee6ab270a4bf7dbdd9533e41af36a38d59"
   }
 }
