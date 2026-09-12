@@ -2,8 +2,8 @@
   "status": "passed",
   "checked_on": "2026-09-12",
   "pdf": "outputs/deliverables/microgrid-paper.pdf",
-  "pdf_sha256": "4a13dab38fb1639719b7d234f5e030ea01a3d57272db1fbb09420de267cd1d29",
-  "pages": 46,
+  "pdf_sha256": "32284e667cb46cbcc32add04862d5866487fc9172b9f8c6be73a44ccc4faa350",
+  "pages": 64,
   "body": {
     "start": 2,
     "end": 29,
@@ -55,11 +55,11 @@
   ],
   "appendix_pages": [
     31,
-    46
+    64
   ],
-  "table_count": 66,
+  "table_count": 65,
   "body_table_count": 22,
-  "appendix_table_count": 44,
+  "appendix_table_count": 43,
   "figures": 4,
   "numbered_equations": 40,
   "bibliography_entries": 12,
@@ -77,7 +77,7 @@
     "wytock2017dem",
     "xiao2019mpc"
   ],
-  "embedded_font_objects": 18,
+  "embedded_font_objects": 22,
   "specified_date_scenarios": 16,
   "required_original_format_tables": 38,
   "body_required_original_format_tables": 10,
@@ -97,7 +97,21 @@
     "source": "paper/main.tex",
     "passes": 3,
     "bibliography": "BibTeX8/BibTeX / gbt7714-numeric",
-    "layout_or_reference_warnings": []
+    "layout_or_reference_warnings": [],
+    "appendix_sources": {
+      "scripts/prepare_data.py": {
+        "sha256": "65b2aab26fa62dd5073a353d06eee41ebe2eb7279146dfbf1c85f25082b834aa",
+        "lines": 231
+      },
+      "scripts/model.py": {
+        "sha256": "329a81345f52c1e73756fb4ef189e787dd4e5b970e7bdb57e9dd2cabc4695cdc",
+        "lines": 327
+      },
+      "scripts/solve.py": {
+        "sha256": "f50a9bcf67d40b23855f85b76835ff267e320240641f715a02eb0b930d35493c",
+        "lines": 249
+      }
+    }
   },
   "equation_positions": [
     {
@@ -271,7 +285,7 @@
     ]
   },
   "protected_inputs_and_model_results_unchanged": true,
-  "baseline_commit": "fbc2297a424d651e9e3592fad83feced8dcce6f7",
+  "baseline_commit": "0cae66deaf0e6d031a54fbbb6927f5a133ad4c6b",
   "protected_scopes": [
     "problem",
     "data",
@@ -339,12 +353,12 @@
     "paper/generated/selected-days-q3.tex": "4c7272f5c5fc895263f9be6dd44637ef7916cd903efb9064af33fb920d3fa050",
     "paper/generated/selected-days-q4-2.tex": "98388352abf27ec222c831fc5423036e19d24cba64f13e56b679cec7c4742b76",
     "paper/generated/selected-days-q4-3.tex": "a267695dba49f788be938b0097c2d3584ba0313ee3bad9d496e786f72eb9483b",
-    "paper/main.tex": "7d61ada1246e050d837ff97bc84bddf7da1af52830b71bc73b4dad62bee4c0eb",
+    "paper/main.tex": "41c6368f7c9396a57ddbfd7ac3b522ce5b33088386e9c4aa48bf073afdfb58f4",
     "paper/references.bib": "b12527b9c76d90a72f9046c4e0030c0a4f9f0f11d2ca2fc446912c9931472330",
     "paper/sections/abstract.tex": "e8afdc492e0cd46eda52fc66f63789238c6dd9192d6b0e3713c0962296806192",
     "paper/sections/ai-statement.tex": "a2afe616bb0b3edc321dd5e4d5a472e8c97d3f33a173af3ebca859c43b9a3f7f",
     "paper/sections/analysis.tex": "5bc04d40f585b180b36c136def0bf9ebe68eed8ab0ec24dcc3297a303e5b865e",
-    "paper/sections/appendix.tex": "a29d66ad5a8d945a4872236e685703e0c52f757c48e65699daf0927a57a73119",
+    "paper/sections/appendix.tex": "1ade64dddd2f36af3a155af23e5fe7c859aabacea0bb72a52208f96c0b221895",
     "paper/sections/assumptions.tex": "3a3d8b13abe89bece3b52c71d3b5a06bcef5a87d683185f7142e6e2a7244e3fa",
     "paper/sections/body.tex": "2f12a87bb5b18952a60f271f1c452f05b568465c418c299a0f82e0f232878195",
     "paper/sections/evaluation.tex": "7bc5e4beb7565846aef0e91778b614aaccd16a3785be9da9fed91fcfb3da1262",
@@ -418,9 +432,54 @@
       "43": "ef880d9c5c28d5855e505add2f3c8a5fb64a98cdcf618acae365f6b41146cbda",
       "44": "014d0f0e3e1321910dfbb7b8de5433722c2d3551a62e12f9604c3e39ab34d8a6",
       "45": "8a755edfcac2b5c7ef8b92b4109ed52c54404aa4a7df841d5d4385e5e287a31e",
-      "46": "2e11a4543990ed66f3e0605f7458bf71b3f0765554551d671db6f6128ed6046d"
+      "46": "f667d4cca983587cc96aa2241025b9f2d4984a4c92cea4078c971988c54772fe",
+      "47": "d7363bb15467e593f5237f681fd98b9b13bb59ea59e07dfa48855014e8e33e16",
+      "48": "56bbbf0429e72b8415dc75d43d067370a18cbc983ffb2f36a2d4ffb03b621565",
+      "49": "ac54608406c47372d79f83bfcafd7fd4f375802afd2c66c6ae0bf7e9a08e9762",
+      "50": "2b24354ed7fba5cd767d4f868c3fea62661b6d60e9cd04b2c28c3e0becdc83eb",
+      "51": "0e7262c26e3c32b5650c8cfc2ec1f6e6374830311cff92dc985feb19b6a01400",
+      "52": "9c835c82fa9c10d0e4305d7887ed13f81d477f6afeb5c7c9aa82f725ff94b0eb",
+      "53": "72de7f08ef781af96f486c6247edef24da9fa14c8df7cc1be045e39497a4f5b3",
+      "54": "196b754fbd2da60ffb81d93d3b8de74c057c5e357c07179090c2da9760550322",
+      "55": "e73bddb5b8a130b7e5bc62317d1d20121293c02b7c17a065e9716bb2ae1b82a8",
+      "56": "469046eafae276d7926fa56181276a0f32ad895e6ac9c9b309f7c52d883d8ef9",
+      "57": "e79beb63d9909732e0321879953657a6d494e7c2969e0549b543e065da85f6e9",
+      "58": "ef5bfcc536de0c1b32396b717b2093ea6155f015e16d90afd1860fe89f70825e",
+      "59": "6d597ad7a47e13c95fc23b62596707d2fb4005f5753e4130c0d8020ea01c42d5",
+      "60": "68e7785ce746a0708a19d19313d364b1fdda1b2358959cc4f2a6f4a540b26cd3",
+      "61": "bc6a2bbdd1d834bf3220cafb4a51ccd714a82edde3f890ef07048f5236cd2e07",
+      "62": "617a359397fe67ab7b80f053356cf3b1e8693d67f47eb282edee4b9089204987",
+      "63": "9010781e5a60848a6f0ecfc0bf97857ff19f33dec02062f515739479b1786941",
+      "64": "1398f9724d2bc6b1c410fe2daff9f67148a6cc5786c2182addf57dd9c76c4775"
     },
     "overview_pages": [
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      54,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63,
+      64
+    ],
+    "detailed_pages": [
+      46,
+      51,
+      59
+    ],
+    "scope": "All 19 source-appendix pages inspected on contact sheets; each program opening inspected at full size. Appendix C contains only headings and complete source listings. Pages 1-45 match the earlier PDF render byte for byte.",
+    "unchanged_prior_pages": [
       1,
       2,
       3,
@@ -465,39 +524,104 @@
       42,
       43,
       44,
-      45,
-      46
+      45
     ],
-    "detailed_pages": [
-      13,
-      19,
-      26,
-      29,
-      30,
-      32,
-      41,
-      44
-    ],
-    "scope": "All-page contact sheets, representative tables, appendix transitions, model evaluation and final bibliography pagination reviewed."
+    "baseline_pdf_sha256": "4a13dab38fb1639719b7d234f5e030ea01a3d57272db1fbb09420de267cd1d29"
   },
   "limits": [
     "Q2-Q4 remain causal feasible heuristics; same-year economic comparisons are not unseen-year validation.",
     "Figure data and appearance are retained; regenerated PDFs may have different timestamps.",
     "Omission of a separate conclusion section follows the user's requested structure, not a claim that GB/T 7713.2 forbids conclusions."
   ],
-  "retained_visuals": {
+  "source_appendix": {
     "status": "passed",
-    "baseline_commit": "fbc2297a424d651e9e3592fad83feced8dcce6f7",
-    "unchanged_rendered_figures": [
-      "outputs/figures/paper-q1-dispatch.pdf",
-      "outputs/figures/paper-q2-day.pdf",
-      "outputs/figures/paper-q3-day.pdf",
-      "outputs/figures/paper-q4-months.pdf"
+    "source_files": {
+      "scripts/prepare_data.py": {
+        "sha256": "65b2aab26fa62dd5073a353d06eee41ebe2eb7279146dfbf1c85f25082b834aa",
+        "lines": 231,
+        "pages": [
+          46,
+          50
+        ],
+        "all_line_numbers_present": true,
+        "pdf_text_matches_all_source_lines_ignoring_layout_whitespace": true,
+        "build_snapshot_matches_source_bytes": true
+      },
+      "scripts/model.py": {
+        "sha256": "329a81345f52c1e73756fb4ef189e787dd4e5b970e7bdb57e9dd2cabc4695cdc",
+        "lines": 327,
+        "pages": [
+          51,
+          58
+        ],
+        "all_line_numbers_present": true,
+        "pdf_text_matches_all_source_lines_ignoring_layout_whitespace": true,
+        "build_snapshot_matches_source_bytes": true
+      },
+      "scripts/solve.py": {
+        "sha256": "f50a9bcf67d40b23855f85b76835ff267e320240641f715a02eb0b930d35493c",
+        "lines": 249,
+        "pages": [
+          59,
+          64
+        ],
+        "all_line_numbers_present": true,
+        "pdf_text_matches_all_source_lines_ignoring_layout_whitespace": true,
+        "build_snapshot_matches_source_bytes": true
+      }
+    },
+    "unchanged_rendered_pages": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45
     ],
-    "abstract_page_render_unchanged": true
+    "source_pdf_sha256": "32284e667cb46cbcc32add04862d5866487fc9172b9f8c6be73a44ccc4faa350",
+    "total_source_lines": 807
   },
   "table_style_validation": {
     "path": "outputs/verification/table-style-validation.json",
-    "sha256": "2e05c99f1f5f3f10b633e9e1ba04a4b78b3ddd2a95dfa0432c1460fedc031030"
+    "sha256": "2039936b7a7cc63f9c96258d31ced73d1c1e1216e93e398d996dc4b56e228d11"
   }
 }

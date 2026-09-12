@@ -1,0 +1,156 @@
+{
+  "status": "passed",
+  "archive": "outputs/deliverables/supporting-materials.zip",
+  "archive_sha256": "0c971c9e6a74e990ab7f240d42dc4ec688572c2a770b38d4e6ebfc1786b40e3f",
+  "archive_bytes": 3307326,
+  "file_count": 18,
+  "source_and_result_bytes": 3525867,
+  "members": [
+    "result1.xlsx",
+    "result2.xlsx",
+    "result3.xlsx",
+    "result4-2.xlsx",
+    "result4-3.xlsx",
+    "scripts/evaluate_paper_sensitivity.py",
+    "scripts/evaluate_round2.py",
+    "scripts/export_results.mjs",
+    "scripts/external_inputs.py",
+    "scripts/feedback.py",
+    "scripts/model.py",
+    "scripts/prepare_data.py",
+    "scripts/solve.py",
+    "scripts/validate_paper_sensitivity.py",
+    "scripts/validate_results.py",
+    "scripts/validate_revision.py",
+    "scripts/validate_round2.py",
+    "scripts/verify_q1_milp.py"
+  ],
+  "files": {
+    "result1.xlsx": {
+      "sha256": "91e274a48c831cd545049339c2356133d70d439565a6acaf31f51b99dcf0b2a7",
+      "bytes": 7411
+    },
+    "result2.xlsx": {
+      "sha256": "b6a5bdf4efba0aa56b5eb6f1ad42da9a1d6c1cb74b991320df0963818d573ead",
+      "bytes": 594071
+    },
+    "result3.xlsx": {
+      "sha256": "475de86caadc40ba246c9429603824470051570d7283d9808c5dbc012ef3a7ea",
+      "bytes": 1073070
+    },
+    "result4-2.xlsx": {
+      "sha256": "8d3ab0c78201abbfe2047efe4cb1e46052bfec8a02fc9451cd6c52dade129ea8",
+      "bytes": 596076
+    },
+    "result4-3.xlsx": {
+      "sha256": "0a8aed140d6815370bca305b8a57638442f35332d35f62016b25bc5175075391",
+      "bytes": 1075666
+    },
+    "scripts/evaluate_paper_sensitivity.py": {
+      "sha256": "25f7baf0fda922b4b8c65c2f58f112643fd80781d6358f5f98327ce67047d9ba",
+      "bytes": 5516
+    },
+    "scripts/evaluate_round2.py": {
+      "sha256": "02acee4b3c5674382264a4d5dbeaaf7c92b9c683910848268f62c1022238a2a3",
+      "bytes": 13051
+    },
+    "scripts/export_results.mjs": {
+      "sha256": "318735759fc2ed5df9430cc2e569b5fb4ca7ad62895e52a63ee62b26006133ce",
+      "bytes": 25361
+    },
+    "scripts/external_inputs.py": {
+      "sha256": "5accdcdc20714cb14992bfa9f246c23a1ab090d94c8b6a6a4a5fe533cb54416c",
+      "bytes": 7619
+    },
+    "scripts/feedback.py": {
+      "sha256": "a92a272c1f6477a8f9f8c09a0bc175e1007405eaacb7e4b70f70c16588da88d4",
+      "bytes": 9178
+    },
+    "scripts/model.py": {
+      "sha256": "329a81345f52c1e73756fb4ef189e787dd4e5b970e7bdb57e9dd2cabc4695cdc",
+      "bytes": 15404
+    },
+    "scripts/prepare_data.py": {
+      "sha256": "65b2aab26fa62dd5073a353d06eee41ebe2eb7279146dfbf1c85f25082b834aa",
+      "bytes": 9903
+    },
+    "scripts/solve.py": {
+      "sha256": "f50a9bcf67d40b23855f85b76835ff267e320240641f715a02eb0b930d35493c",
+      "bytes": 14762
+    },
+    "scripts/validate_paper_sensitivity.py": {
+      "sha256": "0bfdbce6385e336e9240e10bce8449746fc0201d5727fdcc959cb5f9518bac20",
+      "bytes": 4751
+    },
+    "scripts/validate_results.py": {
+      "sha256": "1ed2e0a5c4832ba3bf99a1d97c125835576a3085773ae1f71b0b0d5c5b1271a8",
+      "bytes": 15728
+    },
+    "scripts/validate_revision.py": {
+      "sha256": "d2453d82c224344755a0d1c7f67892d866d02fc446bc8152aa326b37eb40e65f",
+      "bytes": 29080
+    },
+    "scripts/validate_round2.py": {
+      "sha256": "cf761b193543166c61ec416676e648370e76c3ba2f1b28390764a57b05aa5dab",
+      "bytes": 22219
+    },
+    "scripts/verify_q1_milp.py": {
+      "sha256": "f0de42d3be041e4ae6c3241f8107e3230daa8796435b805816ea83ded275b701",
+      "bytes": 7001
+    }
+  },
+  "selection": {
+    "computation_sources": [
+      "scripts/prepare_data.py",
+      "scripts/model.py",
+      "scripts/solve.py",
+      "scripts/feedback.py",
+      "scripts/external_inputs.py",
+      "scripts/evaluate_round2.py",
+      "scripts/evaluate_paper_sensitivity.py",
+      "scripts/export_results.mjs"
+    ],
+    "validation_sources": [
+      "scripts/validate_results.py",
+      "scripts/validate_revision.py",
+      "scripts/verify_q1_milp.py",
+      "scripts/validate_round2.py",
+      "scripts/validate_paper_sensitivity.py"
+    ],
+    "workbooks": [
+      "result1.xlsx",
+      "result2.xlsx",
+      "result3.xlsx",
+      "result4-2.xlsx",
+      "result4-3.xlsx"
+    ]
+  },
+  "paper": {
+    "filename": "microgrid-paper.pdf",
+    "sha256": "32284e667cb46cbcc32add04862d5866487fc9172b9f8c6be73a44ccc4faa350",
+    "pages": 64
+  },
+  "appendix_sources": {
+    "scripts/prepare_data.py": {
+      "sha256": "65b2aab26fa62dd5073a353d06eee41ebe2eb7279146dfbf1c85f25082b834aa",
+      "lines": 231
+    },
+    "scripts/model.py": {
+      "sha256": "329a81345f52c1e73756fb4ef189e787dd4e5b970e7bdb57e9dd2cabc4695cdc",
+      "lines": 327
+    },
+    "scripts/solve.py": {
+      "sha256": "f50a9bcf67d40b23855f85b76835ff267e320240641f715a02eb0b930d35493c",
+      "lines": 249
+    }
+  },
+  "all_members_match_workspace": true,
+  "zip_crc_checked": true,
+  "workbooks": [
+    "result1.xlsx",
+    "result2.xlsx",
+    "result3.xlsx",
+    "result4-2.xlsx",
+    "result4-3.xlsx"
+  ]
+}

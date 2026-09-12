@@ -6,6 +6,7 @@ The direct engine sequence avoids latexmk's optional Perl dependency on Windows.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import os
 from pathlib import Path
@@ -48,11 +49,25 @@ def main() -> None:
     # this build's references or bibliography.
     source = build / "source/paper"
     source.mkdir(parents=True, exist_ok=True)
+    appendix_sources = {}
     for path in (ROOT / "paper").rglob("*"):
         if path.is_file() and path.suffix in {".tex", ".bib", ".cls", ".sty"}:
             target = source / path.relative_to(ROOT / "paper")
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(path, target)
+            if path.suffix == ".tex":
+                for name in re.findall(r"\\lstinputlisting(?:\[[^\]]*\])?\{([^{}]+)\}",
+                                       path.read_text(encoding="utf-8")):
+                    original = (ROOT / "paper" / name).resolve()
+                    if original.parent != ROOT / "scripts" or original.suffix != ".py":
+                        raise SystemExit(f"Unexpected computation source: {name}")
+                    listing = (source / name).resolve()
+                    listing.parent.mkdir(parents=True, exist_ok=True)
+                    shutil.copy2(original, listing)
+                    appendix_sources[original.relative_to(ROOT).as_posix()] = {
+                        "sha256": hashlib.sha256(listing.read_bytes()).hexdigest(),
+                        "lines": len(listing.read_text(encoding="utf-8").splitlines()),
+                    }
     for name in ("q1-dispatch.png", "monthly-comparison.png", "paper-q1-dispatch.pdf",
                  "paper-q2-day.pdf", "paper-q3-day.pdf", "paper-q4-months.pdf"):
         target = source.parent / "outputs/figures" / name
@@ -79,7 +94,8 @@ def main() -> None:
     defects = [line for line in log.splitlines() if re.search(
         r"Overfull \\[hv]box|Missing character:|undefined|Rerun to get|Label\(s\) may have changed", line)]
     report = {"engine": version, "source": "paper/main.tex", "passes": 3,
-              "bibliography": "BibTeX8/BibTeX / gbt7714-numeric", "layout_or_reference_warnings": defects}
+              "bibliography": "BibTeX8/BibTeX / gbt7714-numeric", "layout_or_reference_warnings": defects,
+              "appendix_sources": appendix_sources}
     (build / "build-check.json").write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     if defects:
         print("\n".join(defects))

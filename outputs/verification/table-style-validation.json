@@ -1,10 +1,10 @@
 {
   "status": "passed",
   "checked_on": "2026-09-12",
-  "pdf_sha256": "4a13dab38fb1639719b7d234f5e030ea01a3d57272db1fbb09420de267cd1d29",
-  "table_count": 66,
-  "rendered_table_segments": 66,
-  "checked_horizontal_rules": 198,
+  "pdf_sha256": "32284e667cb46cbcc32add04862d5866487fc9172b9f8c6be73a44ccc4faa350",
+  "table_count": 65,
+  "rendered_table_segments": 65,
+  "checked_horizontal_rules": 195,
   "style": {
     "body_tex_pt": 12.05,
     "ordinary_table_text_pdf_pt": [
@@ -21,7 +21,7 @@
     "required_tables": "Problem Tables 1 and 2 use six horizontal columns; Table 3 uses four adjacent date groups."
   },
   "preservation": {
-    "baseline_commit": "fbc2297a424d651e9e3592fad83feced8dcce6f7",
+    "baseline_commit": "0cae66deaf0e6d031a54fbbb6927f5a133ad4c6b",
     "aggregate_table_data_unchanged": true,
     "archive_aggregation_checks": 656,
     "independent_archive_to_pdf_fields": 576
@@ -351,11 +351,6 @@
       "label": "tab:rolling-summary",
       "number": 65,
       "page": 45
-    },
-    {
-      "label": "tab:support-files",
-      "number": 66,
-      "page": 46
     }
   ],
   "segments": [
@@ -1333,21 +1328,6 @@
         0.9962999820709229,
         1.4944000244140625
       ]
-    },
-    {
-      "label": "tab:support-files",
-      "number": 66,
-      "page": 46,
-      "x0": 103.05799865722656,
-      "x1": 492.2170104980469,
-      "top": 173.8179931640625,
-      "mid": 199.6820068359375,
-      "bottom": 424.21099853515625,
-      "widths_pdf_pt": [
-        1.4944000244140625,
-        0.9962999820709229,
-        1.4944000244140625
-      ]
     }
   ],
   "archive_to_pdf_checks": [
@@ -1664,12 +1644,12 @@
     "paper/generated/selected-days-q3.tex": "4c7272f5c5fc895263f9be6dd44637ef7916cd903efb9064af33fb920d3fa050",
     "paper/generated/selected-days-q4-2.tex": "98388352abf27ec222c831fc5423036e19d24cba64f13e56b679cec7c4742b76",
     "paper/generated/selected-days-q4-3.tex": "a267695dba49f788be938b0097c2d3584ba0313ee3bad9d496e786f72eb9483b",
-    "paper/main.tex": "7d61ada1246e050d837ff97bc84bddf7da1af52830b71bc73b4dad62bee4c0eb",
+    "paper/main.tex": "41c6368f7c9396a57ddbfd7ac3b522ce5b33088386e9c4aa48bf073afdfb58f4",
     "paper/references.bib": "b12527b9c76d90a72f9046c4e0030c0a4f9f0f11d2ca2fc446912c9931472330",
     "paper/sections/abstract.tex": "e8afdc492e0cd46eda52fc66f63789238c6dd9192d6b0e3713c0962296806192",
     "paper/sections/ai-statement.tex": "a2afe616bb0b3edc321dd5e4d5a472e8c97d3f33a173af3ebca859c43b9a3f7f",
     "paper/sections/analysis.tex": "5bc04d40f585b180b36c136def0bf9ebe68eed8ab0ec24dcc3297a303e5b865e",
-    "paper/sections/appendix.tex": "a29d66ad5a8d945a4872236e685703e0c52f757c48e65699daf0927a57a73119",
+    "paper/sections/appendix.tex": "1ade64dddd2f36af3a155af23e5fe7c859aabacea0bb72a52208f96c0b221895",
     "paper/sections/assumptions.tex": "3a3d8b13abe89bece3b52c71d3b5a06bcef5a87d683185f7142e6e2a7244e3fa",
     "paper/sections/body.tex": "2f12a87bb5b18952a60f271f1c452f05b568465c418c299a0f82e0f232878195",
     "paper/sections/evaluation.tex": "7bc5e4beb7565846aef0e91778b614aaccd16a3785be9da9fed91fcfb3da1262",
@@ -1683,12 +1663,5 @@
     "paper/sections/results.tex": "fdcdda08c43c4ab4b7a5135308c0df628b19e92b74e94fd8907c4362712f1c7a",
     "paper/sections/supplementary.tex": "505d533c027c48b84a9374963b169e904ae741cfae951a5604ce6e09b5c936b4",
     "paper/sections/symbols.tex": "9cb60ddff878556163fc4b342a06c9ee6ab270a4bf7dbdd9533e41af36a38d59"
-  },
-  "body_table_count": 22,
-  "appendix_table_count": 44,
-  "required_format_distribution": {
-    "body": 10,
-    "appendix": 28,
-    "total": 38
   }
 }

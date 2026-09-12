@@ -28,6 +28,34 @@
 \newcommand{\dif}{\mathop{}\!\mathrm{d}}
 \newcommand{\kwh}{\mathrm{kWh}}
 \newcommand{\kw}{\mathrm{kW}}
+% Read complete computation files; line numbers refer to the shipped sources.
+\lstdefinestyle{calculations}{
+  language=Python,
+  basicstyle=\small\ttfamily,
+  numbers=left,
+  numberstyle=\scriptsize\ttfamily\color{black!55},
+  numbersep=8pt,
+  firstnumber=1,
+  numberblanklines=true,
+  xleftmargin=2.5em,
+  frame=tb,
+  framerule=0.4pt,
+  rulecolor=\color{black!30},
+  backgroundcolor=\color{white},
+  keywordstyle=\bfseries\color{black},
+  commentstyle=\color{black!65},
+  stringstyle=\color{black},
+  columns=fullflexible,
+  keepspaces=true,
+  breaklines=true,
+  breakatwhitespace=false,
+  breakindent=1.5em,
+  tabsize=4,
+  showstringspaces=false,
+  upquote=true,
+  mathescape=false,
+  texcl=false
+}
 \input{generated/numbers}
 \input{generated/evidence-numbers}
 \title{基于风险分位规划与储能反馈的微网购电调控}

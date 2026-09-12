@@ -16,27 +16,15 @@
 \clearpage
 \input{sections/supplementary}
 \clearpage
-\section{程序与支撑文件索引}\label{app:support}
-完整十分钟结果保存在支撑文件，正文与附录A、B展示对应汇总。表\ref{tab:support-files}给出程序和完整数据的入口；运行环境及命令见支撑材料README。
-\begin{table}[!htbp]
- \centering
- \caption{主要程序与支撑文件}\label{tab:support-files}
- \begin{tabular}{lp{0.41\textwidth}}
-  \toprule
-  \multicolumn{1}{c}{文件或目录} & \multicolumn{1}{c}{用途} \\
-  \midrule
-  \path{scripts/prepare_data.py} & 原始附件对齐与审计 \\
-  \path{scripts/model.py} & 预测、规划、反馈与费用结算 \\
-  \path{scripts/solve.py} & 主策略求解入口 \\
-  \path{scripts/evaluate_round2.py} & 反馈对照与逐月选参实验 \\
-  \path{scripts/validate_results.py} & 主调度物理及费用独立核验 \\
-  \path{scripts/validate_round2.py} & 补充对照独立核验 \\
-  \path{scripts/build_paper_tables.py} & 由归档生成并核对论文表格 \\
-  \path{outputs/deliverables/} & 五份题目要求的完整Excel \\
-  \path{outputs/main/} & 十分钟主调度及费用归档 \\
-  \path{outputs/experiments/revision/} & 完整选参、预报子集与合约结果 \\
-  \path{outputs/experiments/round2/} & 逐月参数、费用差额及反馈路径 \\
-  \bottomrule
- \end{tabular}
-\end{table}
-\FloatBarrier
+\section{计算程序源码}\label{app:support}
+
+\subsection{数据预处理程序}\label{app:source-prepare}
+\lstinputlisting[style=calculations]{../scripts/prepare_data.py}
+
+\clearpage
+\subsection{四问共用计算模型}\label{app:source-model}
+\lstinputlisting[style=calculations]{../scripts/model.py}
+
+\clearpage
+\subsection{主求解与结果归档程序}\label{app:source-solve}
+\lstinputlisting[style=calculations]{../scripts/solve.py}

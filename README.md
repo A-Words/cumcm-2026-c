@@ -4,9 +4,11 @@
 
 已完成 [LaTeX 论文 PDF](outputs/deliverables/microgrid-paper.pdf)，可编辑入口为 [paper/main.tex](paper/main.tex)。论文采用用户指定的 [CUMCMThesis 模板](https://github.com/latexstudio/CUMCMThesis)，按模板组织章节，并按广东赛区的本次提交要求去掉承诺书、编号页和目录。12 篇参考文献均在正文中引用，表格直接从已验证结果生成，覆盖四问与两轮补充实验。[模板适配说明](docs/paper/template-adaptation.md)、[撰写记录与编译说明](docs/paper/paper-writing-notes.md)、[文献核实笔记](docs/paper/literature-notes.md) 记录结构、写作取舍及来源。运行 `python scripts/build_paper.py` 可重新核对表格并编译论文。
 
-按最新要求完成[正文篇幅控制](docs/paper/body-page-limit-review.md)：正文第2—29页，共28页；连同摘要、AI声明和参考文献，附录前共30页。正文保留主要结果、四日期汇总和9月23日代表方案，重复日期及辅助对照移至附录。完整PDF共46页，问题一至四分别覆盖5、6、7、7页，部分章节共享页面；附录A、B、C分别为日期明细、补充对照、程序与文件索引。此前摘要扩充、`clip`定义及第七节的两节结构保留，不再设独立总结。
+按最新要求保留[正文篇幅控制](docs/paper/body-page-limit-review.md)，并将附录C改为[实际计算程序源码](docs/paper/source-appendix.md)：正文第2—29页，共28页；连同摘要、AI声明和参考文献，附录前共30页。正文保留主要结果、四日期汇总和9月23日代表方案，重复日期及辅助对照移至附录。完整PDF共64页，问题一至四分别覆盖5、6、7、7页，部分章节共享页面；附录A、B为日期明细和补充对照，附录C第46—64页完整刊载数据预处理、共用模型和主求解入口的807行源码。此前摘要扩充、`clip`定义及第七节的两节结构保留，不再设独立总结。
 
-全文66张表保持正文同等字号和三线表样式，其中正文22张、附录44张；38张题面格式表完整保留，正文10张、附录28张。购电与储能使用原题六列横向结构，紧急电量使用四日期并列结构。4幅数据图采用矢量图。正文不使用下划线，文献引用采用模板上标。当前验收见[论文验证](outputs/verification/paper-validation.json)、[逐表验收](outputs/verification/table-style-validation.json)，历次调整见[三线表核查记录](docs/paper/table-style-audit.md)。
+全文65张表保持正文同等字号和三线表样式，其中正文22张、附录43张；38张题面格式表完整保留，正文10张、附录28张。本轮仅删除原程序索引表，所有数值结果表均保留。购电与储能使用原题六列横向结构，紧急电量使用四日期并列结构。4幅数据图采用矢量图。正文不使用下划线，文献引用采用模板上标。当前验收见[论文验证](outputs/verification/paper-validation.json)、[逐表验收](outputs/verification/table-style-validation.json)，历次调整见[三线表核查记录](docs/paper/table-style-audit.md)。
+
+论文和[支撑材料压缩包](outputs/deliverables/supporting-materials.zip)分别交付。按用户最新要求，当前包内只放13个计算、导出和验算程序，以及根目录的5份结果Excel，共18个文件。说明、依赖清单、协议、哈希清单及其他材料均不入包。[工作区说明](docs/supporting-materials.md)和[打包验收](outputs/verification/supporting-materials-validation.json)仅保留在仓库中。运行 `python scripts/build_supporting_materials.py` 生成，追加 `--verify` 核对已有包。
 
 第一轮修订针对预报价值归因、缺少简单基准和增购撤回合约风险，处理依据见 [评审回应](docs/reviews/review-response.md)。问题 3、4-3 增加历史光伏/附件 3 融合候选；新小时预报贡献以保留重规划、当前库存、负载修正和当前光伏锚点的严格对照衡量。逐笔交易合约分别报告冻结主调度重计费与重新优化，不能混为一项结果。
 
@@ -33,7 +35,7 @@
 | `docs/reviews/` | 各轮评审、修订计划与回应 |
 | `docs/paper/` | 论文写作、模板适配和格式审计 |
 | `paper/` | LaTeX 源码；`generated/` 为自动生成的表格与数值 |
-| `outputs/deliverables/` | 最终 PDF 和五个 Excel |
+| `outputs/deliverables/` | 论文 PDF、支撑材料 ZIP 和五个 Excel |
 | `outputs/main/` | 主结果、调度归档及独立验算 |
 | `outputs/experiments/` | `revision/`、`round2/`、`paper-study/` 实验及专项验算 |
 | `outputs/verification/` | 工作簿、论文和复现验收 |
