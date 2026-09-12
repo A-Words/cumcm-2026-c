@@ -17,6 +17,7 @@ DEST = ROOT / "paper/generated"
 KEYS = ("q2", "q3", "q4_2", "q4_3")
 NAMES = {"q2": "问题2", "q3": "问题3", "q4_2": "问题4-2", "q4_3": "问题4-3"}
 DATES = ("2025-03-20", "2025-06-21", "2025-09-23", "2025-12-21")
+REPRESENTATIVE_DATE = "2025-09-23"
 SLOTS = (60, 72, 84, 96, 108, 120)
 PURCHASE_TITLE = "微网在指定时间段的购电量及全天的购电量和购电费"
 STORAGE_TITLE = "储能设备在指定时间段的充放电量及0:00和24:00的储电量"
@@ -367,6 +368,7 @@ def main():
     for key in KEYS:
         chosen = [next(day for day in results[key]["days"] if day["date"] == date) for date in DATES]
         detail = []
+        representative = []
         name = NAMES[key]
         tag = key.replace("_", "-")
         costs, all_events = [], []
@@ -380,16 +382,17 @@ def main():
             check(f"{key}.{date}.adjusted", final, dispatch[f"{key}_adjusted"][index])
             check(f"{key}.{date}.bill", day["totalCost"], dispatch[f"{key}_costs"][index, 3])
             day_tag = f"{tag}-{date}"
-            detail.append(f"{date_title(date)}的购电和储能结果分别见"
+            destination = representative if date == REPRESENTATIVE_DATE else detail
+            destination.append(f"{date_title(date)}的购电和储能结果分别见"
                           rf"表\ref{{tab:{day_tag}-purchase}}和表\ref{{tab:{day_tag}-storage}}。")
-            detail.append(purchase_table(f"tab:{day_tag}-purchase", day["plan"], day["planCost"], date,
+            destination.append(purchase_table(f"tab:{day_tag}-purchase", day["plan"], day["planCost"], date,
                 final if key in ("q3", "q4_3") else None, day.get("adjustedCost", day["planCost"])))
             c = np.asarray(day["charge"]).reshape(6, 24).sum(1)
             d = np.asarray(day["discharge"]).reshape(6, 24).sum(1)
-            detail.append(table(STORAGE_TITLE + f"（{date_title(date)}）", f"tab:{day_tag}-storage",
+            destination.append(table(STORAGE_TITLE + f"（{date_title(date)}）", f"tab:{day_tag}-storage",
                 ["时间段", "充电量", "放电量"] * 2,
                 storage_rows(day["charge"], day["discharge"], day["socStart"], day["socEnd"]), spec="lrrlrr"))
-            detail.append(r"\FloatBarrier")
+            destination.append(r"\FloatBarrier")
             adjustment = day.get("adjustedCost", day["planCost"]) - day["planCost"]
             costs.append([date[5:], number(day["planCost"]), number(adjustment), number(day["emergencyCost"]), number(day["totalCost"])])
             ev = events(day["emergency"])
@@ -405,6 +408,7 @@ def main():
         detail.append(table(f"{name}指定日期的全天账单（元）", f"tab:{tag}-days-costs",
             ["日期", "原计划费", "调整费", "紧急费", "总费用"], costs))
         detail.append(r"\FloatBarrier")
+        files[f"representative-day-{tag}.tex"] = "\n\n".join(representative)
         files[f"selected-days-{tag}.tex"] = "\n\n".join(detail)
 
     for name, content in files.items():

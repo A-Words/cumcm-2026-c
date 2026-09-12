@@ -2,7 +2,7 @@
   "status": "passed",
   "source_sha256": {
     "scripts/build_paper_evidence.py": "fd07d097921bfb9bf60e5af71da6adc808e3f901941eeb4bc61867e440df40c6",
-    "scripts/build_paper_tables.py": "5f334bd5809aa6f270ea6b8a38149fac921f7a7426ec1f5793f0b32f619406e9",
+    "scripts/build_paper_tables.py": "6d849a23011ca7aa51344b95cc10af1ebdd174015b6e3bc753fd05187bc97e6d",
     "scripts/model.py": "329a81345f52c1e73756fb4ef189e787dd4e5b970e7bdb57e9dd2cabc4695cdc",
     "outputs/main/summary.json": "4a86227270e8e51dae16e7def18aeef41559f9725635626200b96ddd9c4259d9",
     "outputs/experiments/revision/experiments.json": "66ce8b308ffbe9d812b0a4f108e0c724e069ccd408b35d1c3bc95fb07c6ee022",
@@ -30,13 +30,13 @@
     "paper/generated/evidence-numbers.tex": "3eb136ca84a47e05b14c1f83c68cd3c42e0153615d93f4c90ce7f53a34018c54"
   },
   "figure_sha256": {
-    "outputs/figures/paper-q1-dispatch.pdf": "09929e7242f9f77d2f6e314b0381de6dc9692ef9571b89cca8c31ff8a875f610",
+    "outputs/figures/paper-q1-dispatch.pdf": "bcf081538085276bbebb60cfd42c4b01defb813fa308a7e3b5315339615a8c54",
     "outputs/figures/paper-q1-dispatch.png": "08ffe5a9dee21f898c431c282735f001d5380aeaf4c26685f011f4efab3101b9",
-    "outputs/figures/paper-q2-day.pdf": "c3feb064965d21243ed2ef1766ef619fa6951e871451593fb3a63ab05fe46e69",
+    "outputs/figures/paper-q2-day.pdf": "edf5a581c55cde6b2f0fbfe22c8be76557c23ab53bcf4b009e2f3c8fc67d56bc",
     "outputs/figures/paper-q2-day.png": "485aab1aec192d6ee1de86cb85f2664afa04569fc34ce8bdf0ebb1d206682511",
-    "outputs/figures/paper-q3-day.pdf": "3bf68b265c6668e47bbe5b0862b3bb6872f120af305f9bab31ce04f0aeb0d77b",
+    "outputs/figures/paper-q3-day.pdf": "8158857b8500579f8d14b5a702c4a958c8768810f90210684e539d06d0f5fa72",
     "outputs/figures/paper-q3-day.png": "857504db9a80e077584513c27fa13e6f83fb146339155514c995fbe753b5dde8",
-    "outputs/figures/paper-q4-months.pdf": "2835b5ac73ab2d62780c509dc93c9625f57ee98ce654dd32b5123a16d82fc62e",
+    "outputs/figures/paper-q4-months.pdf": "83fe009bdc5594ac34fdcc332c053585b092e52e17c9d0454fa49e807d8f78bb",
     "outputs/figures/paper-q4-months.png": "8a82f78fe18eecaf3573a79d25a34ed3806884ffa8a1ae085d7874dd91189331"
   },
   "numbers": {

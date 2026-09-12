@@ -2,12 +2,12 @@
   "status": "passed",
   "checked_on": "2026-09-12",
   "pdf": "outputs/deliverables/microgrid-paper.pdf",
-  "pdf_sha256": "7c7e327bcc0a607962825a10abb0f066224b0aaada548239debb2b31ba61b355",
-  "pages": 47,
+  "pdf_sha256": "4a13dab38fb1639719b7d234f5e030ea01a3d57272db1fbb09420de267cd1d29",
+  "pages": 46,
   "body": {
     "start": 2,
-    "end": 44,
-    "pages": 43,
+    "end": 29,
+    "pages": 28,
     "definition": "Problem restatement through model evaluation and extension, including required result tables.",
     "question_page_ranges": {
       "q1": {
@@ -16,45 +16,50 @@
         "pages": 5
       },
       "q2": {
-        "start": 10,
-        "end": 17,
-        "pages": 8
+        "start": 9,
+        "end": 14,
+        "pages": 6
       },
       "q3": {
-        "start": 18,
-        "end": 27,
-        "pages": 10
+        "start": 15,
+        "end": 21,
+        "pages": 7
       },
       "q4": {
-        "start": 28,
-        "end": 39,
-        "pages": 12
+        "start": 21,
+        "end": 27,
+        "pages": 7
       }
     },
-    "including_references_pages": 45
+    "including_references_pages": 29,
+    "including_abstract_and_references_pages": 30,
+    "page_limit": 30,
+    "within_limit_including_abstract_and_references": true
   },
   "abstract_page": 1,
   "abstract": {
-    "cjk_before": 561,
+    "cjk_before": 786,
     "cjk_after": 786,
-    "cjk_added": 225,
+    "cjk_added": 0,
     "first_page_content_bbox_y_pdf_pt": [
       70.37199401855469,
       672.6876220703125
     ],
     "usable_height_occupancy": 0.8602570552685677,
-    "measurement": "Title, abstract and keywords span / A4 height excluding the template's 25 mm top and bottom margins; excludes footer."
+    "measurement": "Title, abstract and keywords span / A4 height excluding the template's 25 mm top and bottom margins; excludes footer.",
+    "unchanged_in_this_revision": true
   },
   "bibliography_pages": [
-    45,
-    46
+    29,
+    30
   ],
   "appendix_pages": [
-    47,
-    47
+    31,
+    46
   ],
-  "table_count": 64,
-  "body_table_count": 63,
+  "table_count": 66,
+  "body_table_count": 22,
+  "appendix_table_count": 44,
   "figures": 4,
   "numbered_equations": 40,
   "bibliography_entries": 12,
@@ -75,8 +80,15 @@
   "embedded_font_objects": 18,
   "specified_date_scenarios": 16,
   "required_original_format_tables": 38,
+  "body_required_original_format_tables": 10,
+  "appendix_required_original_format_tables": 28,
+  "appendix_sections": {
+    "app:specified-dates": 31,
+    "app:checks": 41,
+    "app:support": 46
+  },
   "numeric_aggregation_checks": 656,
-  "independent_archive_to_pdf_fields": 540,
+  "independent_archive_to_pdf_fields": 576,
   "supplementary_sensitivity_checks": 201,
   "source_and_generated_hashes": "matched",
   "replacement_characters": 0,
@@ -146,11 +158,11 @@
     },
     {
       "number": 15,
-      "page": 11
+      "page": 10
     },
     {
       "number": 16,
-      "page": 11
+      "page": 10
     },
     {
       "number": 17,
@@ -162,7 +174,7 @@
     },
     {
       "number": 19,
-      "page": 12
+      "page": 11
     },
     {
       "number": 20,
@@ -174,79 +186,79 @@
     },
     {
       "number": 22,
-      "page": 18
+      "page": 15
     },
     {
       "number": 23,
-      "page": 18
+      "page": 15
     },
     {
       "number": 24,
-      "page": 19
+      "page": 16
     },
     {
       "number": 25,
-      "page": 19
+      "page": 16
     },
     {
       "number": 26,
-      "page": 19
+      "page": 16
     },
     {
       "number": 27,
-      "page": 19
+      "page": 16
     },
     {
       "number": 28,
-      "page": 19
+      "page": 16
     },
     {
       "number": 29,
-      "page": 20
+      "page": 17
     },
     {
       "number": 30,
-      "page": 28
+      "page": 21
     },
     {
       "number": 31,
-      "page": 28
+      "page": 22
     },
     {
       "number": 32,
-      "page": 28
+      "page": 22
     },
     {
       "number": 33,
-      "page": 28
+      "page": 22
     },
     {
       "number": 34,
-      "page": 29
+      "page": 22
     },
     {
       "number": 35,
-      "page": 29
+      "page": 22
     },
     {
       "number": 36,
-      "page": 29
+      "page": 23
     },
     {
       "number": 37,
-      "page": 38
+      "page": 26
     },
     {
       "number": 38,
-      "page": 40
+      "page": 28
     },
     {
       "number": 39,
-      "page": 40
+      "page": 43
     },
     {
       "number": 40,
-      "page": 41
+      "page": 44
     }
   ],
   "template": {
@@ -259,7 +271,7 @@
     ]
   },
   "protected_inputs_and_model_results_unchanged": true,
-  "baseline_commit": "f5ca4d8fb7f0d974af7abba0ed699aebda34ff81",
+  "baseline_commit": "fbc2297a424d651e9e3592fad83feced8dcce6f7",
   "protected_scopes": [
     "problem",
     "data",
@@ -317,42 +329,47 @@
     "paper/generated/q4-comparison.tex": "7ba637a4f977e799e8217c6dabdfb4430996404e45585850e392e68a9c95ea10",
     "paper/generated/q4-days-summary.tex": "cddb212a4984e4282d211a09800699a09afd6b7ba13179764f9d94fef1c34767",
     "paper/generated/q4-price-sensitivity.tex": "3fc511964786afcc82b9b28890eecad4122ba6278429c34732152c8510005ae7",
+    "paper/generated/representative-day-q2.tex": "f6fccb66b9f6984354bc8850776d9fe44b68a8a225bc2f03ca109252ef2faddc",
+    "paper/generated/representative-day-q3.tex": "c0b25b463ab32a8ce7ebe4bb4dbd391b79946415ef106204c85340fc1baed6c4",
+    "paper/generated/representative-day-q4-2.tex": "b0f8b770b41911ff2eec9afc9b82ef498781803090f918658d541055535d16f8",
+    "paper/generated/representative-day-q4-3.tex": "4191aa91b8e9c80fa7ef435abee0209c02c61c48c8d0d485e56658c51752c473",
     "paper/generated/rolling-months.tex": "ac5e651915b1079c76f48003332380d3d13bd707c5fc05c758830b3c9d0293a8",
     "paper/generated/rolling-summary.tex": "b2ba4ed351b1a9b83e2c36609273d390ed7dd0bb5c4e02fbb2d120c19230a93c",
-    "paper/generated/selected-days-q2.tex": "1c204269553e25fba7b879a4795f52d263985b0cf3019d4f36104e397c768da0",
-    "paper/generated/selected-days-q3.tex": "0e0493315867edc282cbfab71c32671384ff6851510cadf2d61ea214a3601147",
-    "paper/generated/selected-days-q4-2.tex": "1a88dcc06225e7e089311c375138c8210c7495f3c43d8c40e83225f2115d4f48",
-    "paper/generated/selected-days-q4-3.tex": "42539b616092f8e8bad9b8ea8fc7495f3764ab86c49b7605e72e827a00cf049b",
-    "paper/main.tex": "a5a09d5b22a7c98ad9a1873db1f85a75d2ac9a412a95dab093d3b4a24f824622",
+    "paper/generated/selected-days-q2.tex": "afb9a6bbae960d48f8315352b17a02462b077f27bac4ffd9244c18fa00b2f3dd",
+    "paper/generated/selected-days-q3.tex": "4c7272f5c5fc895263f9be6dd44637ef7916cd903efb9064af33fb920d3fa050",
+    "paper/generated/selected-days-q4-2.tex": "98388352abf27ec222c831fc5423036e19d24cba64f13e56b679cec7c4742b76",
+    "paper/generated/selected-days-q4-3.tex": "a267695dba49f788be938b0097c2d3584ba0313ee3bad9d496e786f72eb9483b",
+    "paper/main.tex": "7d61ada1246e050d837ff97bc84bddf7da1af52830b71bc73b4dad62bee4c0eb",
     "paper/references.bib": "b12527b9c76d90a72f9046c4e0030c0a4f9f0f11d2ca2fc446912c9931472330",
     "paper/sections/abstract.tex": "e8afdc492e0cd46eda52fc66f63789238c6dd9192d6b0e3713c0962296806192",
     "paper/sections/ai-statement.tex": "a2afe616bb0b3edc321dd5e4d5a472e8c97d3f33a173af3ebca859c43b9a3f7f",
     "paper/sections/analysis.tex": "5bc04d40f585b180b36c136def0bf9ebe68eed8ab0ec24dcc3297a303e5b865e",
-    "paper/sections/appendix.tex": "b6b3c17c666f0fd9d7e61f9ee02f87cc587a8cc67d413c46d53d4476e3cf96dd",
+    "paper/sections/appendix.tex": "a29d66ad5a8d945a4872236e685703e0c52f757c48e65699daf0927a57a73119",
     "paper/sections/assumptions.tex": "3a3d8b13abe89bece3b52c71d3b5a06bcef5a87d683185f7142e6e2a7244e3fa",
     "paper/sections/body.tex": "2f12a87bb5b18952a60f271f1c452f05b568465c418c299a0f82e0f232878195",
-    "paper/sections/evaluation.tex": "1fba7a7df6bb21c525901a3e1e5b855e1ed0ecad3cdf4c1fb6431383da86fb51",
-    "paper/sections/model.tex": "5a34b2117e706f85659b144f703a730c21ad71ff4ea582499fd4194136f4929e",
+    "paper/sections/evaluation.tex": "7bc5e4beb7565846aef0e91778b614aaccd16a3785be9da9fed91fcfb3da1262",
+    "paper/sections/model.tex": "7093f008cca3d20b7b472d1e2b79b880d0abf05b62c94bbbe66ddf34c85e9e07",
     "paper/sections/physical-model.tex": "03d0eeeeb0b29b10dd2554cc0bf1a866e73a70814f7ab4f089939d51868d9418",
     "paper/sections/problem.tex": "8dfeeec1d03a31b6799c0aca8d05c2601cfb845791f427c19814085833936810",
-    "paper/sections/q1.tex": "952d30b256d82e083dd1439de801b79966edfc5d41be68c93e1d7ccaf95fafb5",
-    "paper/sections/q2.tex": "0bc991402abbbe7a7610af371d22a65a8b10c3c2468fd72e5268d6df3532ac8c",
-    "paper/sections/q3.tex": "6f52f44cb105dc88c57f84b7e381974891829b7d72721059192dd97124ded813",
-    "paper/sections/q4.tex": "4be891cbe4f594358c4d2244a01cfcdebd4df55f99caca72044b9855831f4c62",
-    "paper/sections/results.tex": "98a4bad49dd12255c774f4420f16f9e7aa9249a98f75d1e81c1faa787f619b11",
+    "paper/sections/q1.tex": "5079abca7818338517deebe61af01f770e589cab2c66697723740ba6f743a442",
+    "paper/sections/q2.tex": "4304e86860d1bc323a087b957e85e32c1af560119c3be40a118eb0e4e6c945de",
+    "paper/sections/q3.tex": "8d9b75da737628735ac3a1d0a97c2e846ea245aaadea1f277cfd94d7c709dfbc",
+    "paper/sections/q4.tex": "a6c3362dc8f777e4c89056e4c4a978354534386594427f1dd72c928f8b085efe",
+    "paper/sections/results.tex": "fdcdda08c43c4ab4b7a5135308c0df628b19e92b74e94fd8907c4362712f1c7a",
+    "paper/sections/supplementary.tex": "505d533c027c48b84a9374963b169e904ae741cfae951a5604ce6e09b5c936b4",
     "paper/sections/symbols.tex": "9cb60ddff878556163fc4b342a06c9ee6ab270a4bf7dbdd9533e41af36a38d59"
   },
   "figure_sha256": {
-    "outputs/figures/paper-q1-dispatch.pdf": "09929e7242f9f77d2f6e314b0381de6dc9692ef9571b89cca8c31ff8a875f610",
+    "outputs/figures/paper-q1-dispatch.pdf": "bcf081538085276bbebb60cfd42c4b01defb813fa308a7e3b5315339615a8c54",
     "outputs/figures/paper-q1-dispatch.png": "08ffe5a9dee21f898c431c282735f001d5380aeaf4c26685f011f4efab3101b9",
-    "outputs/figures/paper-q2-day.pdf": "c3feb064965d21243ed2ef1766ef619fa6951e871451593fb3a63ab05fe46e69",
+    "outputs/figures/paper-q2-day.pdf": "edf5a581c55cde6b2f0fbfe22c8be76557c23ab53bcf4b009e2f3c8fc67d56bc",
     "outputs/figures/paper-q2-day.png": "485aab1aec192d6ee1de86cb85f2664afa04569fc34ce8bdf0ebb1d206682511",
-    "outputs/figures/paper-q3-day.pdf": "3bf68b265c6668e47bbe5b0862b3bb6872f120af305f9bab31ce04f0aeb0d77b",
+    "outputs/figures/paper-q3-day.pdf": "8158857b8500579f8d14b5a702c4a958c8768810f90210684e539d06d0f5fa72",
     "outputs/figures/paper-q3-day.png": "857504db9a80e077584513c27fa13e6f83fb146339155514c995fbe753b5dde8",
-    "outputs/figures/paper-q4-months.pdf": "2835b5ac73ab2d62780c509dc93c9625f57ee98ce654dd32b5123a16d82fc62e",
+    "outputs/figures/paper-q4-months.pdf": "83fe009bdc5594ac34fdcc332c053585b092e52e17c9d0454fa49e807d8f78bb",
     "outputs/figures/paper-q4-months.png": "8a82f78fe18eecaf3573a79d25a34ed3806884ffa8a1ae085d7874dd91189331"
   },
-  "evidence_manifest_sha256": "669bf8a3cffa6bd0aca5af2ba19b6375d28bd3e4db8533850f75b3c40988094d",
+  "evidence_manifest_sha256": "81c626b0323cc21aa079eb4cb588140cccb971c363c4d04af5a53ba4f532187b",
   "visual_review": {
     "status": "passed",
     "page_render_sha256": {
@@ -364,47 +381,46 @@
       "6": "ee6a1603189f26b0332de713dc43d900564ad34f7e5ab72a3671027315cabd40",
       "7": "c174edba7fc28a1994fb172cec0289f84e65f214074c905854ff90158c2fc890",
       "8": "0924b0faee01a46d57cfe0ec0633c529af098ae3cd493f8798cc3249a27f48ef",
-      "9": "dded87e9a5d1724885a93a5c3bb4e3105ad906f3b6ae64f7ec38c10eb2d51ab7",
-      "10": "ee6289d5ad2c975c9302ef6b69e5e6f32da22834eb10c59aea4390210ad655cb",
-      "11": "bddae306f7dba2c0bcb166321c4a63ed0519d2f4852a887ea19e4692424f290e",
-      "12": "b89a4e3dcc32846503bebb47e6dd43d56f9ce577193a14b8c9a413b85b3dff61",
-      "13": "68fc0474f579ba81e52329bde6b81a924ae7e2cce0686e80421d575d3efbc45f",
-      "14": "50d1bda762d8f13a5d75189512b8066fce1149b8a9eb05cae918a7c5cf8884bd",
-      "15": "55f33a207f030d32127358b9614181f3330ecac8b265158fffcdffe32c04b795",
-      "16": "9e32e0dfcb64c6973dbcf6f02d13e0836ad0c4745382c30ff1b5d18c3ab87679",
-      "17": "221b95f17fef479e90ab22db18f6ceaa4c3c3b9b5bd5abc83ca6988cf196e9c8",
-      "18": "b01922d22793555358a8fbaee1ec09613ce23059b8e33acb93a9a05967cb272a",
-      "19": "8602834d3805910dbaabdb3e934a6c330e00aa8da8b4c8f3b2156fb44d2ff8fc",
-      "20": "3daf3af3dacc10f2a7cdeb8e4b463275334779bc76006c01d2a7f83e9e5f037d",
-      "21": "1a9b20ff0a1c578a54150ae72881243a6d193dd70875e53460b00e999300bf97",
-      "22": "026938661409975587b3f1970d5cf587490c1a33e07c294f4dcd20484478add7",
-      "23": "60c0f6cfe25c2185a23971af9c3a2dc0332466f03de5d164faf09f0c844489da",
-      "24": "35f2a0549a7a30ea99d97587a1d8e1cb4806f35272fbc8d65db63e6ee3614576",
-      "25": "cd22784ca64b6c35fdac751df21857374ae1f64cb31d873bf33da45ec1d08799",
-      "26": "fccbaf71767c8eb2f822a248435d9bc041ba63dcf67d1bb488762b00a7e68f05",
-      "27": "9d268a5093f0994e1dfafc6750d20b4f5511a9f8841541fbefafe4afe1c4d3ea",
-      "28": "a9da4c21e15350f8e47d12d894883c3988a146efbca2f7321099093fef0c6857",
-      "29": "f47abbecb6100beed3dc032dac787a939131f56574b6ccdf24816141e29cf866",
-      "30": "848b0949d7aa211d2a8889ce64df3f2bce23b1ac955ce7bccdb988dd5385eb92",
-      "31": "36b626e8f1e3dbe7b8681b22917d764702f68a8a656b7434a969f38b5af00ff4",
-      "32": "a2b5b5527f84a84f01293c4272996aef808415dac41464e0cf83179697324895",
-      "33": "80485595f105b0086f7eb6c2273360a2cfec0db8ce3912cba14d2e75d001a730",
-      "34": "c47685858e647ad9913d63cd261ce7141780037f2edf95e3b46c11e11d88679f",
-      "35": "fa42f58887a11ceb8fca920d84b212e48096af1082605b6f60e54822956ed138",
-      "36": "8d05c6e4979fc622603eeee9b4fef557df635aee80fe3a65182d4c29fc6cb082",
-      "37": "0db31891959cc1adbc6c1462051357dee085847abb17d5c743c6c5c027d2b97c",
-      "38": "a84ca5e3bd6b34159b822d106ec83d07f99afde3281b303486f59bd18eaf491a",
-      "39": "bb659b593cfa3f473aa81e425de38af755b9a16a46a1517d77433143381a6848",
-      "40": "5400e76e8a1095c4192db3cbf422b32e736d4f1f6d6637ff1347d666ecc239c4",
-      "41": "ed2865f8784a86129ee84eb296540079a95bb8a7df3b8e603055a172ce555f1d",
-      "42": "6abae7887fbc853d16c8114bfcba41bf2d0911b2814d3048291f1ec252140db1",
-      "43": "9fb2014c3c2fec28712579933dad39b64b4445078fb1ef8b2a757ab84796ffe4",
-      "44": "9251e2a461a43c425bf4579f235c5c45ae8a42defe5d787e7d1a8036bea7c711",
-      "45": "9c28ce0a39af89deae1a50b39b70ad5b1551c0ad53d70d38e69adac6ab131acb",
-      "46": "ed9b97ce5bedd8e431b7bdd3e149e4a978486f4d6936c3cb2414a5399d0c49ac",
-      "47": "a4d01097cfd49cafa3b005b8809e5989b92d31d04a1113eadaad249d826de034"
+      "9": "34e905a4e0b1bf2fdb8e58ddaa06ee37bc8ede196bac4781bb4b4a44d7e96d4c",
+      "10": "fdf92786a96987163fb2553c9ece7bf333201d598521ebb38bc72f8a4503b0aa",
+      "11": "260ecb9356bef70b97d5f96fc14a19b098c9b7239358d54e43457d5fa85d32bc",
+      "12": "9b502485023596b33f12a14630e7b448cb7c048e7cc9973071dfcf19cd9a9ce8",
+      "13": "0c0374d7e298eb363fb09b73912c14dcf9d1f357b8708c389469c4036f00e5ac",
+      "14": "0d475187537d1c15f9bf1980ac929c24bf72f1de97d1b155e2e5f7009de3b8cf",
+      "15": "dd485cb8ec93b9d5d246c9fdccd317fdb926d981881900bea484d1601d6cf03b",
+      "16": "140d0451aa1f0152b0bc451c93dbebffccfc556e9a62092b34705a28828dba38",
+      "17": "9196b13f42250437d2a0b5610d0b8ba66d6096ab8c17708bcff41458e43d0aa8",
+      "18": "deba5cc3054f20e4f596a290f821ee19ca25b7c893ecb4d0d9040bb98dc3b82c",
+      "19": "f6434d47af5f04343094379a4a4f1055eb48276ec8a5a4be8b2aad1eb2f46b15",
+      "20": "9481ac29591fb9e42dafab7c76535df2bb26b6b274abe9ffe7d35e6d85bbc5c2",
+      "21": "2d1d693df67ea97c6298dc3b02f79fc185712b1e80c69ce84d77b540f2a7a649",
+      "22": "4953f84441ca641931661cac9bef7f341877ebd56964d9740c335d962e83dce1",
+      "23": "02e34d0dc564990ab7c9153b8dacdacaad0934e62ea87aa8173949c3b9b134fa",
+      "24": "bd914ff7b7285e72690d8962a868ff362cf7ecde9d2c660bbece477bf3508c98",
+      "25": "b31a9f0866b81fb6634865d6c3c18a237a1e469125a2910132165abd4b6d88b0",
+      "26": "2bbc1cc4e7b610df130a87e6b24f32ea5bbe197ed2bb699d02d71275f86a5960",
+      "27": "2e11ffce6bd5fb39823f840f845acede6e37a2688d6f89bafb3c4e3e2613f27d",
+      "28": "6c411a52c9f217d3176cd9382e78cd33e7bf076a1ae6789210a0949ad1ab2ef5",
+      "29": "efddff2d1638c51b5ea3b08966a1876210b3620a1d9b041a2f69d8cd86a45f2e",
+      "30": "6c50f8a43763a8b0110ecc8b918794336a614d504c42765028d538161b5e1bc3",
+      "31": "07f3325578e48819ab85b70ecb06406992000c0c55b28f7a008720fb8a294ff1",
+      "32": "187ed9f28305993f59675624cd1bedf97ea5d1eb3e16e84f791d219bea8feb3d",
+      "33": "a923850734af3f466130c2320c919d3bd53ab443ee4c615ee41147d5673d3173",
+      "34": "a685c68b692facc469c90f59b465be5406d34eb1334afc1475d92f999532b570",
+      "35": "4444a7caa06762a3394e5643220ba64f8845c6e9e7cd08d2e54503ed62dde73b",
+      "36": "f5a9ef39a6209826577c3aa15d3af9fa55bd5adf01eb6c6858f25752d0f25063",
+      "37": "19f124c7989c288a6623e1f649e3847e24327b40c66217a897e155b91fb4eafe",
+      "38": "f09d6d30c8707120373548bfdee53d5cc5b643a06a15456c91ce7ba44e11ded2",
+      "39": "d933aa91c9e0e4a60b1cc0ffe6cfcc551f4984da715ebb8a8de1d2c4a1906c57",
+      "40": "6d465f0f85c96438c71f884c3564f1db8206363977a699ffc824171001088773",
+      "41": "e35240102015c21f43f7a644d4104cc51f8de3496921291bbb325e8f9c5d1f8e",
+      "42": "4e20121eff35a0e684681830c477570dcb7dab8906e280b259b6679b6ebb506f",
+      "43": "ef880d9c5c28d5855e505add2f3c8a5fb64a98cdcf618acae365f6b41146cbda",
+      "44": "014d0f0e3e1321910dfbb7b8de5433722c2d3551a62e12f9604c3e39ab34d8a6",
+      "45": "8a755edfcac2b5c7ef8b92b4109ed52c54404aa4a7df841d5d4385e5e287a31e",
+      "46": "2e11a4543990ed66f3e0605f7458bf71b3f0765554551d671db6f6128ed6046d"
     },
-    "all_page_overview": [
+    "overview_pages": [
       1,
       2,
       3,
@@ -450,59 +466,38 @@
       43,
       44,
       45,
-      46,
-      47
+      46
     ],
-    "full_page_spot_checks": [
-      1,
-      8,
-      9,
+    "detailed_pages": [
       13,
-      14,
-      15,
       19,
-      22,
-      24,
       26,
-      33,
-      34,
-      37,
-      40,
+      29,
+      30,
+      32,
       41,
-      42,
-      43,
-      44,
-      47
+      44
     ],
-    "render_scale": 1.3,
-    "notes": [
-      "All 47 final pages checked as contact sheets. Required table formats, clip definition, promoted comparisons, section 7 and support index checked at full page size.",
-      "No visible clipping, table overflow, missing glyphs or unresolved references.",
-      "The four regenerated figure PDFs render identically to the baseline; timestamps changed."
-    ]
+    "scope": "All-page contact sheets, representative tables, appendix transitions, model evaluation and final bibliography pagination reviewed."
   },
   "limits": [
     "Q2-Q4 remain causal feasible heuristics; same-year economic comparisons are not unseen-year validation.",
-    "Figure PDF regeneration changes timestamps; the four plots render identically to the baseline.",
+    "Figure data and appearance are retained; regenerated PDFs may have different timestamps.",
     "Omission of a separate conclusion section follows the user's requested structure, not a claim that GB/T 7713.2 forbids conclusions."
   ],
-  "figure_visual_comparison": {
-    "baseline_commit": "f5ca4d8fb7f0d974af7abba0ed699aebda34ff81",
-    "identical_render_files": [
+  "retained_visuals": {
+    "status": "passed",
+    "baseline_commit": "fbc2297a424d651e9e3592fad83feced8dcce6f7",
+    "unchanged_rendered_figures": [
       "outputs/figures/paper-q1-dispatch.pdf",
       "outputs/figures/paper-q2-day.pdf",
       "outputs/figures/paper-q3-day.pdf",
       "outputs/figures/paper-q4-months.pdf"
-    ]
+    ],
+    "abstract_page_render_unchanged": true
   },
-  "ai_tools_declaration": {
-    "unchanged_from_baseline": true,
-    "page": 44,
-    "before_bibliography": true
-  },
-  "git_whitespace_check": "passed",
   "table_style_validation": {
     "path": "outputs/verification/table-style-validation.json",
-    "sha256": "455e980fc4d1ba66d83abfbb76dd8fbfa4dffdaae7baf8a32735f517d13f0251"
+    "sha256": "2e05c99f1f5f3f10b633e9e1ba04a4b78b3ddd2a95dfa0432c1460fedc031030"
   }
 }
