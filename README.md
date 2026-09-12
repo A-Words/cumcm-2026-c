@@ -4,9 +4,9 @@
 
 已完成 [LaTeX 论文 PDF](outputs/deliverables/microgrid-paper.pdf)，可编辑入口为 [paper/main.tex](paper/main.tex)。论文采用用户指定的 [CUMCMThesis 模板](https://github.com/latexstudio/CUMCMThesis)，按模板组织章节，并按广东赛区的本次提交要求去掉承诺书、编号页和目录。12 篇参考文献均在正文中引用，表格直接从已验证结果生成，覆盖四问与两轮补充实验。[模板适配说明](docs/paper/template-adaptation.md)、[撰写记录与编译说明](docs/paper/paper-writing-notes.md)、[文献核实笔记](docs/paper/literature-notes.md) 记录结构、写作取舍及来源。运行 `python scripts/build_paper.py` 可重新核对表格并编译论文。
 
-按教师意见完成[逐问修订](docs/paper/paper-revision-teacher.md)：问题重述至总结共 27 页，问题一至四分别为 6、5、6、6 页。每问包括目标函数、分条约束、汇总模型、求解步骤、结果分析和灵敏度检验。完整 PDF 59 页，另外包含摘要、参考文献及完整日期附录；页数口径见修订记录。
+按最新教师意见完成[摘要、结果表与评价部分修订](docs/paper/teacher-format-review.md)：摘要增加225个汉字，首页内容约占可用版心的86%；四问按题面表1—表3展示完整指定日期结果，重要对照进入正文。第七节为“模型的评价与推广”，分为7.1优点和不足、7.2推广，不再设独立总结。完整PDF 47页，正文第2—44页，问题一至四分别为5、8、10、12页；附录仅1页程序与支撑文件索引。
 
-全文 46 张表保持正文同等字号和三线表样式，储能表使用单组列，说明融入正文；4 幅数据图采用矢量图。正文不使用下划线，文献引用采用模板上标。当前验收见 [论文验证](outputs/verification/paper-validation.json)、[逐表验收](outputs/verification/table-style-validation.json)，历次调整见 [三线表核查记录](docs/paper/table-style-audit.md)。
+全文64张表保持正文同等字号和三线表样式，其中38张题面格式表均在正文：购电与储能使用原题六列横向结构，紧急电量使用四日期并列结构。4幅数据图采用矢量图。正文不使用下划线，文献引用采用模板上标。当前验收见[论文验证](outputs/verification/paper-validation.json)、[逐表验收](outputs/verification/table-style-validation.json)，历次调整见[三线表核查记录](docs/paper/table-style-audit.md)。
 
 第一轮修订针对预报价值归因、缺少简单基准和增购撤回合约风险，处理依据见 [评审回应](docs/reviews/review-response.md)。问题 3、4-3 增加历史光伏/附件 3 融合候选；新小时预报贡献以保留重规划、当前库存、负载修正和当前光伏锚点的严格对照衡量。逐笔交易合约分别报告冻结主调度重计费与重新优化，不能混为一项结果。
 

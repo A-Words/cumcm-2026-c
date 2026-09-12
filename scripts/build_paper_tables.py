@@ -18,6 +18,9 @@ KEYS = ("q2", "q3", "q4_2", "q4_3")
 NAMES = {"q2": "问题2", "q3": "问题3", "q4_2": "问题4-2", "q4_3": "问题4-3"}
 DATES = ("2025-03-20", "2025-06-21", "2025-09-23", "2025-12-21")
 SLOTS = (60, 72, 84, 96, 108, 120)
+PURCHASE_TITLE = "微网在指定时间段的购电量及全天的购电量和购电费"
+STORAGE_TITLE = "储能设备在指定时间段的充放电量及0:00和24:00的储电量"
+EMERGENCY_TITLE = "微网在指定日期的紧急购电量"
 SOURCES = (
     "outputs/main/summary.json", "outputs/main/results.json", "outputs/main/dispatch.npz",
     "outputs/experiments/revision/experiments.json", "outputs/experiments/revision/dispatch.npz",
@@ -66,11 +69,13 @@ def events(values):
     return result
 
 
-def table(caption, label, headers, rows, long=False, spec=None):
+def table(caption, label, headers, rows, long=False, spec=None, header_prefix=""):
     """Use template-sized text and three rules; explanations belong in prose."""
     spec = spec or "l" + "r" * (len(headers) - 1)
     body = [row if isinstance(row, str) else " & ".join(map(str, row)) + r" \\" for row in rows]
     head = " & ".join(rf"\multicolumn{{1}}{{c}}{{{title}}}" for title in headers) + r" \\"
+    if header_prefix:
+        head = header_prefix + "\n" + head
     if long:
         lines = [r"\begingroup", r"\normalsize", r"\renewcommand{\arraystretch}{1.38}",
                  rf"\begin{{longtable}}{{{spec}}}",
@@ -90,34 +95,63 @@ def table(caption, label, headers, rows, long=False, spec=None):
     return "\\par\n" + "\n".join(lines) + "\n\\par\n"
 
 
-def keep_rows_together(rows):
-    """Keep a complete dated table block on one page, allowing a break after it."""
-    return [" & ".join(map(str, row)) + (r" \\*" if i < len(rows) - 1 else r" \\")
-            for i, row in enumerate(rows)]
-
-
-def purchase_rows(plan, total_cost, final=None):
-    """One interval per row; original and final quantities have separate columns."""
-    rows = [[f"{clock(i)}--{clock(i + 1)}", number(plan[i]),
-             *([number(final[i])] if final is not None else [])] for i in SLOTS]
-    rows.append(["全天购电量", number(sum(plan)),
-                 *([number(sum(final))] if final is not None else [])])
-    cost = (rf"\multicolumn{{2}}{{r}}{{{number(total_cost)}}}"
-            if final is not None else number(total_cost))
-    rows.append(["全天常规购电费（元）", cost])
+def purchase_rows(plan, total_cost):
+    """Reproduce problem Table 1: three interval/quantity pairs and daily totals."""
+    rows = []
+    for start in (0, 3):
+        row = []
+        for i in SLOTS[start:start + 3]:
+            row.extend([f"{clock(i)}--{clock(i + 1)}", number(plan[i])])
+        rows.append(row)
+    rows.append([r"\multicolumn{2}{c}{全天购电量}", number(sum(plan)),
+                 r"\multicolumn{2}{c}{全天购电费}", number(total_cost)])
     return rows
 
 
 def storage_rows(charge, discharge, start_soc, end_soc):
-    """One interval per row; endpoint stocks have their own quantity column."""
+    """Reproduce problem Table 2, including its left-to-right interval order."""
     charge = np.asarray(charge).reshape(6, 24).sum(1)
     discharge = np.asarray(discharge).reshape(6, 24).sum(1)
-    na = r"\textemdash"
-    rows = [[f"{4*i:02d}:00--{4*i+4:02d}:00", number(charge[i]), number(discharge[i]), na]
-            for i in range(6)]
-    rows.append(["00:00", na, na, number(start_soc)])
-    rows.append(["24:00", na, na, number(end_soc)])
+    rows = []
+    for start in (0, 2, 4):
+        row = []
+        for i in (start, start + 1):
+            row.extend([f"{4*i}:00--{4*i+4}:00", number(charge[i]), number(discharge[i])])
+        rows.append(row)
+    rows.append([r"\multicolumn{2}{c}{0:00储电量}", number(start_soc),
+                 r"\multicolumn{2}{c}{24:00储电量}", number(end_soc)])
     return rows
+
+
+def date_title(date):
+    return ".".join(str(int(part)) for part in date.split("-"))
+
+
+def purchase_table(label, plan, cost, date=None, final=None, final_cost=None):
+    """Use two identically shaped panels when both original and final plans exist."""
+    headers = ["时间段", "购电量"] * 3
+    rows = purchase_rows(plan, cost)
+    prefix = ""
+    if final is not None:
+        prefix = r"\multicolumn{6}{c}{零时原计划} \\"
+        rows += [r"\addlinespace", r"\multicolumn{6}{c}{最终常规购电} \\",
+                 headers, *purchase_rows(final, final_cost)]
+    caption = PURCHASE_TITLE + (f"（{date_title(date)}）" if date else "")
+    return table(caption, label, headers, rows, spec="lrlrlr", header_prefix=prefix)
+
+
+def emergency_table(tag, all_events):
+    """Reproduce problem Table 3 with all four dates next to one another."""
+    prefix = " & ".join(rf"\multicolumn{{2}}{{c}}{{{date_title(date)}}}" for date in DATES) + r" \\"
+    rows = []
+    for i in range(max(map(len, all_events))):
+        row = []
+        for ev in all_events:
+            row.extend([ev[i][0], number(ev[i][1])] if i < len(ev) else ["", ""])
+        rows.append(row)
+    rows.append([cell for ev in all_events for cell in ("全天合计", number(sum(v for _, v in ev)))])
+    return table(EMERGENCY_TITLE, f"tab:{tag}-days-emergency", ["时间段", "购电量"] * 4,
+                 rows, spec="lrlrlrlr", header_prefix=prefix)
 
 
 def main():
@@ -228,10 +262,9 @@ def main():
     for field, archive in (("plan", "grid"), ("charge", "charge"), ("discharge", "discharge")):
         check(f"q1.json_{field}", q1[field], dispatch[f"q1_{archive}"])
     check("q1.total_grid", sum(q1["plan"]), summary["q1_grid_kwh"])
-    text = table("问题1指定时段与全天购电（电量单位：kWh）", "tab:q1-purchase", ["时间段", "购电量"],
-        purchase_rows(q1["plan"], summary["q1"]["cost"]))
-    files["q1-tables.tex"] = text + "\n" + table("问题1六个时段的储能充放电量及首末储电量（kWh）", "tab:q1-storage", ["时间段或时刻", "充电量", "放电量", "储电量"],
-        storage_rows(q1["charge"], q1["discharge"], q1["socStart"], q1["socEnd"]))
+    text = purchase_table("tab:q1-purchase", q1["plan"], summary["q1"]["cost"])
+    files["q1-tables.tex"] = text + "\n" + table(STORAGE_TITLE, "tab:q1-storage", ["时间段", "充电量", "放电量"] * 2,
+        storage_rows(q1["charge"], q1["discharge"], q1["socStart"], q1["socEnd"]), spec="lrrlrr")
 
     rows = []
     for weight in (0, .25, .5, .75, 1):
@@ -333,10 +366,10 @@ def main():
 
     for key in KEYS:
         chosen = [next(day for day in results[key]["days"] if day["date"] == date) for date in DATES]
-        appendix = []
+        detail = []
         name = NAMES[key]
         tag = key.replace("_", "-")
-        purchase, storage, costs, all_events = [], [], [], []
+        costs, all_events = [], []
         audit["specified_dates"][key] = []
         for day in chosen:
             date = day["date"]
@@ -346,19 +379,17 @@ def main():
                 check(f"{key}.{date}.{field}", day[field], dispatch[f"{key}_{field}"][index])
             check(f"{key}.{date}.adjusted", final, dispatch[f"{key}_adjusted"][index])
             check(f"{key}.{date}.bill", day["totalCost"], dispatch[f"{key}_costs"][index, 3])
-            if purchase:
-                purchase.append(r"\addlinespace")
-                storage.append(r"\addlinespace")
-            purchase_columns = 3 if key in ("q3", "q4_3") else 2
-            purchase.append(rf"\multicolumn{{{purchase_columns}}}{{l}}{{\textbf{{{date}}}}} \\*")
-            purchase.extend(keep_rows_together(purchase_rows(
-                day["plan"], day.get("adjustedCost", day["planCost"]),
-                final if key in ("q3", "q4_3") else None)))
+            day_tag = f"{tag}-{date}"
+            detail.append(f"{date_title(date)}的购电和储能结果分别见"
+                          rf"表\ref{{tab:{day_tag}-purchase}}和表\ref{{tab:{day_tag}-storage}}。")
+            detail.append(purchase_table(f"tab:{day_tag}-purchase", day["plan"], day["planCost"], date,
+                final if key in ("q3", "q4_3") else None, day.get("adjustedCost", day["planCost"])))
             c = np.asarray(day["charge"]).reshape(6, 24).sum(1)
             d = np.asarray(day["discharge"]).reshape(6, 24).sum(1)
-            storage.append(rf"\multicolumn{{4}}{{l}}{{\textbf{{{date}}}}} \\*")
-            storage.extend(keep_rows_together(storage_rows(
-                day["charge"], day["discharge"], day["socStart"], day["socEnd"])))
+            detail.append(table(STORAGE_TITLE + f"（{date_title(date)}）", f"tab:{day_tag}-storage",
+                ["时间段", "充电量", "放电量"] * 2,
+                storage_rows(day["charge"], day["discharge"], day["socStart"], day["socEnd"]), spec="lrrlrr"))
+            detail.append(r"\FloatBarrier")
             adjustment = day.get("adjustedCost", day["planCost"]) - day["planCost"]
             costs.append([date[5:], number(day["planCost"]), number(adjustment), number(day["emergencyCost"]), number(day["totalCost"])])
             ev = events(day["emergency"])
@@ -368,23 +399,13 @@ def main():
                 "final_at_slots": [final[i] for i in SLOTS], "charge_4h": c.tolist(), "discharge_4h": d.tolist(),
                 "soc_start": day["socStart"], "soc_end": day["socEnd"], "emergency_events": ev,
                 "daily_total_cost": day["totalCost"]})
-        appendix.append(table(f"{name}指定日期的六个购电时段（2025年，kWh）", f"tab:{tag}-days-purchase",
-            ["时间段", "原计划购电量", "最终常规购电量"] if key in ("q3", "q4_3") else ["时间段", "购电量"],
-            purchase, long=True))
-        appendix.append(table(f"{name}指定日期的六段充放电量及首末储电量（kWh）", f"tab:{tag}-days-storage",
-            ["时间段或时刻", "充电量", "放电量", "储电量"], storage, long=True))
-        appendix.append(table(f"{name}指定日期的全天账单（元）", f"tab:{tag}-days-costs",
-            ["日期", "原计划费", "调整费", "紧急费", "总费用"], keep_rows_together(costs), long=True))
-        emergency = []
-        for date, ev in zip(DATES, all_events):
-            if emergency:
-                emergency.append(r"\addlinespace")
-            rows = [[date if i == 0 else "", period, number(value)] for i, (period, value) in enumerate(ev)]
-            rows.append(["", "全天合计", number(sum(value for _, value in ev))])
-            emergency.extend(keep_rows_together(rows))
-        appendix.append(table(f"{name}指定日期的紧急购电事件（kWh）", f"tab:{tag}-days-emergency",
-            ["日期", "时间段", "购电量"], emergency, long=True, spec="llr"))
-        files[f"selected-days-{tag}.tex"] = "\n".join(appendix)
+        detail.append(rf"表\ref{{tab:{tag}-days-emergency}}按题面表3横向列出四个日期的全部紧急购电事件，"
+                      rf"表\ref{{tab:{tag}-days-costs}}给出含紧急费的完整账单。")
+        detail.append(emergency_table(tag, all_events))
+        detail.append(table(f"{name}指定日期的全天账单（元）", f"tab:{tag}-days-costs",
+            ["日期", "原计划费", "调整费", "紧急费", "总费用"], costs))
+        detail.append(r"\FloatBarrier")
+        files[f"selected-days-{tag}.tex"] = "\n\n".join(detail)
 
     for name, content in files.items():
         (DEST / name).write_text("% Generated by scripts/build_paper_tables.py; do not edit by hand.\n" + content, encoding="utf-8", newline="\n")

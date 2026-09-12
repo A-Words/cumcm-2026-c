@@ -102,10 +102,13 @@
 该反馈优先补足当前缺口，未比较未来紧急电价；后文以价格感知反馈检验这一选择。
 
 \subsubsection{全年与指定日期结果分析}
-正式期334天总费用为\PaperValue{q2-cost}\,元，其中紧急电费\PaperValue{q2-emergency-cost}\,元，约占总费的4.43\%。表\ref{tab:q2-summary}给出费用和电量分解，表\ref{tab:q2-days-summary}给出四个指定日期的汇总。逐个指定十分钟段、四小时充放电和紧急事件完整列于附录\ref{app:days}，并与\texttt{result2.xlsx}一致。
+正式期334天总费用为\PaperValue{q2-cost}\,元，其中紧急电费\PaperValue{q2-emergency-cost}\,元，约占总费的4.43\%。表\ref{tab:q2-summary}给出费用和电量分解。四个指定日期的购电、储能和紧急购电明细随后按题面表1、表2和表3的格式完整列出，并与\texttt{result2.xlsx}对应。
 \input{generated/q2-summary}
-\input{generated/q2-days-summary}
 \FloatBarrier
+各日期购电表中的购电量为零时确定的常规计划，“全天购电费”为该常规计划费用；紧急购电另列，含紧急费的总支出见全天账单。电量单位均为kWh，费用单位为元。储能表按六个四小时区间求和，并列当日0:00与24:00的真实库存。表内保留两位小数，计算使用完整精度，逐项舍入后可能产生0.01的加总差。
+
+紧急购电将大于$10^{-7}$\,kWh数值容差的连续十分钟段合并为一个事件，终点为最后一段结束时刻；“无、0.00”表示当天没有紧急购电，后续空白表示没有更多事件。24:00与题目中的0:00+1含义相同。后续各问沿用相同的单位、聚合及舍入口径。
+\input{generated/selected-days-q2}
 四个指定日期中，9月23日出现892.40\,kWh紧急购电，其余三个日期没有。该日总费47814.59元，其中5734.95元来自紧急购电。图\ref{fig:q2-day}选取这一日期展示风险计划、实际净需求及库存的关系，便于检查缺口发生的位置。
 \begin{figure}[!htbp]
  \centering\includegraphics[width=\textwidth]{../outputs/figures/paper-q2-day.pdf}

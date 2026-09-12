@@ -2,49 +2,61 @@
   "status": "passed",
   "checked_on": "2026-09-12",
   "pdf": "outputs/deliverables/microgrid-paper.pdf",
-  "pdf_sha256": "a3bebacc0cc4a772d10abaae1182bb6789b65a5fbaa2e58d0d585a51724eda49",
-  "pages": 59,
+  "pdf_sha256": "7c7e327bcc0a607962825a10abb0f066224b0aaada548239debb2b31ba61b355",
+  "pages": 47,
   "body": {
     "start": 2,
-    "end": 28,
-    "pages": 27,
-    "definition": "Problem restatement through conclusion; AI declaration shares the last page.",
-    "including_references_pages": 29,
+    "end": 44,
+    "pages": 43,
+    "definition": "Problem restatement through model evaluation and extension, including required result tables.",
     "question_page_ranges": {
       "q1": {
         "start": 5,
-        "end": 10,
-        "pages": 6
-      },
-      "q2": {
-        "start": 11,
-        "end": 15,
+        "end": 9,
         "pages": 5
       },
+      "q2": {
+        "start": 10,
+        "end": 17,
+        "pages": 8
+      },
       "q3": {
-        "start": 16,
-        "end": 21,
-        "pages": 6
+        "start": 18,
+        "end": 27,
+        "pages": 10
       },
       "q4": {
-        "start": 22,
-        "end": 27,
-        "pages": 6
+        "start": 28,
+        "end": 39,
+        "pages": 12
       }
-    }
+    },
+    "including_references_pages": 45
   },
   "abstract_page": 1,
+  "abstract": {
+    "cjk_before": 561,
+    "cjk_after": 786,
+    "cjk_added": 225,
+    "first_page_content_bbox_y_pdf_pt": [
+      70.37199401855469,
+      672.6876220703125
+    ],
+    "usable_height_occupancy": 0.8602570552685677,
+    "measurement": "Title, abstract and keywords span / A4 height excluding the template's 25 mm top and bottom margins; excludes footer."
+  },
   "bibliography_pages": [
-    29,
-    30
+    45,
+    46
   ],
   "appendix_pages": [
-    31,
-    59
+    47,
+    47
   ],
+  "table_count": 64,
+  "body_table_count": 63,
   "figures": 4,
-  "table_count": 46,
-  "numbered_equations": 39,
+  "numbered_equations": 40,
   "bibliography_entries": 12,
   "bibliography_citation_keys": [
     "bates1969combination",
@@ -62,20 +74,11 @@
   ],
   "embedded_font_objects": 18,
   "specified_date_scenarios": 16,
+  "required_original_format_tables": 38,
   "numeric_aggregation_checks": 656,
+  "independent_archive_to_pdf_fields": 540,
   "supplementary_sensitivity_checks": 201,
-  "sensitivity_runs": {
-    "q1": 16,
-    "q4": 4
-  },
   "source_and_generated_hashes": "matched",
-  "main_costs_found_in_pdf": [
-    "35,126.95",
-    "13,908,175.95",
-    "13,315,835.99",
-    "14,675,844.87",
-    "14,044,885.25"
-  ],
   "replacement_characters": 0,
   "build": {
     "engine": "MiKTeX-XeTeX 4.18 (MiKTeX 26.5)",
@@ -87,432 +90,163 @@
   "equation_positions": [
     {
       "number": 1,
-      "page": 5,
-      "bbox_pdf_pt": [
-        510.411,
-        468.395,
-        524.409,
-        480.4
-      ],
-      "same_line_word_count": 4
+      "page": 5
     },
     {
       "number": 2,
-      "page": 5,
-      "bbox_pdf_pt": [
-        510.411,
-        600.001,
-        524.409,
-        612.006
-      ],
-      "same_line_word_count": 14
+      "page": 5
     },
     {
       "number": 3,
-      "page": 5,
-      "bbox_pdf_pt": [
-        510.412,
-        724.073,
-        524.41,
-        736.078
-      ],
-      "same_line_word_count": 11
+      "page": 5
     },
     {
       "number": 4,
-      "page": 6,
-      "bbox_pdf_pt": [
-        510.411,
-        112.539,
-        524.409,
-        124.544
-      ],
-      "same_line_word_count": 7
+      "page": 6
     },
     {
       "number": 5,
-      "page": 6,
-      "bbox_pdf_pt": [
-        510.411,
-        215.159,
-        524.409,
-        227.164
-      ],
-      "same_line_word_count": 11
+      "page": 6
     },
     {
       "number": 6,
-      "page": 6,
-      "bbox_pdf_pt": [
-        510.411,
-        319.797,
-        524.409,
-        331.802
-      ],
-      "same_line_word_count": 5
+      "page": 6
     },
     {
       "number": 7,
-      "page": 6,
-      "bbox_pdf_pt": [
-        510.411,
-        427.731,
-        524.409,
-        439.736
-      ],
-      "same_line_word_count": 6
+      "page": 6
     },
     {
       "number": 8,
-      "page": 6,
-      "bbox_pdf_pt": [
-        510.412,
-        691.103,
-        524.41,
-        703.108
-      ],
-      "same_line_word_count": 6
+      "page": 6
     },
     {
       "number": 9,
-      "page": 7,
-      "bbox_pdf_pt": [
-        510.411,
-        109.244,
-        524.409,
-        121.249
-      ],
-      "same_line_word_count": 14
+      "page": 7
     },
     {
       "number": 10,
-      "page": 7,
-      "bbox_pdf_pt": [
-        504.409,
-        175.012,
-        524.409,
-        187.017
-      ],
-      "same_line_word_count": 7
+      "page": 7
     },
     {
       "number": 11,
-      "page": 9,
-      "bbox_pdf_pt": [
-        504.855,
-        493.783,
-        524.411,
-        505.788
-      ],
-      "same_line_word_count": 7
+      "page": 9
     },
     {
       "number": 12,
-      "page": 11,
-      "bbox_pdf_pt": [
-        504.409,
-        397.502,
-        524.409,
-        409.507
-      ],
-      "same_line_word_count": 6
+      "page": 10
     },
     {
       "number": 13,
-      "page": 11,
-      "bbox_pdf_pt": [
-        504.409,
-        532.587,
-        524.409,
-        544.592
-      ],
-      "same_line_word_count": 9
+      "page": 10
     },
     {
       "number": 14,
-      "page": 11,
-      "bbox_pdf_pt": [
-        504.409,
-        608.944,
-        524.409,
-        620.949
-      ],
-      "same_line_word_count": 7
+      "page": 10
     },
     {
       "number": 15,
-      "page": 12,
-      "bbox_pdf_pt": [
-        504.409,
-        109.244,
-        524.409,
-        121.249
-      ],
-      "same_line_word_count": 7
+      "page": 11
     },
     {
       "number": 16,
-      "page": 12,
-      "bbox_pdf_pt": [
-        504.409,
-        237.719,
-        524.409,
-        249.724
-      ],
-      "same_line_word_count": 4
+      "page": 11
     },
     {
       "number": 17,
-      "page": 12,
-      "bbox_pdf_pt": [
-        504.409,
-        402.314,
-        524.409,
-        414.319
-      ],
-      "same_line_word_count": 10
+      "page": 11
     },
     {
       "number": 18,
-      "page": 12,
-      "bbox_pdf_pt": [
-        504.409,
-        545.822,
-        524.409,
-        557.827
-      ],
-      "same_line_word_count": 8
+      "page": 11
     },
     {
       "number": 19,
-      "page": 13,
-      "bbox_pdf_pt": [
-        504.409,
-        236.15,
-        524.409,
-        248.155
-      ],
-      "same_line_word_count": 5
+      "page": 12
     },
     {
       "number": 20,
-      "page": 13,
-      "bbox_pdf_pt": [
-        504.409,
-        471.763,
-        524.409,
-        483.768
-      ],
-      "same_line_word_count": 9
+      "page": 12
     },
     {
       "number": 21,
-      "page": 13,
-      "bbox_pdf_pt": [
-        504.409,
-        556.921,
-        524.409,
-        568.926
-      ],
-      "same_line_word_count": 9
+      "page": 12
     },
     {
       "number": 22,
-      "page": 16,
-      "bbox_pdf_pt": [
-        504.409,
-        443.688,
-        524.409,
-        455.693
-      ],
-      "same_line_word_count": 6
+      "page": 18
     },
     {
       "number": 23,
-      "page": 16,
-      "bbox_pdf_pt": [
-        504.409,
-        591.598,
-        524.409,
-        603.603
-      ],
-      "same_line_word_count": 8
+      "page": 18
     },
     {
       "number": 24,
-      "page": 17,
-      "bbox_pdf_pt": [
-        504.409,
-        109.244,
-        524.409,
-        121.249
-      ],
-      "same_line_word_count": 15
+      "page": 19
     },
     {
       "number": 25,
-      "page": 17,
-      "bbox_pdf_pt": [
-        504.409,
-        240.754,
-        524.409,
-        252.759
-      ],
-      "same_line_word_count": 13
+      "page": 19
     },
     {
       "number": 26,
-      "page": 17,
-      "bbox_pdf_pt": [
-        504.409,
-        408.737,
-        524.409,
-        420.742
-      ],
-      "same_line_word_count": 12
+      "page": 19
     },
     {
       "number": 27,
-      "page": 17,
-      "bbox_pdf_pt": [
-        504.409,
-        574.975,
-        524.409,
-        586.98
-      ],
-      "same_line_word_count": 5
+      "page": 19
     },
     {
       "number": 28,
-      "page": 18,
-      "bbox_pdf_pt": [
-        504.409,
-        213.513,
-        524.409,
-        225.518
-      ],
-      "same_line_word_count": 8
+      "page": 19
     },
     {
       "number": 29,
-      "page": 22,
-      "bbox_pdf_pt": [
-        504.409,
-        393.005,
-        524.409,
-        405.01
-      ],
-      "same_line_word_count": 5
+      "page": 20
     },
     {
       "number": 30,
-      "page": 22,
-      "bbox_pdf_pt": [
-        504.409,
-        470.502,
-        524.409,
-        482.507
-      ],
-      "same_line_word_count": 6
+      "page": 28
     },
     {
       "number": 31,
-      "page": 22,
-      "bbox_pdf_pt": [
-        504.409,
-        558.091,
-        524.409,
-        570.096
-      ],
-      "same_line_word_count": 8
+      "page": 28
     },
     {
       "number": 32,
-      "page": 22,
-      "bbox_pdf_pt": [
-        504.409,
-        672.227,
-        524.409,
-        684.232
-      ],
-      "same_line_word_count": 8
+      "page": 28
     },
     {
       "number": 33,
-      "page": 23,
-      "bbox_pdf_pt": [
-        504.409,
-        116.729,
-        524.409,
-        128.734
-      ],
-      "same_line_word_count": 9
+      "page": 28
     },
     {
       "number": 34,
-      "page": 23,
-      "bbox_pdf_pt": [
-        504.409,
-        178.103,
-        524.409,
-        190.108
-      ],
-      "same_line_word_count": 10
+      "page": 29
     },
     {
       "number": 35,
-      "page": 23,
-      "bbox_pdf_pt": [
-        504.409,
-        614.921,
-        524.409,
-        626.926
-      ],
-      "same_line_word_count": 8
+      "page": 29
     },
     {
       "number": 36,
-      "page": 26,
-      "bbox_pdf_pt": [
-        504.409,
-        287.821,
-        524.409,
-        299.826
-      ],
-      "same_line_word_count": 15
+      "page": 29
     },
     {
       "number": 37,
-      "page": 27,
-      "bbox_pdf_pt": [
-        504.409,
-        612.022,
-        524.409,
-        624.027
-      ],
-      "same_line_word_count": 8
+      "page": 38
     },
     {
       "number": 38,
-      "page": 55,
-      "bbox_pdf_pt": [
-        504.409,
-        437.795,
-        524.409,
-        449.8
-      ],
-      "same_line_word_count": 13
+      "page": 40
     },
     {
       "number": 39,
-      "page": 56,
-      "bbox_pdf_pt": [
-        504.409,
-        480.238,
-        524.409,
-        492.243
-      ],
-      "same_line_word_count": 14
+      "page": 40
+    },
+    {
+      "number": 40,
+      "page": 41
     }
   ],
   "template": {
@@ -522,15 +256,28 @@
     "options": [
       "withoutpreface",
       "bwprint"
-    ],
-    "excluded_page_text_absent": [
-      "承诺书",
-      "编号专用页",
-      "编号页",
-      "目录"
-    ],
-    "title_abstract_keywords_on_first_page": true
+    ]
   },
+  "protected_inputs_and_model_results_unchanged": true,
+  "baseline_commit": "f5ca4d8fb7f0d974af7abba0ed699aebda34ff81",
+  "protected_scopes": [
+    "problem",
+    "data",
+    "scripts/model.py",
+    "scripts/solve.py",
+    "scripts/feedback.py",
+    "scripts/export_results.mjs",
+    "outputs/main",
+    "outputs/experiments",
+    "paper/cumcmthesis.cls",
+    "paper/cumcm2026.sty",
+    "paper/sections/ai-statement.tex",
+    "outputs/deliverables/result1.xlsx",
+    "outputs/deliverables/result2.xlsx",
+    "outputs/deliverables/result3.xlsx",
+    "outputs/deliverables/result4-2.xlsx",
+    "outputs/deliverables/result4-3.xlsx"
+  ],
   "workbook_sha256": {
     "outputs/deliverables/result1.xlsx": "91e274a48c831cd545049339c2356133d70d439565a6acaf31f51b99dcf0b2a7",
     "outputs/deliverables/result2.xlsx": "b6a5bdf4efba0aa56b5eb6f1ad42da9a1d6c1cb74b991320df0963818d573ead",
@@ -556,7 +303,7 @@
     "paper/generated/mpc-inventory.tex": "4167ea4f93edd54419ebf1848161cc7b27b6050c313ec64af1762d68473d078a",
     "paper/generated/numbers.tex": "8ce718910a7d5bd21f4fd01f876ddab0fc58896cc3df16cc7a4dd98bd44a3cc1",
     "paper/generated/q1-sensitivity.tex": "64f12f6500996b6833c877837366fee22b6dfcc973403b228b0317d037b1fe8b",
-    "paper/generated/q1-tables.tex": "d09a50d149cd02b12d41e87883460e2dec20863ac204d45cf0994848b0192562",
+    "paper/generated/q1-tables.tex": "baf35121e707aae9e0f10213211f471a349e2a6ee4dacad2765078a2bb63779e",
     "paper/generated/q2-days-summary.tex": "a057d7b878c0f71f8faa98bb0d2d8e4f68a6b64d9fab5a69f57a5558971970d3",
     "paper/generated/q2-risk-sensitivity.tex": "a4d751559f05afa931a79d21b5d927585ba97803d40b7ee86097205d61a00916",
     "paper/generated/q2-summary.tex": "ae9c94f27527f7c035f0ecf45fdceee76bade79517f35d0f37f0faf1e16cb25a",
@@ -572,252 +319,190 @@
     "paper/generated/q4-price-sensitivity.tex": "3fc511964786afcc82b9b28890eecad4122ba6278429c34732152c8510005ae7",
     "paper/generated/rolling-months.tex": "ac5e651915b1079c76f48003332380d3d13bd707c5fc05c758830b3c9d0293a8",
     "paper/generated/rolling-summary.tex": "b2ba4ed351b1a9b83e2c36609273d390ed7dd0bb5c4e02fbb2d120c19230a93c",
-    "paper/generated/selected-days-q2.tex": "df23615f205816b671c8f59b74d04c4955fd03a318b055d87f0dd5e6aafe82c1",
-    "paper/generated/selected-days-q3.tex": "b0c33e9cfc0d4b0e52acdc23b126b5d8ed4ba9652fcb42274a6f708898debd02",
-    "paper/generated/selected-days-q4-2.tex": "31d9e04532eb5017b5dccd1e01a66eb1d99e5bd7d187a92699906cda0cfce2e6",
-    "paper/generated/selected-days-q4-3.tex": "69b55454566685b39ac3ae75d94e8c3bc66c1e1a246ad5c2185835e8d07f2d57",
+    "paper/generated/selected-days-q2.tex": "1c204269553e25fba7b879a4795f52d263985b0cf3019d4f36104e397c768da0",
+    "paper/generated/selected-days-q3.tex": "0e0493315867edc282cbfab71c32671384ff6851510cadf2d61ea214a3601147",
+    "paper/generated/selected-days-q4-2.tex": "1a88dcc06225e7e089311c375138c8210c7495f3c43d8c40e83225f2115d4f48",
+    "paper/generated/selected-days-q4-3.tex": "42539b616092f8e8bad9b8ea8fc7495f3764ab86c49b7605e72e827a00cf049b",
     "paper/main.tex": "a5a09d5b22a7c98ad9a1873db1f85a75d2ac9a412a95dab093d3b4a24f824622",
     "paper/references.bib": "b12527b9c76d90a72f9046c4e0030c0a4f9f0f11d2ca2fc446912c9931472330",
-    "paper/sections/abstract.tex": "892426af4df28bee7b6a4befce99f7acd15de4c6a4bd52f1404f8550690b91ac",
+    "paper/sections/abstract.tex": "e8afdc492e0cd46eda52fc66f63789238c6dd9192d6b0e3713c0962296806192",
     "paper/sections/ai-statement.tex": "a2afe616bb0b3edc321dd5e4d5a472e8c97d3f33a173af3ebca859c43b9a3f7f",
     "paper/sections/analysis.tex": "5bc04d40f585b180b36c136def0bf9ebe68eed8ab0ec24dcc3297a303e5b865e",
-    "paper/sections/appendix.tex": "78af35ceb0540c733b1356a9f6345c3794011a5e2c6b88e020c7236ed5e01f7c",
+    "paper/sections/appendix.tex": "b6b3c17c666f0fd9d7e61f9ee02f87cc587a8cc67d413c46d53d4476e3cf96dd",
     "paper/sections/assumptions.tex": "3a3d8b13abe89bece3b52c71d3b5a06bcef5a87d683185f7142e6e2a7244e3fa",
-    "paper/sections/body.tex": "261341602a3573201735a74f119bceffcd05f0c07eb7f5df54bc215568663166",
-    "paper/sections/conclusion.tex": "6001cfd8a45b8c7e2e865852b4a6702008e2a9ef4333f7eceecddfc6c3b708d1",
-    "paper/sections/evaluation.tex": "43c5a8f76281ddf7e862c691403f837025740ad405c55fd2e3fd0ae956f2463d",
+    "paper/sections/body.tex": "2f12a87bb5b18952a60f271f1c452f05b568465c418c299a0f82e0f232878195",
+    "paper/sections/evaluation.tex": "1fba7a7df6bb21c525901a3e1e5b855e1ed0ecad3cdf4c1fb6431383da86fb51",
     "paper/sections/model.tex": "5a34b2117e706f85659b144f703a730c21ad71ff4ea582499fd4194136f4929e",
     "paper/sections/physical-model.tex": "03d0eeeeb0b29b10dd2554cc0bf1a866e73a70814f7ab4f089939d51868d9418",
     "paper/sections/problem.tex": "8dfeeec1d03a31b6799c0aca8d05c2601cfb845791f427c19814085833936810",
-    "paper/sections/q1.tex": "c63cb38b8fc417d390a6dddba0807c9777b9aad1c3d02483d706f246528f7244",
-    "paper/sections/q2.tex": "540c472088d80ee24a5f00793e3a747042141b80ba6daa88131f77556a02d84a",
-    "paper/sections/q3.tex": "c1fdd772f3fc41cfc14b846d27fe8b7e0f2f9184915b8ee0e5e84cf5cb55136c",
-    "paper/sections/q4.tex": "c386786d5c5dd4e11d003de38007e524b3a804d0fb6db35ec805a7ffc8c81a5c",
-    "paper/sections/results.tex": "b993d3a72c16bf329f2e7f3e1c331415c11c5049cb557428c3d4678149f6f70a",
-    "paper/sections/supplementary.tex": "24f492e34714646a7b59f28dfa96da5d2e7b26654c11f37541738244584caf30",
+    "paper/sections/q1.tex": "952d30b256d82e083dd1439de801b79966edfc5d41be68c93e1d7ccaf95fafb5",
+    "paper/sections/q2.tex": "0bc991402abbbe7a7610af371d22a65a8b10c3c2468fd72e5268d6df3532ac8c",
+    "paper/sections/q3.tex": "6f52f44cb105dc88c57f84b7e381974891829b7d72721059192dd97124ded813",
+    "paper/sections/q4.tex": "4be891cbe4f594358c4d2244a01cfcdebd4df55f99caca72044b9855831f4c62",
+    "paper/sections/results.tex": "98a4bad49dd12255c774f4420f16f9e7aa9249a98f75d1e81c1faa787f619b11",
     "paper/sections/symbols.tex": "9cb60ddff878556163fc4b342a06c9ee6ab270a4bf7dbdd9533e41af36a38d59"
   },
-  "build_script_sha256": "6e49c3b747fc8d0871c9cc8298fcd811e4a7049b677693c7d354bad291880388",
   "figure_sha256": {
-    "outputs/figures/paper-q1-dispatch.pdf": "de9f5a9fcd4670f2ae7778dc100fd31d5448a08e38ab3fa8d87e5850e0be221c",
+    "outputs/figures/paper-q1-dispatch.pdf": "09929e7242f9f77d2f6e314b0381de6dc9692ef9571b89cca8c31ff8a875f610",
     "outputs/figures/paper-q1-dispatch.png": "08ffe5a9dee21f898c431c282735f001d5380aeaf4c26685f011f4efab3101b9",
-    "outputs/figures/paper-q2-day.pdf": "8a46ecad626a275f2ecd4c5441991512952c2273aa8d85c2f015536a29e1d235",
+    "outputs/figures/paper-q2-day.pdf": "c3feb064965d21243ed2ef1766ef619fa6951e871451593fb3a63ab05fe46e69",
     "outputs/figures/paper-q2-day.png": "485aab1aec192d6ee1de86cb85f2664afa04569fc34ce8bdf0ebb1d206682511",
-    "outputs/figures/paper-q3-day.pdf": "843119b3ff2abbb4a368e22c5f962f58b5e43cdbfd9512eaf3cf8a07c10d81b0",
+    "outputs/figures/paper-q3-day.pdf": "3bf68b265c6668e47bbe5b0862b3bb6872f120af305f9bab31ce04f0aeb0d77b",
     "outputs/figures/paper-q3-day.png": "857504db9a80e077584513c27fa13e6f83fb146339155514c995fbe753b5dde8",
-    "outputs/figures/paper-q4-months.pdf": "84d729ea6dbd4f57bfe10f921bf6ab1c4763bd0f687592ea4cbc19c90f2d6679",
+    "outputs/figures/paper-q4-months.pdf": "2835b5ac73ab2d62780c509dc93c9625f57ee98ce654dd32b5123a16d82fc62e",
     "outputs/figures/paper-q4-months.png": "8a82f78fe18eecaf3573a79d25a34ed3806884ffa8a1ae085d7874dd91189331"
   },
-  "evidence_manifest_sha256": "bd9f1481326c5c6ad2e9adbf0560497f96bf2d198160094567c80291d52ed6f6",
-  "table_style_validation": {
-    "path": "outputs/verification/table-style-validation.json",
-    "sha256": "285f93822fe220bb00e1d74f5ba7d8cf54482348c43b71cc69e408ef319495aa"
+  "evidence_manifest_sha256": "669bf8a3cffa6bd0aca5af2ba19b6375d28bd3e4db8533850f75b3c40988094d",
+  "visual_review": {
+    "status": "passed",
+    "page_render_sha256": {
+      "1": "100fb2b2374789e635ea50202b370de6d82198844aea445e2b6597ca3dde1b15",
+      "2": "11a052d75f36819660351df0b07a4c9cf9cec81dc75c5e4a0cebf759e9446362",
+      "3": "b7be8e5fb8ae3ffba3f1796042536178492427f568672aa3ab2f1fb9f0ee1731",
+      "4": "296f8fe0add656758112dcdc5e830e2f61a76e65b832313b58a7b73c1c0467ec",
+      "5": "957ff7fb3a68ad525a4200bdd143dd8113bcab2cffb66b5183dabfb6cbd001ef",
+      "6": "ee6a1603189f26b0332de713dc43d900564ad34f7e5ab72a3671027315cabd40",
+      "7": "c174edba7fc28a1994fb172cec0289f84e65f214074c905854ff90158c2fc890",
+      "8": "0924b0faee01a46d57cfe0ec0633c529af098ae3cd493f8798cc3249a27f48ef",
+      "9": "dded87e9a5d1724885a93a5c3bb4e3105ad906f3b6ae64f7ec38c10eb2d51ab7",
+      "10": "ee6289d5ad2c975c9302ef6b69e5e6f32da22834eb10c59aea4390210ad655cb",
+      "11": "bddae306f7dba2c0bcb166321c4a63ed0519d2f4852a887ea19e4692424f290e",
+      "12": "b89a4e3dcc32846503bebb47e6dd43d56f9ce577193a14b8c9a413b85b3dff61",
+      "13": "68fc0474f579ba81e52329bde6b81a924ae7e2cce0686e80421d575d3efbc45f",
+      "14": "50d1bda762d8f13a5d75189512b8066fce1149b8a9eb05cae918a7c5cf8884bd",
+      "15": "55f33a207f030d32127358b9614181f3330ecac8b265158fffcdffe32c04b795",
+      "16": "9e32e0dfcb64c6973dbcf6f02d13e0836ad0c4745382c30ff1b5d18c3ab87679",
+      "17": "221b95f17fef479e90ab22db18f6ceaa4c3c3b9b5bd5abc83ca6988cf196e9c8",
+      "18": "b01922d22793555358a8fbaee1ec09613ce23059b8e33acb93a9a05967cb272a",
+      "19": "8602834d3805910dbaabdb3e934a6c330e00aa8da8b4c8f3b2156fb44d2ff8fc",
+      "20": "3daf3af3dacc10f2a7cdeb8e4b463275334779bc76006c01d2a7f83e9e5f037d",
+      "21": "1a9b20ff0a1c578a54150ae72881243a6d193dd70875e53460b00e999300bf97",
+      "22": "026938661409975587b3f1970d5cf587490c1a33e07c294f4dcd20484478add7",
+      "23": "60c0f6cfe25c2185a23971af9c3a2dc0332466f03de5d164faf09f0c844489da",
+      "24": "35f2a0549a7a30ea99d97587a1d8e1cb4806f35272fbc8d65db63e6ee3614576",
+      "25": "cd22784ca64b6c35fdac751df21857374ae1f64cb31d873bf33da45ec1d08799",
+      "26": "fccbaf71767c8eb2f822a248435d9bc041ba63dcf67d1bb488762b00a7e68f05",
+      "27": "9d268a5093f0994e1dfafc6750d20b4f5511a9f8841541fbefafe4afe1c4d3ea",
+      "28": "a9da4c21e15350f8e47d12d894883c3988a146efbca2f7321099093fef0c6857",
+      "29": "f47abbecb6100beed3dc032dac787a939131f56574b6ccdf24816141e29cf866",
+      "30": "848b0949d7aa211d2a8889ce64df3f2bce23b1ac955ce7bccdb988dd5385eb92",
+      "31": "36b626e8f1e3dbe7b8681b22917d764702f68a8a656b7434a969f38b5af00ff4",
+      "32": "a2b5b5527f84a84f01293c4272996aef808415dac41464e0cf83179697324895",
+      "33": "80485595f105b0086f7eb6c2273360a2cfec0db8ce3912cba14d2e75d001a730",
+      "34": "c47685858e647ad9913d63cd261ce7141780037f2edf95e3b46c11e11d88679f",
+      "35": "fa42f58887a11ceb8fca920d84b212e48096af1082605b6f60e54822956ed138",
+      "36": "8d05c6e4979fc622603eeee9b4fef557df635aee80fe3a65182d4c29fc6cb082",
+      "37": "0db31891959cc1adbc6c1462051357dee085847abb17d5c743c6c5c027d2b97c",
+      "38": "a84ca5e3bd6b34159b822d106ec83d07f99afde3281b303486f59bd18eaf491a",
+      "39": "bb659b593cfa3f473aa81e425de38af755b9a16a46a1517d77433143381a6848",
+      "40": "5400e76e8a1095c4192db3cbf422b32e736d4f1f6d6637ff1347d666ecc239c4",
+      "41": "ed2865f8784a86129ee84eb296540079a95bb8a7df3b8e603055a172ce555f1d",
+      "42": "6abae7887fbc853d16c8114bfcba41bf2d0911b2814d3048291f1ec252140db1",
+      "43": "9fb2014c3c2fec28712579933dad39b64b4445078fb1ef8b2a757ab84796ffe4",
+      "44": "9251e2a461a43c425bf4579f235c5c45ae8a42defe5d787e7d1a8036bea7c711",
+      "45": "9c28ce0a39af89deae1a50b39b70ad5b1551c0ad53d70d38e69adac6ab131acb",
+      "46": "ed9b97ce5bedd8e431b7bdd3e149e4a978486f4d6936c3cb2414a5399d0c49ac",
+      "47": "a4d01097cfd49cafa3b005b8809e5989b92d31d04a1113eadaad249d826de034"
+    },
+    "all_page_overview": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47
+    ],
+    "full_page_spot_checks": [
+      1,
+      8,
+      9,
+      13,
+      14,
+      15,
+      19,
+      22,
+      24,
+      26,
+      33,
+      34,
+      37,
+      40,
+      41,
+      42,
+      43,
+      44,
+      47
+    ],
+    "render_scale": 1.3,
+    "notes": [
+      "All 47 final pages checked as contact sheets. Required table formats, clip definition, promoted comparisons, section 7 and support index checked at full page size.",
+      "No visible clipping, table overflow, missing glyphs or unresolved references.",
+      "The four regenerated figure PDFs render identically to the baseline; timestamps changed."
+    ]
+  },
+  "limits": [
+    "Q2-Q4 remain causal feasible heuristics; same-year economic comparisons are not unseen-year validation.",
+    "Figure PDF regeneration changes timestamps; the four plots render identically to the baseline.",
+    "Omission of a separate conclusion section follows the user's requested structure, not a claim that GB/T 7713.2 forbids conclusions."
+  ],
+  "figure_visual_comparison": {
+    "baseline_commit": "f5ca4d8fb7f0d974af7abba0ed699aebda34ff81",
+    "identical_render_files": [
+      "outputs/figures/paper-q1-dispatch.pdf",
+      "outputs/figures/paper-q2-day.pdf",
+      "outputs/figures/paper-q3-day.pdf",
+      "outputs/figures/paper-q4-months.pdf"
+    ]
   },
   "ai_tools_declaration": {
     "unchanged_from_baseline": true,
-    "page": 28,
-    "before_bibliography": true,
-    "detailed_usage_material": "Previously deferred by user; not created in this revision."
+    "page": 44,
+    "before_bibliography": true
   },
-  "limits": [
-    "Q2-Q4 are causal feasible strategies, not claims of stochastic global optimality.",
-    "Existing sensitivity and new price-spread perturbations are same-year reanalysis, not unseen-year validation.",
-    "The full document has 59 pages; only the main narrative occupies 27 pages."
-  ],
-  "structure_migration": {
-    "baseline_commit": "a40a535c07d27488c0a024560fd891f346526f1c",
-    "evidence": "outputs/verification/structure-validation.json",
-    "layout_basis": "Prior layout findings retained: pages 1-58 render identically; page 59 contains only the relocated documentation path and was visually reviewed."
-  },
-  "prior_revision_context": {
-    "protected_inputs_and_model_results_unchanged": true,
-    "baseline_commit": "95101a1089f3a4658a58ac9a8ecae1f30f445fd5",
-    "protected_scopes": [
-      "problem",
-      "data",
-      "scripts/model.py",
-      "scripts/solve.py",
-      "scripts/feedback.py",
-      "scripts/evaluate_round2.py",
-      "scripts/export_results.mjs",
-      "outputs/main/summary.json",
-      "outputs/main/results.json",
-      "outputs/main/dispatch.npz",
-      "outputs/experiments/revision/experiments.json",
-      "outputs/experiments/revision/dispatch.npz",
-      "outputs/main/validation.json",
-      "outputs/experiments/revision/validation.json",
-      "outputs/main/q1-milp-verification.json",
-      "outputs/verification/workbook-verification.json",
-      "outputs/experiments/round2",
-      "paper/cumcmthesis.cls",
-      "paper/cumcm2026.sty",
-      "paper/sections/ai-statement.tex",
-      "outputs/deliverables/result1.xlsx",
-      "outputs/deliverables/result2.xlsx",
-      "outputs/deliverables/result3.xlsx",
-      "outputs/deliverables/result4-2.xlsx",
-      "outputs/deliverables/result4-3.xlsx"
-    ],
-    "git_whitespace_check": "git diff --cached --check passed; removed one extra EOF blank line in supplementary.tex",
-    "visual_review": {
-      "status": "passed",
-      "all_page_overview": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
-        11,
-        12,
-        13,
-        14,
-        15,
-        16,
-        17,
-        18,
-        19,
-        20,
-        21,
-        22,
-        23,
-        24,
-        25,
-        26,
-        27,
-        28,
-        29,
-        30,
-        31,
-        32,
-        33,
-        34,
-        35,
-        36,
-        37,
-        38,
-        39,
-        40,
-        41,
-        42,
-        43,
-        44,
-        45,
-        46,
-        47,
-        48,
-        49,
-        50,
-        51,
-        52,
-        53,
-        54,
-        55,
-        56,
-        57,
-        58,
-        59
-      ],
-      "full_page_spot_checks": [
-        5,
-        6,
-        7,
-        8,
-        9,
-        13,
-        15,
-        20,
-        23,
-        25,
-        27
-      ],
-      "render_scale": 1.5,
-      "last_changed_pages_reviewed": [
-        9,
-        15,
-        20,
-        25
-      ],
-      "last_unchanged_page_renders": 55,
-      "notes": [
-        "All 59 pages inspected as contact sheets; selected pages inspected at full render size.",
-        "Text edits on pages 5, 6, 7, 8, 13 and 27 were re-rendered and reviewed.",
-        "The last build changed only the four chart pages; all four inspected after moving legends outside axes.",
-        "All other 55 page images match the preceding reviewed build byte for byte.",
-        "No visible clipped text, detached equation labels, missing glyphs or legend-curve collisions."
-      ],
-      "page_render_sha256": {
-        "1": "84e189c9d0f23357e52fe09c2fd16f2772386adc4224e2460b943c225e8a60b5",
-        "2": "a76d3c049a6ab473b9602b9d1d985330216843a084cba18c8734a900f2875bc3",
-        "3": "f40c3936bb108ea998bb83de90163b3a1442dafa9fc47c7b9946d9556d9111a5",
-        "4": "1982a63e12c36c0ce34fa9e07c72f992d2d64b20acd51fc9c8f06667957c928c",
-        "5": "a04be8829621ff783016ca10eb1ac287f812e5596035e3191155bd16e225e52b",
-        "6": "0ef178e0e851e2212d8d39862c19f8e6de5d3b59782065731c5484e9d734c38a",
-        "7": "e351c60050132e65976d9cb53f1431aaddb3304047fe954d08176b3f9941f364",
-        "8": "06ee32c49ffea363b82022096b920ab232585a94b956877cfdc054b51654ffe9",
-        "9": "ab64f20eedba16e7b07a6e3c5fed7ddc1aa96bae1bc6ca23eb7132a5b990b847",
-        "10": "b62eeef1e81f2eefdc1c33a478b560f5ba13e997d5a70f1659a9175fd99f6f6d",
-        "11": "fc82ff95a49ea3328ea15a4dff5837d31f47bdd0f70f13531c76eb3c9b6af680",
-        "12": "63398d9477976ca1b06b7acb6c45619dbe7df1ffeffbdb22d173fae550949f1e",
-        "13": "d585da773ac8abf0b8671972d003a5233ab37f0a30b6fdd74bd5b7c80120b95f",
-        "14": "9d294ff2437f013ebb95673a5991b520a5c200a2d355456be90eab9c251c4b69",
-        "15": "3de8df646f57ae2c2d56c74f34232ecb3f7e0f77d57721e26c669a88572ad971",
-        "16": "390f33c5a9823928c8654b3458833b166c5b74e53616837d2fd678ce5be69185",
-        "17": "0757e8d6649a2bf53c0b74e9d04cfcc149d516e3ff7a0672ad903c53f0318858",
-        "18": "c0d6d3a565364691ba8f5a913d0d6a9349df50f15e8696471094f3daeeda958b",
-        "19": "5a04a0efa613347dfe2895151d8c7759101f2e950a7e8f166a5f4bc1439b17b6",
-        "20": "59b7841a9abe27d6b5a9aae172585d3fa07a5139e00b5d1f801e8e33623f08c9",
-        "21": "264c488e6eab67123207402c24ccb5c5f548a8c96ee1b36733a964a479d92509",
-        "22": "7d6d3f7230710ee66017d9408ab486d14157f3004aab953b1873aa6900915fd6",
-        "23": "ac0aef3c3f5196878d9bd8bbb323a75f39135c0e9feceaf97dac344328aa882c",
-        "24": "c4f383df586fe2297df8ab6c48ca65159672e4195f14ef0d7ed7cf2c1b43fa8f",
-        "25": "9c1761aa563f4632a5ff32c44e9f5e7ae2104307bce77788f61239fa7f847e0f",
-        "26": "da5cadf7bb3497aa7c650607bad6f685ceaec5e514d8274afc3de494dc7067e4",
-        "27": "1130a5073b521cd68833bed6ddb3e097ccf4c8a463753ca8f6ace756cd092825",
-        "28": "9bedf1f1fc22d3d2ed16009d19518bd7ca026d4892031ad350aa5a6a8fe5dcbb",
-        "29": "b7d3a6f6bbc0063907fe54da4932409a467c4fb87784f5a57c9fcf5c8443707a",
-        "30": "7903d5ce65d23ee20d0747d43bc984ad5dce789b0d968e74648e20a892987a38",
-        "31": "3d61af513ad17b1041079a3c0d6427d81e488f40345bd20b06f0be24df2eb56d",
-        "32": "a7c23f9d5dfe9354e2709e0c2de31ad1eec188fc9a30441918204d1313256079",
-        "33": "c940429fa67afff119571d28345683969c37301a3830bf8047f22226ffe14931",
-        "34": "1197f6f143b6259b6bf858bf6573bdc8dd859484c775f430a885a7dec5b4dad8",
-        "35": "939c955d9bd919b3f8a4973a7f7c99a79e445d557b48c87c9b64996bdc55befd",
-        "36": "c6af29feda040127a65910307abfab30881cc9d967569dc26ddb1a80d33a896f",
-        "37": "ddb7517ffd88d8a428c559c48ec08c9c50d86e499ef97b38686ae02bc8be8e53",
-        "38": "f32f7ea42a35e81721dd13e98bd559c2c99a54ecca8c96e8044a01146d4ed974",
-        "39": "e1f64aa60423acfe67ce1fafa10f327b8e68874c3165044fd66130a1ea2b1496",
-        "40": "a81c5a638ea57277afd929dd64d4c11b7a4695af93f007dd0cf3038c6504947a",
-        "41": "dc089918fcd0b30ae438a587ebc711a323619dca03f8276e25d52cee3a1da866",
-        "42": "d0c1c5bf04ae0e8f78c6be4a2ec3aa1c8ca50878626c7c5864f7f67eb4f006aa",
-        "43": "833f291f0316eeadc2d5bf137b67395d645b57f89b8f99f06ac2300845ddb800",
-        "44": "5c3479283f1bcaf2c393c683caad5cc483c8ffd8312e09192cc40cef6c1de7e1",
-        "45": "7e0d6f3c5b61b19f4e06fffc719de13deeee40fb46ce1b40ae2dfaa6f56079b6",
-        "46": "c61253b29456b056dae847f9f07c83ec132bb972675b3a0b7bc884c16ca0f058",
-        "47": "e0d3f9dd84d7edd4b88887fbf7d308dcbbb4940a37ce16f8a1c9832b887e6d3b",
-        "48": "3a8458357c2e54e5efd00e2fbdcccf904f47304954589a76632deab9155363c6",
-        "49": "6dcbac93d1b7724b7cee9dc8f9cc603577e375e947317cdf5d8680949a687228",
-        "50": "be69d85a7d74ea85884602efb9213827f647acba914100a67f26ed4e46bc2039",
-        "51": "1fac12b5c25ca754f873ac551a74f59def580cfa7bea51f319e3a667f1381a80",
-        "52": "44809468d0da7357ce84168b9892347c8d2ee419400e489cdc05d3c6bb7a36d2",
-        "53": "73ab6ec3df10252697c5530a3e151e6d0124d749a65bed590ec887ae37f55560",
-        "54": "9c3f89d4fd6a7686a104b79e38a732c117b361517360f25bcc13c2775182531b",
-        "55": "55c9d6856a2d34bf362f4b8fc9d60518dd5d4172c4726a4a10132a80dbe6c847",
-        "56": "ed1b70ffb910b860f6d6006ea76b5cab84128b46be97bf8fe901a5105b4cf9c7",
-        "57": "3de85b4ae4030d686434813afe2c34aadd0503e898ab507f5ec00d6c051e71f4",
-        "58": "5e79acdc6c7e55990c5b5b72aedea3da29d8785d2600ddb0f6ded17675909ac0",
-        "59": "a592070d1554864ac72c59f65460cfdcdcefd5a308611a3b9d82d3d8e1963eb0"
-      }
-    }
-  },
-  "visual_review": {
-    "status": "passed",
-    "changed_page_reviewed": 59,
-    "other_pages_pixel_identical": true,
-    "comparison": "outputs/verification/structure-validation.json"
+  "git_whitespace_check": "passed",
+  "table_style_validation": {
+    "path": "outputs/verification/table-style-validation.json",
+    "sha256": "455e980fc4d1ba66d83abfbb76dd8fbfa4dffdaae7baf8a32735f517d13f0251"
   }
 }
