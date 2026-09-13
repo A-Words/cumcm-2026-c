@@ -90,7 +90,7 @@
 
 日前与日内协调优化已有相关研究\upcite{xiao2019mpc}。本问采用如下分时执行步骤：
 
-\begin{enumerate}
+\begin{enumerate}[label=步骤\arabic*,leftmargin=*,align=left]
  \item 零时继承真实库存，读取已发布光伏预报，并与历史曲线融合后作风险修正，求解全天原计划$g$。
  \item 在06、12、18时读取最新光伏预报及已完成时段的负荷、光伏观测，更新剩余时段预测。
  \item 以当前实际库存为初始状态，求解$(\mathrm P_3^{(s)})$，修订尚未交付的购电计划并记录调整结果。

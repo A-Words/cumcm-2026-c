@@ -47,7 +47,7 @@
 
 计算通过SciPy的HiGHS接口完成\upcite{scipyHighs}；所用求解器包含对偶修正单纯形等线性优化方法\upcite{huangfu2018simplex}。求解过程为：
 
-\begin{enumerate}
+\begin{enumerate}[label=步骤\arabic*,leftmargin=*,align=left]
  \item 将144行功率乘以$1/6$，形成负荷、光伏电量与目标系数向量，检查单位和时段顺序。
  \item 按两类等式逐行装配系数矩阵，设置充放电、库存及首末库存边界。
  \item 求解纯电费LP，得到最低费用；另以微小选解项$10^{-6}\sum_t(c_t+b_t)+10^{-7}\sum_tw_t$选定调度方案。

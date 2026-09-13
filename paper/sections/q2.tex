@@ -91,7 +91,7 @@
 充放电量分别由供需余缺、功率上限和可用库存中的最紧限制决定。按式\eqref{eq:soc}更新储电量后，即可满足平衡和安全边界。按题目所给的紧急购电条件，放电后的剩余缺口均能补足。
 
 每天按以下步骤运行：
-\begin{enumerate}
+\begin{enumerate}[label=步骤\arabic*,leftmargin=*,align=left]
  \item 在零时读取前一日末库存和已完成日期观测，计算当日点预测。
  \item 按固定$\alpha$提取历史残差分位，构造144段风险净负荷。
  \item 求解$(\mathrm P_2)$，确定全天$g_t$，记录预测条件下的储能安排。
