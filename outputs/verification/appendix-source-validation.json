@@ -1,142 +1,50 @@
 {
   "status": "passed",
-  "checked_on": "2026-09-13",
-  "scope": "source_appendix_layout_and_source_integrity",
-  "pdf": "outputs/deliverables/microgrid-paper.pdf",
-  "pdf_sha256": "a94b74a0aa849fce18b11e01b3c709da793e0b94489abff59ed02ee2188fa619",
-  "pages": 67,
+  "scope": "comments_and_docstrings_removal",
+  "pdf_sha256": "ae9353266ccd60a573a75ca64d671228202a1026c3d2f1ebc4ed04951655b21d",
+  "pages": 66,
   "source_appendix_pages": [
     46,
-    67
+    66
   ],
-  "unchanged_rendered_pages": [
-    1,
-    45
-  ],
-  "total_source_lines": 922,
+  "first_45_pages_render_unchanged": true,
+  "source_snapshot_and_deliverables_match": true,
+  "all_8_files_have_zero_comments_and_docstrings": true,
+  "executable_ast_unchanged": true,
   "source_files": {
     "scripts/prepare_data.py": {
-      "lines": 231,
-      "pages": [
-        46,
-        50
-      ],
-      "sha256": "65b2aab26fa62dd5073a353d06eee41ebe2eb7279146dfbf1c85f25082b834aa",
-      "all_source_lines_match": true
+      "sha256": "5a7e39fde0326266e7ddccddd23e2fc527bfe581c223b3d06d48e886484b7477",
+      "lines": 217
     },
     "scripts/model.py": {
-      "lines": 321,
-      "pages": [
-        51,
-        57
-      ],
-      "sha256": "a4536d10ff7a5f70dad1939345a355394c0b4a21c7ba21a8067bbe538a8aadbe",
-      "all_source_lines_match": true
+      "sha256": "89dff2b57a8edade42e9fd1128c8be21904093bff55a3889da1d8da10456663c",
+      "lines": 294
     },
     "scripts/solve_common.py": {
-      "lines": 104,
-      "pages": [
-        58,
-        60
-      ],
-      "sha256": "cbb542ae73bbbd07babeabb5b8770b0d2d3446ab7080bb44b4ce5b1af579c688",
-      "all_source_lines_match": true
+      "sha256": "02454fe57ef5ac4c02ee869aea5bef50dbf0560424470b3fb192f4d8e705649c",
+      "lines": 101
     },
     "scripts/q1.py": {
-      "lines": 26,
-      "pages": [
-        61,
-        61
-      ],
-      "sha256": "a86d2b892151fa2acddae4d156c2079f264f7a5d8ada7198636d666df8dbc06d",
-      "all_source_lines_match": true
+      "sha256": "bc234cc77e9d725c1049c39d38501974bb97ef0f3dd72af5f1e86c05142e6b55",
+      "lines": 25
     },
     "scripts/q2.py": {
-      "lines": 18,
-      "pages": [
-        61,
-        62
-      ],
-      "sha256": "85c0a5cb32251ebd4979fa761488de5adc4068806b9a87db240c2dbe38e71439",
-      "all_source_lines_match": true
+      "sha256": "a67fbe775e154d812397e5905eb63424810031a7441e1d091b67123910df91a5",
+      "lines": 17
     },
     "scripts/q3.py": {
-      "lines": 34,
-      "pages": [
-        62,
-        63
-      ],
-      "sha256": "691982de52e6682484bd86881d5c62daa1c83b17b23b06d4fd470ecc863a80f0",
-      "all_source_lines_match": true
+      "sha256": "6eabb4f56d9b094330279b4290e7462f8dcd65e8359e7dcc02f53dab416d182c",
+      "lines": 33
     },
     "scripts/q4.py": {
-      "lines": 13,
-      "pages": [
-        63,
-        63
-      ],
-      "sha256": "198948d7ab0eb01633ff0c413f528c5370fbd3417aa6335dc9cc9873dfed4604",
-      "all_source_lines_match": true
+      "sha256": "6540d73fe95aee91b2b8c42ab6c1a3d7da4e76ebb596026defdbb2526ab4e91e",
+      "lines": 12
     },
     "scripts/solve.py": {
-      "lines": 175,
-      "pages": [
-        63,
-        67
-      ],
-      "sha256": "586ad93331a3a22c5793b51f579ef4a35bd1b0c8cb74b720dc97319b2145eda0",
-      "all_source_lines_match": true
+      "sha256": "673ece25fed7a8756de6bf46c6cbcbcbd3783e1f43cb53cd10d72d078a924af8",
+      "lines": 173
     }
   },
-  "build": {
-    "engine": "MiKTeX-XeTeX 4.18 (MiKTeX 26.5)",
-    "source": "paper/main.tex",
-    "passes": 3,
-    "bibliography": "BibTeX8/BibTeX / gbt7714-numeric",
-    "layout_or_reference_warnings": [],
-    "appendix_sources": {
-      "scripts/prepare_data.py": {
-        "sha256": "65b2aab26fa62dd5073a353d06eee41ebe2eb7279146dfbf1c85f25082b834aa",
-        "lines": 231
-      },
-      "scripts/model.py": {
-        "sha256": "a4536d10ff7a5f70dad1939345a355394c0b4a21c7ba21a8067bbe538a8aadbe",
-        "lines": 321
-      },
-      "scripts/solve_common.py": {
-        "sha256": "cbb542ae73bbbd07babeabb5b8770b0d2d3446ab7080bb44b4ce5b1af579c688",
-        "lines": 104
-      },
-      "scripts/q1.py": {
-        "sha256": "a86d2b892151fa2acddae4d156c2079f264f7a5d8ada7198636d666df8dbc06d",
-        "lines": 26
-      },
-      "scripts/q2.py": {
-        "sha256": "85c0a5cb32251ebd4979fa761488de5adc4068806b9a87db240c2dbe38e71439",
-        "lines": 18
-      },
-      "scripts/q3.py": {
-        "sha256": "691982de52e6682484bd86881d5c62daa1c83b17b23b06d4fd470ecc863a80f0",
-        "lines": 34
-      },
-      "scripts/q4.py": {
-        "sha256": "198948d7ab0eb01633ff0c413f528c5370fbd3417aa6335dc9cc9873dfed4604",
-        "lines": 13
-      },
-      "scripts/solve.py": {
-        "sha256": "586ad93331a3a22c5793b51f579ef4a35bd1b0c8cb74b720dc97319b2145eda0",
-        "lines": 175
-      }
-    }
-  },
-  "visual_review": {
-    "status": "passed",
-    "pages": [
-      46,
-      67
-    ],
-    "method": "All 22 appendix pages reviewed in contact sheets; page 61 also inspected at page size",
-    "findings": "File labels, line numbers, wrapping and pagination are visible without clipping or overlap"
-  },
-  "note": "Numerical inputs and preceding pages were not modified. This check does not refresh earlier numerical source hashes or the supporting ZIP."
+  "layout_or_reference_warnings": [],
+  "note": "清除注释及文档字符串后已核验执行语法树不变；本次不替代全量数值验收。"
 }

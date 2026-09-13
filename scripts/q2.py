@@ -1,4 +1,3 @@
-"""问题二：固定电价、日前计划，按1月数据选择风险分位。"""
 from model import simulate
 from solve_common import run_question
 

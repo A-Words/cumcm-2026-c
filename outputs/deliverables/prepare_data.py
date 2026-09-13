@@ -1,10 +1,3 @@
-"""Validate source workbooks and expose explicit, reproducible time conventions.
-
-Main arrays use right-endpoint power as the representative 10-minute power.
-The *_trapezoid arrays provide the alternative piecewise-linear integral.
-No fitted predictor, future-observation imputation, or outlier deletion is used.
-"""
-
 from __future__ import annotations
 
 import argparse
@@ -23,7 +16,6 @@ RELEASE_HOURS = (0, 6, 12, 18)
 
 
 def minutes(value: object) -> int:
-    """Convert mixed Excel time cells, preserving the explicit next-day mark."""
     if isinstance(value, datetime):
         value = value.time()
     if isinstance(value, time):
@@ -51,7 +43,7 @@ def calendar_date(value: object) -> date:
 
 
 def checked_numeric(rows: list, shape: tuple[int, ...], label: str) -> np.ndarray:
-    # float(None) fails rather than silently treating a blank as zero.
+
     out = np.asarray([[float(v) for v in row] for row in rows], dtype=np.float64)
     if out.shape != shape:
         raise ValueError(f"{label}: expected {shape}, received {out.shape}")
@@ -72,11 +64,6 @@ def read_daily(sheet, label: str) -> np.ndarray:
 
 
 def trapezoid_daily(values: np.ndarray) -> np.ndarray:
-    """Interval means for a continuous annual piecewise-linear power curve.
-
-    The one missing annual origin is held equal to the first sample. Subsequent
-    days start at the immediately preceding day's 24:00 observation.
-    """
     flat = values.ravel()
     left = np.concatenate(([flat[0]], flat[:-1]))
     return ((left + flat) / 2).reshape(values.shape)
@@ -137,7 +124,7 @@ def prepare(raw: Path, output: Path) -> dict:
         [row[2:] for row in forecast_rows[1:]], (1460, 24), "PV forecasts"
     ).reshape(365, 4, 24)
 
-    # The interpolation origin is available at issue time, not after it.
+
     anchors = np.zeros((365, 4), dtype=np.float64)
     anchors[1:, 0] = pv[:-1, -1]
     for issue_index, hour in enumerate(RELEASE_HOURS[1:], start=1):
@@ -170,11 +157,10 @@ def prepare(raw: Path, output: Path) -> dict:
         "interval_end_minutes": np.arange(10, 1441, 10, dtype=np.int64),
         "dt_hours": np.array(1 / 6),
     }
-    # At exact hourly targets, the right-endpoint interpolant must reproduce
-    # the supplied forecasts; no day shift or averaging is allowed here.
+
     np.testing.assert_allclose(arrays["forecast"][:, :, 5::6], forecast_hourly,
                                rtol=0, atol=1e-10)
-    # Integration of the linear interpolant must preserve hourly trapezoids.
+
     np.testing.assert_allclose(
         arrays["forecast_trapezoid"].reshape(365, 4, 24, 6).mean(axis=3),
         (hourly_knots[:, :, :-1] + hourly_knots[:, :, 1:]) / 2,

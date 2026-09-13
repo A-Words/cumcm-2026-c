@@ -1,7 +1,3 @@
-"""Causal forecasts, risk-quantile linear planning and feasible battery feedback.
-
-All power input is kW; optimization and execution variables are AC-side kWh.
-"""
 from __future__ import annotations
 
 from dataclasses import dataclass
@@ -18,7 +14,7 @@ LIMIT = 5000 * DT
 
 @lru_cache(maxsize=8)
 def lp_structure(n, eta=ETA):
-    # x = [grid, charge, discharge, state_after_slot, unused_energy]
+
     a = lil_matrix((2 * n, 5 * n))
     for t in range(n):
         a[t, t], a[t, n+t], a[t, 2*n+t], a[t, 4*n+t] = 1, -1, 1, -1
@@ -30,13 +26,6 @@ def lp_structure(n, eta=ETA):
 
 def optimize(net, price, soc, base=None, refund=False, terminal=INITIAL, tie_break=True,
              terminal_equal=False, eta=ETA, settlement='final_net'):
-    """Deterministic LP for the remaining delivery slots.
-
-    ``base`` is the midnight nomination under final-net settlement, or the last
-    committed nomination under per-revision settlement. Previously incurred
-    costs are sunk. With positive prices, free disposal and no refund, lowering
-    that base is dominated by keeping the commitment and discarding its energy.
-    """
     if settlement not in ('final_net', 'per_revision'):
         raise ValueError(f'Unknown settlement: {settlement}')
     if settlement == 'per_revision' and refund:
@@ -61,7 +50,7 @@ def optimize(net, price, soc, base=None, refund=False, terminal=INITIAL, tie_bre
         lower[:n] = base
     aub, bub = None, None
     if base is not None and refund:
-        # q=base+up-down; cost=1.5*p*up-0.5*p*down.
+
         m = lil_matrix((n, 7*n))
         for t in range(n):
             m[t,t], m[t,5*n+t], m[t,6*n+t] = 1, -1, 1
@@ -82,15 +71,13 @@ def optimize(net, price, soc, base=None, refund=False, terminal=INITIAL, tie_bre
 
 
 def q1_solution(data, trapezoid=False, eta=ETA):
-    """Compatibility entry point; question-one implementation lives in q1.py."""
     from q1 import q1_solution as solve
     return solve(data, trapezoid=trapezoid, eta=eta)
 
 
 def weighted_profile(history, day, weekly=True):
-    """Recent same-weekday profiles. No actual from day or later is read."""
     if day == 0:
-        # Explicit cold-start prior; only January initialization is affected.
+
         return np.full(144, 4500.0) if weekly else np.zeros(144)
     if weekly and day >= 7:
         idx = np.arange(day-7, max(-1,day-29), -7)
@@ -109,11 +96,6 @@ def historical_pv(history, day):
 
 
 def published_pv(data, day, issue, forecast_sources=None, anchor_updates=True):
-    """Available hourly forecast, aligned to absolute targets with a causal anchor.
-
-    forecast_sources[r] is the latest allowed release row at decision r.
-    The default route preserves the original preprocessed forecast exactly.
-    """
     sources = tuple(range(4)) if forecast_sources is None else tuple(forecast_sources)
     if len(sources) != 4 or any(not isinstance(s,(int,np.integer)) or s < 0 or s > r
                                 for r,s in enumerate(sources)):
@@ -140,7 +122,7 @@ def point_forecast(data, day, issue, use_forecast, dynamic=False, oracle_price=F
     start = issue*36
     load = weighted_profile(data['load'], day)
     if start and load_update:
-        # Issue-time load update uses only completed 10-minute slots.
+
         recent = slice(max(0,start-18),start)
         ratio = np.mean(data['load'][day,recent])/max(np.mean(load[recent]),1)
         load = load*np.clip(ratio,0.75,1.25)
@@ -197,11 +179,11 @@ def build_cache(data, forecast=False, dynamic=False, oracle_price=False,
 def risk_forecast(cache, day, issue, quantile):
     start = issue*36
     net = cache.net[day,issue,start:].copy()
-    # Stored future errors are excluded explicitly. First 7 days are warmup only.
+
     lo = max(7,day-28)
     if day > lo:
         past_errors = cache.errors[lo:day,issue,start:]
-        # Pool 7 neighboring delivery slots to stabilize small-sample quantiles.
+
         pad = np.pad(past_errors,((0,0),(3,3)),mode='edge')
         samples = np.concatenate([pad[:,j:j+len(net)] for j in range(7)],axis=0)
         net += np.quantile(samples,quantile,axis=0)
@@ -218,15 +200,6 @@ def execute_slot(grid, net, soc):
 
 
 def settle_revisions(plan, revisions, price, settlement='final_net', refund=False):
-    """Recompute adjustment charges from a frozen path of nominations.
-
-    ``plan`` and ``price`` have shape (..., slots); price may broadcast to plan.
-    ``revisions`` has shape (..., issues, slots): layer 0 is the original plan,
-    and NaN in later layers means that delivery slot was not revised. The
-    returned revision_up/down record every actual change relative to the
-    preceding commitment, even when final_net only bills the final net change.
-    Original-plan and emergency charges are excluded from adjustment_cost.
-    """
     if settlement not in ('final_net', 'per_revision'):
         raise ValueError(f'Unknown settlement: {settlement}')
     if settlement == 'per_revision' and refund:
@@ -268,7 +241,7 @@ def simulate(data, cache, quantile, issues=(), refund=False, days=365, initial=I
     state = np.zeros((days,145))
     revisions = np.full((days,4,144),np.nan)
     revision_up, revision_down = np.zeros_like(revisions), np.zeros_like(revisions)
-    daily_costs = np.zeros((days,4))  # original plan, adjustment, emergency, total
+    daily_costs = np.zeros((days,4))
     soc = initial
     for day in range(days):
         active_cache = warmup_cache if day < 31 and warmup_cache is not None else cache

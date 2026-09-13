@@ -1,4 +1,3 @@
-"""问题三：固定电价、日内调整，联合选择光伏权重与风险分位。"""
 from model import summarize
 from solve_common import PV_WEIGHTS, run_question
 

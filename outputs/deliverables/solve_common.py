@@ -1,4 +1,3 @@
-"""Shared January calibration, scenario archives and per-question CLI output."""
 from __future__ import annotations
 
 import argparse
@@ -13,7 +12,6 @@ PV_WEIGHTS = (0.0,0.25,0.5,0.75,1.0)
 
 
 class SolveContext:
-    """One dataset and shared caches; no state is retained between runs."""
 
     def __init__(self, data):
         self.data = data
@@ -72,7 +70,6 @@ def plain(obj):
 
 
 def run_question(name, solve):
-    """Write standalone results separately from the full verified generation."""
     parser = argparse.ArgumentParser(description=f"Solve {name} independently")
     parser.add_argument('--data', type=Path, default=ROOT/'data/processed/data.npz')
     parser.add_argument('--output', type=Path, default=ROOT/'outputs/questions'/name)

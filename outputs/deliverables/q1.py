@@ -1,4 +1,3 @@
-"""问题一：确定性单日购电与储能优化，以及积分/效率口径对照。"""
 import numpy as np
 from model import DT, ETA, INITIAL, optimize
 from solve_common import run_question

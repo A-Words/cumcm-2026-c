@@ -1,4 +1,3 @@
-"""Run the four questions, January-only calibration, ablations and sensitivity."""
 from __future__ import annotations
 import json
 from pathlib import Path
@@ -70,8 +69,7 @@ def main():
             load_mae_kw=float(np.mean(np.abs(cache.load[31:,0]-data['load'][31:]))),
             pv_mae_kw=float(np.mean(np.abs(cache.pv[31:,0]-data['pv'][31:]))),
             price_mae=float(np.mean(np.abs(cache.price[31:,0]-(data['dynamic_price'][31:] if '4' in name else data['fixed_price'])))))
-    # Controlled information experiments: current observations and update permissions
-    # remain available, only receipt of each new hourly forecast is switched.
+
     for group,weight,tau,warmup in [('legacy',1.0,revision['scenes']['q3_legacy']['quantile'],'self'),
                                   ('selected',weights['q3'],selected['q3'],'attachment3_fixed')]:
         subset_ids=[]
@@ -116,7 +114,7 @@ def main():
         contract.update(selection=fit,reoptimized=scene_id)
         revision['contracts'][name]=contract
 
-    # Same forecast/controller, varying only issued updates. Parameters remain frozen.
+
     for name,issues in [('q3_midnight_only',()),('q3_update06',(36,)),
                         ('q3_update12',(72,)),('q3_update18',(108,)),
                         ('q3_update06_12',(36,72)),('q3_update06_18',(36,108)),
@@ -147,7 +145,7 @@ def main():
         warm=build_cache(data,forecast=True,dynamic=True,oracle_price=True) if forecasts else None
         r = simulate(data,cache,selected[key],issues=issues,dynamic=True,warmup_cache=warm)
         summary['sensitivity'][f'{key}_known_price'] = summarize(r)
-    # Positive-price no-storage perfect-net reference: different information, no claim of bound.
+
     actual_net = np.maximum((data['load'][31:]-data['pv'][31:])*DT,0)
     summary['ideal_no_storage_reference'] = dict(
         fixed_cost=float(np.sum(actual_net*data['fixed_price'])),
@@ -157,7 +155,7 @@ def main():
     revision['source_sha256']={p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest()
         for p in ('scripts/model.py','scripts/solve.py','scripts/solve_common.py',
                   'scripts/q1.py','scripts/q2.py','scripts/q3.py','scripts/q4.py','data/processed/data.npz','docs/reviews/revision-plan.md')}
-    # Publish one coherent generation after every scenario is complete.
+
     payload = workbook_payload(data,q1,results)
     (OUT/'main/results.json').write_text(json.dumps(payload,default=plain,separators=(',',':')),encoding='utf-8')
     arrays = {f'q1_{k}':v for k,v in q1.items() if isinstance(v,np.ndarray)}

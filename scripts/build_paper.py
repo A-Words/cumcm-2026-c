@@ -102,6 +102,10 @@ def main() -> None:
         raise SystemExit("Resolve layout/reference warnings before publishing the PDF.")
     target = output / "microgrid-paper.pdf"
     shutil.copy2(build / "main.pdf", target)
+    # 交付源码取自本次编译快照，确保与 PDF 附录一致。
+    for name in appendix_sources:
+        listing = source.parent / name
+        shutil.copy2(listing, output / listing.name)
     print(f"Built {target}")
     print("No overfull boxes, missing characters or unresolved references. Visual review still required.")
 
