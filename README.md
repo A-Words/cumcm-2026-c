@@ -1,18 +1,30 @@
-# 2026 C 题：微网与外部电网电力调控策略
+# 2026 全国大学生数学建模竞赛 C 题：微网与外部电网电力调控策略
 
-四问的模型、思路、指定日期表格、数值结果、敏感性与边界见 **[完整解答](docs/solution.md)**。已按附件模板生成五个结果文件。
+本仓库为比赛结束后的项目归档，整理微网购电与储能调度问题的建模思路、计算程序、论文、结果表格及验证记录，供学习、复现与交流。
 
-已完成 [LaTeX 论文 PDF](outputs/deliverables/microgrid-paper.pdf)，可编辑入口为 [paper/main.tex](paper/main.tex)。论文采用用户指定的 [CUMCMThesis 模板](https://github.com/latexstudio/CUMCMThesis)，按模板组织章节，并按广东赛区的本次提交要求去掉承诺书、编号页和目录。12 篇参考文献均在正文中引用，表格直接从已验证结果生成，覆盖四问与两轮补充实验。[模板适配说明](docs/paper/template-adaptation.md)、[撰写记录与编译说明](docs/paper/paper-writing-notes.md)、[文献核实笔记](docs/paper/literature-notes.md) 记录结构、写作取舍及来源。运行 `python scripts/build_paper.py` 可重新核对表格并编译论文。
+围绕光伏、负载预测和电价变化，项目从确定性单日优化出发，逐步构建日前购电、日内滚动调整与实时储能反馈策略，并通过独立验算检查物理约束、交易结算和信息可用时点。
 
-按最新要求保留[正文篇幅控制](docs/paper/body-page-limit-review.md)，并将附录C改为[实际计算程序源码](docs/paper/source-appendix.md)：正文第2—29页，共28页；连同摘要、AI声明和参考文献，附录前共30页。正文保留主要结果、四日期汇总和9月23日代表方案，重复日期及辅助对照移至附录。完整PDF共64页，问题一至四分别覆盖5、6、7、7页，部分章节共享页面；附录A、B为日期明细和补充对照，附录C第46—64页完整刊载数据预处理、共用模型和主求解入口的807行源码。此前摘要扩充、`clip`定义及第七节的两节结构保留，不再设独立总结。
+## 快速阅读
 
-全文65张表保持正文同等字号和三线表样式，其中正文22张、附录43张；38张题面格式表完整保留，正文10张、附录28张。本轮仅删除原程序索引表，所有数值结果表均保留。购电与储能使用原题六列横向结构，紧急电量使用四日期并列结构。4幅数据图采用矢量图。正文不使用下划线，文献引用采用模板上标。当前验收见[论文验证](outputs/verification/paper-validation.json)、[逐表验收](outputs/verification/table-style-validation.json)，历次调整见[三线表核查记录](docs/paper/table-style-audit.md)。
+- **[论文 PDF](outputs/deliverables/microgrid-paper.pdf)**：完整建模与结果分析；[LaTeX 源码](paper/main.tex)。
+- **[在线完整解答](docs/solution.md)**：四问思路、公式、数值结果与敏感性分析。
+- **[结果文件](outputs/deliverables/)**：五份 Excel 与论文；支撑材料 ZIP 可按下文命令生成。
+- **[建模决策](docs/modeling/decisions.md)** 与 **[数据审计](docs/modeling/data-audit.md)**：假设、数据口径及处理依据。
 
-论文和[支撑材料压缩包](outputs/deliverables/supporting-materials.zip)分别交付。按用户最新要求，当前包内只放13个计算、导出和验算程序，以及根目录的5份结果Excel，共18个文件。说明、依赖清单、协议、哈希清单及其他材料均不入包。[工作区说明](docs/supporting-materials.md)和[打包验收](outputs/verification/supporting-materials-validation.json)仅保留在仓库中。运行 `python scripts/build_supporting_materials.py` 生成，追加 `--verify` 核对已有包。
+## 方法概览
 
-第一轮修订针对预报价值归因、缺少简单基准和增购撤回合约风险，处理依据见 [评审回应](docs/reviews/review-response.md)。问题 3、4-3 增加历史光伏/附件 3 融合候选；新小时预报贡献以保留重规划、当前库存、负载修正和当前光伏锚点的严格对照衡量。逐笔交易合约分别报告冻结主调度重计费与重新优化，不能混为一项结果。
+| 问题 | 场景 | 方法 |
+| --- | --- | --- |
+| 1 | 确定性单日、储能日循环 | 线性规划（LP），并用混合整数线性规划（MILP）交叉验证 |
+| 2 | 固定电价、无日内调整 | 历史预测、风险分位日前规划、实时安全反馈 |
+| 3 | 固定电价、允许日内调整 | 融合历史光伏与附件预报，滚动重规划与反馈调度 |
+| 4 | 波动电价 | 在第二、三问框架中加入因果电价预测，按真实价格结算 |
 
-第二轮复审已关闭上述三项意见。本轮另补价格感知反馈基准、4—12 月按上月选参的滚动实验及未来年度数据入口，见 [第二轮回应](docs/reviews/round2-response.md) 与 [外部验证协议](docs/modeling/external-validation-protocol.md)。这些补充独立报告，不根据再次查看同年费用的结果改选下表主方案；真正未见过的外部年度数据仍未获得。
+计算采用 10 分钟时间步长，功率单位为 kW，电量为 kWh，价格为元/kWh。储能荷电状态（SOC）逐日连续承接，计划只使用决策时刻已到达的信息。公共优化、预测与结算位于 [scripts/model.py](scripts/model.py)，各问入口为 `q1.py` 至 `q4.py`。
+
+补充实验覆盖预报信息贡献、历史基准、交易合约解释、价格感知反馈、跨月选参，以及储能参数与预测价差敏感性。具体设计与结果见[第一轮评审回应](docs/reviews/review-response.md)、[第二轮评审回应](docs/reviews/round2-response.md)和[实验目录](outputs/experiments/)。这些记录是项目内部审查与修订材料。
+
+## 主要结果
 
 | 问题 | 文件 | 正式评价期总费用 |
 | --- | --- | ---: |
@@ -22,137 +34,119 @@
 | 4-2：波动电价，无日内调整 | [result4-2.xlsx](outputs/deliverables/result4-2.xlsx) | 14,675,844.87 元 |
 | 4-3：波动电价，有日内调整 | [result4-3.xlsx](outputs/deliverables/result4-3.xlsx) | 14,044,885.25 元 |
 
-后四项覆盖 2025-02-01 至 12-31，共 334 天，包含计划、调整及紧急购电费用。每日实际 SOC 从 1 月 1 日 6000 kWh 连续承接。问题 1 有 LP/MILP 最优性验证；后续是因果预测和反馈调度的可行启发式，不声称随机全局最优。
+后四项覆盖 **2025-02-01 至 2025-12-31，共 334 天**，包含计划、调整及紧急购电费用；每日实际 SOC 从 1 月 1 日的 6000 kWh 连续承接。完整费用分解见 [summary.json](outputs/main/summary.json)。
 
-## 目录导航
+![固定与波动电价下的月度费用对比](outputs/figures/monthly-comparison.svg)
 
-| 目录 | 内容 |
+### 结果适用边界
+
+- **最优性**：问题一具有 LP/MILP 最优性验证；其余问题为因果预测与反馈调度的可行启发式，物理可行和结算正确不代表随机全局最优。
+- **验证范围**：主参数仅使用 1 月选取，但模型族在查看全年评审反例后扩展，因此属于同年再分析。尚未获得真正未见过的外部年度数据；[外部验证协议](docs/modeling/external-validation-protocol.md)与合成输入检查不能替代外部经济效果验证。
+- **交易假设**：主结果按交付段最终净调整结算一次，未交付增购可撤回；逐笔已成交增购不可免费撤回的合约，另行报告冻结调度重计费与重新优化结果。
+- **储能与价格**：充、放电单向效率均为 90%，不售电，可放弃未利用电量；原计划付费不退款。波动价格按历史预测决策、真实价格结算。其他解释见敏感性分析。
+- **Excel 费用口径**：后四份工作簿的计划表列出原计划费，调整表列出原计划费加调整增量费，不含紧急费用；两张表的费用不能再次相加。完整总费用以论文及 JSON 为准。
+
+输入时间标签 `00:10` 表示 `00:00–00:10`，功率乘以 1/6 小时得到区间电量。输出修正了模板时间头的 10 分钟偏移，未旋转数据；详见 [Excel 模板说明](docs/modeling/template-spec.md)。
+
+## 仓库结构
+
+| 路径 | 内容 |
 | --- | --- |
-| `problem/`、`data/raw/` | 原始题目、附件与模板 |
-| `data/processed/` | 对齐数据与审计记录 |
-| `scripts/` | 计算、导出、构建和测试入口 |
-| `docs/modeling/` | 建模决策、数据口径和验证协议 |
-| `docs/reviews/` | 各轮评审、修订计划与回应 |
-| `docs/paper/` | 论文写作、模板适配和格式审计 |
-| `paper/` | LaTeX 源码；`generated/` 为自动生成的表格与数值 |
-| `outputs/deliverables/` | 论文 PDF、支撑材料 ZIP 和五个 Excel |
-| `outputs/main/` | 主结果、调度归档及独立验算 |
-| `outputs/experiments/` | `revision/`、`round2/`、`paper-study/` 实验及专项验算 |
-| `outputs/verification/` | 工作簿、论文和复现验收 |
-| `outputs/figures/` | 生成图表 |
-| `tmp/` | 可丢弃的中间文件，不纳入版本控制 |
-
-完整文件迁移表见[目录整理记录](docs/structure-migration.md)，本次验收见[结构迁移验证](outputs/verification/structure-validation.json)。
-
-## 阅读顺序与交付
-
-- [解答论文](docs/solution.md)：完整回答四问，包含题面要求的表 1、表 2、表 3。
-- [C 类数学建模论文写作 skill](.agents/skills/cumcm-c-paper-writing/SKILL.md)：整理 11 篇参考论文的结构、摘要、逐问论证和图表写法，附阅读页码与可复用大纲；后续可用 `$cumcm-c-paper-writing` 调用。
-- [决策与过程记录](docs/modeling/decisions.md)、[数据审计](docs/modeling/data-audit.md)、[独立建模审查](docs/reviews/model-review.md)。
-- [评审回应](docs/reviews/review-response.md)、[修订实验与完整参数候选](outputs/experiments/revision/experiments.json)、[修订情景逐段归档](outputs/experiments/revision/dispatch.npz)。
-- [第二轮回应](docs/reviews/round2-response.md)、[第二轮实验计划](docs/reviews/round2-plan.md)、[外部年度验证协议](docs/modeling/external-validation-protocol.md)。
-- [第二轮实验汇总与逐月选参](outputs/experiments/round2/experiments.json)、[新增逐段归档](outputs/experiments/round2/dispatch.npz)、[第二轮专项核验](outputs/experiments/round2/validation.json)。
-- [Excel 模板说明](docs/modeling/template-spec.md)：时间标签纠错、列含义、费用口径与验证。
-- [汇总数据](outputs/main/summary.json)、[逐段调度及修订归档](outputs/main/dispatch.npz)、[输出接口 JSON](outputs/main/results.json)。
-- [物理及因果验证](outputs/main/validation.json)、[Q1 独立 MILP 验证](outputs/main/q1-milp-verification.json)、[Excel 验证](outputs/verification/workbook-verification.json)。
-- [修订实验专项验证](outputs/experiments/revision/validation.json)，覆盖严格信息对照、候选选择、合约路径及新增场景的物理约束。
-- [历史源码重放核验](outputs/verification/reproduction-validation.json)：迁移前定稿源码在独立输出目录完整重算，3 份 JSON 数值及两份归档的 347 个数组与交付结果完全一致；运行耗时字段不参与相等比较。
-
-原始 `problem/`、`data/raw/` 保持不变。数据与输出中的功率单位 kW、电量 kWh、价格元/kWh、费用元。
-
-## 关键口径
-
-输入时点 00:10 代表 00:00–00:10，功率乘 1/6 小时得到区间电量。模板时间头原本整体偏移 10 分钟，输出已修正，数据不旋转。小时预报按真实发布时间向未来展开。
-
-主结果采用两个单向效率各 90%、不售电、可放弃未利用电量、原计划付费不退款、按交付段最终净调整结算一次；这要求未交付增购仍是可以撤回的计划申报。逐笔已成交增购不可免费撤回的合约另行选参、重新优化，冻结主调度仅换账单的压力测试也单独列出。波动价格按历史预测作决策、真实价格结算。退款、效率、积分与价格先知的替代解释分列敏感性结果。
-
-修订主策略在 1 月固定用纯附件 3 和 0.8 分位热启动，2 月才启用所选光伏融合权重与分位；历史基准同时保留原热启动以复现评审，并新增与主策略共同热启动的版本用于正式比较。参数值只用 1 月选择，但模型族是在看到全年评审反例后扩展，属于同年再分析，不能称作新的外部验证。主方案的实时反馈仍未按价格优化跨时段电池库存，第二轮新增的确定性价格感知反馈单独比较；物理与结算检查不证明经济最优。
-
-后四个 Excel 的“计划购电量”费用列是原计划费；“调整购电量”费用列是原计划费加调整增量费，不含紧急费用，不能与计划表的费用列再次相加。完整总费用在论文及 JSON 中。
+| `problem/`、`data/raw/` | 原始题目、附件与空白模板，保持原样 |
+| `data/processed/` | 对齐数组、统计及审计哈希 |
+| `scripts/` | 预处理、求解、回测、验证与导出 |
+| `docs/solution.md` | 完整 Markdown 解答 |
+| `docs/modeling/`、`docs/reviews/` | 建模决策、数据口径、评审与验证协议 |
+| `docs/paper/`、`paper/` | 写作与格式记录、LaTeX 源码及生成表格 |
+| `outputs/deliverables/` | 最终 PDF、五份 Excel 和支撑材料 ZIP |
+| `outputs/main/` | 主结果、逐段调度归档及独立验算 |
+| `outputs/experiments/` | 修订、第二轮及论文补充实验 |
+| `outputs/verification/` | 工作簿、论文、打包与复现验收记录 |
+| `outputs/figures/` | 图表与矢量版本 |
+| `tmp/` | 临时文件，不纳入版本控制 |
 
 ## 计算复现
 
-计算使用 Python 3.14、NumPy、SciPy/HiGHS、Matplotlib、openpyxl（仅只读原始或输出 Excel）。在具有这些包的环境执行：
+以下命令在仓库根目录执行。数值计算环境为 **Python 3.14**，依赖版本固定在 [requirements.txt](requirements.txt)。建议使用独立虚拟环境。
+
+### 1. 主结果与独立验算
 
 ```powershell
+python -m venv .venv
+.venv/Scripts/Activate.ps1
 python -m pip install -r requirements.txt
 python scripts/prepare_data.py
 python scripts/solve.py
-python scripts/validate_results.py
 python scripts/test_contracts.py
+python scripts/test_feedback.py
+python scripts/test_external_inputs.py
+python scripts/validate_results.py
 python scripts/validate_revision.py
 python scripts/verify_q1_milp.py
 python scripts/build_report.py
 ```
 
-解题主流程按题号拆分，可分别运行：
+上例使用 PowerShell；其他系统需按对应 shell 激活虚拟环境。`solve.py` 完成四问主策略、参数选择及第一轮修订实验；耗时因机器而异，运行时间记录在 `outputs/main/summary.json`。`build_report.py` 更新 Markdown 解答、图表和本页费用表。
+
+各问也可通过 `python scripts/q1.py` 至 `python scripts/q4.py` 单独运行，默认输出至 `outputs/questions/`，支持 `--data` 和 `--output`。单问输出不覆盖正式结果，也不包含完整补充实验；生成正式 Excel 仍需总入口及独立验算。
+
+### 2. 第二轮补充实验
 
 ```powershell
-python scripts/q1.py
-python scripts/q2.py
-python scripts/q3.py
-python scripts/q4.py
-```
-
-`q1.py` 求解单日确定性优化及积分、效率口径对照；`q2.py` 求解固定电价日前策略；`q3.py` 求解固定电价日内调整策略及历史基准；`q4.py` 复用第二、三问流程，在动态电价下生成 `q4_2` 和 `q4_3`。公共优化、预测和结算保留在 `model.py`，选参、缓存和场景归档放在 `solve_common.py`。
-
-单问运行默认将调度数组和选参摘要写入 `outputs/questions/q1/` 等对应目录，可用 `--data` 指定预处理数据、`--output` 指定输出目录。第三、四问另保存基准场景数组。单问输出不覆盖正式结果，也不包含完整补充实验；生成五份正式 Excel 前仍须运行总入口和独立验算。
-
-`solve.py` 调用四个题号文件，完成 1 月权重/分位候选验证、全年正式策略、可实施历史基准、严格小时预报对照、逐笔合约重新优化及参数/语义敏感性；当前机器约需 5–7 分钟，验算和 Excel 导出另计，本次计算耗时见 `outputs/main/summary.json` 的 `elapsed_seconds`。主参数只用 1 月选择；2—12 月敏感性不会反过来替换主方案，但这不等同于模型开发未见过全年数据。运行后重新验证以更新结果和代码哈希。
-
-首次从代码复现时，Excel 验证 JSON 要在下述导出步骤完成后生成。`build_report.py` 读取计算结果、物理验证和修订专项验证，生成完整论文并刷新 README 总费表；论文中的 Excel 验证链接在导出后有效。
-
-### 第二轮补充实验
-
-以下流程追加四个价格感知反馈基准和问题 3、4-3 的跨月选参，输出至独立目录，不覆盖主结果或 Excel：
-
-```powershell
-python scripts/test_feedback.py
-python scripts/test_external_inputs.py
 python scripts/evaluate_round2.py
 python scripts/validate_round2.py
 python scripts/build_report.py --markdown-only
 ```
 
-`evaluate_round2.py` 默认同时执行反馈与滚动两组实验；完整选择记录、费用分解与 14 条路径保存在 `outputs/experiments/round2/`。`build_report.py` 检测到该目录的实验 JSON 后，生成论文第 8.5 节和第二轮回应的数值表；`--markdown-only` 保留已有图文件。计算生成与独立验收分开，只有后者通过才可报告验证通过。
+实验输出至 `outputs/experiments/round2/`，不覆盖主结果。外部年度数据入口及输入格式见[外部验证协议](docs/modeling/external-validation-protocol.md)。
 
-未来数据入口为 `evaluate_round2.py --mode external --future-data ... --output-dir ...`，输入及独立核验命令见 [外部验证协议](docs/modeling/external-validation-protocol.md)。外部模式固定参数，按各自历史控制承接库存，不进行新一轮搜索。[合成输入接口验证](outputs/experiments/round2/interface-smoke.json) 的 727 项检查通过，仅检验加载、连续状态及验算链；没有新增真实年度数据，合成样例费用也未列作经济证据。
+### 3. Excel 导出
 
-### 论文补充灵敏度与构建
+导出器使用 **Codex 内置 Node.js 与 `@oai/artifact-tool`** 导入附件模板、重算、渲染并导出。仅安装 Python 依赖无法完成此步骤；openpyxl 仅用于读取与独立核对工作簿。
 
-`outputs/experiments/paper-study/` 独立保存第一问可用库存、功率、效率的 16 个单日情景（含无储能对照），以及第四问预测价差幅度 ±20% 的 4 条全年路径。价差实验保持原实际结算价格和共同 1 月热启动，不替换主策略。
+已具备该运行时的环境可配置以下路径；请将占位值替换为实际绝对路径：
+
+```powershell
+$artifactNode = '<Node 可执行文件路径>'
+$env:CODEX_BUNDLED_NODE_MODULES = '<包含 @oai/artifact-tool 的 node_modules 目录>'
+$env:CODEX_BUNDLED_PYTHON = '<已安装 openpyxl 的 Python 可执行文件路径>'
+& $artifactNode scripts/export_results.mjs
+& $artifactNode scripts/export_results.mjs --verify
+```
+
+导出器支持 `--inspect` 与 `--preview-saved`。没有该运行时也可以运行 Python 数值计算和验算，并直接查看仓库中已导出的 Excel。
+
+### 4. 论文与支撑材料
+
+论文采用 [CUMCMThesis](https://github.com/latexstudio/CUMCMThesis)，固定版本及哈希见 [template-source.json](paper/template-source.json)，本地排版设置见[模板适配说明](docs/paper/template-adaptation.md)。编译要求 PATH 中可用 XeLaTeX 和 BibTeX。
 
 ```powershell
 python scripts/evaluate_paper_sensitivity.py
 python scripts/validate_paper_sensitivity.py
 python scripts/build_paper.py
+python scripts/build_supporting_materials.py
+python scripts/build_supporting_materials.py --verify
 ```
 
-补充实验的 201 项独立验算包括物理边界、现金账单、共同期初库存和问题一原始目标与记录的对偶下界一致。构建器会检查实验源哈希，复用未改变的结果，并调用 `build_paper_evidence.py` 重建逐问图表；原有 656 项表格聚合核对继续运行。只改文字或分页且图表来源未变时可用 `--skip-tables`。最终视觉验收随本次 PDF 保存，重新修改后仍需检查实际渲染。
+论文构建会核对表格来源并生成 PDF。只修改文字或分页且图表来源未变时，可使用 `build_paper.py --skip-tables`。支撑材料包按比赛交付设置包含 13 个程序与 5 份 Excel；完整复现请使用本仓库，包内不含依赖清单与全部数据。详见[打包说明](docs/supporting-materials.md)。
 
-### Excel 导出
+## 验证记录
 
-Excel 使用 Codex bundled Node 和 `@oai/artifact-tool` 导入附件 5 模板，重算并导出；不使用 openpyxl 写文件。这一导出依赖 Codex 工作区运行时，单纯安装 Python 依赖不会获得该工具。当前环境命令：
+计算与独立验算分开执行。仓库保留以下记录，便于追溯对应产物与检查范围；重新计算或修改后应重新运行相关验证。
 
-```powershell
-$artifactNode = 'C:/Users/A_Words/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe'
-& $artifactNode scripts/export_results.mjs
-& $artifactNode scripts/export_results.mjs --verify
-```
+| 验证范围 | 记录 |
+| --- | --- |
+| 物理约束、结算与信息因果性 | [主结果验证](outputs/main/validation.json) |
+| 问题一最优性交叉核验 | [MILP 验证](outputs/main/q1-milp-verification.json) |
+| 修订实验与第二轮实验 | [修订验证](outputs/experiments/revision/validation.json)、[第二轮验证](outputs/experiments/round2/validation.json) |
+| 五份 Excel 全量值对照 | [工作簿验证](outputs/verification/workbook-verification.json) |
+| 论文与表格格式 | [论文验证](outputs/verification/paper-validation.json)、[逐表验收](outputs/verification/table-style-validation.json) |
+| 历史定稿源码重放 | [复现记录](outputs/verification/reproduction-validation.json) |
 
-其他机器需安装/提供同等 artifact-tool 运行时，并调整导出器中 bundled Node/Python 的默认路径。模板检查、已保存文件预览分别可用 `--inspect`、`--preview-saved`。默认导出包含重算、错误扫描、渲染和保存后全量核对。首次在 Codex 技能工作流中实际填充前的标记步骤见 [模板说明](docs/modeling/template-spec.md)。
+历史复现记录针对当时的源码与产物，不等同于所有后续版本均已重放验证。Excel 已保存核对与渲染记录，未做桌面 Excel 交互式复算；修改论文后仍需检查实际 PDF 渲染。
 
-已执行全部数值核验、Q1 MILP 交叉验证和五个 Excel 的全量值对照及渲染检查。未启动桌面 Excel 做交互式复算。图表同时提供 PNG/SVG，位于 `outputs/figures/`。
+## 项目说明
 
-## 目录
+本仓库展示本队的建模方案与实验结果。AI 工具使用情况见[论文中的声明](paper/main.tex)，建模假设、方案取舍与结论以论文及决策记录为准。
 
-```text
-problem/                 原题 PDF
-data/raw/                原始附件与空白模板
-data/processed/          对齐数组、统计与源文件哈希
-scripts/                 预处理、预测/优化、回测、验证与导出
-docs/                    完整解答、建模过程和审查
-paper/                   LaTeX 正文、参考文献与自动生成表格
-outputs/deliverables/              排版后的论文 PDF
-outputs/                 五个 Excel、调度归档、汇总、验收与图表
-```
+题目、附件及上游 LaTeX 模板的来源与权利归其各自权利人。本仓库目前未附开源许可证；公开可见不等于授予代码、论文或数据的任意再分发授权。
